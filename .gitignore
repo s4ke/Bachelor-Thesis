@@ -1,2 +1,12 @@
 .aux
 .log
+.texshop
+.idx
+.lof
+.lot
+.nlo
+.nls
+.out
+.toc
+.ist
+.bbl
