@@ -51,6 +51,34 @@ While this might be enough for some applications, this wildcard query doesn't su
 	\item regular expression queries (matches are determined by a regular expression)
 \end{itemize}
 There may exist some RDBMS that support similar query-types, but in the context of using a ORM we would then lose the ability to switch databases since we require specific features not every RDBMS supports.
+\\\\
+Fulltext search engines can be used to complement databases in this regard. They are not intended to be replacing the database but add additional functionality by indexing data that is to be searched obtained by the database. We will now take a look at some of the most popular available options for Java developers.
+
+\subsubsection{Lucene}
+
+\begin{quote}
+Apache LuceneTM is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.\footnote{official Lucene website, see~\cite{lucene_apache_org}}
+\end{quote}
+Lucene serves as the basis for most fulltext search engines written in Java. It has many different utilties and modules aimed at search engine developers. However, it can be used on its own as well.
+\\\\
+A lucene based application can be structured into two phases:
+
+\paragraph{Indexing}
+Before we can search anything with a Lucene based application, the data has to be indexed first. This is done by passing Documents (Lucene's internal data-structure) into an IndexWriter. In these Documents we have to specify tuples (fields) of fieldname and value together with information about how these are to be stored and or indexed. Fieldnames are allowed to be duplicated in this structure.
+\\\\
+\textcolor{red}{Beispiel für Lucene usage hier}
+\\\\
+Lucene is not ACID compliant and does not have a concept similar to entities since everything is stored in a flat key-value structure.
+
+\paragraph{Searching}
+
+\subsubsection{Solr}
+
+\subsubsection{ElasticSearch}
+
+\subsubsection{Hibernate Search}
+
+\subsubsection{Compass (discontinued)}
 
 \subsubsection{compatibility of Hibernate Search with JPA}
 
