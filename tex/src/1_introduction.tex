@@ -1,16 +1,13 @@
 \section{Introduction}\label{einleitung}
 
-\subsection{An overview of different database paradigmas}
+\subsection{An overview of different database paradigms}
 
-When it comes to persisting data in applications, nowadays there are a lot of different
-paradigmas around that one has to choose from. Following is a short overview over the 
-most common ones.
+When it comes to persisting data in applications, nowadays there exist a lot of different
+paradigms that one has to choose from. Following is a short explanation for the two currently most used ones.
 
 \subsubsection{relational databases}
 
 \subsubsection{NoSQL databases}
-
-\subsubsection{Object databases}
 
 \subsection{Object-relational impedance mismatch}
 
@@ -20,7 +17,7 @@ for many years now.
 \\\\
 Nowadays, many popular languages like Java, C\#, etc. are object-oriented.
 While SQL solutions for querying relational databases exist for these languages, there is a big
-discrepancy between the relational and the object-oriented paradigm. \footnote{Wikipedia, see~\cite{wiki_object_mismatch}}
+discrepancy between the relational and the object-oriented paradigm. \footnote{Wikipedia on Object relational impedance mismatch, see~\cite{wiki_object_mismatch}}
 \\\\
 This is where Object Relational Mappers (ORM) come into use. They map tables to entities (classes) and
 enable users to write queries against classes instead of tables. This is especially useful if used
@@ -28,8 +25,33 @@ in big software products as not all programmers have to know the exact details o
 
 \subsubsection{JPA}
 
-\subsubsection{fulltext search}
+The first version of the JPA standard was released in May 2006. From then on it rose to probably the most commonly used persistence API for Java. Initially created to standardize only relational database mappers, it since has become the standard for other database concepts like for example NoSQL. The currently newest version of this standard is 2.1.\footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}
+\\\\
+Some popular implementations are:
+\begin{itemize}
+	\item Hibernate ORM
+	\item EclipseLink
+	\item OpenJPA
+\end{itemize}
+Using the standardized JPA API has some interesting benefits. For one, the specific JPA implementation can be swapped out. This is particularily important if you are working in a Java EE compliant environment. Java EE itself is a specification for platforms, mostly Web-servers.\footnote{Wikipedia on Java EE, see~\cite{wiki_java_ee}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for. This means that if a user switches servers, he/she is also likely to swap out the JPA implementor. If the user's application is strictly JPA compliant, little to no problems will arise upon such a change.
+
+\subsection{fulltext search}
+
+Conventional relational databases are extremely good at retrieving and querying structured data. But if you want to build a search engine atop your domain model, most RDBMS will only support the SQL-LIKE operator:\\
+
+\lstset{language=sql}
+\begin{lstlisting}[frame=htrbl, label={lst:result2}]
+SELECT book.id FROM book WHERE book.name LIKE %name%;
+\end{lstlisting}
+While this might be enough for some applications, this wildcard query doesn't support features a good search engine would need, for example:
+
+\begin{itemize}
+	\item fuzzy queries (variations of the original string will get matched, too)
+	\item phrase queries (search for a specified phrase)
+	\item regular expression queries (matches are determined by a regular expression)
+\end{itemize}
+There may exist some RDBMS that support similar query-types, but in the context of using a ORM we would then lose the ability to switch databases since we require specific features not every RDBMS supports.
 
 \subsubsection{compatibility of Hibernate Search with JPA}
 
-\subsubsection{aims of this thesis}
+\subsection{aims of this thesis}
