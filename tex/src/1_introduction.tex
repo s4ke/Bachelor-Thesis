@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_GB
 \section{Introduction}\label{einleitung}
 
 \subsection{An overview of different database paradigms}
@@ -9,35 +10,37 @@ paradigms that one has to choose from. Following is a short explanation for the 
 
 \subsubsection{NoSQL databases}
 
-\subsection{Object-relational impedance mismatch}
+\subsection{Object Relational Mappers}
 
 While the NoSQL approach is undeniably rising in popularity, the demand for
-relational solutions is still unmatched as it has been used and proven in practice
+relational solutions is still unmatched, as it has been used and has proven itself in practice
 for many years now.
 \\\\
 Nowadays, many popular languages like Java, C\#, etc. are object-oriented.
-While SQL solutions for querying relational databases exist for these languages, there is a big
-discrepancy between the relational and the object-oriented paradigm. \footnote{Wikipedia on Object relational impedance mismatch, see~\cite{wiki_object_mismatch}}
+While SQL solutions for querying relational databases exist for these languages, the user either has to work with the rowsets manually or convert them into custom data access objects. Both approaches include a lot of manual work.
 \\\\
-This is where Object Relational Mappers (ORM) come into use. They map tables to entities (classes) and
-enable users to write queries against classes instead of tables. This is especially useful if used
-in big software products as not all programmers have to know the exact details of the underlying database. The database system could even be completely replaced for another with the business logic still being in place.
+This is where Object Relational Mappers (ORM) come into use. They map tables to entity-classes and
+enable users to write queries against these classes instead of tables. This is especially useful if used
+in big software products as not all programmers have to know the exact details of the underlying database. The database system could even be completely replaced for another (provided the ORM supports the specific RDBMS), with the business logic not changing a bit.
 
 \subsubsection{JPA}
 
-The first version of the JPA standard was released in May 2006. From then on it rose to probably the most commonly used persistence API for Java. Initially created to standardize only relational database mappers, it since has become the standard for other database concepts like for example NoSQL. The currently newest version of this standard is 2.1.\footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}
+The first version of the JPA standard was released in May 2006. From then on it rose to probably the most commonly used persistence API for Java. While mostly known for standardizing relational database mappers (ORM), it supports other concepts like NoSQL or XML storage as well. However, when talking about JPA in this thesis we will be focusing on the relational aspects of it. Currently, the newest version of this standard is 2.1.\footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}.
 \\\\
-Some popular implementations are:
+Some popular relational implementations are:
 \begin{itemize}
-	\item Hibernate ORM
-	\item EclipseLink
-	\item OpenJPA
+	\item Hibernate ORM (JBoss)
+	\item EclipseLink (Eclipse foundation)
+	\item OpenJPA (Apache foundation)
 \end{itemize}
-Using the standardized JPA API has some interesting benefits. For one, the specific JPA implementation can be swapped out. This is particularily important if you are working in a Java EE compliant environment. Java EE itself is a specification for platforms, mostly Web-servers.\footnote{Wikipedia on Java EE, see~\cite{wiki_java_ee}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for. This means that if a user switches servers, he/she is also likely to swap out the JPA implementor. If the user's application is strictly JPA compliant, little to no problems will arise upon such a change.
+\textcolor{red}{vll Beispiel für eine einfache Beziehung, ER-Modell vs. gemappte Klasse}
+\\\\
+Using the standardized JPA API over any native ORM API has one really interesting benefit:
+The specific JPA implementation can be swapped out. This is particularily important if you are working in a Java EE environment. Java EE itself is a specification for platforms, mostly Web-servers (JPA is part of the Java EE spec).\footnote{Wikipedia on Java EE, see~\cite{wiki_java_ee}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for. This means that if a user switches servers, he/she is also likely to swap out the JPA implementor. If everything in the application is written in a JPA compliant way, the user will then generally not run into many problems related to this switch.
 
-\subsection{fulltext search}
+\subsection{Fulltext search}
 
-Conventional relational databases are extremely good at retrieving and querying structured data. But if you want to build a search engine atop your domain model, most RDBMS will only support the SQL-LIKE operator:\\
+Conventional relational databases are good at retrieving and querying structured data. But if one wants to build a search engine atop a domain model, most RDBMS will only support the SQL-LIKE operator:\\
 
 \lstset{language=sql}
 \begin{lstlisting}[frame=htrbl, label={lst:result2}]
@@ -52,7 +55,7 @@ While this might be enough for some applications, this wildcard query doesn't su
 \end{itemize}
 There may exist some RDBMS that support similar query-types, but in the context of using a ORM we would then lose the ability to switch databases since we require specific features not every RDBMS supports.
 \\\\
-Fulltext search engines can be used to complement databases in this regard. They are not intended to be replacing the database but add additional functionality by indexing data that is to be searched obtained by the database. We will now take a look at some of the most popular available options for Java developers.
+Fulltext search engines can be used to complement databases in this regard. They are not intended to be replacing the database, but to add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers while focusing on their usage, features, the pros and cons of using them, and compatibility with the JPA standard.
 
 \subsubsection{Lucene}
 
@@ -60,17 +63,37 @@ Fulltext search engines can be used to complement databases in this regard. They
 Apache LuceneTM is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.\footnote{official Lucene website, see~\cite{lucene_apache_org}}
 \end{quote}
 Lucene serves as the basis for most fulltext search engines written in Java. It has many different utilties and modules aimed at search engine developers. However, it can be used on its own as well.
-\\\\
-A lucene based application can be structured into two phases:
 
-\paragraph{Indexing}
-Before we can search anything with a Lucene based application, the data has to be indexed first. This is done by passing Documents (Lucene's internal data-structure) into an IndexWriter. In these Documents we have to specify tuples (fields) of fieldname and value together with information about how these are to be stored and or indexed. Fieldnames are allowed to be duplicated in this structure.
-\\\\
-\textcolor{red}{Beispiel für Lucene usage hier}
-\\\\
-Lucene is not ACID compliant and does not have a concept similar to entities since everything is stored in a flat key-value structure.
+\paragraph{Index structure}
+Lucene uses an \textbf{inverted index} to store data. This means that instead of storing texts mapped to the words contained in them, it works the other way around. All different words (or terms) are mapped to the texts they occur in.\footnote{Lucene basic concepts, see~\cite{lucene_basic_concepts}} Also, before anything can be searched using Lucene, it has to be added to the the index first.
 
-\paragraph{Searching}
+\paragraph{Concepts} Lucene has its own set of concepts that need to be discussed first before we can take a look at it's usage. Following is the explanation of the most important ones.
+
+\subparagraph{Documents}
+Documents are the data-structure Lucene stores and retrieves from the index. A index can contain zero or more Documents. Documents are added to the index with an IndexWriter and retrieved via an IndexReader/IndexSearcher.
+
+\subparagraph{Fields}
+A Document consists of at least one field. Fields are basically tuples of key and value. They can be stored (can be retrieved from the index) and/or indexed (can be searched on).
+
+\subparagraph{Analyzers}
+Before documents get indexed, their fields are analyzed first. Analysis is the process of modifying the input in a manner such that it can be searched upon (stemming, tokenization, ...). In Lucene this is done by special classes called Analyzers.
+
+\paragraph{Usage - Indexing}
+We will now take a look at how data is indexed in Lucene. In the following example we consider the data to be already present in form of a List of objects of the class 'Text' and concentrate on the Lucene usage itself.
+\\\\
+\textcolor{red}{Beispiel für Lucene usage hier, }
+
+\paragraph{Usage - Searching}
+Searching\\\\
+\textcolor{red}{Beispiel für Lucene usage hier, }
+
+\paragraph{Features}
+Lucene is probably the most complete toolbox to build a search-engine from.
+
+\paragraph{Pros and Cons}
+
+\paragraph{Compatibility with JPA}
+By design, Lucene out of the box is not very compatible with the JPA standard. For one, the flat document structure forces the user to de-normalize the entity model before indexing. Secondly, since every search-relevant change in the database should be reflected in the index, it must be kept up to date. When using Lucene, this has to be done completely manually as it natively doesn't have any integration with databases.
 
 \subsubsection{Solr}
 
@@ -78,8 +101,6 @@ Lucene is not ACID compliant and does not have a concept similar to entities sin
 
 \subsubsection{Hibernate Search}
 
-\subsubsection{Compass (discontinued)}
-
-\subsubsection{compatibility of Hibernate Search with JPA}
+\textcolor{red}{some kind of conclusion with a table of features. -> Hibernate Search, aber mit dem Problem von Kompatibilität mit Non Hibernate ORM, mention Compass?}
 
 \subsection{aims of this thesis}
