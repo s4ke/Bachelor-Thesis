@@ -2,15 +2,11 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: bachelor_thesis.aux
 The style file: alphadin.bst
 A level-1 auxiliary file: latex_settings/deckblatt.aux
 A level-1 auxiliary file: abstract.aux
-I couldn't open database file Hauptdatei.bib
----line 61 of file bachelor_thesis.aux
- : \bibdata{Hauptdatei
- :                    }
-I'm skipping whatever remains of this command
 A level-1 auxiliary file: erklaerung.aux
-I found no database files---while reading file bachelor_thesis.aux
+Database file #1: Hauptdatei.bib
 Warning--I didn't find a database entry for "wiki_jpa"
 Warning--I didn't find a database entry for "wiki_java_ee"
 Warning--I didn't find a database entry for "lucene_apache_org"
+Warning--I didn't find a database entry for "lucene_basic_concepts"
 Warning--I didn't find a database entry for "wk05"
-(There were 2 error messages)
+(There were 5 warnings)

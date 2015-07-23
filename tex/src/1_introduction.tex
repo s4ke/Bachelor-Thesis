@@ -1,7 +1,44 @@
 % !TeX spellcheck = en_GB
-\section{Introduction}\label{einleitung}
+\section{Preface}\label{Preface}
+In the software world, or more specific, the Java enterprise world, developers tend to abstract access to data in a way that components are interchangeable. A perfect example for such an abstraction is the usage of Object Relational Mappers (ORM). The database specifics are mostly irrelevant to the average developer and the need for native SQL is brought down to a minimum. This makes the switch to a different relational database system (RDBMS) easier in the later stages of a product's life cycle.
+\\\\
+The Java Persistence API (JPA) went even further by standardising ORMs. First conceived in 2006 \cite{needed}, it is now the de-facto standard for Object Relational Mappers in Java. The developer doesn't need to know which specific ORM is used in the application, as all the database queries are written against a standardized query API and therefore portable. This means that not only the database is interchangeable, but even the specific ORM, it is accessed by, is as well.
+\\\\
+However, this does not mean that all JPA implementations ship with the same features. While all of them are JPA compliant (apart from minor bugs), some ship with additional modules to enhance their capabilities. A perfect example for this is the Hibernate Search API aimed at Hibernate ORM users: Nowadays, even small applications like online shops need enhanced search capabilities to let the user find more results for a given input.
+\\\\
+This is not something a regular RDBMS excels at and Hibernate Search comes into use: It works atop the Hibernate ORM/JPA system and enables the developer to index the domain model for searching. It's not only a mapper from JPA entities to a search index, but also keeps the index up-to-date if something in the database changes.
+\\\\
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{images/hibernate_search_hibernate_schema.pdf}
+		\caption{Hibernate Search with Hibernate ORM}
+		\label{fig1}
+\end{figure}
+\\
+Hibernate Search, which is based on the powerful Lucene search toolbox, is a separate project in the Hibernate family and is using a lot of JPA interfaces in its codebase and aims to provide a JPA "feeling" in its API. However, this does not mean that it is compatible with other JPA providers than Hibernate ORM (apart from Hibernate OGM, the NoSQL JPA mapper of the family).
+\\\\
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{images/hibernate_search_any_jpa_problem_schema.pdf}
+	\caption{Hibernate Search's incompatibility with other JPA implementations}
+	\label{fig2}
+\end{figure}
+\\
+While using Hibernate Search obviously is beneficial for Hibernate ORM applications, not all developers can bind themselves to a specific JPA implementation in their application. For some, the ability to change the it is of strategic important, for others it is just sheer preference to use a different JPA implementation.
+\\\\
+Currently these developers have to resort to using different full text search systems like native Lucene, ElasticSearch or Solr. While this is always a viable option, for some applications Hibernate Search would be a much better suit because of it's design with a entity structure in mind and the automatic index updating feature, if it just were compatible with generic JPA.
+\\\\
+When investigating Hibernate Search's project structure \cite{source-code-git}, we see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that we can reuse most of the codebase for a generic version of Hibernate Search.
+\\\\
+In this thesis we will show how such a generic version can be built. We will look at how Hibernate Search's engine can be reused. Then, we will write a standalone version of this engine and finally integrate it with generic JPA.
+
+\pagebreak
+
+\section{Overview}\label{Introduction}
 
 \subsection{An overview of different database paradigms}
+
+\textcolor{red}{das hier anders}
 
 When it comes to persisting data in applications, nowadays there exist a lot of different
 paradigms that one has to choose from. Following is a short explanation for the two currently most used ones.
@@ -58,6 +95,8 @@ There may exist some RDBMS that support similar query-types, but in the context 
 Fulltext search engines can be used to complement databases in this regard. They are not intended to be replacing the database, but to add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers while focusing on their usage, features, the pros and cons of using them, and compatibility with the JPA standard.
 
 \subsubsection{Lucene}
+
+\textcolor{red}{mention current version for each of these?}
 
 \begin{quote}
 Apache LuceneTM is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.\footnote{official Lucene website, see~\cite{lucene_apache_org}}

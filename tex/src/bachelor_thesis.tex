@@ -93,11 +93,11 @@
 \makeindex
 
 % Abkürzungsverzeichnis
-\usepackage[german]{nomencl}
+\usepackage[english]{nomencl}
 \let\abbrev\nomenclature
 
 % Abkürzungsverzeichnis LiveTex Version
-\renewcommand{\nomname}{Abkürzungsverzeichnis}
+\renewcommand{\nomname}{Abbreviations}
 \setlength{\nomlabelwidth}{.25\hsize}
 \renewcommand{\nomlabel}[1]{#1 \dotfill}
 \setlength{\nomitemsep}{-\parsep}
@@ -153,17 +153,17 @@
 % das Abbildungsverzeichnis
 %\newpage
 % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+%\addcontentsline{toc}{section}{List of figures}
 % Abbildungsverzeichnis endgueltig anzeigen
-\listoffigures
+%\listoffigures
 
 % das Tabellenverzeichnis
 %\newpage
 % Abbildungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-\addcontentsline{toc}{section}{Tabellenverzeichnis}
+%\addcontentsline{toc}{section}{Tabellenverzeichnis}
 % \fancyhead[L]{Abbildungsverzeichnis / Abkürzungsverzeichnis} %Kopfzeile links
 % Abbildungsverzeichnis endgueltig anzeigen
-\listoftables
+%\listoftables
 
 %% WORKAROUND für Listings
 %\makeatletter% --> De-TeX-FAQ
@@ -186,20 +186,20 @@
 % das Listingverzeichnis
 %\newpage
 % Listingverzeichnis soll im Inhaltsverzeichnis auftauchen
-\addcontentsline{toc}{section}{Listingverzeichnis}
-\fancyhead[L]{Abbildungs- / Tabellen- / Listingverzeichnis} %Kopfzeile links
-\renewcommand{\lstlistlistingname}{Listingverzeichnis}
-\lstlistoflistings
+%\addcontentsline{toc}{section}{Listingverzeichnis}
+%\fancyhead[L]{Abbildungs- / Tabellen- / Listingverzeichnis} %Kopfzeile links
+%\renewcommand{\lstlistlistingname}{Listingverzeichnis}
+%\lstlistoflistings
 %%%%
 
 % das Abkürzungsverzeichnis
 %\newpage
 % Abkürzungsverzeichnis soll im Inhaltsverzeichnis auftauchen
-\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+%\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 % das Abkürzungsverzeichnis entgültige Ausgeben
-\fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
-\input{latex_settings/abbreviations/abbreviations}
-\printnomenclature
+%\fancyhead[L]{Abkürzungsverzeichnis} %Kopfzeile links
+%\input{latex_settings/abbreviations/abbreviations}
+%\printnomenclature
 
 % Definiert Stegbreite bei zweispaltigem Layout
 \setlength{\columnsep}{25pt}
