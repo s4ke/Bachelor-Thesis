@@ -25,11 +25,13 @@ Hibernate Search, which is based on the powerful Lucene search toolbox, is a sep
 	\label{fig2}
 \end{figure}
 \\
-While using Hibernate Search obviously is beneficial for Hibernate ORM applications, not all developers can bind themselves to a specific JPA implementation in their application. For some, the ability to change it might be of company strategic importance, for others it could just be sheer preference to use a different JPA implementation.
+While using Hibernate Search obviously is beneficial for Hibernate ORM applications, not all developers can bind themselves to a specific JPA implementation in their application. For some, the ability to change implementations might be of strategic importance, for others it could just be sheer preference to use a different JPA implementation.
 \\\\
 Currently developers not wanting to bind themselves to Hibernate ORM have to resort to using different full text search systems like native Lucene, ElasticSearch or Solr. While this is always a viable option, for some applications Hibernate Search would be a much better suit because of it's design with a entity structure in mind and the automatic index updating feature, if it just were compatible with generic JPA.
 \\\\
 When investigating Hibernate Search's project structure \cite{source-code-git}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that we can reuse most of the codebase for a generic version of Hibernate Search.
+
+\textcolor{red}{hier noch etwas ausführlicher? Der Übergang ist zu abrupt. Vll eine Überleitung à la: Dann liegt es hier doch nahe, eine allgemeine Version zu bauen, und das machen wir jetzt...}
 \\\\
 In this thesis we will show how such a generic version can be built. We will look at how Hibernate Search's engine can be reused. Then, we will write a standalone version of this engine and finally integrate it with generic JPA.
 
