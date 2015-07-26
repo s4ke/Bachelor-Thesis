@@ -131,7 +131,6 @@
 % Leere Seite am Anfang
 \newpage
 \thispagestyle{empty} % erzeugt Seite ohne Kopf- / Fusszeile
-\section*{ }
 
 % Titelseite %
 \include{latex_settings/deckblatt}
@@ -230,32 +229,21 @@
 
 \input{3_hibernate_search_intro}
 
-%....
+\input{4_hibernate_search_standalone}
 
-\input{7_ausblick}
+\input{5_massindexing}
 
-\input{8_fazit}
-
-\input{beispiel}
-
-
-
-
-
-
-
-
+\input{6_automatic_index_updating}
 
 
 \onecolumn
 % einfacher Zeilenabstand
 \singlespacing
 % Literaturliste soll im Inhaltsverzeichnis auftauchen
-\newpage
 \addcontentsline{toc}{section}{Literaturverzeichnis}
 % Literaturverzeichnis anzeigen
-\renewcommand\refname{Literaturverzeichnis}
-\bibliography{Hauptdatei}
+%\renewcommand\refname{Literaturverzeichnis}
+%\bibliography{Hauptdatei}
 
 %% Index soll Stichwortverzeichnis heissen
 % \newpage
@@ -265,12 +253,16 @@
 % % Stichwortverzeichnis endgueltig anzeigen
 % \printindex
 
+\addcontentsline{toc}{section}{References}
+\input{bibliography}
+
 \onehalfspacing
 % evtl. Anhang
 \newpage
 \addcontentsline{toc}{section}{Anhang}
 \fancyhead[L]{Anhang} %Kopfzeile links
 \input{appendix/appendix}
+
 
 % Eidesstattliche Erklärung
 \addcontentsline{toc}{section}{Eidesstattliche Erklärung}

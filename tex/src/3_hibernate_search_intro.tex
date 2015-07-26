@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
-\section{Overview}\label{Overview}
+\section{Overview of technologies}\label{Overview}
 
 \subsection{Object Relational Mappers}
 Nowadays, many popular languages like Java, C\#, etc. are object-oriented.
@@ -9,9 +9,9 @@ This is where Object Relational Mappers (ORM) come into use. They map tables to 
 enable users to write queries against these classes instead of tables. This is especially useful if used
 in big software products as not all programmers have to know the exact details of the underlying database. The database system could even be completely replaced for another (provided the ORM supports the specific RDBMS), with the business logic not changing a bit.
 
-\subsubsection{JPA}
+\subsection{JPA}
 
-The first version of the JPA standard was released in May 2006. From then on it rose to probably the most commonly used persistence API for Java. While mostly known for standardizing relational database mappers (ORM), it supports other concepts like NoSQL or XML storage as well. However, when talking about JPA in this thesis we will be focusing on the relational aspects of it. Currently, the newest version of this standard is 2.1.\footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}.
+The first version of the JPA standard was released in May 2006. From then on it rose to being probably the most commonly used persistence API for Java. While mostly known for standardizing relational database mappers (ORM), it supports other concepts like NoSQL or XML storage as well. However, when talking about JPA in this thesis we will be focusing on the relational aspects of it. Currently, the newest version of this standard is 2.1.\footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}.
 \\\\
 Some popular relational implementations are:
 \begin{itemize}
@@ -19,12 +19,11 @@ Some popular relational implementations are:
 	\item EclipseLink (Eclipse foundation)
 	\item OpenJPA (Apache foundation)
 \end{itemize}
-\textcolor{red}{vll Beispiel für eine einfache Beziehung, ER-Modell vs. gemappte Klasse}
-\\\\
+~\\
 Using the standardized JPA API over any native ORM API has one really interesting benefit:
 The specific JPA implementation can be swapped out. This is particularily important if you are working in a Java EE environment. Java EE itself is a specification for platforms, mostly Web-servers (JPA is part of the Java EE spec).\footnote{Wikipedia on Java EE, see~\cite{wiki_java_ee}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for. This means that if a user switches servers, he/she is also likely to swap out the JPA implementor. If everything in the application is written in a JPA compliant way, the user will then generally not run into many problems related to this switch.
 
-\subsection{Fulltext search}
+\subsection{Fulltext search engines}
 
 Conventional relational databases are good at retrieving and querying structured data. But if one wants to build a search engine atop a domain model, most RDBMS will only support the SQL-LIKE operator:\\
 
@@ -41,7 +40,7 @@ While this might be enough for some applications, this wildcard query doesn't su
 \end{itemize}
 There may exist some RDBMS that support similar query-types, but in the context of using a ORM we would then lose the ability to switch databases since we require specific features not every RDBMS supports.
 \\\\
-Fulltext search engines can be used to complement databases in this regard. They are not intended to be replacing the database, but to add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers while focusing on their usage, features, the pros and cons of using them, and compatibility with the JPA standard.
+Fulltext search engines can be used to complement databases in this regard. They are not intended to be replacing the database, but add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers while focusing on their usage, features, the pros and cons of using them, and compatibility with the JPA standard.
 
 \subsubsection{Lucene}
 
@@ -91,4 +90,4 @@ By design, Lucene out of the box is not very compatible with the JPA standard. F
 
 \textcolor{red}{some kind of conclusion with a table of features. -> Hibernate Search, aber mit dem Problem von Kompatibilität mit Non Hibernate ORM, mention Compass?}
 
-\subsection{aims of this thesis}
+\pagebreak
