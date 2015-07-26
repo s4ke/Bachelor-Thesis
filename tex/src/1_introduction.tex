@@ -2,18 +2,18 @@
 \section{Preface}\label{Preface}
 In the software world, or more specific, the Java enterprise world, developers tend to abstract access to data in a way that components are interchangeable. A perfect example for such an abstraction is the usage of Object Relational Mappers (ORM). The database specifics are mostly irrelevant to the average developer and the need for native SQL is brought down to a minimum. This makes the switch to a different relational database system (RDBMS) easier in the later stages of a product's life cycle.
 \\\\
-The Java Persistence API (JPA) went even further by standardising ORMs. First conceived in 2006 \cite{needed}, it is now the de-facto standard for Object Relational Mappers in Java. The developer doesn't need to know which specific ORM is used in the application, as all the database queries are written against a standardized query API and therefore portable. This means that not only the database is interchangeable, but even the specific ORM, it is accessed by, is as well.
+The Java Persistence API (JPA) went even further by standardising ORMs. First conceived in 2006 \footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}, it is now the de-facto standard for Object Relational Mappers in Java. The developer doesn't need to know which specific ORM is used in the application, as all the database queries are written against a standardized query API and therefore portable. This means that not only the database is interchangeable, but even the specific ORM, it is accessed by, is as well.
 \\\\
-However, this does not mean that all JPA implementations ship with the same features. While all of them are JPA compliant (apart from minor bugs), some ship with additional modules to enhance their capabilities. A perfect example for this is the Hibernate Search API aimed at Hibernate ORM users.
+However, this does not mean that all JPA implementations ship with the same features. While all of them are JPA compliant (apart from minor bugs), some ship with additional modules to enhance their capabilities. A perfect example for this is the Hibernate Search API aimed at Hibernate ORM users.\footnote{Hibernate Search project homepage, see~\cite{hibernate_search_homepage}}
 \\\\
 Nowadays, even small applications like online shops need enhanced search capabilities to let the user find more results for a given input.
 This is not something a regular RDBMS excels at and Hibernate Search comes into use: It works atop the Hibernate ORM/JPA system and enables the developer to index the domain model for searching. It's not only a mapper from JPA entities to a search index, but also keeps the index up-to-date if something in the database changes.
-\\\\
+\\
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.5]{images/hibernate_search_hibernate_schema.pdf}
-		\caption{Hibernate Search with Hibernate ORM}
-		\label{fig1}
+	\caption{Hibernate Search with Hibernate ORM}
+	\label{fig1}
 \end{figure}
 \\
 Hibernate Search, which is based on the powerful Lucene search toolbox, is a separate project in the Hibernate family and is using JPA interfaces in its codebase and aims to provide a JPA "feeling" in its API. However, this does not mean that it is compatible with other JPA providers than Hibernate ORM (apart from Hibernate OGM, the NoSQL JPA mapper of the family).
@@ -27,11 +27,13 @@ Hibernate Search, which is based on the powerful Lucene search toolbox, is a sep
 \\
 While using Hibernate Search obviously is beneficial for Hibernate ORM applications, not all developers can bind themselves to a specific JPA implementation in their application. For some, the ability to change implementations might be of strategic importance, for others it could just be sheer preference to use a different JPA implementation.
 \\\\
-Currently developers not wanting to bind themselves to Hibernate ORM have to resort to using different full text search systems like native Lucene, ElasticSearch or Solr. While this is always a viable option, for some applications Hibernate Search would be a much better suit because of it's design with a entity structure in mind and the automatic index updating feature, if it just were compatible with generic JPA.
+Currently, developers that do not want to bind themselves to Hibernate ORM have to resort to using different full text search systems like native Lucene, ElasticSearch or Solr. While this is always a viable option, for some applications Hibernate Search would be a much better suit because of it's design with a entity structure in mind and the automatic index updating feature, if it just were compatible with generic JPA.
 \\\\
-When investigating Hibernate Search's project structure \cite{source-code-git}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that we could reuse most of the codebase for a generic version of Hibernate Search.
-\\\\
-This would be a better approach to building a search API for JPA than rewriting everything from scratch. Hibernate Search's engine could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
+When investigating Hibernate Search's project structure
+\footnote{Hibernate Search GitHub repository, see~\cite{hsearch_source_code_git}}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that most of the codebase could be reused for a generic version of Hibernate Search.
+\newpage
+\noindent
+Creating this would be a better approach for a search API on top of JPA than rewriting everything from scratch. Hibernate Search could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
 \\\\
 \begin{figure}[ht]
 	\centering
@@ -41,6 +43,6 @@ This would be a better approach to building a search API for JPA than rewriting 
 \end{figure}
 \footnotetext{xkcd comic \#927, see~\cite{xkcd_competing_standards_source}}
 \\
-This is why in this thesis we will show how such a generic version can be built. We will look at how Hibernate Search's engine can be reused. Then, we will write a standalone version of this engine and finally integrate it with generic JPA.
+This is why in this thesis we will show how such a generic version can be built. First, we will look at how Hibernate Search's engine can be reused. Then, we will write a standalone version of this engine and finally integrate it with generic JPA.
 
 \pagebreak
