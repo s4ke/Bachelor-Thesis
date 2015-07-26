@@ -29,10 +29,18 @@ While using Hibernate Search obviously is beneficial for Hibernate ORM applicati
 \\\\
 Currently developers not wanting to bind themselves to Hibernate ORM have to resort to using different full text search systems like native Lucene, ElasticSearch or Solr. While this is always a viable option, for some applications Hibernate Search would be a much better suit because of it's design with a entity structure in mind and the automatic index updating feature, if it just were compatible with generic JPA.
 \\\\
-When investigating Hibernate Search's project structure \cite{source-code-git}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that we can reuse most of the codebase for a generic version of Hibernate Search.
-
-\textcolor{red}{hier noch etwas ausführlicher? Der Übergang ist zu abrupt. Vll eine Überleitung à la: Dann liegt es hier doch nahe, eine allgemeine Version zu bauen, und das machen wir jetzt...}
+When investigating Hibernate Search's project structure \cite{source-code-git}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that we could reuse most of the codebase for a generic version of Hibernate Search.
 \\\\
-In this thesis we will show how such a generic version can be built. We will look at how Hibernate Search's engine can be reused. Then, we will write a standalone version of this engine and finally integrate it with generic JPA.
+This would be a better approach to building a search API for JPA than rewriting everything from scratch. Hibernate Search's engine could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
+\\\\
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{images/competing_standards.png}
+	\caption{xkcd.com on competing standards \protect\footnotemark}
+	\label{xkcd_standards_fig}
+\end{figure}
+\footnotetext{xkcd comic \#927, see~\cite{xkcd_competing_standards_source}}
+\\
+This is why in this thesis we will show how such a generic version can be built. We will look at how Hibernate Search's engine can be reused. Then, we will write a standalone version of this engine and finally integrate it with generic JPA.
 
 \pagebreak
