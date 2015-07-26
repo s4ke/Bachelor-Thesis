@@ -4,7 +4,7 @@ In the software world, or more specific, the Java enterprise world, developers t
 \\\\
 The Java Persistence API (JPA) went even further by standardising ORMs. First conceived in 2006 \footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}, it is now the de-facto standard for Object Relational Mappers in Java. The developer doesn't need to know which specific ORM is used in the application, as all the database queries are written against a standardized query API and therefore portable. This means that not only the database is interchangeable, but even the specific ORM, it is accessed by, is as well.
 \\\\
-However, this does not mean that all JPA implementations ship with the same features. While all of them are JPA compliant (apart from minor bugs), some ship with additional modules to enhance their capabilities. A perfect example for this is the Hibernate Search API aimed at Hibernate ORM users.\footnote{Hibernate Search project homepage, see~\cite{hibernate_search_homepage}}
+However, this does not mean that all JPA implementations come with the same features. While all of them are JPA compliant (apart from minor bugs), some ship with additional modules to enhance their capabilities. A perfect example for this is the Hibernate Search API aimed at Hibernate ORM users.\footnote{Hibernate Search project homepage, see~\cite{hibernate_search_homepage}}
 \\\\
 Nowadays, even small applications like online shops need enhanced search capabilities to let the user find more results for a given input.
 This is not something a regular RDBMS excels at and Hibernate Search comes into use: It works atop the Hibernate ORM/JPA system and enables the developer to index the domain model for searching. It's not only a mapper from JPA entities to a search index, but also keeps the index up-to-date if something in the database changes.
@@ -33,7 +33,7 @@ When investigating Hibernate Search's project structure
 \footnote{Hibernate Search GitHub repository, see~\cite{hsearch_source_code_git}}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that most of the codebase could be reused for a generic version of Hibernate Search.
 \newpage
 \noindent
-Creating this would be a better approach for a search API on top of JPA than rewriting everything from scratch. Hibernate Search could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
+Creating this would be a better approach for a search API on top of JPA rather than rewriting everything from scratch. Hibernate Search could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
 \\\\
 \begin{figure}[ht]
 	\centering
