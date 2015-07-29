@@ -64,7 +64,7 @@ While this might be enough for some applications, this wildcard query doesn't su
 \end{itemize}
 There may exist some RDBMS that support similar query-types, but in the context of using a ORM we would then lose the ability to switch databases since, we would use vendor-specific features not every RDBMS supports.
 \\\\
-Fulltext search engines can be used to complement databases in this regard. They are not intended to be replacing the database, but add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers focusing on their usage, features, the pros and cons of using them, and compatibility with the JPA standard.
+Fulltext search engines can be used to complement databases in this regard. They are generally not intended to be replacing the database, but add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers focusing on their usage, features and compatibility with the JPA standard.
 
 \pagebreak
 
@@ -73,47 +73,51 @@ Fulltext search engines can be used to complement databases in this regard. They
 \textcolor{red}{mention current version for each of these?}
 
 \begin{quote}
-	Apache LuceneTM is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.\footnote{official Lucene website, see~\cite{lucene_apache_org}}
+	Apache Lucene™ is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.\footnote{official Lucene website, see~\cite{lucene_apache_org}}
 \end{quote}
 Lucene serves as the basis for many fulltext search engines written in Java. It has many different utilties and modules aimed at search engine developers. However, it can be used on its own as well.
 
-\paragraph{Index structure}
-Lucene uses an \textbf{inverted index} to store data. This means that instead of storing texts mapped to the words contained in them, it works the other way around. All different words (or terms) are mapped to the texts they occur in.\footnote{Lucene basic concepts, see~\cite{lucene_basic_concepts}} Also, before anything can be searched using Lucene, it has to be added to the the index first.
+\paragraph{Concepts}
 
-\paragraph{Concepts} Lucene has its own set of concepts that need to be discussed first before we can take a look at it's usage. Following is the explanation of the most important ones.
+As Lucene's focus is not on storing relational data, it comes with its own set of concepts. Following is a short overview over the concepts it has. These are not only the basis for Lucene, but also for the other search engines we will discuss later as they are based on Lucene's rich set of features.
+
+\subparagraph{Index structure}
+Lucene uses an \textbf{inverted index} to store data. This means that instead of storing texts mapped to the words contained in them, it works the other way around. All different words (terms) are mapped to the texts they occur in\footnote{Lucene basic concepts, see~\cite{lucene_basic_concepts}}, so it can be compared to a \(Map<String, List<Text>>\) in Java. Before anything can be searched using Lucene, it has to be added to the the index (indexed) first.
 
 \subparagraph{Documents}
-Documents are the data-structure Lucene stores and retrieves from the index. A index can contain zero or more Documents. Documents are added to the index with an IndexWriter and retrieved via an IndexReader/IndexSearcher.
+Documents are the data-structure Lucene stores and retrieves from the index. An index can contain zero or more Documents.
 
 \subparagraph{Fields}
-A Document consists of at least one field. Fields are basically tuples of key and value. They can be stored (can be retrieved from the index) and/or indexed (can be searched on).
+A Document consists of at least one field. Fields are basically tuples of key and value. They can be stored (retrievable from the index) and/or indexed (used for searches, generate hits).
 
 \subparagraph{Analyzers}
-Before documents get indexed, their fields are analyzed first. Analysis is the process of modifying the input in a manner such that it can be searched upon (stemming, tokenization, ...). In Lucene this is done by special classes called Analyzers.
+Before documents get indexed, their fields are analyzed with one of the many Analyzers first. Analysis is the process of modifying the input in a manner such that it can be searched upon (stemming, tokenization, ...).
 
-\paragraph{Usage - Indexing}
-We will now take a look at how data is indexed in Lucene. In the following example we consider the data to be already present in form of a List of objects of the class 'Text' and concentrate on the Lucene usage itself.
-\\\\
-\textcolor{red}{Beispiel für Lucene usage hier, }
-
-\paragraph{Usage - Searching}
-Searching\\\\
-\textcolor{red}{Beispiel für Lucene usage hier, }
+\paragraph{Usage}
+Using Lucene as a standalone requires the programmer to design the engine from the bottom up. The developer has to write all the logic, starting with the actual index writing control mechanism, and the conversion code from Java objects to Documents, through to the index searcher control, and the query code with the conversion from Documents back to Java objects. This whole process requires a lot of code to be written and the API just helps by providing the necessary tools. This has one additional problem though: The Lucene API tends to change a lot between versions and the code has to be kept up-to-date. It's not uncommon that whole features that worked in one version are deprecated (potentially unstable, marked to be removed in the future) in the next release, resulting in big code changes being potentially necessary.
 
 \paragraph{Features}
-Lucene is probably the most complete toolbox to build a search-engine from.
-
-\paragraph{Pros and Cons}
+Lucene probably is the most complete toolbox to build a search-engine from. It has pre-built analyzers for many languages, a queryparser to support user written queries, a phonetic module, a faceting module, and many more features. First starting as a text only search engine, it has had support for spatial indexing for some while now. This and the support for faceting means that it is increasingly becoming more of a general search toolbox.
 
 \paragraph{Compatibility with JPA}
-By design, Lucene out of the box is not very compatible with the JPA standard. For one, the flat document structure forces the user to de-normalize the entity model before indexing. Secondly, since every search-relevant change in the database should be reflected in the index, it must be kept up to date. When using Lucene, this has to be done completely manually as it natively doesn't have any integration with databases.
+By design, Lucene out of the box is not very compatible with the JPA standard. For one, the flat document structure forces the user to de-normalize the entity model before indexing as it doesn't even have a mapper to convert from objects to its document representation and back. Secondly, since every search-relevant change in the database should be reflected in the index, it must be kept up-to-date. When using Lucene however, this has to be done completely manually as it natively doesn't have any integration with databases.
 
 \subsubsection{Solr}
+
+\begin{quote}
+	Solr is the popular, blazing-fast, open source enterprise search platform built on Apache Lucene™.
+\end{quote}
 
 \subsubsection{ElasticSearch}
 
 \subsubsection{Hibernate Search}
 
+\begin{quote}
+Hibernate Search transparently indexes your objects and offers fast regular, full-text and geolocation search. Ease of use and easy clustering are core.\footnote{Hibernate Search project homepage, see~\cite{hibernate_search_homepage}}
+\end{quote}
+
 \textcolor{red}{some kind of conclusion with a table of features. -> Hibernate Search, aber mit dem Problem von Kompatibilität mit Non Hibernate ORM, mention Compass?}
+
+\subsection{Reasoning of decision for Hibernate Search}
 
 \pagebreak
