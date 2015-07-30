@@ -1,10 +1,202 @@
 % !TeX spellcheck = en_GB
 \section{indexing \& searching}
 
+In this section we will discuss how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. Then we will work out a standalone version of this engine that is easier to work with and lastly we will show how we integrate this standalone version with JPA.
+
+\subsection{Setting up the example project}
+
+Before we start describing how we do things in particular, we set up the example entities described in \ref{example_project} as if the original Hibernate Search would have been used. We do so by adding additional annotations to our entity-classes:
+
+\begin{enumerate}
+	\item \textbf{@Indexed}: marks the entity as an index root-type.
+	\item \textbf{@DocumentId}: marks the field as the id of this entity. this is only needed if no JPA @Id can be found, but can be used to override settings.
+	\item \textbf{@Field}: describes how the annotated field should be indexed. if no "name" is specified, the fieldname defaults to the property name.
+	\item \textbf{@IndexedEmbedded}: marks relational properties that should be included in the index. if no name is specified, all fields contained in these entities are prefixed with the property this is placed on.
+	\item \textbf{@ContainedIn}: used in entities that are embedded in other indexes. this is set on the properties that point back to the index-owning entity.
+\end{enumerate}
+\noindent
+The resulting entities look like this:
+\\
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Book.java with Hibernate Search annotations}, label={lst:book.java_2}]
+@Entity
+@Table(name = "Book")
+[*@Indexed*]
+public class Book {
+
+	@Id
+	@Column(name = "isbn")
+	[*@DocumentId*]
+	private String isbn;
+	
+	@Column(name = "title")
+	[*@Field(store = Store.YES, index = Index.YES)*]
+	private String title;
+	
+	@Column(name = "genre")
+	[*@Field(store = Store.YES, index = Index.YES)*]
+	private String genre;
+	
+	@Lob
+	@Column(name = "summary")
+	[*@Field(store = Store.NO, index = Index.YES)*]
+	private String summary;
+	
+	@ManyToMany(mappedBy = "books", cascade = {
+		CascadeType.MERGE,
+		CascadeType.DETACH,
+		CascadeType.PERSIST,
+		CascadeType.REFRESH
+	})
+	[*@IndexedEmbedded(includeEmbeddedObjectId = true)*]
+	private Set<Author> authors;
+	
+	//getters & setters ...
+}
+\end{lstlisting}
+
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Author.java with Hibernate Search annotations}, label={lst:author.java_2}]
+@Entity
+@Table(name = "Author")
+public class Author {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "authorId")
+	[*@DocumentId*]
+	private Long authorId;
+	
+	@Column(name = "firstName")
+	[*@Field(store = Store.YES, index = Index.YES)*]
+	private String firstName;
+	
+	@Column(name = "lastName")
+	[*@Field(store = Store.YES, index = Index.YES)*]
+	private String lastName;
+	
+	@Column(name = "country")
+	[*@Field(store = Store.YES, index = Index.YES)*]
+	private String country;
+	
+	@ManyToMany(cascade = {
+		CascadeType.MERGE, 
+		CascadeType.DETACH, 
+		CascadeType.PERSIST, 
+		CascadeType.REFRESH
+	})
+	@JoinTable(name = "Author_Book", 
+		joinColumns = 
+			@JoinColumn(name = "authorFk", 
+				referencedColumnName = "authorId"),
+		inverseJoinColumns = 
+			@JoinColumn(name = "bookFk", 
+				referencedColumnName = "isbn"))
+	[*@ContainedIn*]
+	private Set<Book> books;
+	
+	//getters & setters ...
+}
+\end{lstlisting}
+\noindent
+As these annotations are defined in hibernate-search-engine, we can rely on all of them in while designing the standalone integration of Hibernate Search.
+
 \subsection{Using Hibernate Search's engine}
+
+As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all information about how to use the engine had to be retrieved from tests in the hibernate-search-engine and the hibernate-search-orm integration module source code.
+
+\subsubsection{Starting the engine}
+
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Starting up the engine}, label={lst:starting_up_engine.java}]
+SearchConfiguration searchConfiguration = ...;
+List<Class<?>> indexClasses = Arrays.asList(Book.class, Author.class);
+
+//bootstrapping class for Hibernate Search
+SearchIntegratorBuilder builder = new SearchIntegratorBuilder();
+
+//we have to build an integrator here (but we don't need it afterwards)
+builder.configuration( searchConfiguration ).buildSearchIntegrator();
+
+indexClasses.forEach( builder::addClass );
+
+//starts the engine with all configuration properties set
+SearchIntegrator impl = builder.buildSearchIntegrator();
+\end{lstlisting}
+
+\textcolor{red}{basic configuration}
+
+\subsubsection{Indexing, Updating and Deleting objects from the index}
+
+Transaction \ref{lst:Transaction.java}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Indexing an object}, label={lst:indexing_object_native.java}]
+Book book = ...;
+Transaction tx = new Transaction();
+Worker worker = searchIntegrator.getWorker();
+worker.performWork( new Work( book, WorkType.INDEX ), tx );
+tx.commit();
+\end{lstlisting}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Updating an object}, label={lst:updating_object_native.java}]
+Book book = ...;
+Transaction tx = new Transaction();
+Worker worker = searchIntegrator.getWorker();
+worker.performWork( new Work( book, WorkType.UPDATE ), tx );
+tx.commit();
+\end{lstlisting}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Deleting an object by id}, label={lst:deleting_object_native.java}]
+String isbn = ...;
+Transaction tx = new Transaction();
+Worker worker = searchIntegrator.getWorker();
+worker.performWork( new Work( Book.class, isbn, WorkType.PURGE ), tx );
+tx.commit();
+\end{lstlisting}
+
+\subsubsection{Querying the index}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Querying the index}, label={lst:querying_natively.java}]
+SearchIntegrator impl = ...;
+
+//find information about all the entities matching a given title
+List<EntityInfo> entityInfos = 
+	impl.createHSQuery().luceneQuery( 
+			impl.buildQueryBuilder()
+				.forEntity( Book.class )
+				.get()
+				.keyword()
+				.onField( "title" )
+				.matching( "searchString" )
+				.createQuery()
+		).targetedEntities(
+			Collections.singletonList(
+				Book.class
+			)
+		).projection(
+			ProjectionConstants.ID
+		).queryEntityInfos();
+
+//extract info from the entityInfos
+for(EntityInfo entityInfo : entityInfos) {
+	String isbn = (String) entityInfo.getProjection()[0];
+	//handle this information ...
+}
+\end{lstlisting}
 
 \subsection{Standalone version of Hibernate Search}
 
+\textcolor{red}{Architektur, Klassendiagramm, zusätzliche Features (DtoDescriptor)}
+
 \subsection{Standalone integration with JPA interfaces}
+
+\textcolor{red}{zusätzliche annotations, restriktionen!}
 
 \pagebreak

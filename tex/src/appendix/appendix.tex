@@ -1,2 +1,63 @@
-\subsection*{Appendix}\label{appendix}
+\subsection{Appendix}\label{appendix}
 
+\subsubsection{Listings}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={the simple Transaction contract}, label={lst:Transaction.java}]
+public class Transaction implements TransactionContext {
+
+	private boolean progress = true;
+	private List<Synchronization> syncs = new ArrayList<>();
+	
+	@Override
+	public boolean isTransactionInProgress() {
+		return this.progress;
+	}
+	
+	@Override
+	public Object getTransactionIdentifier() {
+		return this;
+	}
+	
+	@Override
+	public void registerSynchronization(
+		Synchronization synchronization ) {
+		this.syncs.add( synchronization );
+	}
+	
+	/**
+	 * @throws IllegalStateException if already commited/rolledback
+	 */
+	public void commit() {
+		if ( !this.progress ) {
+			throw new IllegalStateException( 
+			"can't commit - " + 
+			"No Search Transaction is in Progress!" );
+		}
+		this.progress = false;
+		this.syncs.forEach( Synchronization::beforeCompletion );
+		
+		for ( Synchronization sync : this.syncs ) {
+			sync.afterCompletion( Status.STATUS_COMMITTED );
+		}
+	}
+	
+	/**
+     * @throws IllegalStateException if already commited/rolledback
+ 	 */
+	public void rollback() {
+		if ( !this.progress ) {
+			throw new IllegalStateException( 
+			"can't rollback - " + 
+			"No Search Transaction is in Progress!" );
+		}
+		this.progress = false;
+		this.syncs.forEach( Synchronization::beforeCompletion );
+	
+		for ( Synchronization sync : this.syncs ) {
+			sync.afterCompletion( Status.STATUS_ROLLEDBACK );
+		}
+	}
+
+}
+\end{lstlisting}
