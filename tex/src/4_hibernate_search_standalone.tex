@@ -105,34 +105,54 @@ As these annotations are defined in hibernate-search-engine, we can rely on all 
 
 \subsection{Using Hibernate Search's engine}
 
-As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all information about how to use the engine had to be retrieved from tests in the hibernate-search-engine and the hibernate-search-orm integration module source code.
+As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
 
 \subsubsection{Starting the engine}
+A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator}. In order to obtain it, we first have to create special configuration class that implements the \textbf{org.hibernate.search.cfg.spi.SearchConfiguration}. An object of this class has then to be created and filled with all the configuration properties Hibernate Search requires. The minimum that has to be set in this class's property map are the following two settings:
 
+\begin{enumerate}
+	\item \textbf{hibernate.search.default.directory\_provider}: The two most common cases here are either "ram" or "filesystem". This decides where the index will be stored. A ram directory is only present in the system memory while the SearchIntegrator exists while the "filesystem" option is persistent. For "filesystem" the additional property "hibernate.search.default.indexBase" has to be set to an appropriate path.
+	
+	\item \textbf{hibernate.search.lucene\_version}: This decides which Lucene version should be used internally. The currently latest supported version is "4.10.4".
+\end{enumerate}
+\noindent
+A complete list of the available settings can be found in the Hibernate Search documentation\footnote{Hibernate Search documentation, see~\cite{hibernate_search_doc}} (only some Hibernate ORM specific settings cannot be used). Our \textbf{StandaloneSearchConfiguration} (\ref{lst:StandaloneSearchConfiguration.java}) defaults to "ram" and "4.10.4".
+\\\\
+After such a class is created, a \textbf{SearchIntegrator} can be obtained by a \textbf{SearchIntegratorBuilder} like this:
+\\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
 \begin{lstlisting}[frame=htrbl, caption={Starting up the engine}, label={lst:starting_up_engine.java}]
-SearchConfiguration searchConfiguration = ...;
 List<Class<?>> indexClasses = Arrays.asList(Book.class, Author.class);
+
+SearchConfiguration searchConfiguration = 
+		new StandaloneSearchConfiguration();
+indexClasses.forEach( searchConfiguration::addClass );
 
 //bootstrapping class for Hibernate Search
 SearchIntegratorBuilder builder = new SearchIntegratorBuilder();
 
-//we have to build an integrator here (but we don't need it afterwards)
+//we have to build an integrator here (the builder needs a 
+//"base integrator" first before we can add index classes)
 builder.configuration( searchConfiguration ).buildSearchIntegrator();
 
 indexClasses.forEach( builder::addClass );
 
 //starts the engine with all configuration properties set
 SearchIntegrator searchIntegrator = builder.buildSearchIntegrator();
-\end{lstlisting}
 
-\textcolor{red}{basic configuration}
+//use the integrator ...
+
+//close it
+searchIntegrator.close();
+\end{lstlisting}
 
 \subsubsection{Indexing, updating and deleting objects from the index}
 
-Transaction \ref{lst:Transaction.java}
-
+Now that we know how a SearchIntegrator can be built, we can take a look at how we can control the index using the engine's features. The engine does a lot of optimizations in the backend. This is the reason it abstracts the index control methods away in a \textbf{Worker} pattern that accepts \textbf{Work} objects (the different actions are represented by different \textbf{WorkType}s). Such a worker can batch operations by synchronizing upon the  \textbf{org.hibernate.search.backend.TransactionContext} interface. Our implementation of that is simply called \textbf{Transaction} (\ref{lst:Transaction.java}).
+\\\\
+We index objects with \textbf{WorkType.INDEX}:
+\\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Indexing an object with the engine}, label={lst:indexing_object_native.java}]
 Book book = ...;
@@ -141,7 +161,9 @@ Worker worker = searchIntegrator.getWorker();
 worker.performWork( new Work( book, WorkType.INDEX ), tx );
 tx.commit();
 \end{lstlisting}
-
+~\\
+We update objects with \textbf{WorkType.UPDATE}:
+\\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Updating an object with the engine}, label={lst:updating_object_native.java}]
 Book book = ...;
@@ -150,7 +172,9 @@ Worker worker = searchIntegrator.getWorker();
 worker.performWork( new Work( book, WorkType.UPDATE ), tx );
 tx.commit();
 \end{lstlisting}
-
+~\\
+We delete objects with \textbf{WorkType.PURGE}:
+\\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with the engine}, label={lst:deleting_object_native.java}]
 String isbn = ...;
@@ -208,8 +232,11 @@ for(EntityInfo entityInfo : entityInfos) {
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
 \begin{lstlisting}[frame=htrbl, caption={Starting up the standalone}, label={lst:using_standalone.java}]
-SearchConfiguration searchConfiguration = ...;
 List<Class<?>> indexClasses = Arrays.asList(Book.class, Author.class);
+
+SearchConfiguration searchConfiguration = 
+		new StandaloneSearchConfiguration();
+indexClasses.forEach( searchConfiguration::addClass );
 
 StandaloneSearchFactory searchFactory = 
 		StandaloneSearchFactoryFactory.
@@ -217,6 +244,11 @@ StandaloneSearchFactory searchFactory =
 					searchConfiguration,
 					indexClasses
 				);
+				
+//use the searchfactory ...
+
+//close it
+searchFactory.close();
 \end{lstlisting}
 
 \subsubsection{Indexing, updating and deleting objects from the index}
