@@ -1,6 +1,4 @@
-\subsection{Appendix}\label{appendix}
-
-\subsubsection{Listings}
+\section*{Listings}
 
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={the simple Transaction contract}, label={lst:Transaction.java}]
@@ -43,7 +41,7 @@ public class Transaction implements TransactionContext {
 	}
 	
 	/**
-     * @throws IllegalStateException if already commited/rolledback
+	 * @throws IllegalStateException if already commited/rolledback
  	 */
 	public void rollback() {
 		if ( !this.progress ) {
@@ -65,7 +63,7 @@ public class Transaction implements TransactionContext {
 \begin{lstlisting}[frame=htrbl, caption={StandaloneSearchConfiguration.java}, label={lst:StandaloneSearchConfiguration.java}]
 /**
  * Manually defines the configuration. 
- * Classes and properties are the only implemented options at the moment
+ * Classes and properties are the only implemented options at the moment.
  *
  * @author Martin Braun (adaption), Emmanuel Bernard
  */
@@ -120,10 +118,13 @@ public class StandaloneSearchConfiguration
 			return "ram";
 		});
 		this.properties.computeIfAbsent(
-			"hibernate.search.lucene_version", (key) -> {
-			LOGGER.info( "defaulting to Lucene Version: " 
-				+ Version.LUCENE_4_10_4.toString() );
-			return Version.LUCENE_4_10_4.toString();
+			"hibernate.search.lucene_version", 
+			(key) -> {
+				LOGGER.info( 
+					"defaulting to Lucene Version: " 
+					+ Version.LUCENE_4_10_4.toString() 
+				);
+				return Version.LUCENE_4_10_4.toString();
 		});
 		this.reflectionManager = new JavaReflectionManager();
 		this.providedServices = new HashMap<>();

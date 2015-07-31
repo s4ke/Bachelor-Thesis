@@ -1,17 +1,17 @@
 % !TeX spellcheck = en_GB
 \section{indexing \& searching}
 
-In this section we will discuss how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. Then we will work out a standalone version of this engine that is easier to work with and lastly we will show how we integrate this standalone version with JPA.
+In this section we will start by discussing how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. Then we will work out a standalone version of this engine that is easier to work with and lastly we will show how we integrate this standalone version with JPA.
 
 \subsection{Setting up the example project}
 
-Before we start describing how we do things in particular, we set up the example entities described in \ref{example_project} as if the original Hibernate Search would have been used. We do so by adding additional annotations to our entity-classes:
+Before we explain how we do things in particular, we set up the example entities described in \ref{example_project} as if the original Hibernate Search would have been used. We do so by adding additional annotations to our entity-classes:
 
 \begin{enumerate}
 	\item \textbf{@Indexed}: marks the entity as an index root-type.
 	\item \textbf{@DocumentId}: marks the field as the id of this entity. this is only needed if no JPA @Id can be found, but can be used to override settings.
-	\item \textbf{@Field}: describes how the annotated field should be indexed. if no "name" is specified, the fieldname defaults to the property name.
-	\item \textbf{@IndexedEmbedded}: marks relational properties that should be included in the index. if no name is specified, all fields contained in these entities are prefixed with the property this is placed on.
+	\item \textbf{@Field}: describes how the annotated field should be indexed. The fieldname defaults to the property name.
+	\item \textbf{@IndexedEmbedded}: marks properties that point to other classes which should be included in the index. By default, all fields contained in these entities are prefixed with the property name this is placed on.
 	\item \textbf{@ContainedIn}: used in entities that are embedded in other indexes. this is set on the properties that point back to the index-owning entity.
 \end{enumerate}
 \noindent
@@ -101,24 +101,24 @@ public class Author {
 }
 \end{lstlisting}
 \noindent
-As these annotations are defined in hibernate-search-engine, we can rely on all of them in while designing the standalone integration of Hibernate Search.
+As these annotations are defined in hibernate-search-engine, we can rely on all of them while designing the standalone version of Hibernate Search and all other modules depending on it.
 
 \subsection{Using Hibernate Search's engine}
 
 As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
 
 \subsubsection{Starting the engine}
-A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator}. In order to obtain it, we first have to create special configuration class that implements the \textbf{org.hibernate.search.cfg.spi.SearchConfiguration}. An object of this class has then to be created and filled with all the configuration properties Hibernate Search requires. The minimum that has to be set in this class's property map are the following two settings:
+A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator}. In order to obtain it, we first have to write a special configuration class that implements \textbf{org.hibernate.search.cfg.spi.SearchConfiguration}. An object of this class has then to be created and filled with all the configuration properties Hibernate Search requires. The minimum that has to be set for this to work map are the following properties:
 
 \begin{enumerate}
-	\item \textbf{hibernate.search.default.directory\_provider}: The two most common cases here are either "ram" or "filesystem". This decides where the index will be stored. A ram directory is only present in the system memory while the SearchIntegrator exists while the "filesystem" option is persistent. For "filesystem" the additional property "hibernate.search.default.indexBase" has to be set to an appropriate path.
+	\item \textbf{hibernate.search.default.directory\_provider}: The two most common cases here are either "ram" or "filesystem". This decides where the index will be stored. A ram directory is only present in the system memory while the SearchIntegrator exists. A "filesystem" directory is persisted on the hard disk. For "filesystem" the additional property "hibernate.search.default.indexBase" has to be set to an appropriate path.
 	
-	\item \textbf{hibernate.search.lucene\_version}: This decides which Lucene version should be used internally. The currently latest supported version is "4.10.4".
+	\item \textbf{hibernate.search.lucene\_version}: This decides which Lucene version has to be used internally. The currently latest supported version is "4.10.4".
 \end{enumerate}
 \noindent
-A complete list of the available settings can be found in the Hibernate Search documentation\footnote{Hibernate Search documentation, see~\cite{hibernate_search_doc}} (only some Hibernate ORM specific settings cannot be used). Our \textbf{StandaloneSearchConfiguration} (\ref{lst:StandaloneSearchConfiguration.java}) defaults to "ram" and "4.10.4".
+A complete list of the available settings can be found in the Hibernate Search documentation\footnote{Hibernate Search documentation, see~\cite{hibernate_search_doc}} (only some Hibernate ORM specific settings cannot be used). Our \textbf{StandaloneSearchConfiguration} (appendix listing \ref{lst:StandaloneSearchConfiguration.java}) defaults to "ram" and "4.10.4".
 \\\\
-After such a class is created, a \textbf{SearchIntegrator} can be obtained by a \textbf{SearchIntegratorBuilder} like this:
+Having this class in place, a \textbf{SearchIntegrator} can be obtained by a \textbf{SearchIntegratorBuilder} like this:
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -126,7 +126,7 @@ After such a class is created, a \textbf{SearchIntegrator} can be obtained by a 
 List<Class<?>> indexClasses = Arrays.asList(Book.class, Author.class);
 
 SearchConfiguration searchConfiguration = 
-		new StandaloneSearchConfiguration();
+	new StandaloneSearchConfiguration();
 indexClasses.forEach( searchConfiguration::addClass );
 
 //bootstrapping class for Hibernate Search
@@ -149,9 +149,11 @@ searchIntegrator.close();
 
 \subsubsection{Indexing, updating and deleting objects from the index}
 
-Now that we know how a SearchIntegrator can be built, we can take a look at how we can control the index using the engine's features. The engine does a lot of optimizations in the backend. This is the reason it abstracts the index control methods away in a \textbf{Worker} pattern that accepts \textbf{Work} objects (the different actions are represented by different \textbf{WorkType}s). Such a worker can batch operations by synchronizing upon the  \textbf{org.hibernate.search.backend.TransactionContext} interface. Our implementation of that is simply called \textbf{Transaction} (\ref{lst:Transaction.java}).
+Now that we know how a SearchIntegrator can be built, we can take a look at how we can control the index using the engine's features. 
 \\\\
-We index objects with \textbf{WorkType.INDEX}:
+The engine does a lot of optimizations in the backend. This is the reason the specifics are hidden behind a \textbf{Worker} pattern. Such a worker batches operations by synchronizing upon the \textbf{org.hibernate.search.backend.TransactionContext} interface. Our implementation of this is simply called \textbf{Transaction} (appendix listing \ref{lst:Transaction.java}). The different index operations are represented by \textbf{Work} objects that contain the WorkType (INDEX, UPDATE, PURGE, etc.) and all necessary data to execute the individual task.
+\\\\
+Indexing objects with \textbf{WorkType.INDEX}:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Indexing an object with the engine}, label={lst:indexing_object_native.java}]
@@ -162,7 +164,7 @@ worker.performWork( new Work( book, WorkType.INDEX ), tx );
 tx.commit();
 \end{lstlisting}
 ~\\
-We update objects with \textbf{WorkType.UPDATE}:
+Updating objects with \textbf{WorkType.UPDATE}:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Updating an object with the engine}, label={lst:updating_object_native.java}]
@@ -173,7 +175,7 @@ worker.performWork( new Work( book, WorkType.UPDATE ), tx );
 tx.commit();
 \end{lstlisting}
 ~\\
-We delete objects with \textbf{WorkType.PURGE}:
+Deleting objects with \textbf{WorkType.PURGE}:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with the engine}, label={lst:deleting_object_native.java}]
@@ -183,6 +185,8 @@ Worker worker = searchIntegrator.getWorker();
 worker.performWork( new Work( Book.class, isbn, WorkType.PURGE ), tx );
 tx.commit();
 \end{lstlisting}
+~\\
+This API doesn't have any "convenience" methods that wrap around the Transaction management if no batching is needed, nor does it have any wrapper utility for the Work object generation.
 
 \subsubsection{Querying the index}
 
