@@ -124,17 +124,17 @@ builder.configuration( searchConfiguration ).buildSearchIntegrator();
 indexClasses.forEach( builder::addClass );
 
 //starts the engine with all configuration properties set
-SearchIntegrator impl = builder.buildSearchIntegrator();
+SearchIntegrator searchIntegrator = builder.buildSearchIntegrator();
 \end{lstlisting}
 
 \textcolor{red}{basic configuration}
 
-\subsubsection{Indexing, Updating and Deleting objects from the index}
+\subsubsection{Indexing, updating and deleting objects from the index}
 
 Transaction \ref{lst:Transaction.java}
 
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Indexing an object}, label={lst:indexing_object_native.java}]
+\begin{lstlisting}[frame=htrbl, caption={Indexing an object with the engine}, label={lst:indexing_object_native.java}]
 Book book = ...;
 Transaction tx = new Transaction();
 Worker worker = searchIntegrator.getWorker();
@@ -143,7 +143,7 @@ tx.commit();
 \end{lstlisting}
 
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Updating an object}, label={lst:updating_object_native.java}]
+\begin{lstlisting}[frame=htrbl, caption={Updating an object with the engine}, label={lst:updating_object_native.java}]
 Book book = ...;
 Transaction tx = new Transaction();
 Worker worker = searchIntegrator.getWorker();
@@ -152,7 +152,7 @@ tx.commit();
 \end{lstlisting}
 
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Deleting an object by id}, label={lst:deleting_object_native.java}]
+\begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with the engine}, label={lst:deleting_object_native.java}]
 String isbn = ...;
 Transaction tx = new Transaction();
 Worker worker = searchIntegrator.getWorker();
@@ -163,13 +163,13 @@ tx.commit();
 \subsubsection{Querying the index}
 
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Querying the index}, label={lst:querying_natively.java}]
-SearchIntegrator impl = ...;
+\begin{lstlisting}[frame=htrbl, caption={Querying the index with the engine}, label={lst:querying_natively.java}]
+SearchIntegrator searchIntegrator = ...;
 
 //find information about all the entities matching a given title
 List<EntityInfo> entityInfos = 
-	impl.createHSQuery().luceneQuery( 
-			impl.buildQueryBuilder()
+	searchIntegrator.createHSQuery().luceneQuery( 
+			searchIntegrator.buildQueryBuilder()
 				.forEntity( Book.class )
 				.get()
 				.keyword()
@@ -193,7 +193,71 @@ for(EntityInfo entityInfo : entityInfos) {
 
 \subsection{Standalone version of Hibernate Search}
 
+
 \textcolor{red}{Architektur, Klassendiagramm, zusätzliche Features (DtoDescriptor)}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.7]{images/standalone_min_architecture.pdf}
+	\caption{Rough architecture of the standalone}
+	\label{standalone_min_architecture}
+\end{figure}
+
+\subsubsection{Starting the standalone}
+
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Starting up the standalone}, label={lst:using_standalone.java}]
+SearchConfiguration searchConfiguration = ...;
+List<Class<?>> indexClasses = Arrays.asList(Book.class, Author.class);
+
+StandaloneSearchFactory searchFactory = 
+		StandaloneSearchFactoryFactory.
+				createSearchFactory(
+					searchConfiguration,
+					indexClasses
+				);
+\end{lstlisting}
+
+\subsubsection{Indexing, updating and deleting objects from the index}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Indexing an object with the standalone}, label={lst:indexing_object_native.java}]
+Book book = ...;
+searchFactory.index(book);
+\end{lstlisting}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Updating an object with the standalone}, label={lst:updating_object_native.java}]
+Book book = ...;
+searchFactory.update(book);
+\end{lstlisting}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with the standalone}, label={lst:deleting_object_native.java}]
+String isbn = ...;
+searchFactory.delete(Book.class, isbn);
+\end{lstlisting}
+
+\subsubsection{Querying the index}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Querying the index with the standalone}, label={lst:querying_natively.java}]
+StandaloneSearchFactory searchFactory = ...;
+EntityProvider entityProvider = ...;
+
+List<Book> = searchFactory.createQuery(searchFactory.buildQueryBuilder()
+				.forEntity(Book.class)
+				.get()
+				.keyword()
+				.onField("title")
+				.matching("searchString")
+				.createQuery(), Book.class
+			).query(
+				entityProvider,
+				Fetch.BATCH
+			);
+\end{lstlisting}
 
 \subsection{Standalone integration with JPA interfaces}
 
