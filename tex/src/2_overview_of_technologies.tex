@@ -93,8 +93,22 @@ A Document consists of at least one field. Fields are basically tuples of key an
 \subparagraph{Analyzers}
 Before documents get indexed, their fields are analyzed with one of the many Analyzers first. Analysis is the process of modifying the input in a manner such that it can be searched upon (stemming, tokenization, ...).
 
+\pagebreak
+
+\textcolor{red}{Sowas hier drinlassen? Wenn ja, dann aber auch für Searching}
+\\
+\textcolor{red}{Quelle: http://acupof.blogspot.de/2011/02/lucene-and-hibernate-search-small.html}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.5]{images/decision_tree_luceneindexing.png}
+	\caption{The indexing "pipeline" \protect\footnotemark}
+	\label{xkcd_standards_fig}
+\end{figure}
+\footnotetext{Footnote für Bild}
+
 \paragraph{Usage}
-Using Lucene as a standalone engine requires the programmer to design the engine from the bottom up. The developer has to write all the logic, starting with the actual indexing code through to the code managing access to the index. The conversion from Java objects to Documents (for indexing) and back (for searching) have to be implemented as well. This whole process requires a lot of code to be written and the API only helps by providing the necessary tools. This has one additional problem though: The Lucene API tends to change a lot between versions and the code has to be kept up-to-date. It's not uncommon that whole features that were state-of-the-art in one version, are deprecated (potentially unstable, marked to be removed in the future) in the next release, resulting in big code changes being potentially necessary.
+Using Lucene as a standalone engine requires the programmer to design the engine from the bottom up. The developer has to write all the logic, starting with the actual indexing code through to the code managing access to the index. The conversion from Java objects to Documents (for indexing) and back (for searching) have to be implemented as well. This whole process requires a lot of code to be written and the API only helps by providing the necessary tools. This has one additional problem: The Lucene API tends to change a lot between versions and the code has to be kept up-to-date. It's not uncommon that whole features that were state-of-the-art in one version, are deprecated (potentially unstable, marked to be removed in the future) in the next release, resulting in big code changes being potentially necessary.
 
 \paragraph{Features}
 Lucene probably is the most complete toolbox to build a search-engine from. It has pre-built analyzers for many languages, a queryparser to support generating queries out of user input, a phonetic module, a faceting module, and many other features. While mostly known for its fulltext capabilities, it also has modules used for other purposes, for example the spatial module that enables geo-location query support.

@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
-\section{indexing \& searching}
+\section{Building a JPA integration on top of Hibernate Search}
 
 In this section we will start by discussing how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. Then we will work out a standalone version of this engine that is easier to work with and lastly we will show how we integrate this standalone version with JPA.
 
@@ -103,7 +103,9 @@ public class Author {
 \noindent
 As these annotations are defined in hibernate-search-engine, we can rely on all of them while designing the standalone version of Hibernate Search and all other modules depending on it.
 
-\subsection{Using Hibernate Search's engine}
+\pagebreak
+
+\subsection{Using Hibernate Search's engine} \label{using_hsearch_engine}
 
 As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
 
@@ -189,14 +191,19 @@ tx.commit();
 This API doesn't have any "convenience" methods that wrap around the Transaction management if no batching is needed, nor does it have any wrapper utility for the Work object generation.
 
 \subsubsection{Querying the index}
-
+Querying the index is already acceptable to some extent when it comes to building the actual query. This is mainly due to the fact the query class \textbf{HSQuery} supports method chaining and that the same query builder DSL used in Hibernate Search ORM is available.
+\\
 \lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
 \begin{lstlisting}[frame=htrbl, caption={Querying the index with the engine}, label={lst:querying_natively.java}]
 SearchIntegrator searchIntegrator = ...;
 
+HSQuery query = searchIntegrator.createHSQuery();
+
 //find information about all the entities matching a given title
-List<EntityInfo> entityInfos = 
-	searchIntegrator.createHSQuery().luceneQuery( 
+[*List<EntityInfo>*] entityInfos = 
+	query.luceneQuery(
+			//query DSL:
 			searchIntegrator.buildQueryBuilder()
 				.forEntity( Book.class )
 				.get()
@@ -208,31 +215,54 @@ List<EntityInfo> entityInfos =
 			Collections.singletonList(
 				Book.class
 			)
-		).projection(
+		)[*.projection(
 			ProjectionConstants.ID
-		).queryEntityInfos();
+		)*].queryEntityInfos();
+\end{lstlisting}
+~\\
+However, the queries don't return anything resembling the original Java objects, as this depends on what we project in the projection(...) call and is wrapped in an \textbf{EntityInfo} object. In the example above we only return the ids of the Books matching our query. We do this because when using a search index, we don't generally want to work with the actual data found in the index after the hits have been found. We want objects retrieved from the database.
+\\
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Extracting info from the results}, label={lst:querying_natively.java_2}]
+//a JPA EntityManager
+EntityManager em = ...;
 
 //extract info from the entityInfos
 for(EntityInfo entityInfo : entityInfos) {
 	String isbn = (String) entityInfo.getProjection()[0];
+	//retrieve an object from the database
+	Book book = em.find(Book.class, isbn);
 	//handle this information ...
 }
 \end{lstlisting}
 
+\pagebreak
+
 \subsection{Standalone version of Hibernate Search}
 
+In \ref{using_hsearch_engine} we described how the engine can be used natively without any notion of JPA. While using the engine this way is possible, it is not feasible because some of the code is quite complicated. This is the reason, we will now define a standalone abstraction of this code.
+\\\\
+As we have seen in the examples earlier, the main class used for index control and querying are \textbf{SearchIntegrator} and \textbf{HSQuery}. In order to abstract some of the complicated logic, we now introduce two new interfaces: 
 
-\textcolor{red}{Architektur, Klassendiagramm, zusätzliche Features (DtoDescriptor)}
+\begin{itemize}
+	\item \textbf{StandaloneSearchFactory}: This interface is responsible for all index changes. Code using this abstraction doesn't have to cope with the Worker pattern, at all. This is hidden behind index/delete/update methods. Additionally, it wraps the Transaction management for use cases that don't need it, while still having equivalent methods supporting Transactions from outside. 
+	
+	\item \textbf{HSearchQuery}: While still having the same chaining methods as HSQuery, we retrieve results from the index in a different manner now. Instead of manually having to extract the ID out of the EntityInfos, this interface retrieves the actual data needed by the calling code with the help of the \textbf{EntityProvider} interface which wraps the access to the database. The specifics of the EntityProvider are still use-case specific as the examples later in this chapter will show.
+\end{itemize}
+\noindent
+The following diagram shows the rough architecture of our new standalone. Note that we are using a specialization of \textbf{SearchIntegrator} - namely \textbf{ExtendedSearchIntegrator} - which allows us to have more sophisticated features.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.7]{images/standalone_min_architecture.pdf}
-	\caption{Rough architecture of the standalone}
+	\includegraphics[scale=0.6]{images/standalone_min_architecture.pdf}
+	\caption{Rough architecture of the standalone (important parts)}
 	\label{standalone_min_architecture}
 \end{figure}
 
 \subsubsection{Starting the standalone}
 
+The startup process of the standalone doesn't differ much from manually using the engine. We still have to use the SearchConfiguration pattern. The only different thing is how we build the StandaloneSearchFactory. This is done with a \textbf{StandaloneSearchFactoryFactory}, so the code using it doesn't have to handle the creation of an the actual implementation object.
+\\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
 \begin{lstlisting}[frame=htrbl, caption={Starting up the standalone}, label={lst:using_standalone.java}]
@@ -257,6 +287,8 @@ searchFactory.close();
 
 \subsubsection{Indexing, updating and deleting objects from the index}
 
+\textcolor{red}{Bei Bedarf gibts aber noch Transactions.}
+
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Indexing an object with the standalone}, label={lst:indexing_object_native.java}]
 Book book = ...;
@@ -277,6 +309,8 @@ searchFactory.delete(Book.class, isbn);
 
 \subsubsection{Querying the index}
 
+\textcolor{red}{Wie man sieht, ist die query API noch kürzer geworden und wir haben auch die EntityInfos komplett wegrationalisiert}
+
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying the index with the standalone}, label={lst:querying_natively.java}]
 StandaloneSearchFactory searchFactory = ...;
@@ -295,8 +329,31 @@ List<Book> = searchFactory.createQuery(searchFactory.buildQueryBuilder()
 			);
 \end{lstlisting}
 
+\pagebreak
+
 \subsection{Standalone integration with JPA interfaces}
 
+-> our aim is to be as compatible with the original. -> same interfaces in the same packages, but slight differences
+
+\subsubsection{Architecture \& differences from the original}
+
 \textcolor{red}{zusätzliche annotations, restriktionen!}
+
+\subsubsection{Implementation Details}
+
+-> SubClassSupportInstanceInitializer, MassIndexer, Transaction Management
+
+\subsubsection{Usage}
+
+\paragraph{Starting the JPA integration}
+
+\paragraph{Indexing, updating and deleting objects from the index}
+
+\paragraph{Querying the index}
+
+\paragraph{Index rebuilds}
+
+-> 
+
 
 \pagebreak
