@@ -245,7 +245,7 @@ In \ref{using_hsearch_engine} we described how the engine can be used natively w
 As we have seen in the examples earlier, the main class used for index control and querying are \textbf{SearchIntegrator} and \textbf{HSQuery}. In order to abstract some of the complicated logic, we now introduce two new interfaces: 
 
 \begin{itemize}
-	\item \textbf{StandaloneSearchFactory}: This interface is responsible for all index changes. Code using this abstraction doesn't have to cope with the Worker pattern, at all. This is hidden behind index/delete/update methods. Additionally, it wraps the Transaction management for use cases that don't need it, while still having equivalent methods supporting Transactions from outside. 
+	\item \textbf{StandaloneSearchFactory}: This interface is responsible for all index changes. Code using this abstraction doesn't have to cope with the Worker pattern, at all. This is hidden behind index/delete/update methods.
 	
 	\item \textbf{HSearchQuery}: While still having the same chaining methods as HSQuery, we retrieve results from the index in a different manner now. Instead of manually having to extract the ID out of the EntityInfos, this interface retrieves the actual data needed by the calling code with the help of the \textbf{EntityProvider} interface which wraps the access to the database. The specifics of the EntityProvider are still use-case specific as the examples later in this chapter will show.
 \end{itemize}
@@ -287,24 +287,30 @@ searchFactory.close();
 
 \subsubsection{Indexing, updating and deleting objects from the index}
 
-\textcolor{red}{Bei Bedarf gibts aber noch Transactions.}
-
+With our standalone version, basic index control becomes more streamlined as we don't have to work with the Worker pattern from the SearchIntegrator anymore.
+\\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Indexing an object with the standalone}, label={lst:indexing_object_native.java}]
 Book book = ...;
-searchFactory.index(book);
+Transaction tx = new Transaction();
+searchFactory.index(book, tx);
+tx.commit();
 \end{lstlisting}
 
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Updating an object with the standalone}, label={lst:updating_object_native.java}]
 Book book = ...;
-searchFactory.update(book);
+Transaction tx = new Transaction();
+searchFactory.update(book, tx);
+tx.commit();
 \end{lstlisting}
 
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with the standalone}, label={lst:deleting_object_native.java}]
+Transaction tx = new Transaction();
 String isbn = ...;
-searchFactory.delete(Book.class, isbn);
+searchFactory.delete(Book.class, isbn, tx);
+tx.commit();
 \end{lstlisting}
 
 \subsubsection{Querying the index}
@@ -314,7 +320,7 @@ searchFactory.delete(Book.class, isbn);
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying the index with the standalone}, label={lst:querying_natively.java}]
 StandaloneSearchFactory searchFactory = ...;
-EntityProvider entityProvider = ...;
+EntityProvider entityProvider = new BasicEntityProvider();
 
 List<Book> = searchFactory.createQuery(searchFactory.buildQueryBuilder()
 				.forEntity(Book.class)
