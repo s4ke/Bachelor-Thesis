@@ -191,7 +191,7 @@ tx.commit();
 This API doesn't have any "convenience" methods that wrap around the Transaction management if no batching is needed, nor does it have any wrapper utility for the Work object generation.
 
 \subsubsection{Querying the index}
-Querying the index is already acceptable to some extent when it comes to building the actual query. This is mainly due to the fact the query class \textbf{HSQuery} supports method chaining and that the same query builder DSL used in Hibernate Search ORM is available.
+Querying the index is already acceptable to some extent when it comes to building the actual query. This is mainly due to the fact the query class \textbf{HSQuery} supports method chaining and that the same query builder DSL used in Hibernate Search ORM is available (the Builder returns a Lucene query. Any basic Lucene query could be used as well, but if these are used the Analyzers have to be manually used. The Query from the builder has that already integrated).
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -378,7 +378,7 @@ This means that there exists no real code entry point as Hibernate Search is ful
 EntityManager em = ...;
 FullTextEntityManager fem = Search.getFullTextEntityManager(em);
 \end{lstlisting}
-All of FullTextEntityManagers operations are controlled by the same transactions the original Hibernate EntityManager is using. This is the reason we will not have any Transaction related code in the following paragraphs.
+All of FullTextEntityManager's operations are controlled by the same transactions the original Hibernate EntityManager is using. This is the reason we will not have any search Transaction related code in the following paragraphs.
 
 \paragraph{Indexing, updating and deleting objects from the index}
 The index operations are all straightforward and are similar to what we designed our Standalone integration in \ref{standalone_hibernate_search} to work like apart from minor naming differences. 
@@ -392,7 +392,7 @@ Book book = ...;
 fem.index(book);
 \end{lstlisting}
 \noindent
-Deleting objects from the index is called purging. This is probably due to not wanting to confuse it with JPAs delete(...).
+Deleting objects from the index is called purging. This is probably due to not wanting to confuse it with JPA's delete(...).
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with Hibernate Search ORM}, label={lst:deleting_object_hsearch_orm_jpa.java}]
@@ -402,6 +402,8 @@ fem.purge(Book.class, isbn);
 \end{lstlisting}
 
 \paragraph{Querying the index}
+Hibernate Search ORM integrates even better with JPA for queries than our Standalone version as the FullTextQuery interfaces extends the JPA Query interface.
+\\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying with Hibernate Search ORM}, label={lst:querying_hsearch_orm.java_1}]
 EntityManager em = ...;
@@ -420,6 +422,10 @@ FullTextQuery fullTextQuery = fem.createFullTextQuery(
 List<Book> books = (List<Book>) fullTextQuery.getResultList();
 \end{lstlisting}
 
+\paragraph{Index rebuilds}
+
+\subsubsection{Architecture of the generic version}
+
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.6]{images/hibernate_search_jpa_integration_with_differences.pdf}
@@ -427,9 +433,7 @@ List<Book> books = (List<Book>) fullTextQuery.getResultList();
 	\label{hibernate_search_jpa_integration_with_differences}
 \end{figure}
 
-\paragraph{Index rebuilds}
-
-\subsubsection{Architecture of the generic version}
+\textcolor{red}{now let's talk about what has to be changed. Am Beispiel und für jedes Feature einzeln zeigen}
 
 \textcolor{red}{zusätzliche annotations, restriktionen!}
 
