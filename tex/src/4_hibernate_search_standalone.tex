@@ -402,7 +402,7 @@ fem.purge(Book.class, isbn);
 \end{lstlisting}
 
 \paragraph{Querying the index} \label{hsearch_orm_querying}
-Hibernate Search ORM integrates even better with JPA for queries than our Standalone version as the FullTextQuery interfaces extends the JPA Query interface.
+Hibernate Search ORM integrates even better with JPA for queries than our Standalone version as the FullTextQuery interfaces extends the JPA Query interface and uses getResultList() to return its results.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying with Hibernate Search ORM}, label={lst:querying_hsearch_orm.java_1}]
@@ -439,12 +439,14 @@ fem.createIndexer( Book.class )
 	.transactionTimeout( 1800 )
 	.startAndWait();
 \end{lstlisting}
+\noindent
+"This will rebuild the index of all [Book] instances (and subtypes), and will create 12 parallel threads to load the User instances using batches of 25 objects per query; these same 12 threads will also need to process indexed embedded relations and custom FieldBridges or ClassBridges, to finally output a Lucene document."\footnote{Hibernate Search documentation (MassIndexer, v5.4), see~\cite{hibernate_search_doc_massindexer}}
 
 \pagebreak
 
 \subsubsection{Architecture of the generic version}
 
-As good Hibernate Search ORM's integration with JPA is, it still has some Hibernate ORM related features in its interfaces and logic that a generic version can not support and therefore have to be changed of removed all together.
+As good as Hibernate Search ORM's API integration with JPA's EntityManager and Query interface is, its additional interfaces still contains some Hibernate ORM related features and logic that a generic version can not support and therefore have to be changed or removed all together.
 \\
 \begin{figure}[ht]
 	\centering
@@ -453,18 +455,44 @@ As good Hibernate Search ORM's integration with JPA is, it still has some Hibern
 	\label{hibernate_search_jpa_integration_with_differences}
 \end{figure}
 \\
-We will now describe these changes one by one.
+In the figure above, we marked all the methods needing fixing in the FullTextEntityManager and FullTextQuery interfaces. Besides these, some other aspects need changing as well. We will discuss all of the needed changes \& additions in the following paragraphs.
 
 \textcolor{red}{zusätzliche annotations, restriktionen!}
 
 \paragraph{Starting}
 
+In our generic version we can't tightly integrate with the EntityManagerFactory of the JPA provider. This is the reason we introduce a separate interface called \textbf{JPASearchFactoryController}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.6]{images/JPASearchFactoryController.pdf}
+	\caption{JPASearchFactoryController}
+	\label{jpa_searchfactory_controller}
+\end{figure}
+\noindent
+Having this separate interface means that its lifecycle has to be controlled on its own. We start it with our bootstrapping class \textbf{Setup} like this:
+\\
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={MassIndexer usage with Hibernate Search ORM}, label={lst:massindexing_hsearch_orm.java}]
+EntityManagerFactory emf = ...;
+Properties properties = ...;
+
+JPASearchFactoryController searchFactoryController =
+	Setup.createSearchFactoryController( emf, properties );
+
+//use it...
+
+searchFactoryController.close();
+\end{lstlisting}
+
+\textcolor{red}{Alle verschiedenen properties hier auflisten}
+\\\\
 \textcolor{red}{null EntityManager bei FullTextEntityManager creation möglich. kein notwendiger fix, aber verbesserung. Search.java hatte das einfach nicht unterstützt, da es sonst keinen Bezugspunkt hatte}
 
 \paragraph{Indexing, updating and deleting objects from the index}
 
 \textcolor{red}{macht eh keinen sinn, da wir eh async backends haben, da sollte dann der user lieber die transactions selber machen}
-
+\\\\
 \textcolor{red}{InIndex Problematik erklären}
 
 \paragraph{Querying the index}
