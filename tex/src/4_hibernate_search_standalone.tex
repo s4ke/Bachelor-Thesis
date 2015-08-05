@@ -446,7 +446,7 @@ fem.createIndexer( Book.class )
 
 \subsubsection{Architecture of the generic version}
 
-As good as Hibernate Search ORM's API integration with JPA's EntityManager and Query interface is, its additional interfaces still contains some Hibernate ORM related features and logic that a generic version can not support and therefore have to be changed or removed all together.
+As good as Hibernate Search ORM's API integration with JPA's EntityManager and Query interface is, its additional interfaces still contain some Hibernate ORM related features and logic that a generic version can not support and therefore have to be changed, emulated or removed all together.
 \\
 \begin{figure}[ht]
 	\centering
@@ -475,7 +475,12 @@ Having this separate interface means that its lifecycle has to be controlled on 
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={MassIndexer usage with Hibernate Search ORM}, label={lst:massindexing_hsearch_orm.java}]
 EntityManagerFactory emf = ...;
-Properties properties = ...;
+Properties properties = new Properties();
+
+properties.setProperty(
+	"hibernate.search.searchfactory.type", 
+	"manual-updates"
+);
 
 JPASearchFactoryController searchFactoryController =
 	Setup.createSearchFactoryController( emf, properties );
@@ -484,8 +489,8 @@ JPASearchFactoryController searchFactoryController =
 
 searchFactoryController.close();
 \end{lstlisting}
-
-\textcolor{red}{Alle verschiedenen properties hier auflisten}
+\noindent
+For this example we are using "manual-updates", as we haven't discussed how the index is kept up-to-date. After we worked that out, "manual-updates" will just be a fallback setting for developers not wanting to have the index automatically updated.  Also note that there are many more properties that can be set and vanilla Hibernate Search settings are passed this way as well. A complete list of the available generic jpa configuration properties can be found in table \ref{table:config_properties_jpasearchfactorycontroller} in the appendix.
 \\\\
 \textcolor{red}{null EntityManager bei FullTextEntityManager creation möglich. kein notwendiger fix, aber verbesserung. Search.java hatte das einfach nicht unterstützt, da es sonst keinen Bezugspunkt hatte}
 
