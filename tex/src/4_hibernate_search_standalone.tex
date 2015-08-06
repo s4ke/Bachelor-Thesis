@@ -457,8 +457,6 @@ As good as Hibernate Search ORM's API integration with JPA's EntityManager and Q
 \\
 In the figure above, we marked all the methods needing fixing in the FullTextEntityManager and FullTextQuery interfaces. Besides these, some other aspects need changing as well. We will discuss all of the needed changes \& additions in the following paragraphs.
 
-\textcolor{red}{zusätzliche annotations, restriktionen!}
-
 \paragraph{Starting}
 
 In our generic version we can't tightly integrate with the EntityManagerFactory of the JPA provider. This is the reason we introduce a separate interface called \textbf{JPASearchFactoryController}.
@@ -492,13 +490,78 @@ searchFactoryController.close();
 \noindent
 For this example we are using "manual-updates", as we haven't discussed how the index is kept up-to-date. After we worked that out, "manual-updates" will just be a fallback setting for developers not wanting to have the index automatically updated.  Also note that there are many more properties that can be set and vanilla Hibernate Search settings are passed this way as well. A complete list of the available generic jpa configuration properties can be found in table \ref{table:config_properties_jpasearchfactorycontroller} in the appendix.
 \\\\
-\textcolor{red}{null EntityManager bei FullTextEntityManager creation möglich. kein notwendiger fix, aber verbesserung. Search.java hatte das einfach nicht unterstützt, da es sonst keinen Bezugspunkt hatte}
+Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method. This means that an instance of the JPASearchFactoryController has to be available at all times access to the index is required.
+\\\\
+Using a non-static approach here has one benefit, though: We can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if we want to index POJOs which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller} for the property to work with these additional entities).
 
 \paragraph{Indexing, updating and deleting objects from the index}
 
+In Hibernate Search ORM, all manual index manipulation is synchronized with the EntityManager transaction lifecycle. In our generic approach we cannot do this as JPA doesn't have an extension point for this kind of usage. This is the reason we introduce the \textbf{[begin/commit/rollback]SearchTransaction()} methods in FullTextEntityManager. These have to be used to control the transaction lifecycle of all the index manipulation methods.
+\\
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Index control with Hibernate Search GenericJPA}, label={lst:index_control_hibernatesearchgenericjpa}]
+EntityManager em = ...;
+JPASearchFactoryController searchFactoryController = ...;
+
+FullTextEntityManager fem = 
+	searchFactoryController.getFullTextEntityManager(em);
+
+fem.beginSearchTransaction();
+try {
+	//index or purge here
+	fem.commitSearchTransaction();
+} catch(Exception e) {
+	fem.rollbackSearchTransaction();
+	throw e;
+}
+\end{lstlisting}
 \textcolor{red}{macht eh keinen sinn, da wir eh async backends haben, da sollte dann der user lieber die transactions selber machen}
 \\\\
-\textcolor{red}{InIndex Problematik erklären}
+One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the same Java type the user sees. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading, etc.. But the engine needs to know which class to get the index description metamodel from.
+\\\\
+This is the reason we implemented logic to feed the right entity class into the engine via user input. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation.
+\\
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Algorithm to determine the actual indexed type}, label={lst:algo_subclasssupport}]
+// get the first class in the hierarchy that is actually in the index
+Class<T> clazz = (Class<T>) entity.getClass();
+while ( (clazz = (Class<T>) clazz.getSuperclass()) != null ) {
+	if ( clazz.isAnnotationPresent( InIndex.class ) ) {
+		break;
+	}
+}
+if ( clazz != null ) {
+	return clazz;
+}
+//no @InIndex found, try this class
+return entity.getClass();
+\end{lstlisting}
+\noindent
+Note that this has to be done for every entity that is part of the index, even the ones that are just embedded. With this in mind our entities Book and Author now look like this:
+\\
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Book.java with @InIndex}, label={lst:book.java_2}]
+@Entity
+@InIndex
+@Table(name = "Book")
+public class Book {
+	
+	//rest is unchanged
+
+}
+\end{lstlisting}
+
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={Author.java with @InIndex}, label={lst:author.java_2}]
+@Entity
+@InIndex
+@Table(name = "Author")
+public class Author {
+	
+	//rest is unchanged
+	
+}
+\end{lstlisting}
 
 \paragraph{Querying the index}
 While we didn't mention this in \ref{hsearch_orm_querying}, Hibernate Search ORM supports modifying the resulting objects of a query with these two methods:
