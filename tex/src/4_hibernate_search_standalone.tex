@@ -446,7 +446,7 @@ fem.createIndexer( Book.class )
 
 \subsubsection{Architecture of the generic version}
 
-As good as Hibernate Search ORM's API integration with JPA's EntityManager and Query interface is, its additional interfaces still contain some Hibernate ORM related features and logic that a generic version can not support and therefore have to be changed, emulated or removed all together.
+As good as Hibernate Search ORM's API integration with JPA's EntityManager and Query interface is, its additional interfaces still contain some Hibernate ORM related features and logic that a generic version (we call it Hibernate Search GenericJPA) can not support and therefore have to be changed, emulated or removed all together.
 \\
 \begin{figure}[ht]
 	\centering
@@ -515,11 +515,9 @@ try {
 	throw e;
 }
 \end{lstlisting}
-\textcolor{red}{macht eh keinen sinn, da wir eh async backends haben, da sollte dann der user lieber die transactions selber machen}
+One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the original entity class. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading, etc.. But the engine needs to know which class to get the index description metamodel from.
 \\\\
-One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the same Java type the user sees. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading, etc.. But the engine needs to know which class to get the index description metamodel from.
-\\\\
-This is the reason we implemented logic to feed the right entity class into the engine via user input. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation.
+This is the reason in Hibernate Search GenericJPA we implement logic to feed the right entity class into the engine via user input. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Algorithm to determine the actual indexed type}, label={lst:algo_subclasssupport}]
@@ -577,19 +575,27 @@ There is a problem with these two methods, though. They are using the Hibernate 
 \\\\
 By adding a new method \textbf{entityProvider(EntityProvider entityProvider)} with the same EntityProvider interface as in \ref{querying_standalone} to the method, we can at least support custom queries. 
 \\\\
-As the main use case scenario for the ResultTransformer is probably just the transformation from a projection of the queried documents to a POJO, we just completely remove this feature. In the future, we can add such a feature back to the generic version, if needed. But as this method cannot be kept as-is anyways, Hibernate Search ORM developers switching to the generic version that use this feature have to change some of their code either way.
+As the main use case scenario for the ResultTransformer is probably just the transformation from a projection of the queried documents to a POJO, we just completely remove this feature. In the future, we can add such a feature back to the generic version, if needed. But as this method cannot be kept as-is anyways, Hibernate Search ORM developers wanting to use Hibernate Search GenericJPA that use this feature have to change some of their code either way.
 
 \paragraph{Index rebuilds}
 
-\subsubsection{Implementation Details}
+The MassIndexer utility is a really important feature of Hibernate Search ORM. As it uses Hibernate ORM logic under the hood (and in its interface), we have to write our own version of it. We don't build a API compatible version for Hibernate Search GenericJPA as the MassIndexer will not be used in that many places in the code anyways. Additionally this way we can give different configuration properties for better performance as our approach differs in some implementation details.
+\\\\
+The basic ideas are the same though: Each entity type has its ids scrolled from the database by one thread (there can be multiple threads doing this, but for other entities) and then a configurable amount of indexing threads handles these ids batch by batch in a Hibernate Search index-writing backend optimized for this task (this is part of Hibernate Search's engine and therefore can be reused).
+\\\\
+In Hibernate Search GenericJPA our Book entities are massindexed like this:
+\\
+\lstset{language=java}
+\begin{lstlisting}[frame=htrbl, caption={MassIndexer usage with Hibernate Search ORM}, label={lst:massindexing_hsearch_orm.java}]
+EntityManager em = ...;
+FullTextEntityManager fem = Search.getFullTextEntityManager(em);
 
--> SubClassSupportInstanceInitializer, MassIndexer, Transaction Management
-
-
-
-
-
--> 
-
+fem.createIndexer( Book.class )
+	.batchSizeToLoadObjects( 25 )
+	.threadsToLoadObjects( 12 )
+	.batchSizeToLoadIds( 150 )
+	.idProducerTransactionTimeout( 1800 )
+	.startAndWait();
+\end{lstlisting}
 
 \pagebreak
