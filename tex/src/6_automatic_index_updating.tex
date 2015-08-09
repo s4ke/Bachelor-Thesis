@@ -1,11 +1,51 @@
 % !TeX spellcheck = en_GB
 \subsection{The automatic index updating feature}
 
+As already stated in \ref{automatic_indexing_problematic_intro}, the automatic index updating feature is a must have for Hibernate Search GenericJPA. As this is arguably the most complicated feature for GenericJPA, we will go into detail about how we are achieving it next.
+
 \subsubsection{Overview of possible implementations}
 
-\paragraph{Synchronous approaches}
+There are several approaches to building a automatic index updating feature. While they are all different in the specifics, they can generally be separated into two different categories: \textbf{synchronous} and \textbf{asynchronous}. Synchronous in this context means that the index is updated as soon as the newly changed data is persisted in the database without any real delay while in an asynchronous updating mechanism an arbitrary amount of time passes before the index is updated. While synchronous approaches are needed in some rare cases, fulltext search generally doesn't require a 100\% up-to-date index as a search index generally is not the source of truth in an application (only the database contains the "truth").
+\\\\
+We will now work out a solution for both sync and async needs, while the async version will serve as a backup whenever the synchronized mechanism is not applicable.
+
+\paragraph{Candidates for a synchronous approach}
 
 \subparagraph{JPA events}
+
+As we are trying to work with as little vendor specific APIs, JPA's callback events seems like a suitable candidate for listening to changes in entities.
+
+\fixme{describe how this is done}
+
+\noindent
+Even though these listeners seem to be the perfect fit, they have two big issues as we find out after investigating further.
+\\\\
+Firstly, not all JPA providers seem to handle these events similar, as for example Hibernate ORM doesn't propagate events from collection tables to the owning entity, while EclipseLink does (EclipseLink's behaviour would be needed from all providers).
+\\\\
+Secondly, we can see that the events are triggered on flush instead of commit. This is an issue if the changed data is not actually commited, but the index is updated:
+\\
+
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Event triggering on flush}, label={lst:flush_event.java}]
+EntityManager em = ...;
+
+em.getTransaction().begin();
+
+Book book = em.find( Book.class "someIsbn" );
+book.setTitle( "someNewTitle" );
+
+// flushes, so we retrieve the Book with the changes from above
+// => event is triggered
+List<Book> allBooks = 
+	em.createQuery( "SELECT b FROM Book b" ).getResultList();
+
+// we have no way to get this event to revert the wrong index change
+em.getTransaction().rollback();
+\end{lstlisting}
+
+\noindent
+While it \textbf{might} be possible to somehow fix the flush issue, the bad support from JPA providers like Hibernate ORM renders this approach unusable.
 
 \subparagraph{Native integrations with JPA providers}
 
