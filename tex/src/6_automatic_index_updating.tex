@@ -9,7 +9,7 @@ There are several approaches to building a automatic index updating feature. Whi
 \\\\
 We will now work out a solution for both sync and async needs, while the async version will serve as a backup whenever the synchronized mechanism is not applicable.
 
-\paragraph{Candidates for a synchronous approach}
+\paragraph{Synchronous approach}
 
 \subparagraph{JPA events}
 
@@ -107,22 +107,18 @@ While it \textbf{might} be possible to somehow fix the flush issue, the bad supp
 
 Almost every JPA provider has its own internal event system that is useful for cache invalidation and other relevant tasks. These combined with hooks into the transaction management allows us to build a proper index updating system that works with transactions in mind (big improvement compared to the flush() issues of plain JPA)
 \\\\
-By definition these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can just implement listeners for these and the others will have to rely on the async backup approach (as of the time of writing this, only Hibernate ORM and EclipseLink native integrations exist)
+By definition these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can implement listeners for these and the others will have to rely on the async backup approach (as of the time of writing this, only Hibernate ORM and EclipseLink native integrations exist).
 \\\\
-\textit{Note: we don't describe how these integrations are built as they differ a lot in API, but all their APIs are straightforward to use}
+As this seems to be the only reasonable solution for a synchronous update system, we will go with it in Hibernate Search GenericJPA.
+\\\\
+\textit{Note: we don't describe how these event systems are built in particular as they differ a lot in their APIs, but all are straightforward to use and describing the usage would be unspectacular.}
 
 \paragraph{Asynchronous Trigger approach}
 ~\\
 
 
 
-\subsubsection{Implementation details}
-
-\paragraph{Native events}
-~\\
-
-\paragraph{Triggers}
-~\\
+\subparagraph{Implementation details}
 
 includeEmbeddedObjectId = true ist Pflicht!
 
