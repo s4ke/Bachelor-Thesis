@@ -114,14 +114,45 @@ As this seems to be the only reasonable solution for a synchronous update system
 \textit{Note: we don't describe how these event systems are built in particular as they differ a lot in their APIs, but all are straightforward to use and describing the usage would be unspectacular.}
 
 \paragraph{Asynchronous Trigger approach}
-~\\
+Triggers are "procedural code that is automatically executed in response to certain events on a particular table or view in a database" \footnote{Wikipedia on RDBMS triggers, see~\cite{triggers_wiki}}. While they are mostly "used for maintaining the integrity of the information on the database" \footnote{Wikipedia on RDBMS triggers, see~\cite{triggers_wiki}}, they are also useful for listening to events.
+\\\\
+Almost every RDBMS at least supports triggers on the three crucial events for event-listening: CREATE, UPDATE, DELETE.
+\\\\
+In order to be useful for updating our Hibernate Search index, we have to get info about the events from the database back into our Java application. Since we cannot necessarily call Java code from our database (with the exception of some enterprise and in-memory databases), we have to write data about the changes that we listen to into auxiliary tables and then poll these regularly.
+\\\\
+One benefit of this approach is that by using polling from the tables and the - by definition transactional - triggers, we don't have to hook into transactions or deal with data that has not been committed, yet, in general. If we do things right, we can even improve indexing performance by this: We can query for the latest event for each entity only, so we don't use up an unnecessary amount of CPU-time we don't need, but still have the index up-to-date.
 
+\subparagraph{Trigger architecture}
 
+Triggers are generally created on tables. Since we want to use them for event-listening, we have to cover every table of the domain model that contains data that is indexed/stored in the index. This also includes all of the mapping tables between entities and all other secondary tables.
+\\\\
+The following figure shows the trigger architecture needed for our Author and Book example.
 
-\subparagraph{Implementation details}
+\pagebreak
 
-includeEmbeddedObjectId = true ist Pflicht!
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.6]{images/Triggers_Schema.pdf}
+	\caption{Triggers for the example project}
+	\label{triggers_schema}
+\end{figure}
+\noindent
+All three tables Author, Book and Author\_Book have three triggers registered on them (one for each event type). These triggers then fill up the update tables AuthorUpdates, BookUpdates and Author\_BookUpdates (these names are just for demonstrative purposes) with info about occurring events. We can see that these update tables host at least three things:
 
+\begin{enumerate}
+	\item \textbf{updateid primary key:} Update events have to be sortable by the order they occured. All Update tables share the same sequence of primary keys so that no key appears twice in all of these tables.
+	\item \textbf{eventcase column:} This column contains a identifier for the cases INSERT, DELETE or UPDATE.
+	\item \textbf{pseudo foreign key(s):} The relevant primary keys of the entities involved in the tables have to be stored in the Update tables as well. Note that they are not marked as real foreign keys as a DELETE event wouldn't work then (we can't have a reference to a non existent entity).
+\end{enumerate}
+
+\subparagraph{Creating the tables}
+
+Since the creation of these tables requires a lot of work to be done, we have to automate it as good as possible. We do this by requiring additional annotations on the entities to map the required information for the update tables and then generating them out of it.
+\\\\
+These annotations contain at least the original table's name and the types \& names of the entity key columns. The name of the update table and the columns in it is then generally derived automatically from that.
+\\\\
+\textit{Note: The update tables are NO JPA entities, so we have to work with native SQL in the backend}
+\\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
 \begin{lstlisting}[frame=htrbl, caption={Book.java with Hibernate Search annotations}, label={lst:book.java_3}]
@@ -191,15 +222,58 @@ public class Author {
 	//getters & setters ...
 }
 \end{lstlisting}
+\noindent
+However, if the developer needs different names in the update tables, it is possible to manually set these properties. They can be found on the same level as the corresponding info for the original table is set.
+\\\\
+Options for multivalued keys and custom column types are also available as by default only singular valued keys of the column types corresponding to Java's Integer, Long and String are supported. While we don't go into detail how these expert features are used, information about how to use them can be found in the Javadoc of the annotations.
+\\\\
+Since database triggers and tables are not created the same on every RDBMS, we have to build an abstraction to get the necessary SQL code. This is done with the \textbf{TriggerSQLStringSource} interface. Implementations of this return the specific SQL strings working on the corresponding RDBMS. As of this writing we have implementations for MySQL, PostgreSQL and HSQDLB. See table \ref{table:config_properties_jpasearchfactorycontroller} for information about using these.
+\\\\
+Whether and how the triggers and tables are generated at all can also be set, but with a configuration property on the SearchFactoryController as described in table  \ref{table:config_properties_jpasearchfactorycontroller}.
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[scale=0.6]{images/Triggers_Schema.pdf}
-	\caption{Triggers for the example project}
-	\label{triggers_schema}
-\end{figure}
+\subparagraph{Retrieving the events}
+Now that we know how the events are stored in the update tables, we will now describe an efficient way to query the database for these entries.
+\\\\
+We only need the latest event for each entity (or combination of entities for mapping tables). The following SQL query is doing this for the table author\_bookupdates with standard SQL that should be working on every RDBMS.
+\\
+\lstset{language=sql}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Querying for updates (Author\_Book)},
+label={lst:querying_updates.sql}]
+SELECT t1.updateidhsearch, t1.authorFkfk, t1.bookFkfk
+FROM author_bookupdates t1
+INNER JOIN
+(
+	/* select the most recent update */
+	SELECT max(t2.updateidhsearch) updateid, 
+		t2.authorFkfk, t2.bookFkfk
+	FROM author_bookupdates t2
+	GROUP BY t2.authorFkfk, t2.bookFkfk
+) t3 on t1.updateidhsearch = t3.updateid
+/* handle events that occured earlier first */
+ORDER BY t1.updateidhsearch ASC;
+\end{lstlisting}
+\noindent
+We run queries of this type for every update table with fixed delays (configurable, see table \ref{table:config_properties_jpasearchfactorycontroller}). Then, we scroll from the results
+of these queries simultaneously while ordering by the updateids between the queries to make sure the events are definitely handled in the right order (see \textbf{MultiQueryAccess} in the code).
+\\\\
+This information is all we need to keep our index up-to-date. For the INSERT and UPDATE case we can just query the database for a new version and pass that to the engine. For the DELETE case we have to work directly on the index and have to enforce  \textbf{@IndexedEmbedded\#includeEmbeddedObjectId = true}. This is needed so that we can determine the root entity in the index as its entry has to be updated as well if the original entity is changed.
+\\\\
+After the index is updated accordingly, we run a delete query that deletes all update events
+having an updateid lower than the last processed one for each table.
+\\
+\lstset{language=sql}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Deleting handled updates (Author\_Book)},
+label={lst:deleting_updates.sql}]
+DELETE FROM author_bookupdates WHERE updateidhsearch < #last_handled_id#
+\end{lstlisting}
+\noindent
+With these two types of queries for each update table we are able to keep the index up-to-date efficiently and also make sure that no event is handled twice.
 
 \subsubsection{Complete Update System overview}
+
+\fixme{Async und Sync vergleichen!}
 
 \begin{figure}[ht]
 	\centering
