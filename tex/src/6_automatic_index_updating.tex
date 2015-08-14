@@ -1,23 +1,25 @@
 % !TeX spellcheck = en_GB
 \subsection{The automatic index updating feature}
 
-As already stated in \ref{automatic_indexing_problematic_intro}, the automatic index updating feature is a must have for Hibernate Search GenericJPA. As this is arguably the most complicated feature for GenericJPA, we will go into detail about how we are achieving it next.
+As already stated in \ref{automatic_indexing_problematic_intro}, the automatic index updating feature is a required for a reasonable Hibernate Search GenericJPA. As this is arguably the most complicated feature for GenericJPA, we will go into detail about how we are achieving it compared to the short introductions of the other features.
 
 \subsubsection{Description of different implementations} \label{description_of_different_implementations}
 
-There are several approaches to building a automatic index updating feature. While they are all different in the specifics, they can generally be separated into two different categories: \textbf{synchronous} and \textbf{asynchronous}. Synchronous in this context means that the index is updated as soon as the newly changed data is persisted in the database without any real delay while in an asynchronous updating mechanism an arbitrary amount of time passes before the index is updated. While synchronous approaches are needed in some rare cases, fulltext search generally doesn't require a 100\% up-to-date index as a search index generally is not the source of truth in an application (only the database contains the "truth").
+There are several approaches to building an automatic index updating feature. While they are all different in the specifics, they can generally be separated into two categories: \textbf{synchronous} and \textbf{asynchronous}. Synchronous in this context means that the index is updated as soon as the newly changed data is persisted in the database without any real delay while in an asynchronous updating mechanism an arbitrary amount of time passes before the index is updated. While synchronous approaches are needed in some rare cases, fulltext search generally doesn't require a 100\% up-to-date at every point in time index as a search index generally is not the source of truth in an application (only the database contains the "truth").
 \\\\
-We will now work out a solution for both sync and async needs, while the async version will serve as a backup whenever the synchronized mechanism is not applicable.
+We will now work out a solution for both sync and async, while the async version will serve as a backup whenever the synchronized mechanism is not applicable.
 
 \pagebreak
 
 \paragraph{Synchronous approach}
 
+For the synchronous approach we have two candidates: A system based on JPA callback events and another one that uses the native APIs of JPA providers. We start with the JPA callbacks and then go onto the native APIs.
+
 \subparagraph{JPA events}
 
 As we are trying to work with as little vendor specific APIs, JPA's callback events looks like a suitable candidate for listening to changes in entities.
 \\\\
-To listen for the JPA events we have two options: annotate the entities with callback methods or create a separate listener class. We will only take a look at the listener class as we don't want to have unnecessary methods in a possible user's entities. This class doesn't have to implement an interface, but has to have methods annotated with special annotations. The relevant ones are @PostPersist, @PostUpdate, @PostDelete (there are "pre-versions" available as well, but we focus on the post methods as they are more useful). What they stand for is quite self-explanatory.
+To listen for the JPA events we have two options: annotate the entities with callback methods or create a separate listener class. We will only take a look at the listener class since we don't want to have unnecessary methods in a possible user's entities. This class doesn't have to implement an interface, but has to have methods annotated with special annotations. The relevant ones are @PostPersist, @PostUpdate, @PostDelete (there are "pre-versions" available as well, but we focus on the post methods as they are more useful). What each specific annotation stands for is quite self-explanatory.
 \\\\
 Such a class generally looks like this:
 \\
@@ -78,9 +80,9 @@ public class EntityListener {
 \noindent
 Even though these listeners seem to be the perfect fit as they would enable us to fully integrate only with JPA interfaces, they have two big issues as we find out after investigating further.
 \\\\
-Firstly, not all JPA providers seem to handle these events similar, as for example Hibernate ORM doesn't propagate events from collection tables to the owning entity, while EclipseLink does (EclipseLink's behaviour would be needed from all providers).
+Firstly, not all JPA providers seem to handle these events similar: For example Hibernate ORM doesn't propagate events from collection tables to the owning entity, while EclipseLink does (EclipseLink's behaviour would be needed from all providers).
 \\\\
-Secondly, we can see that the events are triggered on flush instead of commit. This is an issue if the changed data is not actually commited, but the index is updated:
+Secondly, we can see that the events are triggered on flush instead of commit. This is an issue if the changed data is not actually commited.
 \\
 
 \lstset{language=java}
@@ -107,32 +109,32 @@ While it \textbf{might} be possible to somehow fix the flush issue, the bad supp
 
 \subparagraph{Native integration with JPA providers}
 
-Almost every JPA provider has its own internal event system that is useful for cache invalidation and other relevant tasks. These combined with hooks into the transaction management allows us to build a proper index updating system that works with transactions in mind (big improvement compared to the flush() issues of plain JPA)
+Almost every JPA provider has its own internal event system that is useful for cache invalidation and other tasks. These combined with hooks into the transaction management allow us to build a proper index updating system that works with transactions in mind (big improvement compared to the flush() issues of plain JPA)
 \\\\
 They generally have callbacks similar to these of the JPA events (no knowledge about database specifics is needed, Java types are used), but also provide additional information about the database session that caused the changes.
 \\\\
-By definition, these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can implement listeners for these and the others will have to rely on the async backup approach (as of the time of writing this, only Hibernate ORM and EclipseLink native integrations exist).
+By definition, these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can implement listeners for these and the others will have to rely on the async backup approach (as of the time of writing this, we have only implemented integrations for Hibernate ORM and EclipseLink).
 \\\\
-As this seems to be the only reasonable solution for a synchronous update system, we use it in Hibernate Search GenericJPA.
+As this seems to be the only reasonable solution for a synchronous update system, we are using it for Hibernate Search GenericJPA.
 \\\\
-\textit{Note: we don't describe how these event systems are built in particular as they differ a lot in their APIs, but all are straightforward to use and describing the usage would be unspectacular.}
+\textit{Note: we don't describe how these event systems are built in particular as they differ a lot in their APIs, but generally these are straightforward to use and describing the implementations would be unspectacular.}
 
 \pagebreak
 
 \paragraph{Asynchronous approach}
-While we described two different versions of a possible synchronous approach, for the asynchronous version we only have one possible solution available: A trigger based system.
+In contrary to the synchronous approach where we described two different versions, for the asynchronous version we only have one feasible solution available: A trigger based system.
 \\\\
 Triggers are "procedural code that is automatically executed in response to certain events on a particular table or view in a database" \footnote{Wikipedia on RDBMS triggers, see~\cite{triggers_wiki}}. While they are mostly "used for maintaining the integrity of the information on the database" \footnote{Wikipedia on RDBMS triggers, see~\cite{triggers_wiki}}, they are also useful for listening to events.
 \\\\
-Almost every RDBMS at least supports triggers on the three crucial events for event-listening: CREATE, UPDATE, DELETE.
+Almost every RDBMS at least supports triggers on the three crucial events for event-listening: INSERT (CREATE), UPDATE, DELETE.
 \\\\
-In order to be useful for updating our Hibernate Search index, we have to get info about the events from the database back into our Java application. Since we cannot necessarily call Java code from our database (with the exception of some enterprise and in-memory databases), we have to write data about the changes that we listen to into auxiliary tables and then poll these regularly.
+In order to have triggers being useful for updating our Hibernate Search index, we have to get info about the events from the database back into our Java application. Since we cannot necessarily call Java code from our database (with the exception of some enterprise and in-memory databases), we have to write data about changes into auxiliary tables and then poll these regularly.
 \\\\
-One benefit of this approach is that by using polling from the tables and the - by definition transactional - triggers, we don't have to hook into transactions or deal with data that has not been committed, yet, in general. If we do things right, we can even improve indexing performance by this: We can query for the latest event for each entity only, so we don't use up an unnecessary amount of CPU-time we don't need, but still have the index up-to-date.
+One benefit of this approach is that by using polling from the tables and the - by definition transactional - triggers, we don't have to hook into transactions or deal with data that has not been committed, yet, in general. If we do things right, we can even improve indexing performance by this: We can query for the latest event for each entity only, so we don't use up an unnecessary amount of CPU-time we don't need, but still keep the index up-to-date.
 
 \subparagraph{Trigger architecture}
 
-Triggers are generally created on tables. Since we want to use them for event-listening, we have to cover every table of the domain model that contains data that is indexed/stored in the index. This also includes all of the mapping tables between entities and all other secondary tables.
+Triggers are generally created on tables. Since we want to use them for event-listening, we have to cover every table of the domain model that contains data indexed/stored in the index. This also includes all of the mapping tables between entities and all other secondary tables.
 \\\\
 The following figure shows the trigger architecture needed for our Author and Book example.
 
@@ -235,7 +237,7 @@ However, if the developer needs different names in the update tables, it is poss
 \\\\
 Options for multivalued keys and custom column types are also available as by default only singular valued keys of the column types corresponding to Java's Integer, Long and String are supported. While we don't go into detail how these expert features are used, information about how to use them can be found in the Javadoc of the annotations.
 \\\\
-Since database triggers and tables are not created the same on every RDBMS, we have to build an abstraction to get the necessary SQL code. This is done with the \textbf{TriggerSQLStringSource} interface. Implementations of this return the specific SQL strings working on the corresponding RDBMS. As of this writing we have implementations for MySQL, PostgreSQL and HSQDLB. See table \ref{table:config_properties_jpasearchfactorycontroller} for information about using these.
+Since database triggers and tables are not created the same on every RDBMS, we have to build an abstraction to get the necessary SQL code. This is done with the \textbf{TriggerSQLStringSource} interface. Its implementations return the specific SQL strings working on the corresponding RDBMS. As of this writing we have implementations for MySQL, PostgreSQL and HSQDLB. See table \ref{table:config_properties_jpasearchfactorycontroller} for information about using these.
 \\\\
 Whether and how the triggers and tables are generated at all can also be set, but with a configuration property on the SearchFactoryController as described in table  \ref{table:config_properties_jpasearchfactorycontroller}. If disabled, the user still has to provide the information about the update tables that should be used for updating with the annotations as described above.
 
@@ -263,9 +265,9 @@ ORDER BY t1.updateidhsearch ASC;
 \end{lstlisting}
 \noindent
 We run queries of this type for every update table with fixed delays (configurable, see table \ref{table:config_properties_jpasearchfactorycontroller}). Then, we scroll from the results
-of these queries simultaneously while ordering by the updateids between the queries to make sure the events are definitely handled in the right order (see \textbf{MultiQueryAccess} in the code).
+of these queries simultaneously while ordering by the updateids between the queries to make sure the events are definitely handled in the right order (see listing \ref{lst:MultiQueryAccess.java} in the appendix).
 \\\\
-This information is all we need to keep our index up-to-date. For the INSERT and UPDATE case we can just query the database for a new version and pass that to the engine. For the DELETE case we have to work directly on the index and have to enforce  \textbf{@IndexedEmbedded\#includeEmbeddedObjectId = true}. This is needed so that we can determine the root entity in the index as its entry has to be updated as well if the original entity is changed.
+This information is all we need to keep our index up-to-date. For the INSERT and UPDATE case we can just query the database for a new version and pass that to the engine. For the DELETE case we have to work directly on the index and have to enforce  \textbf{@IndexedEmbedded\#includeEmbeddedObjectId = true}. This is required so that we can determine the root entity in the index as its entry has to be updated additionally if the original entity is changed (A entity contained in one index can have its own index as well).
 \\\\
 After the index is updated accordingly, we run a delete query that deletes all update events
 having an updateid lower than the last processed one for each table.
@@ -283,7 +285,7 @@ With these two types of queries for each update table we are able to keep the in
 
 \subsubsection{Comparison of approaches}
 
-We already discussed the differences of synchronous and asynchronous approaches in general earlier this chapter, the two chosen implementations differ in terms of extra work that has to be done to get them to work (user-friendliness for the developer) and features.
+We already discussed the differences of synchronous and asynchronous approaches in general earlier this chapter. The two chosen implementations differ in terms of extra work that has to be done to get them to work (user-friendliness for the developer) and features.
 
 \paragraph{Additional work}
 Since the native event system gets the proper information about changes from the vendor side, it doesn't require a lot information about the general structure of the domain model and tables in the database. For the Trigger based event system, that's a different story as it has to poll info about changes from the database. This is the reason the user has to add this information as we have seen in \ref{creating_the_tables}.
