@@ -1,4 +1,10 @@
+% !TeX spellcheck = en_GB
 \section{Outlook}\label{outlook}
 
--> Integration in Hibernate Search (original)
--> Trigger system kann mehr aus den providern lesen, Annotations als Fallback
+In this thesis we described how we can integrate Hibernate Search with JPA conform ORM implementations. We started by building a standalone integration of hibernate-search-engine, then integrated it with JPA and finally created an automatic index updating mechanism. All challenges described in \ref{Challenges} have been resolved.
+\\\\
+Even though the code as it can be found on GitHub \footnote{Hibernate Search GenericJPA GitHub repository, see~\cite{hibernate_genericjpa_github}} can already be used in real applications, it has to be looked at as a proof of concept. 
+\\\\
+In the thesis we tried to be as compatible with the orginal Hibernate Search API as possible. While one reason for this is to make the switch easier for developers that want to try it out, another big reason is that the ultimate goal for this project is to be merged into the original Hibernate Search codebase.
+\\\\
+The first steps of this process have already been discussed with the Hibernate Search development team and work on the merging process is to be started in early October 2015. This comes exactly at the right moment as the Hibernate Search team is planning API changes in the near future \footnote{Hibernate Search roadmap, see~\cite{hibernate_search_roadmap}} as some interfaces have to be altered as we have seen in \ref{integration_jpa}.

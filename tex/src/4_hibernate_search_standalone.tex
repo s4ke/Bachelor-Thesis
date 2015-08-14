@@ -342,7 +342,7 @@ List<Book> = searchFactory.createQuery(searchFactory.buildQueryBuilder()
 
 \pagebreak
 
-\subsection{Standalone integration with JPA interfaces}
+\subsection{Standalone integration with JPA interfaces} \label{integration_jpa}
 After simplifying the access to Hibernate Search's engine we will work out an integration with JPA interfaces next. Since we started with the premise of not wanting to "reinvent the wheel" by writing everything from scratch - which was one of the reasons why we chose to use Hibernate Search's engine in the first place - we will try to build an integration as similar to the JPA interfaces of Hibernate Search ORM as possible.
 \\\\
 Before we can go into detail about how we build our integration, we have to discuss the general architecture first. We will go over how the Hibernate Search ORM integration with JPA interfaces behaves from a user point and then take a look at what has to be changed in order to be compatible with any JPA implementor.

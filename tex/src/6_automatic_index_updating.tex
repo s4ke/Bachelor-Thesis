@@ -307,7 +307,7 @@ With this similarity come two important drawbacks:
 These two drawbacks are non-existent with the trigger event system as it doesn't require any specific JPA implementation (1) and works on the database level (2).
 
 \paragraph{Conclusion}
-We can see that both event systems can be useful in different cases. This is the reason we use both systems in Hibernate Search GenericJPA. The following table summarizes the pros and cons once more:
+We can see that both event systems can be useful in different cases. This is the reason we use both in Hibernate Search GenericJPA. The following table summarizes the pros and cons once again:
 
 \begin{table}[h] 
 	\centering
@@ -329,11 +329,5 @@ We can see that both event systems can be useful in different cases. This is the
 	\footnotesize \caption{Pros and Cons of the two update systems}
 	\label{table:pros_and_cons_update_systems}
 \end{table}
-
-\subsection{Summary}
-
-In this chapter we described how the challenges explained in \ref{Challenges} are solved in Hibernate Search GenericJPA. We built a standalone integration of hibernate-search-engine, then integrated it with JPA and also described how our automatic index updating mechanism works.
-\\\\
-While some of the APIs may be not final and not completely optimal (especially the work-intensive trigger update approach), they are a big step in the right direction of making Hibernate Search GenericJPA as developer-friendly as possible. All of the shortcomings in the current API as it can be found on GitHub \footnote{Hibernate Search GenericJPA GitHub repository, see~\cite{hibernate_genericjpa_github}} are a rather small price to pay compared to the usefulness of having Hibernate Search capabilities without needing Hibernate Search ORM.
 
 \pagebreak
