@@ -11,7 +11,7 @@ This is not something a regular RDBMS excels at and Hibernate Search comes into 
 \\
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.5]{images/hibernate_search_hibernate_schema.pdf}
+	\includegraphics[scale=0.45]{images/hibernate_search_hibernate_schema.pdf}
 	\caption{Hibernate Search with Hibernate ORM}
 	\label{fig1}
 \end{figure}
@@ -21,7 +21,7 @@ Hibernate Search, which is based on the powerful Lucene search toolbox, is a sep
 \\\\
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.5]{images/hibernate_search_any_jpa_problem_schema.pdf}
+	\includegraphics[scale=0.45]{images/hibernate_search_any_jpa_problem_schema.pdf}
 	\caption{Hibernate Search's incompatibility with other JPA implementations}
 	\label{fig2}
 \end{figure}
@@ -32,8 +32,10 @@ Currently, developers that do not want to bind themselves to Hibernate ORM have 
 \\\\
 When investigating Hibernate Search's project structure
 \footnote{Hibernate Search GitHub repository, see~\cite{hsearch_source_code_git}}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that most of the codebase could be reused for a generic version of Hibernate Search.
-\\\\
-Creating this would be a better approach for a search API on top of JPA rather than rewriting everything from scratch. Hibernate Search could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
+
+\pagebreak
+
+Creating such a generic Hibernate Search would be a better approach for a search API on top of JPA rather than rewriting everything from scratch. Hibernate Search could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
 \\\\
 \begin{figure}[ht]
 	\centering
