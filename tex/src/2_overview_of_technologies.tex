@@ -1,20 +1,20 @@
 % !TeX spellcheck = en_GB
 \section{Overview of technologies}\label{Overview}
-Before we start going into detail about how to work with Hibernate Search in a generic environment, we will give a short overview of relevant technologies first. We will explain why ORMs in general and the JPA specification in particular are beneficial. Then, we will explain what fulltext search engines are used for and give a short overview about the available solutions for Java. We will see that generalizing Hibernate Search for any JPA implementation is a good approach and that it has benefits over using the different search solutions available.
+Before we can go into detail about how to work with Hibernate Search in a generic environment, we will give a short overview of relevant technologies first. We will explain why ORMs in general and the JPA specification in particular are beneficial. Then, we will explain what fulltext search engines are used for and give a short overview about the available solutions for Java. We will see that generalizing Hibernate Search for any JPA implementation is a good approach and that it has benefits over using the different search solutions available.
 
 \subsection{Object Relational Mappers}
 Nowadays, many popular languages like Java, C\#, etc. are object-oriented\footnote{Wikipedia on Object Oriented Programming (OOP), see~\cite{object_oriented_programming_wiki}}.
 While SQL solutions for querying relational databases exist for these languages (JDBC for Java\footnote{Oracle JDBC overview, see~\cite{jdbc_oracle}}, OleDb for C\#\footnote{OleDb usage page, see~\cite{oledb_ms}}), the user either has to work with the rowsets manually or convert them into custom data transfer objects (DTO) to gain at least some "real" objects to work with. Both approaches don't suit the object oriented paradigm well as SQL "flattens" the data into rows with when querying while a well designed class model would work with multiple classes in a hierarchy.
 \\
 \lstset{language=sql}
-\begin{lstlisting}[frame=htrbl, caption={sql query "flattening" the author and book table into rows}, label={lst:flattening.sql}]
+\begin{lstlisting}[frame=htrbl, caption={SQL "flattening" the author and book table into rows}, label={lst:flattening.sql}]
 SELECT author.id, author.name, book.id, book.name 
 FROM author_book, author, author
 WHERE author_book.bookid = book.id
 AND author_book.authorid = author.id
 \end{lstlisting}
 ~\\
-This is where Object Relational Mappers (ORM) come into use. They map tables to entity-classes and
+This is one of the points where Object Relational Mappers (ORM) come into use. They map tables to entity-classes and
 enable users to write queries against these classes instead of tables. The returned objects are part of a complex object hierarchy and are easier to use from a object oriented point of view.
 \\
 \lstset{language=java}

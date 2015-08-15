@@ -12,8 +12,10 @@ Consider a software built with JPA that is used to manage the inventory of a boo
 	\label{fig3}
 \end{figure}
 \\
-Using a mapping table for the M:N relationship of Author and Book, the database contains three tables: Author, Book and Author\_Book. The JPA annotated classes for these entities are defined as following:
-\\
+Using a mapping table for the M:N relationship of Author and Book, the database contains three tables: Author, Book and Author\_Book. The JPA annotated classes for these entities are defined as the following listings show.
+
+\pagebreak
+
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Book.java}, label={lst:book.java_1}]
 @Entity
@@ -45,6 +47,8 @@ public class Book {
 	//getters & setters ...
 }
 \end{lstlisting}
+
+\pagebreak
 
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Author.java}, label={lst:author.java_1}]
@@ -85,6 +89,8 @@ public class Author {
 }
 \end{lstlisting}
 For the sake of simplicity and since every JPA provider is able to derive a default DDL script from the annotations, we don't supply any information about how to create the schema here. However, for real world applications defining a hand-written DDL script might be a better idea since the generated code might not be optimal and differs between the different JPA implementations and RDBMSs used.
+
+\pagebreak
 
 \subsection{Indexing \& searching} \label{problem_indexing_searching}
 Hibernate Search's engine wasn't designed to be used directly by application developers. Its main purpose is to serve as an integration point for other APIs that need to leverage its power to index object graphs and query the index for hits. This is why we have to write our own standalone module based on the "hibernate-search-engine" to ease its general usage. After the standalone is finished, we will build an integration of it with JPA to have a user experience as similar to Hibernate Search ORM as possible. By incorporating the same engine that the original does, we will support the same indexing behaviour and even stay compatible with entities designed for the original.
