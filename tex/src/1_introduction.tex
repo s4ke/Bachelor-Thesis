@@ -34,8 +34,8 @@ When investigating Hibernate Search's project structure
 \footnote{Hibernate Search GitHub repository, see~\cite{hsearch_source_code_git}}, we can see that the only module apart from some server-integration modules that depends on any ORM logic is "hibernate-search-orm". The modules that contain the indexing engine, the replication logic, alternative backends, etc. are completely independent from any ORM logic. This means, that most of the codebase could be reused for a generic version of Hibernate Search.
 
 \pagebreak
-
-Creating such a generic Hibernate Search would be a better approach for a search API on top of JPA rather than rewriting everything from scratch. Hibernate Search could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
+\noindent
+Creating such a generic Hibernate Search is a better approach for a search API on top of JPA rather than rewriting a JPA binding from scratch. Hibernate Search could then act as the standard for fulltext search in the JPA world instead of having a competing API that would just do the same thing in a different style.
 \\\\
 \begin{figure}[ht]
 	\centering
