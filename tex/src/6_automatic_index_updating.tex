@@ -117,7 +117,7 @@ They generally have callbacks similar to these of the JPA events (no knowledge a
 \\\\
 By definition, these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can implement listeners for these and the others will have to rely on the async backup approach (as of the time of writing this, we have only implemented integrations for Hibernate ORM and EclipseLink).
 \\\\
-As this seems to be the only reasonable solution for a synchronous update system, we are using it for Hibernate Search GenericJPA.
+As this seems to be the only reasonable solution for a synchronous update system, we are using it for Hibernate Search GenericJPA even though it is no real native solution because of the JPA implementation dependent code.
 \\\\
 \textit{Note: we don't describe how these event systems are built in particular as they differ a lot in their APIs, but generally these are straightforward to use and describing the implementations would be unspectacular.}
 

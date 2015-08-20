@@ -129,4 +129,6 @@ The most important feature to be re-built, is automatic index updating. In Hiber
 \\\\
 The original Hibernate Search ORM is achieving an up-to-date index by listening to specific Hibernate ORM events for all of the C\_UD (CREATE, UPDATE DELETE) actions. These events also cover entity relationship collections (for example represented by mapping tables like Author\_Book). As our goal is to create a generic Hibernate Search engine that works with any JPA implementation, we cannot rely on any vendor specific event system. Thus, at least an additional generic solution has to be found.
 
+\fixme{"Zeitstrahldiagramm", das den kompletten Ablauf aufzeigt (erst Standalone, dann JPA integration, dann automatic indexing feature, etc.), im Outlook dann nochmal darauf hinweisen, dass noch die Merge Arbeit eigentlich noch dazugehört}
+
 \pagebreak
