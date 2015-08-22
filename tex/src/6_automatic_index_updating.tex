@@ -163,7 +163,7 @@ All three tables Author, Book and Author\_Book have three triggers registered on
 
 Since the creation of these tables requires a lot of work to be done, we have to automate it as good as possible. We do this by requiring additional annotations on the entities to map the required information for the update tables and then generating them out of it.
 \\\\
-These annotations contain at least the original table's name and the types \& names of the entity key columns. The name of the update table and the columns in it is then generally derived automatically from that.
+These annotations contain at least the original table's name (UpdateInfo\#tableName) and the names \& types (IdColumn\#column \& IdColumn\#columnType) of the entity key columns. The name of the update table and the columns in it are then generally derived automatically from that.
 \\\\
 \textit{Note: The update tables are NO JPA entities, so we have to work with native SQL in the backend}
 \\
@@ -176,9 +176,8 @@ These annotations contain at least the original table's name and the types \& na
 @Indexed
 [*@UpdateInfo(
 	tableName = "Book", 
-	idInfos = 
-	@IdInfo(columns = 
-		@IdColumn(
+	idInfos = @IdInfo(
+		columns = @IdColumn(
 			column = "isbn", 
 			columnType = ColumnType.STRING
 		)
@@ -204,9 +203,8 @@ public class Book {
 @Table(name = "Author")
 [*@UpdateInfo(
 	tableName = "Author", 
-	idInfos = 
-	@IdInfo(columns = 
-		@IdColumn(
+	idInfos = @IdInfo(
+		columns = @IdColumn(
 			column = "authorId", 
 			columnType = ColumnType.LONG
 		)
@@ -219,15 +217,13 @@ public class Author {
 	[*@UpdateInfo(tableName = "Author_Book", 
 		idInfos = {
 		@IdInfo(entity = Author.class, 
-			columns = 
-			@IdColumn(
+			columns = @IdColumn(
 				column = "authorFk",
 				columnType = ColumnType.LONG
 			)
 		),
 		@IdInfo(entity = Book.class,
-			columns = 
-			@IdColumn(
+			columns = @IdColumn(
 				column = "bookFk",
 				columnType = ColumnType.STRING
 			)
@@ -339,5 +335,264 @@ We can see that both event systems can be useful in different cases. This is the
 	\footnotesize \caption{Pros and Cons of the two update systems}
 	\label{table:pros_and_cons_update_systems}
 \end{table}
+
+\pagebreak
+
+\section{Using Hibernate Search GenericJPA}
+
+Having described how Hibernate Search GenericJPA works and is designed we will now take a look how it can be used in our example project (\ref{example_project}). While have already explained this part by part in each chapter, the following is everything put together.
+\\\\
+\textit{Note: we are using the async updating mechanism here.}
+
+\subsection{Dependencies}
+
+The following example needs to have at least these dependencies on the classpath:
+
+\begin{enumerate}
+	\item{EclipseLink 2.5.0}
+	\item{HSQLDB 2.3.3 (in memory database)}
+	\item{Hibernate Search GenericJPA}
+\end{enumerate}
+
+\pagebreak
+
+\subsection{Entities}
+First, we have to update the Entity mappings in the Java classes. We add the \textbf{@Indexed, @DocumentId, @Field, @IndexedEmbedded, @ContainedIn} as known from the original Hibernate Search ORM (\ref{setting_up_example_project}). Using Hibernate Search GenericJPA then requires us also to add the @InIndex on every entity contained in the index (\ref{using_hsearch_genericjpa_index}) and because we are using the async updating mechanism here, we have to add information about how to create the update tables as well (\ref{creating_the_tables}).
+\\\\
+The resulting entities with the changes highlighted look like this:
+\\
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Book.java complete}, label={lst:book.java_complete}]
+@Entity
+@Table(name = "Book")
+[*@InIndex*]
+[*@Indexed*]
+[*@UpdateInfo(tableName = "Book",
+	idInfos = @IdInfo(
+		columns = @IdColumn(
+			column = "isbn",
+			columnType = ColumnType.STRING)))*]
+public class Book {
+	
+	@Id
+	[*@DocumentId*]
+	@Column(name = "isbn")
+	private String isbn;
+	
+	@Column(name = "title")
+	[*@Field*]
+	private String title;
+	
+	@Column(name = "genre")
+	[*@Field*]
+	private String genre;
+	
+	@Lob
+	@Column(name = "summary")
+	[*@Field*]
+	private String summary;
+	
+	@ManyToMany(mappedBy = "books", cascade = {
+		CascadeType.MERGE,
+		CascadeType.DETACH,
+		CascadeType.PERSIST,
+		CascadeType.REFRESH
+	})
+	[*@IndexedEmbedded(includeEmbeddedObjectId = true)*]
+	private Set<Author> authors;
+	
+	// getters & setters ...
+	
+}
+\end{lstlisting}
+
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Author.java complete}, label={lst:author.java_complete}]
+@Entity
+@Table(name = "Author")
+[*@InIndex*]
+[*@UpdateInfo(tableName = "Author", 
+	idInfos = @IdInfo(
+		columns = @IdColumn(
+			column = "authorId",
+			columnType = ColumnType.LONG
+	)
+))*]
+public class Author {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "authorId")
+	[*@DocumentId*]
+	private Long authorId;
+	
+	@Column(name = "firstName")
+	[*@Field*]
+	private String firstName;
+	
+	@Column(name = "lastName")
+	[*@Field*]
+	private String lastName;
+	
+	@Column(name = "country")
+	[*@Field*]
+	private String country;
+	
+	@ManyToMany(cascade = {
+		CascadeType.MERGE,
+		CascadeType.DETACH,
+		CascadeType.PERSIST,
+		CascadeType.REFRESH
+	})
+	@JoinTable(name = "Author_Book", 
+		joinColumns = @JoinColumn(name = "authorFk", 
+			referencedColumnName = "authorId"),
+		inverseJoinColumns = @JoinColumn(name = "bookFk",
+			referencedColumnName = "isbn"))
+	[*@UpdateInfo(tableName = "Author_Book",
+		idInfos = {
+			@IdInfo(entity = Author.class,
+				columns = @IdColumn(
+				column = "authorFk",
+				columnType = ColumnType.LONG)),
+			@IdInfo(entity = Book.class,
+				columns = @IdColumn(
+				column = "bookFk",
+				columnType = ColumnType.STRING))
+	})*]
+	[*@ContainedIn*]
+	private Set<Book> books;
+	
+	// getters & setters ...
+	
+}
+\end{lstlisting}
+
+
+\pagebreak
+
+\subsection{persistence.xml}
+
+The persistence.xml file for our JPA based project is straightforward. As we are using an in-memory database with HSQLDB, settings for the schema creation and the user management are not important as the database is recreated at every restart.
+\\
+
+\lstset{language=xml}
+\begin{lstlisting}[frame=htrbl, caption={persistence.xml complete}, label={lst:persistence.xml_complete}]
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+	http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="EclipseLink_HSQLDB"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>
+			org.eclipse.persistence.jpa.PersistenceProvider
+		</provider>
+		<class>*.*.Author</class>
+		<class>*.*.Book</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver"
+				value="org.hsqldb.jdbcDriver"/>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:hsqldb:mem:test"/>
+			<property name="javax.persistence.jdbc.user"
+				value="user"/>
+			<property name="javax.persistence.jdbc.password"
+				value="password"/>
+			<property name="eclipselink.ddl-generation"
+				value="drop-and-create-tables"/>
+			<property name="eclipselink.logging.level"
+				value="INFO"/>
+			<property name="eclipselink.ddl-
+				generation.output-mode"
+				value="both"/>
+		</properties>
+	</persistence-unit>
+	
+</persistence>
+\end{lstlisting}
+
+\pagebreak
+
+\subsection{Complete usage example}
+
+In the following listing we show the whole lifecycle of a Hibernate Search GenericJPA based application. The relevant code passages are commented in the code.
+\\
+
+\lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
+\begin{lstlisting}[frame=htrbl, caption={Complete usage}, label={lst:complete_usage.java}]
+Properties properties = new Properties();
+
+// use the async backend
+properties.setProperty(
+	"hibernate.search.searchfactory.type",
+	"sql"
+);
+
+// we are using HSQLDB, so use the right TriggerSource
+properties.setProperty(
+	"hibernate.search.trigger.source",
+	"org.hibernate.search.genericjpa.db." + 
+		"events.triggers.HSQLDBTriggerSQLStringSource"
+);
+
+// start up the EntityManagerFactory (entry-point to JPA)
+// and create one EntityManager
+EntityManagerFactory emf = Persistence
+	.createEntityManagerFactory( "EclipseLink_HSQLDB" );
+EntityManager em = emf.createEntityManager();
+
+// start up Hibernate Search GenericJPA
+JPASearchFactoryController searchController = 
+	Setup.createSearchFactoryController( emf, properties );
+
+// persist entities in the database
+em.getTransaction().begin();
+Author author = ...;
+Book book = ...;
+book.setAuthor( author );
+em.persist( em );
+em.getTransaction().commit();
+
+// we are using an async backend, so wait a bit
+// for the updating mechanism to handle the
+// persist (Exception not handled here)
+Thread.sleep( 10_000 );
+
+// create a FullTextEntityManager
+FullTextEntityManager fem = searchController
+	.getFullTextEntityManager( em );
+
+// query for all Books having the title "searchString"
+FullTextQuery fullTextQuery = fem.createFullTextQuery(
+	fem.getSearchFactory().buildQueryBuilder()
+		.forEntity( Book.class )
+		.get()
+		.keyword()
+		.onField( "title" )
+		.matching( "searchString" )
+		.createQuery(), 
+	Book.class);
+
+List<Book> books = (List<Book>) fullTextQuery.getResultList();
+
+//handle the books
+System.out.println( books );
+
+// close everything 
+// (FullTextEntityManager is not closed because
+// the EntityManager is closed)
+em.close();
+searchController.close();
+emf.close();
+\end{lstlisting}
+\noindent
+Note that we didn't put the code into a main method. This is due to the fact that in a real application all this code would obviously not be put into one single method:
+\\\\
+The startup process of Hibernate Search GenericJPA is generally put into an extra lifecycle helper that stores a reference to the JPASearchFactoryController in a global variable upon application startup similar to what is generally done with JPA's EntityManagerFactory (at least in Java SE applications). All Search related code then acquires the reference to the JPASearchFactoryController from the global variable and uses it similar to the above code. The lifecycle helper is also responsible for closing the JPASearchFactoryController when the application is shutting down.
 
 \pagebreak

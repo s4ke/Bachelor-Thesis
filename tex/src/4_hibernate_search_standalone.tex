@@ -3,7 +3,7 @@
 
 In this section we will start by discussing how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. Then we will work out a standalone version of this engine that is easier to work with and lastly we will show how we integrate this standalone version with JPA.
 
-\subsection{Setting up the example project}
+\subsection{Setting up the example project} \label{setting_up_example_project}
 
 Before we explain how we do things in particular, we set up the example entities described in \ref{example_project} as if the original Hibernate Search would have been used. We do so by adding additional annotations to our entity-classes:
 
@@ -358,7 +358,7 @@ List<Book> = searchFactory.createQuery(searchFactory.buildQueryBuilder()
 ~
 \pagebreak
 
-\subsection{Standalone integration with JPA interfaces} \label{integration_jpa}
+\subsection{JPA integration of the standalone} \label{integration_jpa}
 After simplifying the access to Hibernate Search's engine we will work out an integration with JPA interfaces next. Since we started with the premise of not wanting to "reinvent the wheel" by writing everything from scratch - which was one of the reasons why we chose to use Hibernate Search's engine in the first place - we will try to build an integration as similar to the JPA interfaces of Hibernate Search ORM as possible.
 \\\\
 Before we can go into detail about how we build our integration, we have to discuss the general architecture first. We will go over how the Hibernate Search ORM integration with JPA interfaces behaves from a user point and then take a look at what has to be changed in order to be compatible with any JPA implementor.
@@ -434,12 +434,12 @@ EntityManager em = ...;
 FullTextEntityManager fem = Search.getFullTextEntityManager(em);
 
 FullTextQuery fullTextQuery = fem.createFullTextQuery(
-	searchFactory.buildQueryBuilder()
-		.forEntity(Book.class)
+	fem.getSearchFactory().buildQueryBuilder()
+		.forEntity( Book.class )
 		.get()
 		.keyword()
-		.onField("title")
-		.matching("searchString")
+		.onField( "title" )
+		.matching( "searchString" )
 		.createQuery(), 
 	Book.class);
 	
@@ -520,11 +520,11 @@ For this example we are using "manual-updates", as we haven't discussed how the 
 \\\\
 Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method. This means that an instance of the JPASearchFactoryController has to be available at all times access to the index is required.
 \\\\
-Using a non-static approach here has one benefit, though: We can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if we want to index POJOs which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller} for the property to work with these additional entities).
+Using a non-static approach here has one benefit, though: We can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if POJOs have to be indexed which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller} for the property to work with these additional entities).
 
 \pagebreak
 
-\paragraph{Indexing, updating and deleting objects from the index}
+\paragraph{Indexing, updating and deleting objects from the index} \label{using_hsearch_genericjpa_index}
 
 In Hibernate Search ORM, all manual index manipulation is synchronized with the EntityManager transaction lifecycle. In our generic approach we cannot do this as JPA doesn't have an extension point for this kind of usage. This is the reason we introduce the \textbf{[begin/commit/rollback]SearchTransaction()} methods in FullTextEntityManager. These have to be used to control the transaction lifecycle of all the index manipulation methods.
 \\
@@ -570,9 +570,10 @@ return entity.getClass();
 Note that this has to be done for every entity that is part of the index, even the ones that are just embedded. With this in mind our entities Book and Author now look like this:
 \\
 \lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
 \begin{lstlisting}[frame=htrbl, caption={Book.java with @InIndex}, label={lst:book.java_2}]
 @Entity
-@InIndex
+[*@InIndex*]
 @Table(name = "Book")
 @Indexed
 public class Book {
@@ -583,9 +584,10 @@ public class Book {
 \end{lstlisting}
 
 \lstset{language=java}
+\lstset{moredelim=[is][\bfseries]{[*}{*]}}
 \begin{lstlisting}[frame=htrbl, caption={Author.java with @InIndex}, label={lst:author.java_2}]
 @Entity
-@InIndex
+[*@InIndex*]
 @Table(name = "Author")
 public class Author {
 	
@@ -597,7 +599,7 @@ public class Author {
 \pagebreak
 
 \paragraph{Querying the index}
-While we didn't mention this in \ref{hsearch_orm_querying}, Hibernate Search ORM supports modifying the resulting objects of a query with these two methods:
+While we didn't mention this in \ref{hsearch_orm_querying}, Hibernate Search ORM supports modifying the resulting objects of a query with these two methods on \textbf{FullTextQuery}:
 
 \begin{itemize}
 	\item \textbf{setCriteriaQuery(Criteria criteria)}:
@@ -611,6 +613,8 @@ There is a problem with these two methods, though. They are using the Hibernate 
 By adding a new method \textbf{entityProvider(EntityProvider entityProvider)} with the same EntityProvider interface as in \ref{querying_standalone} to the method, we can at least support custom queries.
 \\\\
 As the main use case scenario for the ResultTransformer is probably just the transformation from a projection of the queried documents to a POJO, we just completely remove this feature. In the future, we can add such a feature back to the generic version, if needed. But as this method cannot be kept as-is anyways, Hibernate Search ORM developers wanting to use Hibernate Search GenericJPA that use this feature have to change some of their code either way.
+\\\\
+Besides these changes, the interface behaves the exact same as described in \ref{hsearch_orm_querying}.
 
 \pagebreak
 
