@@ -2,6 +2,8 @@
 \section{Building a JPA integration on top of Hibernate Search}
 
 In this section we will start by discussing how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. Then we will work out a standalone version of this engine that is easier to work with and lastly we will show how we integrate this standalone version with JPA.
+\\\\
+As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
 
 \subsection{Setting up the example project} \label{setting_up_example_project}
 
@@ -110,8 +112,7 @@ public class Author {
 \pagebreak
 
 \subsection{Using Hibernate Search's engine} \label{using_hsearch_engine}
-
-As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
+In this chapter we will take a look at how to use Hibernate Search's engine natively by showing how it's started, how the index is manipulated and how searching works.
 
 \subsubsection{Starting the engine}
 A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator}. In order to obtain it, we first have to write a special configuration class that implements \textbf{org.hibernate.search.cfg.spi.SearchConfiguration}. An object of this class has then to be created and filled with all the configuration properties Hibernate Search requires. The minimum that has to be set for this to work are the following:
@@ -247,9 +248,17 @@ for(EntityInfo entityInfo : entityInfos) {
 \end{lstlisting}
 
 \pagebreak
+~
+\pagebreak
 
-\subsection{Standalone version of Hibernate Search} \label{standalone_hibernate_search}
+\subsection{Standalone version of Hibernate Search's engine} \label{standalone_hibernate_search}
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.75]{images/timeline_genericjpa_first.pdf}
+	\label{project_timeline_first}
+\end{figure}
+\noindent
 In \ref{using_hsearch_engine} we described how the engine can be used natively without any notion of JPA. While using the engine this way is possible, it is not feasible because some of the code is quite complicated. This is the reason we will now discuss a standalone abstraction of this code.
 \\\\
 As we have seen in the examples earlier, the main class used for index control and querying are \textbf{SearchIntegrator} and \textbf{HSQuery}. In order to abstract some of the complicated logic, we now introduce two new interfaces: 
@@ -259,15 +268,20 @@ As we have seen in the examples earlier, the main class used for index control a
 	
 	\item \textbf{HSearchQuery}: While still having the same chaining methods as HSQuery, we retrieve results from the index in a different manner now. Instead of manually having to extract the ID out of the EntityInfos, this interface retrieves the actually wanted data with the help of the \textbf{EntityProvider} interface which wraps the access to the database. The specifics of the EntityProvider are still use-case specific as the examples later in this chapter will show.
 \end{itemize}
+
+\pagebreak
+
 \noindent
 The following diagram shows the rough architecture of our new standalone. Note that we are using a specialization of \textbf{SearchIntegrator} - namely \textbf{ExtendedSearchIntegrator} - which allows us to have more sophisticated features.
-
+\\
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.6]{images/standalone_min_architecture.pdf}
 	\caption{Rough architecture of the standalone (important parts)}
 	\label{standalone_min_architecture}
 \end{figure}
+
+\pagebreak
 
 \subsubsection{Starting the standalone}
 
@@ -359,6 +373,13 @@ List<Book> = searchFactory.createQuery(searchFactory.buildQueryBuilder()
 \pagebreak
 
 \subsection{JPA integration of the standalone} \label{integration_jpa}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.75]{images/timeline_genericjpa_second.pdf}
+	\label{project_timeline_second}
+\end{figure}
+\noindent
 After simplifying the access to Hibernate Search's engine we will work out an integration with JPA interfaces next. Since we started with the premise of not wanting to "reinvent the wheel" by writing everything from scratch - which was one of the reasons why we chose to use Hibernate Search's engine in the first place - we will try to build an integration as similar to the JPA interfaces of Hibernate Search ORM as possible.
 \\\\
 Before we can go into detail about how we build our integration, we have to discuss the general architecture first. We will go over how the Hibernate Search ORM integration with JPA interfaces behaves from a user point and then take a look at what has to be changed in order to be compatible with any JPA implementor.
