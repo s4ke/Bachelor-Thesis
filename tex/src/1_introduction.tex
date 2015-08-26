@@ -53,16 +53,29 @@ This is why we will show how such a generic version can be built in this thesis.
 
 \section{Methods} \label{Methods}
 
-Single Responsibility Principle
-\\
-Open/closed principle
-\\
-\url{https://en.wikipedia.org/wiki/Design_by_contract}
-\\
-Integration testing
+While developing the generic version of Hibernate Search we are using the following process schema to find the solutions for the all the different problems:
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.52]{images/work_process.pdf}
+	\caption{Development Process of a Feature}
+	\label{development_process_of_a_feature}
+\end{figure}
 
-
-\fixme{do this}
+\begin{itemize}
+	\item \textbf{Analyze Problem}: For every given problem we have to look at all the different aspects of it and try to find the features (unit of works) needed to solve it.
+	\item \textbf{Define Features in Interfaces}: As building a generic Hibernate Search is a big task, creating UML class diagrams would be time consuming as the UML diagrams would be prone to constant changes. In a way, Java interfaces (with the sometimes needed accessory classes and annotations) allow for a rough architectural overview similar to what class diagrams would provide in this case as they allow us to define the ins, outs and side-effects of every method precisely and \textbf{on-the-fly}.
+	\\\\
+	By defining the features in interfaces first, we achieve complete independence between the implementing classes besides their interfaces and are by default compliant to the \textbf{Open-Closed-Principle}: "Modules should be both open (for extension) and closed (for modification)".
+	\\\\
+	Additionally, while modelling the interfaces we try to be as compliant to the \textbf{Single Responsibility Principle} as possible because it enforces structures that are easy to reuse and change.
+	\item \textbf{Implement Interfaces}: Once the interfaces are properly defined, we write implementations for these according to the contracts set.
+	\item \textbf{Unit Test}: Each feature has to have a corresponding unit test. These are necessary to test each implementation for the right behaviour (outs and side-effects) for at least one given input.
+	\item \textbf{Integration Test}: While Unit-Tests check the behaviour of every \textit{single} feature implementation, integration tests are used to cover the correct behaviour when used together with the other parts of the project in a more real world use case.
+\end{itemize}
+\noindent
+Also note that once a step is finished, that doesn't mean that it is final. As we have seen in the diagram, we can go back and forth between the different steps at will to adapt to specific implementation problems and newly arisen problems that have not been covered before.
+\\\\
+We choose this kind of on-the-fly approach because it suits the project best: We have to investigate different approaches before we can work out the real solution first. Also because "hibernate-search-engine" is an internal API, we have to be as flexible with our development as possible as some features of it can be different what we might expect in the first place. Our non-strict approach helps us in this aspect as well.
 
 \pagebreak
