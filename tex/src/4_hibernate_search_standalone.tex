@@ -347,7 +347,7 @@ tx.commit();
 \subsubsection{Queries} \label{querying_standalone}
 The biggest change in the standalone version is probably how the index is queried. We don't have to work with EntityInfos anymore as we introduced the \textbf{EntityProvider} interface. This interface hosts one method that is to be used for batch fetching (Fetch.BATCH) and one for single fetching (Fetch.FIND\_BY\_ID).
 \\\\
-A good default implementation delegating the database access to a JPA EntityManager is our \textbf{BasicEntityProvider} (\ref{lst:BasicEntityProvider.java}). Besides taking a EntityManager in its constructor, the class also needs a Map<Class<?>, String> containing the id properties of the entities. While we leave the construction of this map out in the following example for the sake of simplicity, the code for this can be found in the listings (\ref{lst:idProperties.java}). After its creation this map can then be stored in a central place and reused.
+A good default implementation delegating the database access to a JPA EntityManager is our \textbf{BasicEntityProvider} (\ref{lst:BasicEntityProvider.java}). Besides taking an EntityManager in its constructor, the class also needs a Map<Class<?>, String> containing the id properties of the entities. While we leave the construction of this map out in the following example for the sake of simplicity, the code for this can be found in the listings (\ref{lst:idProperties.java}). After its creation this map can then be stored in a central place and reused.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying the index with the standalone}, label={lst:querying_natively.java}]
@@ -358,7 +358,8 @@ Map<Class<?>, String> idProperties = ...;
 
 EntityProvider entityProvider = new BasicEntityProvider(em, idProperties);
 
-List<Book> = searchFactory.createQuery(searchFactory.buildQueryBuilder()
+List<Book> books = searchFactory
+			.createQuery(searchFactory.buildQueryBuilder()
 				.forEntity(Book.class)
 				.get()
 				.keyword()
@@ -577,9 +578,11 @@ This is the reason in Hibernate Search GenericJPA we implement logic to feed the
 \begin{lstlisting}[frame=htrbl, caption={Algorithm to determine the actual indexed type}, label={lst:algo_subclasssupport}]
 // get the first class in the hierarchy that is actually in the index
 Class<T> clazz = (Class<T>) entity.getClass();
-while ( (clazz = (Class<T>) clazz.getSuperclass()) != null ) {
-	if ( clazz.isAnnotationPresent( InIndex.class ) ) {
-		break;
+if ( !clazz.isAnnotationPresent( InIndex.class ) ) {
+	while ( (clazz = (Class<T>) clazz.getSuperclass()) != null ) {
+		if ( clazz.isAnnotationPresent( InIndex.class ) ) {
+			break;
+		}
 	}
 }
 if ( clazz != null ) {

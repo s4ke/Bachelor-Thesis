@@ -5,7 +5,7 @@ Before we can go into detail about how to work with Hibernate Search in a generi
 
 \subsection{Object Relational Mappers}
 Nowadays, many popular languages like Java, C\#, etc. are object-oriented\footnote{Wikipedia on Object Oriented Programming (OOP), see~\cite{object_oriented_programming_wiki}}.
-While SQL solutions for querying relational databases exist for these languages (JDBC for Java\footnote{Oracle JDBC overview, see~\cite{jdbc_oracle}}, OleDb for C\#\footnote{OleDb usage page, see~\cite{oledb_ms}}), the user either has to work with the rowsets manually or convert them into custom data transfer objects (DTO) to gain at least some "real" objects to work with. Both approaches don't suit the object oriented paradigm well as SQL "flattens" the data into rows with when querying while a well designed class model would work with multiple classes in a hierarchy.
+While SQL solutions for querying relational databases exist for these languages (JDBC for Java\footnote{Oracle JDBC overview, see~\cite{jdbc_oracle}}, OleDb for C\#\footnote{OleDb usage page, see~\cite{oledb_ms}}), the user either has to work with the rowsets manually or convert them into custom data transfer objects (DTO) to gain at least some "real" objects to work with. Both approaches don't suit the object oriented paradigm well as SQL "flattens" the data into rows when querying while a well designed class model would work with multiple classes in a hierarchy.
 \\
 \lstset{language=sql}
 \begin{lstlisting}[frame=htrbl, caption={SQL "flattening" the author and book table into rows}, label={lst:flattening.sql}]
@@ -28,7 +28,7 @@ for(Author author : data) {
 }
 \end{lstlisting}
 ~\\
-This is especially useful if used in big software products as not all programmers have to know the exact details of the underlying database. The database system could even be completely replaced for another (provided the ORM supports the specific RDBMS), while the business logic would not changing a bit.
+This is especially useful if used in big software products as not all programmers have to know the exact details of the underlying database. The database system could even be completely replaced for another (provided the ORM supports the specific RDBMS), while the business logic would not change a bit.
 
 \subsection{JPA}
 
@@ -63,7 +63,7 @@ While this might be enough for some applications, this wildcard query doesn't su
 	\item phrase queries (search for a specified phrase)
 	\item regular expression queries (matches are determined by a regular expression)
 \end{itemize}
-There may exist some RDBMS that support similar query-types, but in the context of using a ORM we would then lose the ability to switch databases since, we would use vendor-specific features not every RDBMS supports.
+There may exist some RDBMS that support similar query-types, but in the context of using a ORM we would then lose the ability to switch databases since we would use vendor-specific features not every RDBMS supports.
 \\\\
 Fulltext search engines can be used to complement databases in this regard. They are generally not intended to be replacing the database, but add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers (including Hibernate Search) focusing on their usage and features. After that we will give the reasoning behind why a \textbf{generic} Hibernate Search is preferable to the other solutions.
 

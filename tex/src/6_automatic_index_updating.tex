@@ -16,7 +16,7 @@ As already stated in \ref{automatic_indexing_problematic_intro}, the automatic i
 
 \subsection{Description of different implementations} \label{description_of_different_implementations}
 
-There are several approaches to building an automatic index updating feature. While they are all different in the specifics, they can generally be separated into two categories: \textbf{synchronous} and \textbf{asynchronous}. Synchronous in this context means that the index is updated as soon as the newly changed data is persisted in the database without any real delay while in an asynchronous updating mechanism an arbitrary amount of time passes before the index is updated. While synchronous approaches are needed in some rare cases, fulltext search generally doesn't require a 100\% up-to-date at every point in time index as a search index generally is not the source of truth in an application (only the database contains the "truth").
+There are several approaches to building an automatic index updating feature. While they are all different in the specifics, they can generally be separated into two categories: \textbf{synchronous} and \textbf{asynchronous}. Synchronous in this context means that the index is updated as soon as the newly changed data is persisted in the database without any real delay while in an asynchronous updating mechanism an arbitrary amount of time passes before the index is updated. While synchronous approaches are needed in some rare cases, fulltext search generally doesn't require a 100\% up-to-date index at every point in time  as a search index generally is not the source of truth in an application (only the database contains the "truth").
 \\\\
 We will now work out a solution for both sync and async, while the async version will serve as a backup whenever the synchronized mechanism is not applicable.
 
@@ -91,7 +91,7 @@ public class EntityListener {
 \noindent
 Even though these listeners seem to be the perfect fit as they would enable us to fully integrate only with JPA interfaces, they have two big issues as we find out after investigating further.
 \\\\
-Firstly, not all JPA providers seem to handle these events similar: For example Hibernate ORM doesn't propagate events from collection tables to the owning entity, while EclipseLink does (EclipseLink's behaviour would be needed from all providers).
+Firstly, not all JPA providers seem to handle these events similarly: For example Hibernate ORM doesn't propagate events from collection tables to the owning entity, while EclipseLink does (EclipseLink's behaviour would be needed from all providers).
 \\\\
 Secondly, we can see that the events are triggered on flush instead of commit. This is an issue if the changed data is not actually commited.
 \\
@@ -351,7 +351,7 @@ We can see that both event systems can be useful in different cases. This is the
 
 \section{Usage of Hibernate Search GenericJPA}
 
-Having described how Hibernate Search GenericJPA works and is designed we will now take a look how it can be used in our example project (\ref{example_project}). While have already explained this part by part in each chapter, the following is everything put together.
+Having described how Hibernate Search GenericJPA works and is designed we will now take a look how it can be used in our example project (\ref{example_project}). While having already explained this part by part in each chapter, the following is everything put together.
 \\\\
 \textit{Note: we are using the async updating mechanism here.}
 
