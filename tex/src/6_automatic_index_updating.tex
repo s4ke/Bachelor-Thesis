@@ -289,7 +289,7 @@ This information is all we need to keep our index up-to-date. For the INSERT and
 After the index is updated accordingly, we run a delete query that deletes all update events
 having an updateid lower than the last processed one for each table.
 \\\\
-Note that we don't use a TRUNCATE statement for the query shown in the following listing \ref{lst:deleting_updates.sql} as it was only introduced with the SQL:2008 standard \footnote{Truncate statement PostgreSQL docs, see~\cite{postgres_truncate}}, which some RDBMSs don't fully support \footnote{Firebird conformance, see~\cite{firebird_conformance}}. This would be a deal-breaker, because we have to make sure the clean-up statement is supported by as many RDBMSs as possible (older versions included).
+Note that we don't use a TRUNCATE statement for the query shown in the following listing \ref{lst:deleting_updates.sql} as it was only introduced with the SQL:2008 standard \footnote{Truncate statement PostgreSQL docs, see~\cite{postgres_truncate}}, which some RDBMSs don't fully support \footnote{Firebird conformance, see~\cite{firebird_conformance}}. Using TRUNCATE would therefore be a deal-breaker for many people wanting to use Hibernate Search GenericJPA. With the DELETE FROM query we make sure the clean-up statement is supported by as many RDBMSs as possible (older versions included).
 \\
 \lstset{language=sql}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
