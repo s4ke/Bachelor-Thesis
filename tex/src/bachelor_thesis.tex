@@ -251,9 +251,6 @@
 % % Stichwortverzeichnis endgueltig anzeigen
 % \printindex
 
-\addcontentsline{toc}{section}{References}
-\input{bibliography}
-
 \onehalfspacing
 % evtl. Anhang
 \newpage
@@ -265,6 +262,10 @@
 \addcontentsline{toc}{section}{Tables}
 \fancyhead[L]{Listings}
 \input{appendix/tables}
+
+\newpage
+\addcontentsline{toc}{section}{References}
+\input{bibliography}
 
 
 % Eidesstattliche Erklärung
