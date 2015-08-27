@@ -649,7 +649,7 @@ public class Author {
 }
 \end{lstlisting}
 \noindent
-A similar behaviour supporting the subclassing of entities can be achieved with JPA's @Entity  replacing the @InIndex annotation as it can be found on the first real entity class in the hierarchy as well. We didn't choose this approach because by using @InIndex we support indexing of non-JPA entities as well. In the future a hybrid approach checking for both annotations is possible, but for now the @InIndex approach is sufficient.
+A similar behaviour supporting the subclassing of entities can be achieved with JPA's @Entity  replacing the @InIndex annotation as these annotations can be found on the first real entity class in the hierarchy as well. We didn't choose this approach because by using @InIndex we support indexing of non-JPA entities as well. In the future a hybrid approach checking for both annotations is possible, but using only @InIndex is sufficient.
 
 \pagebreak
 
