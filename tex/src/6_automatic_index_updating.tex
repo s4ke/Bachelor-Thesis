@@ -134,7 +134,7 @@ As this seems to be the only reasonable solution for a synchronous update system
 
 \pagebreak
 
-\subsubsection{Asynchronous approach}
+\subsubsection{Asynchronous approach}\label{async_approach}
 In contrary to the synchronous approach where we described two different versions, for the asynchronous version we only have one feasible solution available: A trigger based system.
 \\\\
 Triggers are "procedural code that is automatically executed in response to certain events on a particular table or view in a database" \footnote{Wikipedia on RDBMS triggers, see~\cite{triggers_wiki}}. While they are mostly "used for maintaining the integrity of the information on the database" \footnote{Wikipedia on RDBMS triggers, see~\cite{triggers_wiki}}, they are also useful for listening to events.
@@ -246,7 +246,7 @@ public class Author {
 }
 \end{lstlisting}
 \noindent
-However, if the developer needs different names in the update tables, it is possible to manually set these properties. They can be found on the same level as the corresponding info for the original table is set.
+However, if the developer needs different names in the update tables (e.g. if there already exists a table with the same name), it is possible to manually set these properties. They can be found on the same level as the corresponding info for the original table is set.
 \\\\
 Options for multivalued keys and custom column types are also available as by default only singular valued keys of the column types corresponding to Java's Integer, Long and String are supported. While we don't go into detail how these expert features are used, information about how to use them can be found in the Javadoc of the annotations.
 \\\\
@@ -282,10 +282,14 @@ ORDER BY t1.updateidhsearch ASC;
 We run queries of this type for every update table with fixed delays (configurable, see table \ref{table:config_properties_jpasearchfactorycontroller}). Then, we scroll from the results
 of these queries simultaneously while ordering by the updateids between the queries to make sure the events are definitely handled in the right order (see listing \ref{lst:MultiQueryAccess.java} in the appendix).
 \\\\
-This information is all we need to keep our index up-to-date. For the INSERT and UPDATE case we can just query the database for a new version and pass that to the engine. For the DELETE case we have to work directly on the index and have to enforce  \textbf{@IndexedEmbedded\#includeEmbeddedObjectId = true}. This is required so that we can determine the root entity in the index as its entry has to be updated additionally if the original entity is changed (A entity contained in one index can have its own index as well).
-\\\\
+This information is all we need to keep our index up-to-date. For the INSERT and UPDATE case we can just query the database for a new version and pass that to the engine. For the DELETE case we have to work directly on the index and have to enforce  \textbf{@IndexedEmbedded\#includeEmbeddedObjectId = true}. This is required so that we can determine the root entity in the index as its entry has to be updated additionally if the original entity is changed (An entity contained in one index can have its own index as well).
+
+\pagebreak
+\noindent
 After the index is updated accordingly, we run a delete query that deletes all update events
 having an updateid lower than the last processed one for each table.
+\\\\
+Note that we don't use a TRUNCATE statement for the query shown in the following listing \ref{lst:deleting_updates.sql} as it was only introduced with the SQL:2008 standard \footnote{Truncate statement PostgreSQL docs, see~\cite{postgres_truncate}}, which some RDBMSs don't fully support \footnote{Firebird conformance, see~\cite{firebird_conformance}}. This would be a deal-breaker, because we have to make sure the clean-up statement is supported by as many RDBMSs as possible (older versions included).
 \\
 \lstset{language=sql}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -294,7 +298,7 @@ label={lst:deleting_updates.sql}]
 DELETE FROM author_bookupdates WHERE updateidhsearch < #last_handled_id#
 \end{lstlisting}
 \noindent
-With these two types of queries for each update table we are able to keep the index up-to-date efficiently and also make sure that no event is handled twice.
+With these two queries for each update table we are able to keep the index up-to-date efficiently and also make sure that no event is handled twice.
 
 \pagebreak
 
@@ -303,7 +307,7 @@ With these two types of queries for each update table we are able to keep the in
 We already discussed the differences of synchronous and asynchronous approaches in general earlier this chapter. The two chosen implementations differ in terms of extra work that has to be done to get them to work (user-friendliness for the developer) and features.
 
 \subsubsection{Additional work}
-Since the native event system gets the proper information about changes from the vendor side, it doesn't require a lot information about the general structure of the domain model and tables in the database. The Trigger based system however does need extra information as it has to poll info about changes from the database. This is the reason the user has to add this information as we have seen in \ref{creating_the_tables}.
+Since the native event system gets the proper information about changes from the vendor side, it doesn't require a lot of information about the general structure of the domain model and tables in the database. The Trigger based system however does need extra information as it has to poll info about changes from the database. This is the reason the user has to add this information as we have seen in \ref{creating_the_tables}.
 \\
 \begin{figure}[ht]
 	\centering
@@ -351,9 +355,7 @@ We can see that both event systems can be useful in different cases. This is the
 
 \section{Usage of Hibernate Search GenericJPA}
 
-Having described how Hibernate Search GenericJPA works and is designed we will now take a look how it can be used in our example project (\ref{example_project}). While having already explained this part by part in each chapter, the following is everything put together.
-\\\\
-\textit{Note: we are using the async updating mechanism here.}
+Having described how Hibernate Search GenericJPA works and is designed we will now take a look at how it can be used in our example project (\ref{example_project}). While having already explained this part by part in each chapter, the following is everything put together and using the async updating mechanism as described in \ref{async_approach}.
 
 \subsection{Dependencies}
 

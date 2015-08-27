@@ -126,7 +126,7 @@ public class Author {
 In this chapter we will take a look at how to use Hibernate Search's engine natively by showing how it's started, how the index is manipulated and how searching works.
 
 \subsubsection{Startup}
-A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator}. In order to obtain it, we first have to write a special configuration class that implements \textbf{org.hibernate.search.cfg.spi.SearchConfiguration}. An object of this class has then to be created and filled with all the configuration properties Hibernate Search requires. The minimum that has to be set for this to work are the following:
+A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator} object. In order to obtain it, we first have to write a special configuration class that implements \textbf{org.hibernate.search.cfg.spi.SearchConfiguration}. An object of this class has then to be created and filled with all the configuration properties Hibernate Search requires. The minimum that has to be set for this to work are the following:
 
 \begin{enumerate}
 	\item \textbf{hibernate.search.default.directory\_provider}: The two most common cases here are either "ram" or "filesystem". This decides where the index will be stored. A ram directory is only present in the system memory while the SearchIntegrator exists. A "filesystem" directory is persisted on the hard disk. For "filesystem" the additional property "hibernate.search.default.indexBase" has to be set to an appropriate path.
@@ -260,7 +260,7 @@ for(EntityInfo entityInfo : entityInfos) {
 
 \pagebreak
 
-\subsection{Design of the standalone} \label{standalone_hibernate_search}
+\subsection{Design of the standalone version} \label{standalone_hibernate_search}
 
 In \ref{using_hsearch_engine} we described how the engine can be used natively without any notion of JPA. While using the engine this way is possible, it is not feasible because some of the code is quite complicated. This is the reason we will now discuss a standalone abstraction of this code.
 \\\\
@@ -275,12 +275,12 @@ As we have seen in the examples earlier, the main class used for index control a
 \pagebreak
 
 \noindent
-The following diagram shows the rough architecture of our new standalone. Note that we are using a specialization of \textbf{SearchIntegrator} - namely \textbf{ExtendedSearchIntegrator} - which allows us to have more sophisticated features.
+The following diagram shows the rough architecture of our new standalone version. Note that we are using a specialization of \textbf{SearchIntegrator} - namely \textbf{ExtendedSearchIntegrator} - which allows us to have more sophisticated features.
 \\
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.6]{images/standalone_min_architecture.pdf}
-	\caption{Rough architecture of the standalone (important parts)}
+	\caption{Rough architecture of the standalone version (important parts)}
 	\label{standalone_min_architecture}
 \end{figure}
 
@@ -288,17 +288,19 @@ The following diagram shows the rough architecture of our new standalone. Note t
 
 \subsubsection{Startup}
 
-The startup process of the standalone doesn't differ much from manually using the engine in terms of configuration as we still have to use the SearchConfiguration interface. The only difference is how we build the StandaloneSearchFactory. This is done with a \textbf{StandaloneSearchFactoryFactory}, so the code using it doesn't have to handle the creation of an the actual implementation object.
+The startup process of the standalone version doesn't differ much from manually using the engine in terms of configuration as we still have to use the SearchConfiguration interface. The only difference is how we build the StandaloneSearchFactory. This is done with a \textbf{StandaloneSearchFactoryFactory}, so the code using it doesn't have to handle the creation of the actual implementation object.
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
-\begin{lstlisting}[frame=htrbl, caption={Starting up the standalone}, label={lst:using_standalone.java}]
+\begin{lstlisting}[frame=htrbl, caption={Starting up the standalone version}, label={lst:using_standalone.java}]
 List<Class<?>> indexClasses = Arrays.asList(Book.class, Author.class);
 
+//we still have to build the SearchConfiguration object
 SearchConfiguration searchConfiguration = 
 		new StandaloneSearchConfiguration();
 indexClasses.forEach( searchConfiguration::addClass );
 
+//the builder pattern from before is abstracted in the following lines
 StandaloneSearchFactory searchFactory = 
 		StandaloneSearchFactoryFactory.
 				createSearchFactory(
@@ -319,7 +321,7 @@ searchFactory.close();
 With our standalone version, basic index control becomes more streamlined as we don't have to work with  SearchIntegrator's Worker pattern anymore.
 \\
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Indexing an object with the standalone}, label={lst:indexing_object_native.java}]objects
+\begin{lstlisting}[frame=htrbl, caption={Indexing an object with the standalone version}, label={lst:indexing_object_native.java}]objects
 Book book = ...;
 Transaction tx = new Transaction();
 searchFactory.index(book, tx);
@@ -327,7 +329,7 @@ tx.commit();
 \end{lstlisting}
 
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Updating an object with the standalone}, label={lst:updating_object_native.java}]
+\begin{lstlisting}[frame=htrbl, caption={Updating an object with the standalone version}, label={lst:updating_object_native.java}]
 Book book = ...;
 Transaction tx = new Transaction();
 searchFactory.update(book, tx);
@@ -335,7 +337,7 @@ tx.commit();
 \end{lstlisting}
 
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with the standalone}, label={lst:deleting_object_native.java}]
+\begin{lstlisting}[frame=htrbl, caption={Deleting an object by id with the standalone version}, label={lst:deleting_object_native.java}]
 Transaction tx = new Transaction();
 String isbn = ...;
 searchFactory.delete(Book.class, isbn, tx);
@@ -350,7 +352,7 @@ The biggest change in the standalone version is probably how the index is querie
 A good default implementation delegating the database access to a JPA EntityManager is our \textbf{BasicEntityProvider} (\ref{lst:BasicEntityProvider.java}). Besides taking an EntityManager in its constructor, the class also needs a Map<Class<?>, String> containing the id properties of the entities. While we leave the construction of this map out in the following example for the sake of simplicity, the code for this can be found in the listings (\ref{lst:idProperties.java}). After its creation this map can then be stored in a central place and reused.
 \\
 \lstset{language=java}
-\begin{lstlisting}[frame=htrbl, caption={Querying the index with the standalone}, label={lst:querying_natively.java}]
+\begin{lstlisting}[frame=htrbl, caption={Querying the index with the standalone version}, label={lst:querying_natively.java}]
 StandaloneSearchFactory searchFactory = ...;
 
 EntityManager em = ...;
@@ -374,7 +376,7 @@ List<Book> books = searchFactory
 
 \pagebreak
 
-\section{JPA integration of the standalone} \label{integration_jpa}
+\section{JPA integration of the standalone version} \label{integration_jpa}
 
 \begin{figure}[ht]
 	\centering
@@ -382,7 +384,7 @@ List<Book> books = searchFactory
 	\label{project_timeline_second}
 \end{figure}
 \noindent
-After simplifying the access to Hibernate Search's engine we will work out an integration with JPA interfaces next. Since we started with the premise of not wanting to "reinvent the wheel" by writing everything from scratch - which was one of the reasons why we chose to use Hibernate Search's engine in the first place - we will try to build an integration as similar to the JPA interfaces of Hibernate Search ORM as possible.
+After simplifying the access to Hibernate Search's engine we will work out an integration with JPA interfaces next. Since we started with the premise of not wanting to "reinvent the wheel" by writing everything from scratch (as described in \ref{reinvent_the_wheel}) - which was one of the reasons why we chose to use Hibernate Search's engine in the first place - we will try to build an integration as similar to the JPA interfaces of Hibernate Search ORM as possible.
 \\\\
 Before we can go into detail about how we build our integration, we have to discuss the general architecture first. We will go over how the Hibernate Search ORM integration with JPA interfaces behaves from a user point and then take a look at what has to be changed in order to be compatible with any JPA implementor.
 
@@ -390,7 +392,7 @@ Before we can go into detail about how we build our integration, we have to disc
 
 \subsection{Architecture of Hibernate Search ORM}
 
-Hibernate Search ORM integrates with the JPA API by extending the interfaces  javax.persistence.EntityManager and javax.persistence.Query and adding new functionality to the fulltext search versions of these interfaces: \textbf{FullTextEntityManager} and \textbf{FullTextQuery}. The following figure shows a rough overview of this. Note that this only contains only the methods relevant for the following sections.
+Hibernate Search ORM integrates with the JPA API by extending the interfaces  javax.persistence.EntityManager and javax.persistence.Query and adding new functionality to the fulltext search versions of these interfaces: \textbf{FullTextEntityManager} and \textbf{FullTextQuery}. The following figure shows a rough overview of this. Note that this contains only the methods relevant for the following sections.
 \\
 \begin{figure}[ht]
 	\centering
@@ -426,7 +428,7 @@ All of FullTextEntityManager's operations are controlled by the same transaction
 \pagebreak
 
 \subsubsection{Index manipulation}
-The index operations are all straightforward and similar to what we designed our Standalone integration in \ref{standalone_hibernate_search} to work like apart from minor naming differences. 
+The index operations are all straightforward and similar to what we designed our standalone version in \ref{standalone_hibernate_search} to work like apart from minor naming differences. 
 \\\\
 Hibernate Search ORM doesn't differentiate between indexing and updating.
 \\
@@ -449,7 +451,7 @@ fem.purge(Book.class, isbn);
 \pagebreak
 
 \subsubsection{Queries} \label{hsearch_orm_querying}
-Hibernate Search ORM integrates even better with JPA for queries than our Standalone version as the FullTextQuery interfaces extends the JPA Query interface and uses getResultList() to return its results.
+Hibernate Search ORM integrates even better with JPA for queries than our standalone version as the FullTextQuery interfaces extends the JPA Query interface and uses getResultList() to return its results.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying with Hibernate Search ORM}, label={lst:querying_hsearch_orm.java_1}]
@@ -504,7 +506,14 @@ As good as Hibernate Search ORM's API integration with JPA's EntityManager and Q
 	\label{hibernate_search_jpa_integration_with_differences}
 \end{figure}
 \\
-In the figure above, we marked all the methods needing fixing in the FullTextEntityManager and FullTextQuery interfaces. Besides these, some other aspects need changing as well. We will discuss all of the needed changes \& additions in the following paragraphs.
+In the figure above, we marked all the methods requiring to be fixed in the FullTextEntityManager and FullTextQuery interfaces:
+\begin{itemize}
+	\item green: new methods
+	\item red: methods that can't be supported
+	\item olive: methods that can be supported if changed
+\end{itemize}
+\noindent
+Besides these, some other aspects need changes as well. We will discuss all of the needed changes \& additions in the following paragraphs.
 
 \pagebreak
 
@@ -519,11 +528,23 @@ In our generic version we can't tightly integrate with the EntityManagerFactory 
 	\label{jpa_searchfactory_controller}
 \end{figure}
 \noindent
-Having this separate interface means that its lifecycle has to be controlled on its own. We start it with our bootstrapping class \textbf{Setup} like this:
+Having this separate interface means that its lifecycle has to be controlled on its own.
+\\\\
+Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method (the Search class works in Hibernate Search ORM only because of the tight coupling of ORM and Search). This means that an instance of the JPASearchFactoryController has to be available at all times when access to the index is required.
+\\\\
+Using a non-static approach here has one benefit, though: We can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if POJOs have to be indexed which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller}, property "hibernate.search.additionalIndexedTypes").
+\\\\
+We start the fulltext search engine with our bootstrapping class \textbf{Setup} like this:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={MassIndexer usage with Hibernate Search ORM}, label={lst:massindexing_hsearch_orm.java}]
+//In Hibernate Search ORM, the fulltext engine would be started 
+//together with the EntityManagerFactory.
+//In GenericJPA we can't do that.
 EntityManagerFactory emf = ...;
+
+EntityManager em = ...;
+
 Properties properties = new Properties();
 
 properties.setProperty(
@@ -531,8 +552,14 @@ properties.setProperty(
 	"manual-updates"
 );
 
+//In GenericJPA this starts the fulltext engine to 
+//which a reference is returned by this method call
 JPASearchFactoryController searchFactoryController =
 	Setup.createSearchFactoryController( emf, properties );
+
+//FullTextEntityManagers are not obtained with the Search class
+FullTextEntityManager fem = 
+	searchFactoryController.getFullTextEntityManager(em);
 
 //use it...
 
@@ -540,16 +567,12 @@ searchFactoryController.close();
 \end{lstlisting}
 \noindent
 For this example we are using "manual-updates", as we haven't discussed how the index is kept up-to-date. After we worked that out, "manual-updates" will just be a fallback setting for developers not wanting to have the index automatically updated.  Also note that there are many more properties that can be set and vanilla Hibernate Search settings are passed this way as well. A complete list of the available GenericJPA configuration properties can be found in table \ref{table:config_properties_jpasearchfactorycontroller} in the appendix.
-\\\\
-Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method. This means that an instance of the JPASearchFactoryController has to be available at all times access to the index is required.
-\\\\
-Using a non-static approach here has one benefit, though: We can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if POJOs have to be indexed which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller} for the property to work with these additional entities).
 
 \pagebreak
 
 \subsubsection{Index manipulation} \label{using_hsearch_genericjpa_index}
 
-In Hibernate Search ORM, all manual index manipulation is synchronized with the EntityManager transaction lifecycle (index changes underly the JPA transaction system). In our generic approach we cannot do this as JPA doesn't have an extension point for this kind of usage. This is the reason we introduce the \textbf{[begin/commit/rollback]SearchTransaction()} methods in FullTextEntityManager. These have to be used to control the transaction lifecycle of all the index manipulation methods.
+In Hibernate Search ORM, all manual index manipulation is synchronized with the EntityManager transaction lifecycle (index changes underly the JPA transaction system). In our generic approach we cannot do this as JPA doesn't have an extension point for this kind of usage. This is the reason we introduce the \textbf{[begin/commit/rollback]SearchTransaction()} methods in FullTextEntityManager. These have to be used to control the transaction lifecycle of all the index manipulation methods:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Index control with Hibernate Search GenericJPA}, label={lst:index_control_hibernatesearchgenericjpa}]
@@ -568,10 +591,13 @@ try {
 	throw e;
 }
 \end{lstlisting}
-One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the original entity class. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading, etc.. But the engine needs to know which class to get the index description metamodel from.
+\noindent
+By introducing our own search transaction management methods we don't restrict the usage of GenericJPA in application servers by a lot compared to the original Hibernate Search ORM because manual index changes are not needed frequently. In general these transactions can not be compared with real RDBMS transactions anyways as it is allowed to write changes to the index without commiting with flushToIndexes(). These changes can not be reverted by a rollback.
 
 \pagebreak
 \noindent
+One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the original entity class. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading, etc.. But the engine needs to know which class to get the index description metamodel from.
+\\\\
 This is the reason in Hibernate Search GenericJPA we implement logic to feed the right entity class into the engine via user input. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation.
 \\
 \lstset{language=java}
@@ -591,8 +617,10 @@ if ( clazz != null ) {
 //no @InIndex found, try this class
 return entity.getClass();
 \end{lstlisting}
+
+\pagebreak
 \noindent
-Note that this has to be done for every entity that is part of the index, even the ones that are just embedded. With this in mind our entities Book and Author now look like this:
+Note that every entity that is part of the index has to be annotated with @InIndex, even the ones that are just embedded. With this in mind our entities Book and Author now look like this:
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -620,6 +648,8 @@ public class Author {
 	
 }
 \end{lstlisting}
+\noindent
+A similar behaviour supporting the subclassing of entities can be achieved with JPA's @Entity  replacing the @InIndex annotation as it can be found on the first real entity class in the hierarchy as well. We didn't choose this approach because by using @InIndex we support indexing of non-JPA entities as well. In the future a hybrid approach checking for both annotations is possible, but for now the @InIndex approach is sufficient.
 
 \pagebreak
 
