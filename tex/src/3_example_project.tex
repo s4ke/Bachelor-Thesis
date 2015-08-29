@@ -1,4 +1,7 @@
 % !TeX spellcheck = en_GB
+
+\pagebreak
+
 \section{Challenges}\label{Challenges}
 While building the generic version of Hibernate Search, we will encounter some challenges. We will discuss the biggest ones after we have introduced a small example project first. This project will be used to showcase some problems and usages later on in this thesis as well.
 
@@ -97,6 +100,8 @@ Hibernate Search's engine wasn't designed to be used directly by application dev
 
 \subsection{JPA integration}
 After the standalone version is finished, we will build an integration of it with JPA. By incorporating the same engine that the original does, we will support the same indexing behaviour and even stay compatible with entities designed for the original with as little changes as possible. In fact the main goal for the JPA integration is to be as compatible as possible with Hibernate Search ORM.
+\\\\
+In general we are aiming for an architecture that looks similar to this:
 
 \begin{figure}[ht]
 	\centering
@@ -133,7 +138,7 @@ The most important feature to be re-built, is automatic index updating. In Hiber
 The original Hibernate Search ORM is achieving an up-to-date index by listening to specific Hibernate ORM events for all of the C\_UD (CREATE, UPDATE, DELETE) actions. These events also cover entity relationship collections (for example represented by mapping tables like Author\_Book). As our goal is to create a generic Hibernate Search engine that works with any JPA implementation, we cannot rely on any vendor specific event system. Thus, at least an additional generic solution has to be found.
 
 \subsection{Timeline}
-The solutions for the challenges depend on each other in the same order they were described above as the JPA integration can only be worked on as soon as the standalone integration is done and work on the automatic updating mechanism cannot be started without knowing the JPA integration interfaces.
+The solutions for the challenges depend on each other in the same order they were described above as the JPA integration can only be worked on as soon as the standalone integration is done and work on the automatic updating mechanism cannot be started without knowing the JPA integration interfaces. The timeline of our project therefore looks like this:
 \\
 \begin{figure}[ht]
 	\centering

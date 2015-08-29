@@ -56,8 +56,11 @@ public class EntityListener {
 
 }
 \end{lstlisting}
+
+\pagebreak
+
 \noindent
-It is then applied with an annotation on the entity:
+This EntityListener is then applied with an annotation on the entity:
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -88,11 +91,13 @@ public class EntityListener {
 }
 \end{lstlisting}
 
+\pagebreak
+
 \noindent
 Even though these listeners seem to be the perfect fit as they would enable us to fully integrate only with JPA interfaces, they have two big issues as we find out after investigating further.
 \\\\
 Firstly, not all JPA providers seem to handle these events similarly: For example Hibernate ORM doesn't propagate events from collection tables to the owning entity, while EclipseLink does (EclipseLink's behaviour would be needed from all providers).
-\\\\
+
 Secondly, we can see that the events are triggered on flush instead of commit. This is an issue if the changed data is not actually commited.
 \\
 
@@ -151,7 +156,7 @@ One benefit of this approach is that by using polling from the tables and the - 
 
 Triggers are generally created on tables. Since we want to use them for event-listening, we have to cover every table of the domain model that contains data indexed/stored in the index. This also includes all of the mapping tables between entities and all other secondary tables.
 \\\\
-The following figure shows the trigger architecture needed for our Author and Book example.
+The following figure \ref{triggers_schema} shows the trigger architecture needed for our Author and Book example.
 
 \begin{figure}[ht]
 	\centering
@@ -289,7 +294,7 @@ This information is all we need to keep our index up-to-date. For the INSERT and
 After the index is updated accordingly, we run a delete query that deletes all update events
 having an updateid lower than the last processed one for each table.
 \\\\
-Note that we don't use a TRUNCATE statement for the query shown in the following listing \ref{lst:deleting_updates.sql} as it was only introduced with the SQL:2008 standard \footnote{Truncate statement PostgreSQL docs, see~\cite{postgres_truncate}}, which some RDBMSs don't fully support \footnote{Firebird conformance, see~\cite{firebird_conformance}}. Using TRUNCATE would therefore be a deal-breaker for many people wanting to use Hibernate Search GenericJPA. With the DELETE FROM query we make sure the clean-up statement is supported by as many RDBMSs as possible (older versions included).
+Note that we don't use a TRUNCATE statement for the query shown in the following listing \ref{lst:deleting_updates.sql} as it was only introduced with the SQL:2008 standard \footnote{Truncate statement PostgreSQL docs, see~\cite{postgres_truncate}}, which some RDBMSs don't fully support \footnote{Firebird conformance, see~\cite{firebird_conformance}}. Using TRUNCATE could therefore be a deal-breaker for some people wanting to use Hibernate Search GenericJPA. With the DELETE FROM query we make sure the clean-up statement is supported by as many RDBMSs as possible (older versions included).
 \\
 \lstset{language=sql}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -307,7 +312,7 @@ With these two queries for each update table we are able to keep the index up-to
 We already discussed the differences of synchronous and asynchronous approaches in general earlier this chapter. The two chosen implementations differ in terms of extra work that has to be done to get them to work (user-friendliness for the developer) and features.
 
 \subsubsection{Additional work}
-Since the native event system gets the proper information about changes from the vendor side, it doesn't require a lot of information about the general structure of the domain model and tables in the database. The Trigger based system however does need extra information as it has to poll info about changes from the database. This is the reason the user has to add this information as we have seen in \ref{creating_the_tables}.
+Since the native event system gets the proper information about changes from the vendor side, it doesn't require a lot of information about the general structure of the domain model and tables in the database. The Trigger based system however does need extra information as it has to poll info about changes from the database as shown in \ref{updateconsumer_architecture}. This is the reason the user has to add this information as we have seen in \ref{creating_the_tables}.
 \\
 \begin{figure}[ht]
 	\centering
@@ -315,6 +320,8 @@ Since the native event system gets the proper information about changes from the
 	\caption{Hibernate Search GenericJPA update mechanisms}
 	\label{updateconsumer_architecture}
 \end{figure}
+
+\pagebreak
 
 \subsubsection{Features}
 The native event system has the exact same updating behaviour as Hibernate Search ORM's update mechanism because it works on the same principles of using the existing event APIs. It just works for more ORM providers.

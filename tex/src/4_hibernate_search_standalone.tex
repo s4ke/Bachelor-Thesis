@@ -506,7 +506,7 @@ As good as Hibernate Search ORM's API integration with JPA's EntityManager and Q
 	\label{hibernate_search_jpa_integration_with_differences}
 \end{figure}
 \\
-In the figure above, we marked all the methods requiring to be fixed in the FullTextEntityManager and FullTextQuery interfaces:
+In the figure \ref{hibernate_search_jpa_integration_with_differences} above, we have marked all the methods requiring to be fixed in the FullTextEntityManager and FullTextQuery interfaces:
 \begin{itemize}
 	\item green: new methods
 	\item red: methods that can't be supported
@@ -519,21 +519,25 @@ Besides these, some other aspects need changes as well. We will discuss all of t
 
 \subsubsection{Startup}
 
-In our generic version we can't tightly integrate with the EntityManagerFactory of the JPA provider. This is the reason we introduce a separate interface called \textbf{JPASearchFactoryController}.
-
+In our generic version we can't tightly integrate with the EntityManagerFactory of the JPA provider. This is the reason we introduce a separate interface called \textbf{JPASearchFactoryController}:
+\\
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.6]{images/JPASearchFactoryController.pdf}
 	\caption{JPASearchFactoryController}
 	\label{jpa_searchfactory_controller}
 \end{figure}
+
 \noindent
 Having this separate interface means that its lifecycle has to be controlled on its own.
 \\\\
 Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method (the Search class works in Hibernate Search ORM only because of the tight coupling of ORM and Search). This means that an instance of the JPASearchFactoryController has to be available at all times when access to the index is required.
 \\\\
 Using a non-static approach here has one benefit, though: We can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if POJOs have to be indexed which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller}, property "hibernate.search.additionalIndexedTypes").
-\\\\
+
+\pagebreak
+
+\noindent
 We start the fulltext search engine with our bootstrapping class \textbf{Setup} like this:
 \\
 \lstset{language=java}
@@ -598,23 +602,35 @@ By introducing our own search transaction management methods we don't restrict t
 \noindent
 One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the original entity class. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading, etc.. But the engine needs to know which class to get the index description metamodel from.
 \\\\
-This is the reason in Hibernate Search GenericJPA we implement logic to feed the right entity class into the engine via user input. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation.
+This is the reason in Hibernate Search GenericJPA we implement logic to feed the right entity class into the engine via user input. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation. If no @InIndex is found, we use the actual class of the entity object we are about to index as the a best effort as this is the behaviour Hibernate Search ORM has. This algorithm is described in Java code in the next listing \ref{lst:algo_subclasssupport}.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Algorithm to determine the actual indexed type}, label={lst:algo_subclasssupport}]
-// get the first class in the hierarchy that is actually in the index
+//get the first class in the hierarchy
 Class<T> clazz = (Class<T>) entity.getClass();
+
+//check if the original class has @InIndex present
+//if yes, we don't have to go higher up in the class hierarchy
 if ( !clazz.isAnnotationPresent( InIndex.class ) ) {
+
+	//go up in the class hierarchy until either a @InIndex is found
+	//or there is no superclass anymore.
 	while ( (clazz = (Class<T>) clazz.getSuperclass()) != null ) {
 		if ( clazz.isAnnotationPresent( InIndex.class ) ) {
 			break;
 		}
 	}
+	
 }
+
+//if we have found a class annotated with @InIndex
+//we return it here
 if ( clazz != null ) {
 	return clazz;
 }
-//no @InIndex found, try this class
+
+//no @InIndex found, try the entities direct class
+//as a best effort
 return entity.getClass();
 \end{lstlisting}
 

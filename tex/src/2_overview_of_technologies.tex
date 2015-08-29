@@ -90,7 +90,64 @@ Documents are the data-structure Lucene stores and retrieves from the index. An 
 A Document consists of at least one field. Fields are basically tuples of key and value. They can be stored (retrievable from the index) and/or indexed (used for searches, generate hits).
 
 \subparagraph{Analyzers}
-Before documents get indexed, their fields are analyzed with one of the many Analyzers first. Analysis is the process of modifying the input in a manner such that it can be searched upon (stemming, tokenization, ...).
+Before documents get indexed, their fields are analysed with one of the many Analyzers first. Analysis is the process of modifying the input in a manner such that it can be searched upon (stemming, tokenization, ...).
+
+\pagebreak
+
+\subparagraph{Example index}
+The following figure \ref{inverted_index} shows how an inverted index schematically looks like in Lucene. On the left we can see three different documents containing an id and the two text fields "field1" and "field2". The inverted index that stores references to these documents can be seen on the right. It contains all the different terms (field \& value) mapped to the id of the texts they are contained in. The values of these terms have been analysed before they were stored into the index as they only contain singular words instead of the original "sentences" from the left.
+\\
+\begin{figure}[ht]
+	\centering
+	\begin{minipage}{0.4\textwidth} 
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{Documents} \\
+			\specialrule{.2em}{0em}{0em}
+			id & field1 & field2 \\
+			\specialrule{.1em}{0em}{0em}
+			1 & \specialcell{fulltext search \\ lucene} & search \\
+			\hline
+			2 & lucene search & java \\
+			\hline
+			3 & fulltext java & fulltext lucene \\
+			\hline
+		\end{tabular}
+	\end{minipage}
+	% Auffüllen des Zwischenraums
+	\hfill
+	\begin{minipage}{0.4\textwidth}
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{Inverted Index} \\
+			\specialrule{.2em}{0em}{0em}
+			\multicolumn{2}{|c|}{Term} & Occurences \\
+			\hline
+			Field & Value & \\
+			\specialrule{.1em}{0em}{0em}
+			field1 & fulltext & 1,3 \\
+			\hline
+			field1 & search & 1,2 \\
+			\hline
+			field1 & lucene & 1,2 \\
+			\hline
+			field1 & java & 3 \\
+			\hline
+			field2 & search & 1 \\
+			\hline
+			field2 & java & 2 \\
+			\hline
+			field2 & fulltext & 3 \\
+			\hline
+			field2 & lucene & 3 \\
+			\hline
+		\end{tabular}
+	\end{minipage}
+	\caption{schematic inverted index}
+	\label{inverted_index}
+\end{figure}
 
 \pagebreak
 
