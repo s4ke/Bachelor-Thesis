@@ -18,13 +18,18 @@ As already described earlier (\ref{problem_indexing_searching}), hibernate-searc
 
 \subsection{Example project with Hibernate Search annotations} \label{setting_up_example_project}
 
-Before we explain how we do things in particular, we set up the example entities described in \ref{example_project} as if the original Hibernate Search would have been used. We do so by adding additional annotations to our entity-classes:
+Before we explain how we do things in particular, we set up the example entities described in \ref{example_project} as if the original Hibernate Search would have been used. We do so by adding additional annotations to our entity-classes (only the basic properties are explained here):
 
 \begin{enumerate}
 	\item \textbf{@Indexed}: marks the entity as an index root-type.
-	\item \textbf{@DocumentId}: marks the field as the id of this entity. this is only needed if no JPA @Id can be found, but can be used to override settings.
-	\item \textbf{@Field}: describes how the annotated field should be indexed. The fieldname defaults to the Java property name.
-	\item \textbf{@IndexedEmbedded}: marks properties that point to other classes which should be included in the index. By default, all fields contained in these entities are prefixed with the property name this is placed on.
+	\item \textbf{@DocumentId}: marks the field as the id of this entity. this is only needed if no JPA @Id can be found, but can be used to override settings. A Field marked with this
+	is stored and indexed. Storing means that its contents are obtainable by projection when retrieving results which is needed for ids so that the original Entity can be obtained from the database.
+	\item \textbf{@Field}: describes how the annotated field should be indexed:
+	\\\textbf{@Field\#store} determines whether the contents of this Java property should be stored in the index (Store.YES) or not (Store.NO, default) while \textbf{@Field\#index} determines whether it should be searchable in the index (Index.YES, default) or not (Index.NO). 
+	\\
+	The index fieldname defaults to the Java property name but can manually be overridden with \textbf{Field\#name} if needed.
+	\item \textbf{@IndexedEmbedded}: marks properties that point to other classes which should be included in the index. By default, all fields contained in these entities are prefixed with the property name this is placed on. \\
+	\textbf{@IndexedEmbedded\#includeEmbeddedObjectId} decides whether the ids of the embedded objects have to be stored and indexed as well.
 	\item \textbf{@ContainedIn}: used in entities that are embedded in other indexes. this is set on the properties that point back to the index-owning entity.
 \end{enumerate}
 \noindent
