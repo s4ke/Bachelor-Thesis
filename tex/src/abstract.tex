@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_GB
 \section*{Zusammenfassung}
 Hibernate Search
 
@@ -8,3 +9,5 @@ Hibernate Search
 %\end{verbatim}
 
 \section*{Abstract}
+
+Fulltext search engines are a powerful tool to improve query results in applications where relational databases don't suffice. However, they aren't generally integrated with the relational methods like object relational mapping (in Java: JPA). This is where Hibernate Search comes into use: It combines JPA and fulltext search by being the intermediary between Hibernate ORM and a Lucene based indexing system. It has one problem though: Hibernate Search only works with Hibernate ORM and not the JPA standard even though it can. In this thesis we will show how such a generic version can be accomplished. First  we will give an introduction to the topic. Following, we will describe the methods we use and give a short overview over the technologies used. Then we will describe the biggest challenges while building it. Next, we will work out a standalone version of Hibernate Search. After that we will integrate the standalone version with JPA. Following that we will describe how the automatic index updating feature of our generic Hibernate Search works. Then, we will give a complete usage example of our generic version. Finally we will give an outlook on the development steps needed after this thesis.
