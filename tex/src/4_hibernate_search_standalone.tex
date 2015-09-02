@@ -12,7 +12,7 @@
 \noindent
 We will start the development part of this thesis by discussing how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. After this is done we will work out a standalone version of this engine that is easier to work with so we can integrate this standalone version with JPA in the next chapter.
 \\\\
-As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it and all following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
+As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it besides the internal JavaDocs (describing the classes, but not the interaction between them). Nearly all the following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
 
 \pagebreak
 
@@ -136,7 +136,7 @@ A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator}
 \begin{enumerate}
 	\item \textbf{hibernate.search.default.directory\_provider}: The two most common cases here are either "ram" or "filesystem". This decides where the index will be stored. A ram directory is only present in the system memory while the SearchIntegrator exists. A "filesystem" directory is persisted on the hard disk. For "filesystem" the additional property "hibernate.search.default.indexBase" has to be set to an appropriate path.
 	
-	\item \textbf{hibernate.search.lucene\_version}: This decides which Lucene version has to be used internally. The currently latest supported version is "4.10.4".
+	\item \textbf{hibernate.search.lucene\_version}: This decides which Lucene version has to be used internally. The currently latest supported version supported by Hibernate Search is "4.10.4". It can be set to earlier versions to support legacy behaviour in some Lucene classes.
 \end{enumerate}
 \noindent
 A complete list of the available settings can be found in the Hibernate Search documentation \footnote{Hibernate Search documentation, see~\cite{hibernate_search_doc}} (only the Hibernate ORM specific settings cannot be used). Our \textbf{StandaloneSearchConfiguration} (appendix listing \ref{lst:StandaloneSearchConfiguration.java}) defaults to "ram" and "4.10.4".
@@ -267,7 +267,7 @@ for(EntityInfo entityInfo : entityInfos) {
 
 \subsection{Design of the standalone version} \label{standalone_hibernate_search}
 
-In \ref{using_hsearch_engine} we described how the engine can be used natively without any notion of JPA. While using the engine this way is possible, it is not feasible because some of the code is quite complicated. This is the reason we will now discuss a standalone abstraction of this code.
+In \ref{using_hsearch_engine} we described how the engine can be used natively without any notion of JPA. While using the engine this way is possible, it is not convenient because some of the code is quite complicated. This is the reason we will now discuss a standalone abstraction of this code.
 \\\\
 As we have seen in the examples earlier, the main class used for index control and querying are \textbf{SearchIntegrator} and \textbf{HSQuery}. In order to abstract some of the complicated logic, we now introduce two new interfaces: 
 
@@ -411,13 +411,11 @@ Hibernate Search ORM integrates with the JPA API by extending the interfaces  ja
 \subsection{Startup}
 As Hibernate Search ORM is tightly coupled with Hibernate ORM it is automatically started if found on the classpath and the persistence.xml contains the following:
 \\
-\lstset{language=java}
+\lstset{language=java, breaklines=true}
 \begin{lstlisting}[frame=htrbl, caption={Additions to persistence.xml with Hibernate Search ORM}, label={lst:hibernate_search_persistence.xml}]
 ...
-<property name="hibernate.search.default.directory_provider"
-value="filesystem"/>
-<property name="hibernate.search.default.indexBase"
-value="/path/to/indexes"/>
+<property name="hibernate.search.default.directory_provider" value="filesystem"/>
+<property name="hibernate.search.default.indexBase" value="/path/to/indexes"/>
 ...
 \end{lstlisting}
 \noindent
@@ -456,7 +454,7 @@ fem.purge(Book.class, isbn);
 \pagebreak
 
 \subsubsection{Queries} \label{hsearch_orm_querying}
-Hibernate Search ORM integrates even better with JPA for queries than our standalone version as the FullTextQuery interfaces extends the JPA Query interface and uses getResultList() to return its results.
+Hibernate Search ORM integrates even better with JPA for queries than our standalone version as the FullTextQuery interface extends the JPA Query interface and uses getResultList() to return its results.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying with Hibernate Search ORM}, label={lst:querying_hsearch_orm.java_1}]
@@ -502,7 +500,7 @@ fem.createIndexer( Book.class )
 
 \subsection{Architecture of the generic version}
 
-As good as Hibernate Search ORM's API integration with JPA's EntityManager and Query interface is, its additional interfaces still contain some Hibernate ORM related features and logic that a generic version (we call it Hibernate Search GenericJPA) can not support and therefore have to be changed, emulated or removed all together.
+As good as Hibernate Search ORM's API integration with JPA's EntityManager and Query interface is, its additional interfaces still contain some Hibernate ORM related features and logic that a generic version (we call it Hibernate Search GenericJPA) can not support and therefore have to be changed, emulated or removed altogether.
 \\
 \begin{figure}[ht]
 	\centering
@@ -538,7 +536,7 @@ Having this separate interface means that its lifecycle has to be controlled on 
 \\\\
 Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method (the Search class works in Hibernate Search ORM only because of the tight coupling of ORM and Search). This means that an instance of the JPASearchFactoryController has to be available at all times when access to the index is required.
 \\\\
-Using a non-static approach here has one benefit, though: We can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if POJOs have to be indexed which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller}, property "hibernate.search.additionalIndexedTypes").
+Using a non-static approach here has one benefit, though: we can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if POJOs have to be indexed which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller}, property "hibernate.search.additionalIndexedTypes").
 
 \pagebreak
 
@@ -696,7 +694,7 @@ Besides these changes, the interface behaves the exact same as described in \ref
 
 \subsubsection{Index rebuilds}
 
-The MassIndexer utility is a really important feature of Hibernate Search ORM. As it uses Hibernate ORM logic under the hood (and in its interface), we have to write our own version of it. We don't build a API compatible version for Hibernate Search GenericJPA as a MassIndexer is generally not used in many places in the code anyways. Additionally this way we can give different configuration properties for better performance as our implementation differs in some details.
+The MassIndexer utility is a really important feature of Hibernate Search ORM. As it uses Hibernate ORM logic under the hood (and in its interface), we have to write our own version of it. We don't build an API compatible version for Hibernate Search GenericJPA as a MassIndexer is generally not used in many places in the code anyways. Additionally this way we can give different configuration properties for better performance as our implementation differs in some details.
 \\\\
 The basic ideas are the same though: Each entity type has its ids scrolled from the database by one thread (there can be multiple threads doing this, but for other entities) and then a configurable amount of indexing threads handles these ids batch by batch in a Hibernate Search index-writing backend optimized for this task (this is part of Hibernate Search's engine and can therefore be reused).
 \\\\

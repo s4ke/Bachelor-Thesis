@@ -1,7 +1,7 @@
 % !TeX spellcheck = en_GB
 
 \section{Overview of technologies}\label{Overview}
-Before we can go into detail about how to work with Hibernate Search in a generic environment, we will give a short overview of relevant technologies first. We will explain why ORMs in general and the JPA specification in particular are beneficial. Then, we will explain what fulltext search engines are used for and give a short overview about the available solutions for Java. We will see that generalizing Hibernate Search for any JPA implementation is a good approach and that it has benefits over using the different search solutions available.
+Before we can go into detail about how to work with Hibernate Search in a generic environment, we will give a short overview of the relevant technologies first. We will explain why ORMs in general and the JPA specification in particular are beneficial. Then, we will explain what fulltext search engines are used for and give a short overview about the available solutions for Java. We will see that generalizing Hibernate Search for any JPA implementation is a good approach and that it has benefits over using the different search solutions available.
 
 \subsection{Object Relational Mappers}
 Nowadays, many popular languages like Java, C\#, etc. are object oriented\footnote{Wikipedia on Object Oriented Programming (OOP), see~\cite{object_oriented_programming_wiki}}.
@@ -20,14 +20,14 @@ enable users to write queries against these classes instead of tables. The retur
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={ORM query example}, label={lst:flattening.sql}]
-List<Author> data = orm.query("SELECT a FROM Author a " +
-	"LEFT OUTER JOIN a.books");
+List<Author> data = orm.query("SELECT a FROM Author a");
 for(Author author : data) {
+	// we can still fetch the books without joining in the query
 	System.out.println("name: " + author.getName() + 
 		", books: " + author.getBooks());
 }
 \end{lstlisting}
-~\\
+\noindent
 This is especially useful if used in big software products as not all programmers have to know the exact details of the underlying database. The database system could even be completely replaced by another (provided the ORM supports the specific RDBMS), while the business logic would not change a bit.
 
 \subsection{JPA}
@@ -36,7 +36,7 @@ The first version of the JPA standard was released in May 2006. From then on it 
 \\\\
 Some popular relational implementations are:
 \begin{itemize}
-	\item Hibernate ORM (JBoss)\footnote{Hibernate ORM project homepage, see~\cite{hibernate_orm}}
+	\item Hibernate ORM (Red Hat)\footnote{Hibernate ORM project homepage, see~\cite{hibernate_orm}}
 	\item EclipseLink (Eclipse foundation)\footnote{EclipseLink project homepage, see~\cite{eclipselink}}
 	\item OpenJPA (Apache foundation)\footnote{OpenJPA project homepage, see~\cite{openjpa}}
 \end{itemize}
@@ -62,6 +62,8 @@ While this might be enough for some applications, this wildcard query doesn't su
 	\item fuzzy queries (variations of the original string will get matched, too)
 	\item phrase queries (search for a specified phrase)
 	\item regular expression queries (matches are determined by a regular expression)
+	\item stemming and language specific optimisations
+	\item comprehensive synonym support
 \end{itemize}
 There may exist some RDBMS that support similar query-types, but in the context of using an ORM we would then lose the ability to switch databases since we would use vendor-specific features not every RDBMS supports.
 \\\\
@@ -74,7 +76,7 @@ Fulltext search engines can be used to complement databases in this regard. They
 \begin{quote}
 	Apache Lucene™ is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.\footnote{official Lucene website, see~\cite{lucene_apache_org}}
 \end{quote}
-Lucene serves as the basis for many fulltext search engines written in Java. It has many different utilties and modules aimed at search engine developers. However, it can be used on its own as well. Its latest stable version is 5.3.0 \footnote{official Lucene website, see~\cite{lucene_apache_org}}.
+Lucene serves as the basis for many fulltext search engines written in Java. It has many different utilities and modules aimed at search engine developers. However, it can be used on its own as well. Its latest stable version is 5.3.0 \footnote{official Lucene website, see~\cite{lucene_apache_org}}.
 
 \paragraph{Concepts}
 
@@ -162,13 +164,13 @@ One benefit of its low-level API is that it can easily be extended with custom a
 \pagebreak
 
 \subsubsection{Fulltext search servers: ElasticSearch and Solr}
-Lucene is the basis for two of the most popular search servers available: ElasticSearch (by elastic)\footnote{ElasticSearch Homepage, see~\cite{elasticsearch_homepage}} and Solr (sister project of Lucene)\footnote{Solr Homepage, see~\cite{solr_homepage}}. Their current stable versions are 1.7.1 \footnote{ElasticSearch Download website, see~\cite{elasticsearch_downloads_website}} and 5.3.0 \footnote{Solr Homepage, see~\cite{solr_homepage}} respectively.
+Lucene is the basis for two of the most popular Lucene based search servers available: ElasticSearch (by elastic)\footnote{ElasticSearch Homepage, see~\cite{elasticsearch_homepage}} and Solr (sister project of Lucene)\footnote{Solr Homepage, see~\cite{solr_homepage}}. Their current stable versions are 1.7.1 \footnote{ElasticSearch Download website, see~\cite{elasticsearch_downloads_website}} and 5.3.0 \footnote{Solr Homepage, see~\cite{solr_homepage}} respectively.
 
 \paragraph{Usage}
-As both ElasticSearch and Solr are standalone server applications they have to be configured before they can be used similar to the process of setting up a RDBMS. As they don't ship with any authentication mechanism by default they also have to be secured before they are used in production \footnote{Solr security, see~\cite{solr_security}} \footnote{elastic Shield (security for ElasticSearch), see~\cite{elasticsearch_security}}. Index changes and queries are done via a REST-like API (among other options).
+As both ElasticSearch and Solr are standalone server applications, they have to be configured before they can be used similar to the process of setting up a RDBMS. As they don't ship with any authentication mechanism by default they also have to be secured before they are used in production \footnote{Solr security, see~\cite{solr_security}} \footnote{elastic Shield (security for ElasticSearch), see~\cite{elasticsearch_security}}. Index changes and queries are done via a REST-like API (among other options).
 
 \paragraph{Features}
-As ElasticSearch and Solr are built upon Lucene, they support the same basic features that Lucene does, but add additional indexing and searching functionality and come with their own stack of tools to ease their usage (index inspectors, load analyzers, ... \footnote{Solr Administration (Core Specific Tools), see~\cite{solr_admin}} \footnote{ElasticHQ, see~\cite{elasticsearch_admin}}). They are generally used because of their good clustering capabilities (distribution \& replication) and are optimized for high throughput and scalability \footnote{ElasticSearch: Life inside a cluster, see~\cite{elasticsearch_clustering}} \footnote{Solr: Introduction to Scaling and Distribution, see~\cite{solr_clustering}}. As they are not running inside the client application (as a native Lucene implementation would) these kind of servers don't force the user to use a specific programming language (in this case Java).
+As ElasticSearch and Solr are built upon Lucene, they support the same basic features that Lucene does, but add additional indexing and searching functionality and come with their own stack of tools to ease their usage (index inspectors, load analyzers, ... \footnote{Solr Administration (Core Specific Tools), see~\cite{solr_admin}} \footnote{ElasticHQ, see~\cite{elasticsearch_admin}}). They are generally used because of their good clustering capabilities (distribution \& replication) and are optimized for high throughput and scalability \footnote{ElasticSearch: Life inside a cluster, see~\cite{elasticsearch_clustering}} \footnote{Solr: Introduction to Scaling and Distribution, see~\cite{solr_clustering}}. As they are not running inside the client application (as a native Lucene implementation would) these kind of servers don't force the user to use a specific programming language (in our case a JVM based one like Java).
 
 \pagebreak
 
@@ -184,12 +186,12 @@ Hibernate Search addresses these shortcomings - it indexes your domain model wit
 Hibernate Search's current stable version is 5.3.0.Final which is based on Lucene 4.10.4 \footnote{hibernate-search-engine on mvnrepository.org, see~\cite{hibernate_search_engine_mvnrepository}}.
 
 \paragraph{Usage}
-Hibernate Search is used in the context of JPA compliant applications using Hibernate ORM. It easily be used by adding it to the classpath and setting some configuration properties in the JPA persistence.xml and integrates with JPA interfaces seamlessly. 
+Hibernate Search is used in the context of JPA compliant applications using Hibernate ORM. It can easily be used by adding it to the classpath and setting some configuration properties in the JPA persistence.xml and integrates with JPA interfaces seamlessly. 
 
 \paragraph{Features}
-Similar to ElasticSearch and Solr Hibernate Search is built upon Lucene and has similar features regarding indexing, searching and clustering but it is designed to be used in a JPA environment: It indexes JPA entities and the queries return them again.
+Similar to ElasticSearch and Solr Hibernate Search is built upon Lucene and has similar features regarding indexing, searching and clustering but it is designed to be used in a JPA environment: it indexes JPA entities and the queries return them again.
 \\\\
-It is tightly coupled with Hibernate ORM: While an integration with JPA is existent, Hibernate Search doesn't allow other JPA implementations than Hibernate ORM to be used as it internally relies on its code.
+It is tightly coupled with Hibernate ORM: while an integration with JPA is existent, Hibernate Search doesn't allow other JPA implementations than Hibernate ORM to be used as it internally relies on its code.
 \\\\
 For future versions the Hibernate Search team is planning on adding ElasticSearch and Solr as additional backends besides the already existing Lucene based backend and the optional Infinispan integration.
 
@@ -197,7 +199,7 @@ For future versions the Hibernate Search team is planning on adding ElasticSearc
 
 \subsubsection{Why a generic Hibernate Search?}
 
-For Hibernate ORM developers Hibernate Search is probably currently the easiest way to have fulltext search capabilities in their application. While the native Lucene backend might not be the perfect choice for some applications (because they want to share the index with applications written in e.g. Python), the planned ElasticSearch and Solr backends would make up for this in the future.
+For Hibernate ORM developers Hibernate Search is probably currently the easiest way to have fulltext search capabilities in their application. While the native Lucene backend might not be the perfect choice for some applications (because they want to share the index with applications written in e.g. C\#), the planned ElasticSearch and Solr backends would make up for this in the future.
 \\\\
 Developers using other JPA implementations like EclipseLink or OpenJPA currently don't have the option to use a similar API to Hibernate Search as the Compass project has been discontinued (last version: 2.2.0 from Apr 06, 2009 as of mvnrepository.org \footnote{see \url{http://mvnrepository.com/artifact/org.compass-project/compass/2.2.0}}).
 \\\\

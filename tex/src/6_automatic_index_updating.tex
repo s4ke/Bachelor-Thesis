@@ -73,7 +73,7 @@ public class Book {
 }
 \end{lstlisting}
 \noindent
-As the JPA provider creates the EnityListeners automatically, we have no access to them without injecting a reference to them in a static way. While this might cause some Classloader problems, it should be fine in most cases.
+As the JPA provider creates the EntityListeners automatically, we have no access to them without injecting a reference to them in a static way. While this might cause some Classloader problems, it should be fine in most cases.
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -140,7 +140,7 @@ As this seems to be the only reasonable solution for a synchronous update system
 \pagebreak
 
 \subsubsection{Asynchronous approach}\label{async_approach}
-In contrary to the synchronous approach where we described two different versions, for the asynchronous version we only have one feasible solution available: A trigger based system.
+In contrary to the synchronous approach where we described two different versions, for the asynchronous version we only have one feasible solution available: a trigger based system.
 \\\\
 Paul DuBois writes in MySQL - Developer's Library:
 \begin{quote}
@@ -179,14 +179,14 @@ All three tables Author, Book and Author\_Book have three triggers registered on
 \begin{enumerate}
 	\item \textbf{updateid primary key:} Update events have to be sortable by the order they occured. All Update tables share the same sequence of primary keys so that no key appears twice in all of these tables.
 	\item \textbf{eventcase column:} This column contains a identifier for the cases INSERT, DELETE or UPDATE.
-	\item \textbf{pseudo foreign key(s):} The relevant primary keys of the entities involved in the tables have to be stored in the Update tables as well. Note that they are not marked as real foreign keys as a DELETE event wouldn't work then (we can't have a reference to a non existent entity).
+	\item \textbf{pseudo foreign key(s):} The relevant primary keys of the entities involved in the tables have to be stored in the Update tables as well. Note that they are not marked as real foreign keys as a DELETE event wouldn't work as we can't have a reference to a non existent entity.
 \end{enumerate}
 
 \pagebreak
 
 \paragraph{Table creation} \label{creating_the_tables}
 
-Since the creation of these tables requires a lot of work to be done, we have to automate it as good as possible. We do this by requiring additional \textbf{@UpdateInfo} annotations on the entities to map the required information for the update tables and then generating them out of it.
+Since the creation of these tables requires a lot of work to be done, we have to automate it as well as possible. We do this by requiring additional \textbf{@UpdateInfo} annotations on the entities to map the required information for the update tables and then generating them out of it.
 \\\\
 These annotations contain at least the original table's name (UpdateInfo\#tableName) and the names \& types (IdColumn\#column \& IdColumn\#columnType) of the entity key columns. The name of the update table and the columns in it are then generally derived automatically from that. 
 \\\\
@@ -264,7 +264,7 @@ public class Author {
 }
 \end{lstlisting}
 \noindent
-\textit{Note: The update tables are NO JPA entities, so we have to work with native SQL in the backend}
+\textit{Note: The update tables are NOT JPA entities, so we have to work with native SQL in the backend}
 \\\\
 \noindent
 However, if the developer needs different names in the update tables (e.g. if there already exists a table with the same name), it is possible to manually set these properties. They can be found on the same level as the corresponding info for the original table is set.
