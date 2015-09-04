@@ -14,9 +14,8 @@ FROM author_book, author, book
 WHERE author_book.bookid = book.id
 AND author_book.authorid = author.id
 \end{lstlisting}
-~\\
 This is one of the points where Object Relational Mappers (ORM) come into use. They map tables to entity-classes and
-enable users to write queries against these classes instead of tables. The returned objects are part of a complex object hierarchy and are easier to use from a object oriented point of view.
+enable users to write queries against these classes instead of tables. The returned objects are part of a complex object hierarchy and are easier to use from a object oriented point of view as even relations that were not included in a join can generally be re-queried automatically when needed.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={ORM query example}, label={lst:flattening.sql}]
@@ -32,7 +31,7 @@ This is especially useful if used in big software products as not all programmer
 
 \subsection{JPA}
 
-The first version of the JPA standard was released in May 2006. From then on it rose to being probably the most commonly used persistence API for Java and is considered the "industry standard approach for Object Relational Mapping"\footnote{Wikibooks on Java Persistence, see~\cite{wikibooks_on_jpa}}. While mostly known for standardizing relational database mappers (ORM), it also supports other concepts like NoSQL\footnote{Hibernate OGM project homepage, see~\cite{hibernate_ogm}} \footnote{EclipseLink project homepage, see~\cite{eclipselink}} or XML storage\footnote{EclipseLink project homepage, see~\cite{eclipselink}}. However, when talking about JPA in this thesis, we will be focusing on the relational aspects of it. Currently, the newest version of this standard is 2.1 \footnote{JSR 338: JPA 2.1 specification, see~\cite{jpa_21_jcp}} \footnote{Wikipedia on Java Persistence API, see~\cite{wiki_jpa}}.
+The first version of the JPA standard was released in May 2006. From then on it rose to being probably the most commonly used persistence API for Java and is considered the "industry standard approach for Object Relational Mapping"\footnote{Wikibooks on Java Persistence, see~\cite{wikibooks_on_jpa}} \footnote{Stackoverflow JPA tag, see~\cite{stackoverflow_jpa}}. While mostly known for standardizing relational database mappers (ORM), it also supports other concepts like NoSQL\footnote{Hibernate OGM project homepage, see~\cite{hibernate_ogm}} \footnote{EclipseLink project homepage, see~\cite{eclipselink}} or XML storage\footnote{EclipseLink project homepage, see~\cite{eclipselink}}. However, when talking about JPA in this thesis, we will be focusing on the relational aspects of it. Currently, the newest version of this standard is 2.1 \footnote{JSR 338: JPA 2.1 specification, see~\cite{jpa_21_jcp}}.
 \\\\
 Some popular relational implementations are:
 \begin{itemize}
@@ -44,7 +43,7 @@ Some popular relational implementations are:
 Using the standardized JPA API over any native ORM API has one really interesting benefit:
 The specific JPA implementation can be swapped out as it comes with standards for many common use cases.
 \\\\
-This is particularily important if you are working in a Java EE environment. Java EE itself is a specification for platforms, mostly Web-servers (JPA is part of the Java EE spec).\footnote{Wikipedia on Java EE, see~\cite{wiki_java_ee}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for (Wildfly with Hibernate ORM, GlassFish with EclipseLink, ...). This means that if the server is switched, it could also be a reasonable idea to swap out the JPA implementor. If everything in the application is written in a JPA compliant way, the user will then generally not run into many problems related to this switch.
+This is particularily important if you are working in a Java EE environment. Java EE itself is a specification for platforms, mostly Web-servers (JPA is part of the Java EE spec).\footnote{Java EE specification on oracle.com~\cite{java_ee_spec}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for (Wildfly with Hibernate ORM, GlassFish with EclipseLink, ...). This means that if the server is switched, it could also be a reasonable idea to swap out the JPA implementor. If everything in the application is written in a JPA compliant way, the user will then generally not run into many problems related to this switch.
 
 \pagebreak
 

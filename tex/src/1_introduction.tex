@@ -64,8 +64,6 @@ In chapter \ref{Methods} we explain what methods we are using to build Hibernate
 
 \section{Methods} \label{Methods}
 
-\fixme{Überarbeiten, zu unwissenschaftlich}
-
 While developing the generic version of Hibernate Search we are using the following process schema to find the solutions for the all the different problems:
 
 \begin{figure}[ht]
@@ -76,19 +74,24 @@ While developing the generic version of Hibernate Search we are using the follow
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{Analyze Problem}: For every given problem we have to look at all the different aspects of it and try to find the solutions.
-	\item \textbf{Define Features in Interfaces}: As building a generic Hibernate Search is a complicated and hard to predict task, creating UML class diagrams would be time consuming as the UML diagrams would be prone to constant changes. In a way, Java interfaces (with the sometimes needed accessory classes and annotations) allow for a rough architectural overview similar to what class diagrams would provide in this case as they allow us to define the ins, outs and side-effects of every method precisely and \textbf{on-the-fly}.
-	\\\\
-	By defining the features in interfaces first, we achieve complete independence between the implementing classes besides their interfaces and are by default compliant to the \textbf{Open-Closed-Principle} internally: "Modules should be both open (for extension) and closed (for modification)".
-	\\\\
-	Additionally, while modelling the interfaces we try to be as compliant to the \textbf{Single Responsibility Principle} as possible because it enforces structures that are easy to reuse and change.
-	\item \textbf{Implement Interfaces}: Once the interfaces are properly defined, we write implementations for these according to the contracts set.
-	\item \textbf{Unit Test}: Each feature has to have a corresponding unit test. These are necessary to test each implementation for the right behaviour (outs and side-effects) for at least one given input.
-	\item \textbf{Integration Test}: While Unit-Tests check the behaviour of every \textit{single} feature implementation, integration tests are used to cover the correct behaviour when used together with the other parts of the project in a more real world use case.
+	\item \textbf{Requirements Engineering}: As part of the solution finding process for each problem, we start by specifying a requirements specification that consists of:
+	\begin{itemize}
+		\item "a specification of the context in which the system will operate,
+		\item a list of desired system functions of the system,
+		\item a definition of the semantics of these functions,
+		\item and a list of quality attributes of those functions" \footnote{Web Engineering, chapter: Requirements Engineering: Problem Analysis and Solution Specification, R. J. Wieringa, 2004, see~\cite{requirements_engineering}}
+	\end{itemize}
+	\item \textbf{Feature Definition in Interfaces}: As the next step, the requirements are translated into Java interfaces.	While modelling the interfaces we try to be as compliant to the \textbf{Single Responsibility Principle} as possible because it enforces structures that are easy to reuse and change due to being pluggable single purpose classes.
+	\\
+	By defining the features in interfaces, we achieve complete independence between the implementing classes besides their interfaces and are by default compliant to the \textbf{Open-Closed-Principle} internally: "Modules should be both open (for extension) and closed (for modification)" which means that our project becomes more pluggable.
+	\item \textbf{Implement Interfaces}: Once the interfaces are properly defined, we write implementations for these according to the contracts set. These classes generally don't use other implementations directly and build functionality only by using interfaces.
+	\item \textbf{Unit Test}: Each feature has to have a corresponding unit test. These are necessary to test each implementation for the right behaviour (outputs and side-effects) for at least one given input. They also help to identify bugs in the implementations.
+	\item \textbf{Integration Test}: While Unit-Tests check the behaviour of every \textit{single} feature implementation, integration tests are used to cover the correct behaviour when used together with the other parts of the project. With these tests we ensure all features interoperate properly with each other.
 \end{itemize}
 \noindent
-Also note that once a step is finished, that doesn't mean that it is final. As we have seen in the diagram, we can go back and forth between the different steps at will to adapt to specific implementation problems and newly arisen problems that have not been covered before.
+Note that once a step is finished, that doesn't mean it is final. As we can see in the diagram, we can go back and forth between the different steps at will to adapt to specific implementation problems and new problems that have not been covered before.
 \\\\
-We choose this kind of on-the-fly approach because it suits the project best: We have to investigate different approaches before we can work out the real solution first. Also because "hibernate-search-engine" is an internal API, we have to be as flexible with our development as possible as some features of it can be different what we might expect in the first place. Our non-strict approach helps us in this aspect as well.
-
+We choose this kind of on-the-fly structure because it suits the project best: We have to investigate different approaches before we can work out the real solution first. Also because "hibernate-search-engine" is an internal API, we have to be as flexible with our development as possible as some features of it can be different what we might expect in the first place.
+\\\\
+It is worth mentioning that all the tests (including the integration tests) are executed during each build to ensure no regression bugs occur. This is automatically managed by the Maven build tool.
 \pagebreak
