@@ -81,7 +81,6 @@ While developing the generic version of Hibernate Search we are using the follow
 		\item a definition of the semantics of these functions,
 		\item and a list of quality attributes of those functions" \footnote{Web Engineering, chapter: Requirements Engineering: Problem Analysis and Solution Specification, R. J. Wieringa, 2004, see~\cite{requirements_engineering}}
 	\end{itemize}
-	While 
 	\item \textbf{Feature Definition in Interfaces}: As the next step, the requirements are translated into Java interfaces.	While modelling the interfaces we try to be as compliant to the \textbf{Single Responsibility Principle} \footnote{objectmentor.com: Article on Single Responsibility Principle, see~\cite{singleresponsibility_objectmentor}} as possible because it enforces structures that are easy to reuse and change due to being pluggable single purpose classes. However we explicitly break it in some cases to allow more user-friendly interfaces (mostly in API entry-points).
 	\\
 	By defining the features in interfaces and using them instead of implementations to write code, we achieve complete independence between the implementing classes and are compliant to the \textbf{Open-Closed-Principle} \footnote{	objectmentor.com: Article on Open-Closed-Principle, see~\cite{openclosed_objectmentor}} internally ("Modules should be both open (for extension) and closed (for modification)" \footnote{Object-Oriented Software Construction, Prentice Hall, 1988, Bertrand Meyer, see~\cite{openclosed_bertrand}}) which allows us to write more "pluggable" code.
@@ -90,7 +89,7 @@ While developing the generic version of Hibernate Search we are using the follow
 	\item \textbf{Integration Test}: While Unit-Tests check the behaviour of every \textit{single} feature implementation, integration tests are used to cover the correct behaviour when used together with the other parts of the project. With these tests we ensure all features interoperate properly with each other.
 \end{itemize}
 \noindent
-Note that once a step is finished, that doesn't mean it is final. As we can see in the diagram, we can go back and forth between the different steps at will to adapt to specific implementation problems and new problems that have not been covered before.
+Note that once a step is processed, that doesn't mean it is final. As we can see in the diagram, we can go back and forth between the different steps at will to adapt to specific implementation problems and new problems that have not been covered before.
 \\\\
 We choose this kind of on-the-fly structure because it suits the project best: We have to investigate different approaches before we can work out the real solution, first. Additionally, because "hibernate-search-engine" is an internal API, we have to be as flexible as possible with our development since some features of it can be different than what we might expect in the first place.
 \\\\
