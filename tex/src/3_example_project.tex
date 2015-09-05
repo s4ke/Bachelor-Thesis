@@ -101,8 +101,8 @@ Hibernate Search's engine wasn't designed to be used directly by application dev
 
 \subsection{JPA integration}
 After the standalone version is finished, we will build an integration of it with JPA. By incorporating the same engine that the original does, we will support the same indexing behaviour and even stay compatible with entities designed for the original with as little changes as possible. In fact the main goal for the JPA integration is to be as compatible as possible with Hibernate Search ORM.
-\\\\
-In general we are aiming for an architecture that looks similar to this:
+\\\\\
+The implementations of these two challenges are represented by the modules "Hibernate Search Standalone" and "Hibernate Search GenericJPA" in the following figure \ref{hibernate_search_genericjpa_complete_architecture}. Together with the module "Hibernate Search Database Utilities", these are the submodules of our complete generic version and the result of the top-bottom analysis as described in chapter \ref{Methods}. Note that during this thesis we will be referring to the whole project by the name of the main module "Hibernate Search GenericJPA" as well.
 
 \begin{figure}[ht]
 	\centering
@@ -136,7 +136,7 @@ In general we are aiming for an architecture that looks similar to this:
 \subsection{Automatic index updating} \label{automatic_indexing_problematic_intro}
 The most important feature to be re-built, is automatic index updating. In Hibernate Search ORM, every change in the database is automatically reflected in the index. It is important to have this feature, because otherwise developers would have to manually make sure the index is always up-to-date. With bigger project sizes it gets increasingly harder to keep track of all the locations in the code that change index relevant data and inconsistencies in the indexing logic become nearly unavoidable. While this problem might be mitigated by hiding all the database access logic behind a service layer, even such a solution would be hard to keep error-free as for big applications this layer will probably have multiple critical indexing relevant spots as well.
 \\\\
-The original Hibernate Search ORM is achieving an up-to-date index by listening to specific Hibernate ORM events for all of the C\_UD (CREATE, UPDATE, DELETE) actions. These events also cover entity relationship collections (for example represented by mapping tables like Author\_Book). As our goal is to create a generic Hibernate Search engine that works with any JPA implementation, we cannot rely on any vendor specific event system. Thus, at least an additional generic solution has to be found.
+The original Hibernate Search ORM is achieving an up-to-date index by listening to specific Hibernate ORM events for all of the C\_UD (CREATE, UPDATE, DELETE) actions. These events also cover entity relationship collections (for example represented by mapping tables like Author\_Book). As our goal is to create a generic Hibernate Search engine that works with any JPA implementation, we cannot rely on any vendor specific event system. Thus, at least an additional generic solution has to be found as part of the "Hibernate Search GenericJPA" module.
 
 \subsection{Timeline}
 The solutions for the challenges depend on each other in the same order they were described above as the JPA integration can only be worked on as soon as the standalone integration is done and work on the automatic updating mechanism cannot be started without knowing the JPA integration interfaces. The timeline of our project therefore looks like this:
