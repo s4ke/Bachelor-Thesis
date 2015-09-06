@@ -95,8 +95,8 @@ public class EntityListener {
 Even though these listeners seem to be the perfect fit as they would enable us to fully integrate only with JPA interfaces, they have two big issues as we find out after investigating further.
 \\\\
 Firstly, not all JPA providers seem to handle these events similarly: For example Hibernate ORM doesn't propagate events from collection tables to the owning entity, while EclipseLink does (EclipseLink's behaviour would be needed from all providers).
-
-Secondly, we can see that the events are triggered on flush instead of commit. This is an issue if the changed data is not actually commited.
+\\\\
+Secondly, we can see that the events are triggered on flush instead of commit as can be seen in listing \ref{lst:flush_event.java}. This is an issue if the changed data is not actually commited:
 \\
 
 \lstset{language=java}
@@ -188,7 +188,7 @@ Since the creation of these tables requires a lot of work to be done, we have to
 \\\\
 These annotations contain at least the original table's name (UpdateInfo\#tableName) and the names \& types (IdColumn\#column \& IdColumn\#columnType) of the entity key columns. The name of the update table and the columns in it are then generally derived automatically from that. 
 \\\\
-A similar behaviour could be achieved by using the JPA mapping annotations to read the original schema and then deduce the needed update schema from that. We don't use this approach nonetheless, because the task of parsing these annotations correctly would be prone to errors due to the amount of different annotations (@Basic, @Column, @IdClass, @EmbeddedCollection, @OneToOne, @ManyToOne, @OneToMany, @ManyToMany, ...). While working out a correct solution for all the different cases would be possible, it would be quite time-consuming and wouldn't have fit in the time schedule of this thesis. However, this does not mean that we won't try to build it in the future.
+A similar behaviour could be achieved by using the JPA mapping annotations to read the original schema and then deduce the needed update schema from that. We don't use this approach nonetheless, because the task of parsing these annotations correctly would be prone to errors due to the amount of different annotations (@Basic, @Column, @IdClass, @EmbeddedCollection, @OneToOne, @ManyToOne, @OneToMany, @ManyToMany, ...). In some cases these annotations aren't even required for JPA to work, which makes it even more complicated. This makes the approach less streamlined than using the extra @UpdateInfo annotations.
 
 \pagebreak
 \noindent
@@ -356,20 +356,19 @@ We can see that both event systems can be useful in different cases. This is the
 
 \begin{table}[h] 
 	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline 
+	\begin{tabular}{c||c|c}
 		Approach & Pros & Cons \\ 
-		\hline 
-		\specialcell{Native Event System} & 
+		\hline
+		\hline
+		\specialcell{Native \\ Event \\ System} & 
 		\specialcell{+ No additional work \\ needed by the developer} & 
-		\specialcell{- Relies on different\\ implementation- \\ specific APIs \\ (only works with \\ specifically supported ones) \\
-					- Changes from outside\\ of the JPA provider \\are not recognized \\ (e.g. native SQL access)} \\ 
+		\specialcell{~\\- Relies on different\\ implementation- \\ specific APIs \\ (only works with \\ specifically supported ones) \\
+					- Changes from outside\\ of the JPA provider \\are not recognized \\ (e.g. native SQL access)\\~} \\ 
 		\hline
-		\specialcell{Trigger Event System} & 
-		\specialcell{+ Works with any JPA \\implementation \\ (even rarely used ones) \\
-					+ Changes from outside\\ of the JPA provider \\ are recognized \\ (e.g. native SQL access)} & 
+		\specialcell{Trigger \\ Event \\ System} & 
+		\specialcell{~\\+ Works with any JPA \\implementation \\ (even rarely used ones) \\
+					+ Changes from outside\\ of the JPA provider \\ are recognized \\ (e.g. native SQL access) \\~} & 
 		\specialcell{- Additional work by \\the developer needed \\ (annotations)} \\ 
-		\hline
 	\end{tabular}
 	\footnotesize \caption{Pros and Cons of the two update systems}
 	\label{table:pros_and_cons_update_systems}
