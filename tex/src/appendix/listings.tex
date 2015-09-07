@@ -136,9 +136,9 @@ public class StandaloneSearchConfiguration
 			(key) -> {
 				LOGGER.info( 
 					"defaulting to Lucene Version: " 
-					+ Version.LUCENE_4_10_4.toString() 
+					+ Version.LUCENE_5_2_1.toString() 
 				);
-				return Version.LUCENE_4_10_4.toString();
+				return Version.LUCENE_5_2_1.toString();
 		});
 		this.reflectionManager = new JavaReflectionManager();
 		this.providedServices = new HashMap<>();

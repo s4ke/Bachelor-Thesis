@@ -137,10 +137,10 @@ A Hibernate Search engine instance is represented by a \textbf{SearchIntegrator}
 \begin{enumerate}
 	\item \textbf{hibernate.search.default.directory\_provider}: The two most common cases here are either "ram" or "filesystem". This decides where the index will be stored. A ram directory is only present in the system memory while the SearchIntegrator exists. A "filesystem" directory is persisted on the hard disk. For "filesystem" the additional property "hibernate.search.default.indexBase" has to be set to an appropriate path.
 	
-	\item \textbf{hibernate.search.lucene\_version}: This decides which Lucene version has to be used internally. The currently latest supported version supported by Hibernate Search is "4.10.4". It can be set to earlier versions to support legacy behaviour in some Lucene classes.
+	\item \textbf{hibernate.search.lucene\_version}: This decides which Lucene version has to be used internally. The currently latest supported version supported is "5.2.1" as we are using an early alpha version of Hibernate Search for development (see "Used software" in the appendix). It can be set to earlier versions to support legacy behaviour in some Lucene classes.
 \end{enumerate}
 \noindent
-A complete list of the available settings can be found in the Hibernate Search documentation \footnote{Hibernate Search documentation, see~\cite{hibernate_search_doc}} (only the Hibernate ORM specific settings cannot be used). Our \textbf{StandaloneSearchConfiguration} (appendix listing \ref{lst:StandaloneSearchConfiguration.java}) defaults to "ram" and "4.10.4".
+A complete list of the available settings can be found in the Hibernate Search documentation \footnote{Hibernate Search documentation, see~\cite{hibernate_search_doc}} (only the Hibernate ORM specific settings cannot be used). Our \textbf{StandaloneSearchConfiguration} (appendix listing \ref{lst:StandaloneSearchConfiguration.java}) defaults to "ram" and "5.2.1".
 \\\\
 Having this class in place, a \textbf{SearchIntegrator} can be obtained by a \textbf{SearchIntegratorBuilder} like this:
 \\
@@ -217,7 +217,7 @@ This API doesn't have any "convenience" methods that wrap around the Transaction
 \pagebreak
 
 \subsubsection{Queries}
-Querying the index is already acceptable to some extent when it comes to building the actual query. This is mainly due to the fact the query class \textbf{HSQuery} supports method chaining and that the same query builder DSL used in Hibernate Search ORM - that returns Lucene queries - is available. Any basic Lucene query could be used as well, but would require manual analysis of the input. Queries produced by the builder are automatically analysed with the correct Analyzer.
+Querying the index is already acceptable to some extent when it comes to building the actual query. This is mainly due to the fact the query class \textbf{HSQuery} supports method chaining and that the same query builder DSL (which returns Lucene queries) used in Hibernate Search ORM is available. Any basic Lucene query could be used as well, but would require manual analysis of the input. Queries produced by the builder are automatically analysed with the correct Analyzer.
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -357,7 +357,7 @@ tx.commit();
 \subsubsection{Queries} \label{querying_standalone}
 The biggest change in the standalone version is probably how the index is queried. We don't have to work with EntityInfos anymore as we introduced the \textbf{EntityProvider} interface. This interface hosts one method that is to be used for batch fetching (Fetch.BATCH) and one for single fetching (Fetch.FIND\_BY\_ID).
 \\\\
-A good default implementation delegating the database access to a JPA EntityManager is our \textbf{BasicEntityProvider} (\ref{lst:BasicEntityProvider.java}). Besides taking an EntityManager in its constructor, the class also needs a Map<Class<?>, String> containing the id properties of the entities. While we leave the construction of this map out in the following example for the sake of simplicity, the code for this can be found in the listings (\ref{lst:idProperties.java}). After its creation this map can then be stored in a central place and reused.
+A good default implementation delegating the database access to a JPA EntityManager is our \textbf{BasicEntityProvider} (listing \ref{lst:BasicEntityProvider.java} in the appendix). Besides taking an EntityManager in its constructor, the class also needs a Map<Class<?>, String> containing the id properties of the entities. While we leave the construction of this map out in the following example for the sake of simplicity, the code for this can be found in listing \ref{lst:idProperties.java} in the appendix. After its creation, this map can then be stored in a central place and reused.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Querying the index with the standalone version}, label={lst:querying_natively.java}]
@@ -578,13 +578,13 @@ FullTextEntityManager fem =
 searchFactoryController.close();
 \end{lstlisting}
 \noindent
-For this example we are using "manual-updates", as we haven't discussed how the index is kept up-to-date. After we worked that out, "manual-updates" will just be a fallback setting for developers not wanting to have the index automatically updated.  Also note that there are many more properties that can be set and vanilla Hibernate Search settings are passed this way as well. A complete list of the available GenericJPA configuration properties can be found in table \ref{table:config_properties_jpasearchfactorycontroller} in the appendix.
+For this example we are using "manual-updates", as we haven't discussed how the index is kept up-to-date. After we worked that out, "manual-updates" will just be a fallback setting for developers not wanting to have the index automatically updated.  Also note that there are many more properties that can be set and that vanilla Hibernate Search settings are passed this way as well. A complete list of the available GenericJPA configuration properties can be found in table \ref{table:config_properties_jpasearchfactorycontroller} in the appendix.
 
 \pagebreak
 
 \subsubsection{Index manipulation} \label{using_hsearch_genericjpa_index}
 
-In Hibernate Search ORM, all manual index manipulation is synchronized with the EntityManager transaction lifecycle (index changes underly the JPA transaction system). In our generic approach we cannot do this as JPA doesn't have an extension point for this kind of usage. This is the reason we introduce the \textbf{[begin/commit/rollback]SearchTransaction()} methods in FullTextEntityManager. These have to be used to control the transaction lifecycle of all the index manipulation methods:
+In Hibernate Search ORM, all manual index manipulations are synchronized with the EntityManager transaction lifecycle (index changes underly the JPA transaction system). In our generic approach we cannot do this as JPA doesn't have an extension point for this kind of usage. This is the reason we introduce the \textbf{[begin/commit/rollback]SearchTransaction()} methods in FullTextEntityManager. These have to be used to control the transaction lifecycle of all the index manipulation methods:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Index control with Hibernate Search GenericJPA}, label={lst:index_control_hibernatesearchgenericjpa}]
@@ -610,7 +610,7 @@ Because manual index changes are not needed frequently in normal applications, w
 \noindent
 One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the original entity class. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading.
 \\\\
-But the engine needs to know which class to get the index description metamodel from. This is the reason we have to implement logic to feed the right entity class into the engine via user input for Hibernate Search GenericJPA. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation. If no @InIndex is found, we use the actual class of the entity object we are about to index as a best effort as this is the behaviour Hibernate Search ORM has. This algorithm is described in Java code in the next listing \ref{lst:algo_subclasssupport}.
+This is problematic because the engine needs to know which class to get the index description metamodel from. Therefore we have to implement logic to feed the right entity class into the engine via user input for Hibernate Search GenericJPA. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation. If no @InIndex is found, we use the actual class of the entity object we are about to index as a best effort (this is the behaviour Hibernate Search ORM has). This algorithm is described in Java code in the next listing \ref{lst:algo_subclasssupport}:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Algorithm to determine the actual indexed type}, label={lst:algo_subclasssupport}]
@@ -682,7 +682,7 @@ While we didn't mention this in chapter \ref{hsearch_orm_querying}, Hibernate Se
 
 \begin{itemize}
 	\item \textbf{setCriteriaQuery(Criteria criteria)}:
-		This method lets the user define a custom Hibernate Criteria query (no JPA criteria query) that has to be used to retrieve the results from the database. This can be used to make sure all necessary data is loaded after it is returned by getResultList(). These custom queries are  used in cases where no session is available when the data is actually used: If the data is requested, an error would occur.
+		This method lets the user define a custom Hibernate Criteria query (no JPA criteria query) that has to be used to retrieve the results from the database. This can be used to make sure all necessary data is loaded after it is returned by getResultList(). These custom queries are  used in cases where no session is available anymore when the data is finally used: If the data is requested, an error would occur.
 	\item \textbf{setResultTransformer(ResultTransformer resultTransformer)}:
 		A ResultTransformer can be used to transform the results (useful for projections) into POJOs (Plain Old Java Object).
 \end{itemize}
@@ -701,7 +701,7 @@ Besides these changes, the interface behaves the exact same as described in \ref
 
 The MassIndexer utility is a really important feature of Hibernate Search ORM. As it uses Hibernate ORM logic under the hood (and in its interface), we have to write our own version of it. We don't build an API compatible version for Hibernate Search GenericJPA as a MassIndexer is generally not used in many places in the code anyways. Additionally this way we can give different configuration properties for better performance as our implementation differs in some details.
 \\\\
-The basic ideas are the same though: Each entity type has its ids scrolled from the database by one thread (there can be multiple threads doing this, but for other entities). Then, a configurable amount of indexing threads handles these ids batch by batch in a Hibernate Search index-writing backend optimized for this task (this is part of Hibernate Search's engine and can therefore be reused).
+The basic ideas are the same though: Each entity type has its ids scrolled from the database by one thread (there can be multiple threads doing this, but for other entities). Then, a configurable amount of indexing threads handles these ids batch by batch in a Hibernate Search index-writing backend optimized for this task (this is part of Hibernate Search's engine is therefore reused).
 \\\\
 In Hibernate Search GenericJPA our Book entities are massindexed like this:
 \\

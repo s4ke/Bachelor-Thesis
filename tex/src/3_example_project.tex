@@ -4,7 +4,7 @@
 \pagebreak
 
 \section{Challenges}\label{Challenges}
-While building the generic version of Hibernate Search, we will encounter some challenges. We will discuss the biggest ones after we have introduced a small example project first. This project will be used to showcase some problems and usages later on in this thesis as well.
+While building the generic version of Hibernate Search, we will encounter some challenges. First we will introduce a small example project. We will then use this project to illustrate the biggest challenges. It will also be used to showcase some problems and usages later on in this thesis.
 
 \subsection{The example project} \label{example_project}
 Consider a software built with JPA that is used to manage the inventory of a bookstore. It stores information about the available books (ISBN, title, genre, short summary of the contents) and the corresponding authors (surrogate id, first \& last name, country) in a relational database. Each author is related to zero or more Books and each Book is written by one or more Authors. The entity relationship model diagram defining the database looks like this:
@@ -16,7 +16,7 @@ Consider a software built with JPA that is used to manage the inventory of a boo
 	\label{fig3}
 \end{figure}
 \\
-Using a mapping table for the M:N relationship of Author and Book, the database contains three tables: Author, Book and Author\_Book. The applications strictly uses JPA to access the data without any vendor specific features. The JPA annotated classes for these entities are defined as the following listings show.
+Using a mapping table for the M:N relationship of Author and Book, the database contains three tables: Author, Book and Author\_Book. The applications strictly uses JPA to access the data without any vendor specific features. The JPA annotated classes for these entities are defined as shown in the following listings.
 
 \pagebreak
 
@@ -92,7 +92,7 @@ public class Author {
 	//getters & setters ...
 }
 \end{lstlisting}
-For the sake of simplicity and since every JPA provider is able to derive a default DDL script from the annotations, we don't supply any information about how to create the database schema here. However, for real world applications defining a hand-written DDL script might be a better idea since the generated code might not be optimal and differs between the different JPA implementations and RDBMSs used.
+For the sake of simplicity and since every JPA provider is able to derive a default DDL script from the annotations, we don't supply any information about how to create the database schema here. However, for real world applications defining a hand-written DDL script might be a better idea since the generated code might not be optimal and could differ between the different JPA implementations and RDBMSs used.
 
 \pagebreak
 
@@ -136,7 +136,9 @@ The implementations of these two challenges are represented by the modules "Hibe
 \subsection{Automatic index updating} \label{automatic_indexing_problematic_intro}
 The most important feature to be re-built, is automatic index updating. In Hibernate Search ORM, every change in the database is automatically reflected in the index. It is important to have this feature, because otherwise developers would have to manually make sure the index is always up-to-date. With bigger project sizes it gets increasingly harder to keep track of all the locations in the code that change index relevant data and inconsistencies in the indexing logic become nearly unavoidable. While this problem might be mitigated by hiding all the database access logic behind a service layer, even such a solution would be hard to keep error-free as for big applications this layer will probably have multiple critical indexing relevant spots as well.
 \\\\
-The original Hibernate Search ORM is achieving an up-to-date index by listening to specific Hibernate ORM events for all of the C\_UD (CREATE, UPDATE, DELETE) actions. These events also cover entity relationship collections (for example represented by mapping tables like Author\_Book). As our goal is to create a generic Hibernate Search engine that works with any JPA implementation, we cannot rely on any vendor specific event system. Thus, at least an additional generic solution has to be found as part of the "Hibernate Search GenericJPA" module.
+The original Hibernate Search ORM is achieving an up-to-date index by listening to specific Hibernate ORM events for all of the C\_UD (CREATE, UPDATE, DELETE) actions. These events also cover entity relationship collections (for example represented by mapping tables like Author\_Book). As our goal is to create a generic Hibernate Search engine that works with any JPA implementation, we cannot rely on any vendor specific event system. Thus, at least an additional generic solution has to be found.
+\\\\
+This feature will be part of the "Hibernate Search GenericJPA" module.
 
 \subsection{Timeline}
 The solutions for the challenges depend on each other in the same order they were described above: the JPA integration can only be worked on as soon as the standalone integration is done and work on the automatic updating mechanism cannot be started without knowing the JPA integration interfaces. The timeline of our project therefore looks like this:

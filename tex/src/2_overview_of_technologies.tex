@@ -14,7 +14,7 @@ WHERE author_book.bookid = book.id
 AND author_book.authorid = author.id
 \end{lstlisting}
 This is one of the points where Object Relational Mappers (ORM) come into use. They map tables to entity-classes and
-enable users to write queries against these classes instead of tables. The returned objects are part of a complex object hierarchy and are easier to use from a object oriented point of view as even relations that were not included in a join can generally be re-queried automatically when needed.
+enable users to write queries against these classes instead of tables. The returned objects are part of a object hierarchy and are easier to use from a object oriented point of view as even relations that were not included in a join can generally be re-queried automatically when needed.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={ORM query example}, label={lst:flattening.sql}]
@@ -42,7 +42,7 @@ Some popular relational implementations are:
 Using the standardized JPA API over any native ORM API has one really interesting benefit:
 The specific JPA implementation can be swapped out as it comes with standards for many common use cases.
 \\\\
-This is particularily important if you are working in a Java EE environment. Java EE itself is a specification for platforms, mostly Web-servers (JPA is part of the Java EE spec).\footnote{Java EE specification on oracle.com~\cite{java_ee_spec}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for (Wildfly with Hibernate ORM, GlassFish with EclipseLink, ...). This means that if the server is switched, it could also be a reasonable idea to swap out the JPA implementor. If everything in the application is written in a JPA compliant way, the user will then generally not run into many problems related to this switch.
+This is particularily important if you are working in a Java EE environment. Java EE itself is a specification for platforms, mostly Web-servers (JPA is part of the Java EE spec).\footnote{Java EE specification on oracle.com~\cite{java_ee_spec}} Many Java EE Web-servers ship with a bundled JPA implementation that they are optimized for (WildFly with Hibernate ORM, GlassFish with EclipseLink, ...). This means that if the server is switched, it could also be a reasonable idea to swap out the JPA implementor. If everything in the application is written in a JPA compliant way, the user will then generally not run into many problems related to this switch.
 
 \pagebreak
 
@@ -63,7 +63,7 @@ While this might be enough for some applications, this wildcard query doesn't su
 	\item stemming and language specific optimisations
 	\item comprehensive synonym support
 \end{itemize}
-There may exist some RDBMS that support similar query-types, but in the context of using an ORM we would then lose the ability to switch databases since we would use vendor-specific features not every RDBMS supports.
+There may exist some RDBMS that support similar query-types, but in the context of using an ORM we would then lose the ability to switch databases because of the usage of vendor-specific features that not every RDBMS supports.
 \\\\
 Fulltext search engines can be used to complement databases in this regard. They are generally not intended to be replacing the database, but add additional functionality by indexing the data that is to be searched in a more sophisticated way. We will now take a look at some of the most popular available options for Java developers (including Hibernate Search) focusing on their usage and features. After that we will give the reasoning behind why a \textbf{generic} Hibernate Search is preferable to the other solutions.
 
@@ -74,7 +74,7 @@ Fulltext search engines can be used to complement databases in this regard. They
 \begin{quote}
 	Apache Lucene™ is a high-performance, full-featured text search engine library written entirely in Java. It is a technology suitable for nearly any application that requires full-text search, especially cross-platform.\footnote{official Lucene website, see~\cite{lucene_apache_org}}
 \end{quote}
-Lucene serves as the basis for many fulltext search engines written in Java. It has many different utilities and modules aimed at search engine developers. However, it can be used on its own as well. Its latest stable version is 5.3.0 \footnote{official Lucene website, see~\cite{lucene_apache_org}}.
+Lucene serves as the basis for many fulltext search engines written in Java. It has many different utilities and modules aimed at search engine developers. However, it can be used on its own as well. Its latest stable version as of now is 5.3.0 \footnote{official Lucene website, see~\cite{lucene_apache_org}}.
 
 \paragraph{Concepts}
 
@@ -101,16 +101,16 @@ The following figure \ref{inverted_index} shows how an inverted index schematica
 	\centering
 	\begin{minipage}{0.4\textwidth} 
 		\centering
-		\begin{tabular}{|c|c|c|}
+		\begin{tabular}{|ccc|}
 			\hline
 			\multicolumn{3}{|c|}{Documents} \\
-			\specialrule{.2em}{0em}{0em}
+			\specialrule{.25em}{0em}{0em}
 			id & field1 & field2 \\
-			\specialrule{.1em}{0em}{0em}
+			\specialrule{.2em}{0em}{0em}
 			1 & \specialcell{fulltext search \\ lucene} & search \\
-			\hline
+			
 			2 & lucene search & java \\
-			\hline
+		
 			3 & fulltext java & fulltext lucene \\
 			\hline
 		\end{tabular}
@@ -119,28 +119,28 @@ The following figure \ref{inverted_index} shows how an inverted index schematica
 	\hfill
 	\begin{minipage}{0.4\textwidth}
 		\centering
-		\begin{tabular}{|c|c|c|}
+		\begin{tabular}{|ccc|}
 			\hline
 			\multicolumn{3}{|c|}{Inverted Index} \\
+			\specialrule{.25em}{0em}{0em}
+			\multicolumn{2}{|c}{Term} & Occurences \\
 			\specialrule{.2em}{0em}{0em}
-			\multicolumn{2}{|c|}{Term} & Occurences \\
-			\hline
 			Field & Value & \\
 			\specialrule{.1em}{0em}{0em}
 			field1 & fulltext & 1,3 \\
-			\hline
+			
 			field1 & search & 1,2 \\
-			\hline
+			
 			field1 & lucene & 1,2 \\
-			\hline
+			
 			field1 & java & 3 \\
-			\hline
+			
 			field2 & search & 1 \\
-			\hline
+			
 			field2 & java & 2 \\
-			\hline
+			
 			field2 & fulltext & 3 \\
-			\hline
+			
 			field2 & lucene & 3 \\
 			\hline
 		\end{tabular}
@@ -162,7 +162,7 @@ One benefit of its low-level API is that it can easily be extended with custom a
 \pagebreak
 
 \subsubsection{Fulltext search servers: ElasticSearch and Solr}
-Lucene is the basis for two of the most popular Lucene based search servers available: ElasticSearch (by elastic)\footnote{ElasticSearch Homepage, see~\cite{elasticsearch_homepage}} and Solr (sister project of Lucene)\footnote{Solr Homepage, see~\cite{solr_homepage}}. Their current stable versions are 1.7.1 \footnote{ElasticSearch Download website, see~\cite{elasticsearch_downloads_website}} and 5.3.0 \footnote{Solr Homepage, see~\cite{solr_homepage}} respectively.
+Lucene is the basis for two of the most popular search servers available: ElasticSearch (by elastic)\footnote{ElasticSearch Homepage, see~\cite{elasticsearch_homepage}} and Solr (sister project of Lucene)\footnote{Solr Homepage, see~\cite{solr_homepage}}. Their current stable versions are 1.7.1 \footnote{ElasticSearch Download website, see~\cite{elasticsearch_downloads_website}} and 5.3.0 \footnote{Solr Homepage, see~\cite{solr_homepage}} respectively.
 
 \paragraph{Usage}
 As both ElasticSearch and Solr are standalone server applications, they have to be configured before they can be used similar to the process of setting up a RDBMS. As they don't ship with any authentication mechanism by default they also have to be secured before they are used in production \footnote{Solr security, see~\cite{solr_security}} \footnote{elastic Shield (security for ElasticSearch), see~\cite{elasticsearch_security}}. Index changes and queries are done via a REST-like API (among other options).
@@ -181,13 +181,13 @@ Full text search engines like Apache Lucene are very powerful technologies to ad
 Hibernate Search addresses these shortcomings - it indexes your domain model with the help of a few annotations, takes care of database/index synchronization and brings back regular [JPA] managed objects from free text queries. \footnote{Hibernate Search GitHub README, see~\cite{hsearch_source_code_git}}
 \end{quote}
 \noindent
-Hibernate Search's current stable version is 5.3.0.Final which is based on Lucene 4.10.4 \footnote{hibernate-search-engine on mvnrepository.org, see~\cite{hibernate_search_engine_mvnrepository}}.
+Hibernate Search's current stable version is 5.4.0.Final which is based on Lucene 4.10.4 \footnote{hibernate-search-engine on mvnrepository.org, see~\cite{hibernate_search_engine_mvnrepository}}.
 
 \paragraph{Usage}
-Hibernate Search is used in the context of JPA compliant applications using Hibernate ORM. It can easily be used by adding it to the classpath and setting some configuration properties in the JPA persistence.xml and integrates with JPA interfaces seamlessly. 
+Hibernate Search is used in the context of JPA compliant applications using Hibernate ORM. It can easily be used by adding it to the classpath and setting some configuration properties in the JPA persistence.xml. It integrates seamlessly with JPA interfaces. 
 
 \paragraph{Features}
-Similar to ElasticSearch and Solr Hibernate Search is built upon Lucene and has similar features regarding indexing, searching and clustering but it is designed to be used in a JPA environment: it indexes JPA entities and the queries return them again.
+Similar to ElasticSearch and Solr, Hibernate Search is built upon Lucene and has similar features regarding indexing, searching and clustering but it is designed to be used in a JPA environment: it indexes JPA entities and the queries return them again.
 \\\\
 It is tightly coupled with Hibernate ORM: while an integration with JPA is existent, Hibernate Search doesn't allow other JPA implementations than Hibernate ORM to be used as it internally relies on its code.
 \\\\
@@ -205,7 +205,7 @@ In order to create a fulltext engine integrated with generic JPA creating a sepa
 \\\\
 A generic version of Hibernate Search however would use (most of) the already existing interfaces and would require a lot less code for the same behaviour and features as nearly all of the important Lucene logic can be found in modules not having any notion of Hibernate ORM. In fact, the only module of Hibernate Search requiring Hibernate ORM is "hibernate-search-orm".
 \\\\
-Ultimately this generic version of Hibernate Search could also be used to inspire remodelling of the original Hibernate Search to incorporate generic JPA, which would could make Hibernate Search the de-facto standard for fulltext search for the complete JPA world.
+Ultimately this generic version of Hibernate Search could also inspire some remodelling of the original Hibernate Search to incorporate generic JPA, which could make Hibernate Search the de-facto standard for fulltext search for the complete JPA world.
 \\\\
 Using Hibernate Search and turning it into a general standard is definitely better than writing everything from scratch and thus "reinventing the wheel". \label{reinvent_the_wheel}
 
