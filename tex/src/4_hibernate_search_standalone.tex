@@ -13,7 +13,7 @@
 \noindent
 We will start the development part of this thesis by discussing how Hibernate Search's engine (in the form of the module "hibernate-search-engine") can be used in general. After this is done we will work out a standalone version of this engine that is easier to work with so we can integrate this standalone version with JPA in the next chapter.
 \\\\
-As already described earlier (\ref{problem_indexing_searching}), hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it besides the internal JavaDocs (describing the classes, but not the interaction between them). Nearly all the following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
+As already described earlier in chapter \ref{problem_indexing_searching}, hibernate-search-engine is not intended to be used by application developers, but for other APIs to integrate with. Therefore there is no real public documentation available on how to use it besides the internal JavaDocs (describing the classes, but not the interaction between them). Nearly all the following information had to be retrieved from tests in the hibernate-search-engine and hibernate-search-orm integration module source code.
 
 \pagebreak
 
@@ -24,7 +24,7 @@ Before we explain how we do things in particular, we set up the example entities
 \begin{enumerate}
 	\item \textbf{@Indexed}: marks the entity as an index root-type.
 	\item \textbf{@DocumentId}: marks the field as the id of this entity. this is only needed if no JPA @Id can be found, but can be used to override settings. A Field marked with this
-	is stored and indexed. Storing means that its contents are obtainable by projection when retrieving results which is needed for ids so that the original Entity can be obtained from the database.
+	is stored and indexed. Storing means that its contents are obtainable by projection when retrieving results. This is needed for ids so that the original Entity can be obtained from the database.
 	\item \textbf{@Field}: describes how the annotated field should be indexed:
 	\\\textbf{@Field\#store} determines whether the contents of this Java property should be stored in the index (Store.YES) or not (Store.NO, default) while \textbf{@Field\#index} determines whether it should be searchable in the index (Index.YES, default) or not (Index.NO). 
 	\\
@@ -171,7 +171,7 @@ SearchIntegrator searchIntegrator = builder.buildSearchIntegrator();
 searchIntegrator.close();
 \end{lstlisting}
 
-\subsubsection{Index manipulation}
+\subsubsection{Index manipulation} \label{index_manipulation_integrator}
 
 Now that we know how a SearchIntegrator can be built, we can take a look at how we can control the index using the engine's features. 
 \\\\
@@ -217,7 +217,7 @@ This API doesn't have any "convenience" methods that wrap around the Transaction
 \pagebreak
 
 \subsubsection{Queries}
-Querying the index is already acceptable to some extent when it comes to building the actual query. This is mainly due to the fact the query class \textbf{HSQuery} supports method chaining and that the same query builder DSL used in Hibernate Search ORM is available (the Builder returns a Lucene query. Any basic Lucene query could be used as well, but require manual analysis of the input. Queries produced by the builder are automatically analysed with the correct Analyzer).
+Querying the index is already acceptable to some extent when it comes to building the actual query. This is mainly due to the fact the query class \textbf{HSQuery} supports method chaining and that the same query builder DSL used in Hibernate Search ORM - that returns Lucene queries - is available. Any basic Lucene query could be used as well, but would require manual analysis of the input. Queries produced by the builder are automatically analysed with the correct Analyzer.
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
@@ -326,7 +326,7 @@ searchFactory.close();
 
 \subsubsection{Index manipulation}
 
-With our standalone version, basic index control becomes more streamlined as we don't have to work with  SearchIntegrator's Worker pattern anymore.
+With our standalone version, basic index control becomes more streamlined as we don't have to work with the SearchIntegrator's Worker pattern anymore as it was described in chapter \ref{index_manipulation_integrator}:
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Indexing an object with the standalone version}, label={lst:indexing_object_native.java}]objects
@@ -394,9 +394,9 @@ List<Book> books = searchFactory
 	\label{project_timeline_second}
 \end{figure}
 \noindent
-After simplifying the access to Hibernate Search's engine we will work out an integration with JPA interfaces next. Since we started with the premise of not wanting to "reinvent the wheel" by writing everything from scratch (as described in \ref{reinvent_the_wheel}) - which was one of the reasons why we chose to use Hibernate Search's engine in the first place - we will try to build an integration as similar to the JPA interfaces of Hibernate Search ORM as possible.
+After simplifying the access to Hibernate Search's engine we will work out an integration with JPA interfaces next. Since we started with the premise of not wanting to "reinvent the wheel" by writing everything from scratch (as described in \ref{reinvent_the_wheel}), we will try to build an integration as similar to the JPA interfaces of Hibernate Search ORM as possible.
 \\\\
-Before we can go into detail about how we build our integration, we have to discuss the general architecture first. We will go over how the Hibernate Search ORM integration with JPA interfaces behaves from a user point and then take a look at what has to be changed in order to be compatible with any JPA implementor.
+Before we can go into detail about how we build our integration, we have to discuss the general architecture first. We will go over how the Hibernate Search ORM integration with JPA interfaces behaves from a user's point of view and then take a look at what has to be changed in order to be compatible with any JPA implementor.
 
 \pagebreak
 
@@ -436,7 +436,7 @@ All of FullTextEntityManager's operations are controlled by the same transaction
 \pagebreak
 
 \subsubsection{Index manipulation}
-The index operations are all straightforward and similar to what we designed our standalone version in \ref{standalone_hibernate_search} to work like apart from minor naming differences. 
+The index operations are all straightforward and similar to what we designed our standalone version in chapter \ref{standalone_hibernate_search} to work like apart from minor naming differences. 
 \\\\
 Hibernate Search ORM doesn't differentiate between indexing and updating.
 \\
@@ -521,7 +521,7 @@ In the figure \ref{hibernate_search_jpa_integration_with_differences} above, we 
 	\item olive: methods that can be supported if changed
 \end{itemize}
 \noindent
-Besides these, some other aspects need changes as well. We will discuss all of the needed changes \& additions in the following paragraphs.
+Besides these, some other aspects need changes as well. We will describe the reasoning behind all of the needed changes \& additions in the following paragraphs.
 
 \pagebreak
 
@@ -539,7 +539,7 @@ In our generic version we can't tightly integrate with the EntityManagerFactory 
 \noindent
 Having this separate interface means that its lifecycle has to be controlled on its own.
 \\\\
-Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method (the Search class works in Hibernate Search ORM only because of the tight coupling of ORM and Search). This means that an instance of the JPASearchFactoryController has to be available at all times when access to the index is required.
+Unlike the static way a FullTextEntityManager is obtained in Hibernate Search ORM via the Search class, in our generic version, we obtain it with the \textbf{getFullTextEntityManager(EntityManager entityManager)} method (the Search class in Hibernate Search ORM only works because of the tight coupling of ORM and Search). This means that an instance of the JPASearchFactoryController has to be available at all times when access to the index is required.
 \\\\
 Using a non-static approach here has one benefit, though: we can pass null to this method and get a search only FullTextEntityManager that can be used to work on the index when no database access is needed. This is particularly useful if POJOs have to be indexed which are not associated with JPA (see table \ref{table:config_properties_jpasearchfactorycontroller}, property "hibernate.search.additionalIndexedTypes").
 
@@ -604,13 +604,13 @@ try {
 }
 \end{lstlisting}
 \noindent
-By introducing our own search transaction management methods we don't restrict the usage of GenericJPA in application servers by a lot compared to the original Hibernate Search ORM because manual index changes are not needed frequently. In general these transactions can not be compared with real RDBMS transactions anyways as it is allowed to write changes to the index without commiting with flushToIndexes(). These changes can not be reverted by a rollback.
+Because manual index changes are not needed frequently in normal applications, we don't restrict the usage of GenericJPA in application servers by a lot compared to the original Hibernate Search ORM by introducing our own search transaction management methods. In general, Hibernate Search transactions can not be compared with real RDBMS transactions anyways as it is allowed to write changes to the index without commiting with flushToIndexes(). Changes applied in this manner can not be reverted by a rollback.
 
 \pagebreak
 \noindent
-One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the original entity class. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading, etc.. But the engine needs to know which class to get the index description metamodel from.
+One additional problem with supporting indexing generic JPA entities is that some JPA providers don't return objects of the original entity class. For example, EclipseLink returns an object of an anonymous subclass of the original in which it hides away some utility logic needed for lazy loading.
 \\\\
-This is the reason in Hibernate Search GenericJPA we implement logic to feed the right entity class into the engine via user input. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation. If no @InIndex is found, we use the actual class of the entity object we are about to index as the a best effort as this is the behaviour Hibernate Search ORM has. This algorithm is described in Java code in the next listing \ref{lst:algo_subclasssupport}.
+But the engine needs to know which class to get the index description metamodel from. This is the reason we have to implement logic to feed the right entity class into the engine via user input for Hibernate Search GenericJPA. Entity classes have to be marked with \textbf{@InIndex} on the type level so we can start from any object's class and then go up in the class hierarchy until we find one that is annotated with this annotation. If no @InIndex is found, we use the actual class of the entity object we are about to index as a best effort as this is the behaviour Hibernate Search ORM has. This algorithm is described in Java code in the next listing \ref{lst:algo_subclasssupport}.
 \\
 \lstset{language=java}
 \begin{lstlisting}[frame=htrbl, caption={Algorithm to determine the actual indexed type}, label={lst:algo_subclasssupport}]
@@ -678,7 +678,7 @@ A similar behaviour supporting the subclassing of entities can be achieved with 
 \pagebreak
 
 \subsubsection{Queries}
-While we didn't mention this in \ref{hsearch_orm_querying}, Hibernate Search ORM supports modifying the resulting objects of a query with these two methods on \textbf{FullTextQuery}:
+While we didn't mention this in chapter \ref{hsearch_orm_querying}, Hibernate Search ORM supports modifying the resulting objects of a query with these two methods on \textbf{FullTextQuery}:
 
 \begin{itemize}
 	\item \textbf{setCriteriaQuery(Criteria criteria)}:
@@ -689,7 +689,7 @@ While we didn't mention this in \ref{hsearch_orm_querying}, Hibernate Search ORM
 \noindent
 There is a problem with these two methods, though. They are using the Hibernate ORM API to accomplish their behaviour, and therefore we cannot support the methods on our generic version of the interface.
 \\\\
-By adding a new method \textbf{entityProvider(EntityProvider entityProvider)} with the same EntityProvider interface as in \ref{querying_standalone} to the method, we can at least support custom queries.
+By adding a new method \textbf{entityProvider(EntityProvider entityProvider)} with the same EntityProvider interface as in chapter \ref{querying_standalone} to the method, we can at least support custom queries.
 \\\\
 As the main use case scenario for the ResultTransformer is probably just the transformation from a projection of the queried documents to a POJO, we just completely remove this feature. In the future, we can add such a feature back to the generic version, if needed. But as this method cannot be kept as-is anyways, Hibernate Search ORM developers wanting to use Hibernate Search GenericJPA that use this feature have to change some of their code either way.
 \\\\
@@ -701,7 +701,7 @@ Besides these changes, the interface behaves the exact same as described in \ref
 
 The MassIndexer utility is a really important feature of Hibernate Search ORM. As it uses Hibernate ORM logic under the hood (and in its interface), we have to write our own version of it. We don't build an API compatible version for Hibernate Search GenericJPA as a MassIndexer is generally not used in many places in the code anyways. Additionally this way we can give different configuration properties for better performance as our implementation differs in some details.
 \\\\
-The basic ideas are the same though: Each entity type has its ids scrolled from the database by one thread (there can be multiple threads doing this, but for other entities) and then a configurable amount of indexing threads handles these ids batch by batch in a Hibernate Search index-writing backend optimized for this task (this is part of Hibernate Search's engine and can therefore be reused).
+The basic ideas are the same though: Each entity type has its ids scrolled from the database by one thread (there can be multiple threads doing this, but for other entities). Then, a configurable amount of indexing threads handles these ids batch by batch in a Hibernate Search index-writing backend optimized for this task (this is part of Hibernate Search's engine and can therefore be reused).
 \\\\
 In Hibernate Search GenericJPA our Book entities are massindexed like this:
 \\

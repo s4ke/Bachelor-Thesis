@@ -8,7 +8,7 @@
 	\label{project_timeline_third}
 \end{figure}
 \noindent
-As already stated in \ref{automatic_indexing_problematic_intro}, the automatic index updating feature is a required for a reasonable Hibernate Search GenericJPA. As this is arguably the most complicated feature for GenericJPA, we will go into detail about how we are achieving it next. We will start by giving a description of the different implementations available and then decide which ones to use. We are however not showing the complete internal code architecture - like in chapters \ref{standalone_chapter} and \ref{integration_jpa} - in favour of explaining in detail how the general ideas work. After that we will also give a short comparison of the pros and cons of the chosen approaches. 
+As already stated in chapter \ref{automatic_indexing_problematic_intro}, the automatic index updating feature is a required for a reasonable Hibernate Search GenericJPA. As this is arguably the most complicated feature for GenericJPA, we will go into detail about how we are achieving it next. We will start by giving a description of the different implementations available and then decide which ones to use. We are however not showing the complete internal code architecture - like in chapters \ref{standalone_chapter} and \ref{integration_jpa} - in favour of explaining in detail how the general ideas work. After that we will also give a short comparison of the pros and cons of the chosen approaches. 
 
 \pagebreak
 
@@ -16,7 +16,7 @@ As already stated in \ref{automatic_indexing_problematic_intro}, the automatic i
 
 There are several approaches to building an automatic index updating feature. While they are all different in the specifics, they can generally be separated into two categories: \textbf{synchronous} and \textbf{asynchronous}. Synchronous in this context means that the index is updated as soon as the newly changed data is persisted in the database without any real delay while in an asynchronous updating mechanism an arbitrary amount of time passes before the index is updated. While synchronous approaches are needed in some rare cases, fulltext search generally doesn't require a 100\% up-to-date index at every point in time  as a search index generally is not the source of truth in an application (only the database contains the "truth").
 \\\\
-We will now work out a solution for both sync and async, while the async version will serve as a backup whenever the synchronized mechanism is not applicable.
+We will now work out a solution for both the synchronous and asynchronous case, while the asynchronous version will serve as a backup whenever the synchronized mechanism is not applicable.
 
 \pagebreak
 
@@ -28,7 +28,7 @@ For the synchronous approach we have two candidates: A system based on JPA callb
 
 As we are trying to work with as little vendor specific APIs, JPA's callback events looks like a suitable candidate for listening to changes in entities.
 \\\\
-To listen for the JPA events we have two options: annotate the entities with callback methods or create a separate listener class. We will only take a look at the listener class since we don't want to have unnecessary methods in a possible user's entities. This class doesn't have to implement an interface, but has to have methods annotated with special annotations. The relevant ones are @PostPersist, @PostUpdate, @PostDelete (there are "pre-versions" available as well, but we focus on the post methods as they are more useful). What each specific annotation stands for is quite self-explanatory.
+To listen for the JPA events we have two options: annotate the entities with callback methods or create a separate listener class. We will only take a look at the listener class since we don't want to have unnecessary methods in a possible user's entities. This class doesn't have to implement an interface, but must have methods annotated with special annotations. The relevant ones are @PostPersist, @PostUpdate, @PostDelete (there are "pre-versions" available as well, but we focus on the post methods as they are more useful). What each specific annotation stands for is quite self-explanatory.
 \\\\
 Such a class generally looks like this:
 \\
@@ -129,7 +129,7 @@ Almost every JPA provider has its own internal event system that is useful for c
 \\\\
 They generally have callbacks similar to these of the JPA events (no knowledge about database specifics is needed, Java types are used), but also provide additional information about the database session that caused the changes.
 \\\\
-By definition, these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can implement listeners for these and the others will have to rely on the async backup approach (as of the time of writing this, we have only implemented integrations for Hibernate ORM and EclipseLink).
+By definition, these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can implement listeners for these and the others will have to rely on the asynchronous backup approach (as of the time of writing this, we have only implemented integrations for Hibernate ORM and EclipseLink).
 \\\\
 As this seems to be the only reasonable solution for a synchronous update system, we are using it for Hibernate Search GenericJPA even though it is no real native solution because of the JPA implementation dependent code.
 \\\\
@@ -329,7 +329,7 @@ With the two queries described in this section we are able to keep the index up-
 We already discussed the differences of synchronous and asynchronous approaches in general earlier this chapter. The two chosen implementations differ in terms of extra work that has to be done to get them to work (user-friendliness for the developer) and features.
 
 \subsubsection{Additional work}
-Since the native event system gets the proper information about changes from the vendor side, it doesn't require a lot of information about the general structure of the domain model and tables in the database. The Trigger based system however does need extra information as it has to poll info about changes from the database as shown in \ref{updateconsumer_architecture}. This is the reason the user has to add this information as we have seen in \ref{creating_the_tables}.
+Since the native event system gets the proper information about changes from the vendor side, it doesn't require a lot of information about the general structure of the domain model and tables in the database. The Trigger based system however does need extra information as it has to poll info about changes from the database as shown in figure \ref{updateconsumer_architecture}. This is the reason the user has to add this information as we have seen in chapter \ref{creating_the_tables}.
 \\
 \begin{figure}[ht]
 	\centering
@@ -378,7 +378,7 @@ We can see that both event systems can be useful in different cases. This is the
 
 \section{Usage of Hibernate Search GenericJPA} \label{usage_chapter}
 
-Having described how Hibernate Search GenericJPA works and is designed we will now take a look at how it can be used in our example project (\ref{example_project}). While having already explained this part by part in each chapter, the following is everything put together and using the async updating mechanism as described in \ref{async_approach}.
+Having described how Hibernate Search GenericJPA works and is designed we will now take a look at how it can be used in our example project from chapter \ref{example_project}. While having already explained this part by part in each chapter, the following is everything put together and using the asynchronous updating mechanism as described in chapter \ref{async_approach}.
 
 \subsection{Dependencies}
 
@@ -393,13 +393,13 @@ The following example needs to have at least these dependencies on the classpath
 \pagebreak
 
 \subsection{Entities}
-First, we have to update the Entity mappings in the Java classes. We add the \textbf{@Indexed, @DocumentId, @Field, @IndexedEmbedded, @ContainedIn} as known from the original Hibernate Search ORM (\ref{setting_up_example_project}). Using Hibernate Search GenericJPA then requires us also to add the @InIndex on every entity contained in the index (\ref{using_hsearch_genericjpa_index}) and because we are using the async updating mechanism here, we have to add information about how to create the update tables as well (\ref{creating_the_tables}).
+First, we have to update the Entity mappings in the Java classes. We add the \textbf{@Indexed, @DocumentId, @Field, @IndexedEmbedded, @ContainedIn} as known from the original Hibernate Search ORM (chapter \ref{setting_up_example_project}). Using Hibernate Search GenericJPA then requires us also to add the @InIndex on every entity contained in the index as described in chapter \ref{using_hsearch_genericjpa_index}. Because we are using the asynchronous updating mechanism here, we have to add information about how to create the update tables as well (chapter \ref{creating_the_tables}).
 \\\\
 The resulting entities with the changes highlighted look like this:
 \\
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
-\begin{lstlisting}[frame=htrbl, caption={Book.java complete}, label={lst:book.java_complete}]
+\begin{lstlisting}[frame=htrbl, caption={Complete Book.java}, label={lst:book.java_complete}]
 @Entity
 @Table(name = "Book")
 [*@InIndex*]
@@ -445,7 +445,7 @@ public class Book {
 
 \lstset{language=java}
 \lstset{moredelim=[is][\bfseries]{[*}{*]}}
-\begin{lstlisting}[frame=htrbl, caption={Author.java complete}, label={lst:author.java_complete}]
+\begin{lstlisting}[frame=htrbl, caption={Complete Author.java}, label={lst:author.java_complete}]
 @Entity
 @Table(name = "Author")
 [*@InIndex*]
@@ -515,7 +515,7 @@ The persistence.xml file for our JPA based project is straightforward. As we are
 \\
 
 \lstset{language=xml}
-\begin{lstlisting}[frame=htrbl, caption={persistence.xml complete}, label={lst:persistence.xml_complete}]
+\begin{lstlisting}[frame=htrbl, caption={Complete persistence.xml}, label={lst:persistence.xml_complete}]
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
@@ -627,7 +627,7 @@ searchController.close();
 emf.close();
 \end{lstlisting}
 \noindent
-Note that we didn't put the code into a main method. This is due to the fact that in a real application all this code would obviously not be put into one single method:
+Note that we didn't put the code into a main method. This is due to the fact that in a real application all this code would obviously not be put into one single method.
 \\\\
 The startup process of Hibernate Search GenericJPA is generally put into an extra lifecycle helper that stores a reference to the JPASearchFactoryController in a global variable upon application startup similar to what is generally done with JPA's EntityManagerFactory (at least in Java SE applications). All Search related code then acquires the reference to the JPASearchFactoryController from the global variable and uses it similar to the above code. The lifecycle helper is also responsible for closing the JPASearchFactoryController when the application is shutting down.
 
