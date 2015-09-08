@@ -4,7 +4,7 @@
 \pagebreak
 
 \section{Challenges}\label{Challenges}
-While building the generic version of Hibernate Search, we will encounter some challenges. First we will introduce a small example project. We will then use this project to illustrate the biggest challenges. It will also be used to showcase some problems and usages later on in this thesis.
+While building the generic version of Hibernate Search, we will encounter some challenges. First, we will introduce a small example project. We will then use this project to illustrate the biggest challenges. It will also be used to showcase some problems and usages later on in this thesis.
 
 \subsection{The example project} \label{example_project}
 Consider a software built with JPA that is used to manage the inventory of a bookstore. It stores information about the available books (ISBN, title, genre, short summary of the contents) and the corresponding authors (surrogate id, first \& last name, country) in a relational database. Each author is related to zero or more Books and each Book is written by one or more Authors. The entity relationship model diagram defining the database looks like this:
@@ -100,7 +100,7 @@ For the sake of simplicity and since every JPA provider is able to derive a defa
 Hibernate Search's engine wasn't designed to be used directly by application developers. Its main purpose is to serve as an integration point for other APIs that need to leverage its power to index object graphs and query the index for hits by exposing a quite low-level and in some ways complex API. This is why we have to write our own standalone version based on the "hibernate-search-engine" serving as an abstraction layer such that it eases the usage of the engine in our JPA integration.
 
 \subsection{JPA integration}
-After the standalone version is finished, we will build an integration of it with JPA. By incorporating the same engine that the original does, we will support the same indexing behaviour and even stay compatible with entities designed for the original with as little changes as possible. In fact the main goal for the JPA integration is to be as compatible as possible with Hibernate Search ORM.
+After the standalone version is finished, we will build an integration of it with JPA. By incorporating the same engine that the original does, we will support the same indexing behaviour and even stay compatible with entities designed for the original with as little changes as possible. In fact, the main goal for the JPA integration is to be as compatible as possible with Hibernate Search ORM.
 \\\\\
 The implementations of these two challenges are represented by the modules "Hibernate Search Standalone" and "Hibernate Search GenericJPA" in the following figure \ref{hibernate_search_genericjpa_complete_architecture}. Together with the module "Hibernate Search Database Utilities", these are the submodules of our complete generic version and the result of the top-bottom analysis as described in chapter \ref{Methods}. Note that during this thesis we will be referring to the whole project by the name of the main module "Hibernate Search GenericJPA" as well.
 

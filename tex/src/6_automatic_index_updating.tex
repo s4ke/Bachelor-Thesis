@@ -8,7 +8,7 @@
 	\label{project_timeline_third}
 \end{figure}
 \noindent
-As already stated in chapter \ref{automatic_indexing_problematic_intro}, the automatic index updating feature is required for a reasonable Hibernate Search GenericJPA. As this is arguably the most complicated feature for GenericJPA, we will go into detail about how we are achieving it next. We will start by giving a description of the different implementations available and then decide which ones to use. We are however not showing the complete internal code architecture - like in chapters \ref{standalone_chapter} and \ref{integration_jpa} - in favour of explaining in detail how the general ideas work. After that we will also give a short comparison of the pros and cons of the chosen approaches. 
+As already stated in chapter \ref{automatic_indexing_problematic_intro}, the automatic index updating feature is required for a reasonable Hibernate Search GenericJPA. As this is arguably the most complicated feature for GenericJPA, we will go into detail about how we are achieving it next. We will start by giving a description of the different implementations available and then decide which ones to use. We are however not showing the complete internal code architecture - like in chapters \ref{standalone_chapter} and \ref{integration_jpa} - in favour of explaining in detail how the general ideas work. After that, we will also give a short overview of the pros and cons of the chosen approaches. 
 
 \pagebreak
 
@@ -125,9 +125,9 @@ While it \textbf{might} be possible to somehow fix the flush issue, the general 
 
 \paragraph{Native integration with JPA providers}
 
-Almost every JPA provider has its own internal event system that is useful for cache invalidation and other tasks. These combined with hooks into the transaction management allow us to build a proper index updating system that works with transactions in mind (big improvement compared to the flush() issues of plain JPA)
+Almost every JPA provider has its own internal event system that is useful for cache invalidation and other tasks. These combined with hooks into the transaction management allow us to build a proper index updating system that works with transactions in mind (big improvement compared to the flush() issues of plain JPA).
 \\\\
-They generally have callbacks similar to these of the JPA events (no knowledge about database specifics is needed, Java types are used), but also provide additional information about the database session that caused the changes.
+JPA providers generally have callbacks similar to those of the JPA events (no knowledge about database specifics is needed, Java types are used), but also provide additional information about the database session that caused the changes.
 \\\\
 By definition, these kind of integrations are not portable between JPA providers and require us to write different systems for all the JPA providers. But as the landscape for popular JPA providers probably only consists of Hibernate ORM, EclipseLink and OpenJPA, we can implement listeners for these and the others will have to rely on the asynchronous backup approach (as of the time of writing this, we have only implemented integrations for Hibernate ORM and EclipseLink).
 \\\\
@@ -150,11 +150,11 @@ Paul DuBois writes in MySQL - Developer's Library:
 	\footnote{MySQL - Developer's Library, see~\cite{mysql_developers_lib}}
 \end{quote}
 \noindent
-While the quote above is meant to be for MySQL databases, many other RDBMS support at least triggers on the three crucial events for event-listening: INSERT (CREATE), UPDATE, DELETE, just like MySQL \footnote{CREATE TRIGGER in PostgreSQL, see~\cite{postgres_triggers}} \footnote{Triggers in HSQLDB, see~\cite{hsqldb_triggers}} \footnote{Triggers in Firebird, see~\cite{firebird_triggers}}.
+While the quote above is meant to be for MySQL databases, many other RDBMSs support at least triggers on the three crucial events for event-listening: INSERT (CREATE), UPDATE, DELETE, just like MySQL \footnote{CREATE TRIGGER in PostgreSQL, see~\cite{postgres_triggers}} \footnote{Triggers in HSQLDB, see~\cite{hsqldb_triggers}} \footnote{Triggers in Firebird, see~\cite{firebird_triggers}}.
 \\\\
 In order to have triggers being useful for updating our Hibernate Search index, we have to get info about the events from the database back into our Java application. Since we cannot necessarily call Java code from our database (with the exception of some enterprise and in-memory databases), we have to write data about changes into auxiliary tables and then poll these regularly.
 \\\\
-One benefit of this approach is that by using polling from the tables and the - by definition transactional - triggers, we don't have to hook into transactions or deal with data that has not been committed, yet, in general. If we do things right, we can even improve indexing performance by this: We can query for the latest event for each entity only, so we don't use up an unnecessary amount of CPU-time, but still keep the index up-to-date.
+One benefit of this approach is that by using polling from the tables and the fact that triggers are executed in the same transaction as the original changing query, we don't have to manually hook into transactions or deal with data that has not been committed, yet, in general. If we do things right, we can even improve indexing performance by this: We can query for the latest event for each entity only, so we don't use up an unnecessary amount of CPU-time, but still keep the index up-to-date.
 
 \pagebreak
 
@@ -188,7 +188,7 @@ Since the creation of these tables requires a lot of work to be done, we have to
 \\\\
 These annotations contain at least the original table's name (UpdateInfo\#tableName) and the names \& types (IdColumn\#column \& IdColumn\#columnType) of the entity key columns. The name of the update table and the columns in it are then generally derived automatically from that. 
 \\\\
-A similar behaviour could be achieved by using the JPA mapping annotations to read the original schema and then deduce the needed update schema from that. We don't use this approach nonetheless, because the task of parsing these annotations correctly would be prone to errors due to the amount of different annotations (@Basic, @Column, @IdClass, @EmbeddedCollection, @OneToOne, @ManyToOne, @OneToMany, @ManyToMany, ...). In some cases these annotations aren't even required for JPA to work, which makes it even more complicated. This makes the approach less streamlined than using the extra @UpdateInfo annotations.
+A similar behaviour might be possible by using the JPA mapping annotations to read the original schema and then deduce the needed update schema from that. We don't use this approach nonetheless, because the task of parsing these annotations correctly would be prone to errors due to the amount of different annotations (@Basic, @Column, @IdClass, @EmbeddedCollection, @OneToOne, @ManyToOne, @OneToMany, @ManyToMany, ...). In some cases these annotations aren't even required for JPA to work, which makes it even more complicated. This makes the approach less streamlined than using the extra @UpdateInfo annotations.
 
 \pagebreak
 \noindent
@@ -272,7 +272,7 @@ If the developer needs different names for the update tables and their columns (
 \noindent
 Options for multivalued keys and custom column types are also available as by default only singular valued keys of the column types corresponding to Java's Integer, Long and String are supported. While we don't go into detail how these expert features are used, information about how to use them can be found in the JavaDoc of the annotations.
 \\\\
-Since database triggers and tables are not created the same on every RDBMS, we have to build an abstraction to get the necessary SQL code. This is done with the \textbf{TriggerSQLStringSource} interface. Its implementations return the specific SQL strings working on the corresponding RDBMS. As of this writing we have implementations for MySQL, PostgreSQL and HSQDLB. See the property "hibernate.search.trigger.source" in table \ref{table:config_properties_jpasearchfactorycontroller} in the appendix for information about how to set the correct one for each database.
+Since database triggers and tables are not created the same on every RDBMS, we build an abstraction to get the necessary SQL code. This is done with the \textbf{TriggerSQLStringSource} interface. Its implementations return the specific SQL strings working on the corresponding RDBMS. As of this writing we have implementations for MySQL, PostgreSQL and HSQDLB. See the property "hibernate.search.trigger.source" in table \ref{table:config_properties_jpasearchfactorycontroller} in the appendix for information about how to set the correct one for each database.
 \\\\
 This table also contains a property called "hibernate.search.trigger.createstrategy" that controls whether and how the triggers and tables are generated at all. If automatic trigger creation is disabled, the user still has to provide the information about the update tables that should be used for updating with the annotations as described above.
 
