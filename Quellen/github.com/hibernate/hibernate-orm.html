@@ -1,0 +1,2298 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="">
+  
+<!-- Mirrored from github.com/hibernate/hibernate-orm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:26:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=1020">
+    
+    
+    <title>hibernate/hibernate-orm · GitHub</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="../fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="../apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site" /><meta content="summary" name="twitter:card" /><meta content="hibernate/hibernate-orm" name="twitter:title" /><meta content="hibernate-orm - Hibernate&#39;s core Object/Relational Mapping functionality" name="twitter:description" /><meta content="https://avatars3.githubusercontent.com/u/348262?v=3&amp;s=400" name="twitter:image:src" />
+      <meta content="GitHub" property="og:site_name" /><meta content="object" property="og:type" /><meta content="https://avatars3.githubusercontent.com/u/348262?v=3&amp;s=400" property="og:image" /><meta content="hibernate/hibernate-orm" property="og:title" /><meta content="https://github.com/hibernate/hibernate-orm" property="og:url" /><meta content="hibernate-orm - Hibernate&#39;s core Object/Relational Mapping functionality" property="og:description" />
+      <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+    <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    
+    <meta name="pjax-timeout" content="1000">
+    
+
+    <meta name="msapplication-TileImage" content="../windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient>
+
+    <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+        <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="5F5ADDA7:3C3B:4709399:55EFEADA" name="octolytics-dimension-request_id" />
+    
+    <meta content="Rails, view, files#disambiguate" data-pjax-transient="true" name="analytics-event" />
+    <meta class="js-ga-set" name="dimension1" content="Logged Out">
+      <meta class="js-ga-set" name="dimension4" content="Current repo nav">
+    <meta name="is-dotcom" content="true">
+        <meta name="hostname" content="github.com">
+    <meta name="user-login" content="">
+
+      <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#4078c0">
+      <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+    <!-- </textarea> --><!-- '"` --><meta content="authenticity_token" name="csrf-param" />
+<meta content="Q6Filia0A5fxJQtjQkZpcMNKLxgyFBYYbrqvicUPbQpGDxY1aOQCH1Sn48yH2/yh6ds2+QKzGuVW1sEIeVPRmA==" name="csrf-token" />
+    
+
+    <link crossorigin="anonymous" href="../../assets-cdn.github.com/assets/github-297f62b515917a9f8880b23160a0cb5073573d140c9fa1b8c36c54eef056537d.css" media="all" rel="stylesheet" />
+    <link crossorigin="anonymous" href="../../assets-cdn.github.com/assets/github2-ada15c437f3f84dd62f6fa41cd5edd0a378938da05e9ea81b1150c4cd740ebaf.css" media="all" rel="stylesheet" />
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="84ca538bfa5cf2c854717ee8112ab1d2">
+
+      
+  <meta name="description" content="hibernate-orm - Hibernate&#39;s core Object/Relational Mapping functionality">
+  <meta name="go-import" content="github.com/hibernate/hibernate-orm git https://github.com/hibernate/hibernate-orm.git">
+
+  <meta content="348262" name="octolytics-dimension-user_id" /><meta content="hibernate" name="octolytics-dimension-user_login" /><meta content="961036" name="octolytics-dimension-repository_id" /><meta content="hibernate/hibernate-orm" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="961036" name="octolytics-dimension-repository_network_root_id" /><meta content="hibernate/hibernate-orm" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="hibernate-orm/commits/master.atom" rel="alternate" title="Recent Commits to hibernate-orm:master" type="application/atom+xml">
+
+  </head>
+
+
+  <body class="logged_out  env-production  vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+
+    
+    
+    
+
+
+
+      
+      <div class="header header-logged-out" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-wordmark" href="https://github.com/" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <span class="mega-octicon octicon-logo-github"></span>
+    </a>
+
+    <div class="header-actions" role="navigation">
+        <a class="btn btn-primary" href="https://github.com/join" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
+      <a class="btn" href="https://github.com/login?return_to=%2Fhibernate%2Fhibernate-orm" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+    </div>
+
+    <div class="site-search repo-scope js-site-search" role="search">
+      <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/hibernate/hibernate-orm/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/hibernate/hibernate-orm/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <label class="js-chromeless-input-container form-control">
+    <div class="scope-badge">This repository</div>
+    <input type="text"
+      class="js-site-search-focus js-site-search-field is-clearable chromeless-input"
+      data-hotkey="s"
+      name="q"
+      placeholder="Search"
+      aria-label="Search this repository"
+      data-global-scope-placeholder="Search GitHub"
+      data-repo-scope-placeholder="Search"
+      tabindex="1"
+      autocapitalize="off">
+  </label>
+</form>
+    </div>
+
+      <ul class="header-nav left" role="navigation">
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/explore" data-ga-click="(Logged out) Header, go to explore, text:explore">Explore</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/features" data-ga-click="(Logged out) Header, go to features, text:features">Features</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://enterprise.github.com/" data-ga-click="(Logged out) Header, go to enterprise, text:enterprise">Enterprise</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/pricing" data-ga-click="(Logged out) Header, go to pricing, text:pricing">Pricing</a>
+          </li>
+      </ul>
+
+  </div>
+</div>
+
+
+
+    <div id="start-of-content" class="accessibility-aid"></div>
+
+    <div id="js-flash-container">
+</div>
+
+
+        <div itemscope itemtype="http://schema.org/WebPage">
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+
+        <div class="clearfix">
+          
+<ul class="pagehead-actions">
+
+  <li>
+      <a href="https://github.com/login?return_to=%2Fhibernate%2Fhibernate-orm"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to watch a repository" rel="nofollow">
+    <span class="octicon octicon-eye"></span>
+    Watch
+  </a>
+  <a class="social-count" href="hibernate-orm/watchers.html">
+    202
+  </a>
+
+  </li>
+
+  <li>
+      <a href="https://github.com/login?return_to=%2Fhibernate%2Fhibernate-orm"
+    class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+    aria-label="You must be signed in to star a repository" rel="nofollow">
+    <span class="octicon octicon-star"></span>
+    Star
+  </a>
+
+    <a class="social-count js-social-count" href="hibernate-orm/stargazers.html">
+      1,368
+    </a>
+
+  </li>
+
+    <li>
+      <a href="https://github.com/login?return_to=%2Fhibernate%2Fhibernate-orm"
+        class="btn btn-sm btn-with-count tooltipped tooltipped-n"
+        aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <span class="octicon octicon-repo-forked"></span>
+        Fork
+      </a>
+      <a href="hibernate-orm/network.html" class="social-count">
+        1,165
+      </a>
+    </li>
+</ul>
+
+          <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public ">
+  <span class="mega-octicon octicon-repo"></span>
+  <span class="author"><a href="https://github.com/hibernate" class="url fn" itemprop="url" rel="author"><span itemprop="title">hibernate</span></a></span><!--
+--><span class="path-divider">/</span><!--
+--><strong><a href="hibernate-orm.html" data-pjax="#js-repo-pjax-container">hibernate-orm</a></strong>
+
+  <span class="page-context-loader">
+    <img alt="" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+  </span>
+
+</h1>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline with-full-navigation">
+        <div class="repository-sidebar clearfix">
+          
+<nav class="sunken-menu repo-nav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
+     role="navigation"
+     data-pjax="#js-repo-pjax-container"
+     data-issue-count-url="/hibernate/hibernate-orm/issues/counts">
+  <ul class="sunken-menu-group">
+    <li class="tooltipped tooltipped-w" aria-label="Code">
+      <a href="hibernate-orm.html" aria-label="Code" aria-selected="true" class="js-selected-navigation-item selected sunken-menu-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /hibernate/hibernate-orm">
+        <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+        <img alt="" class="mini-loader" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>    </li>
+
+
+    <li class="tooltipped tooltipped-w" aria-label="Pull requests">
+      <a href="hibernate-orm/pulls.html" aria-label="Pull requests" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g p" data-selected-links="repo_pulls /hibernate/hibernate-orm/pulls">
+          <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull requests</span>
+          <span class="js-pull-replace-counter"></span>
+          <img alt="" class="mini-loader" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Wiki">
+        <a href="hibernate-orm/wiki.html" aria-label="Wiki" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g w" data-selected-links="repo_wiki /hibernate/hibernate-orm/wiki">
+          <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+          <img alt="" class="mini-loader" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+  </ul>
+  <div class="sunken-menu-separator"></div>
+  <ul class="sunken-menu-group">
+
+    <li class="tooltipped tooltipped-w" aria-label="Pulse">
+      <a href="hibernate-orm/pulse.html" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-selected-links="pulse /hibernate/hibernate-orm/pulse">
+        <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+        <img alt="" class="mini-loader" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>    </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Graphs">
+      <a href="hibernate-orm/graphs/contributors.html" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-selected-links="repo_graphs repo_contributors /hibernate/hibernate-orm/graphs">
+        <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+        <img alt="" class="mini-loader" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>    </li>
+  </ul>
+
+
+</nav>
+
+            <div class="only-with-full-nav">
+                
+<div class="js-clone-url clone-url open"
+  data-protocol-type="http">
+  <h3><span class="text-emphasized">HTTPS</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="https://github.com/hibernate/hibernate-orm.git" readonly="readonly" aria-label="HTTPS clone URL">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="js-clone-url clone-url "
+  data-protocol-type="subversion">
+  <h3><span class="text-emphasized">Subversion</span> checkout URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target"
+           value="https://github.com/hibernate/hibernate-orm" readonly="readonly" aria-label="Subversion checkout URL">
+    <span class="input-group-button">
+      <button aria-label="Copy to clipboard" class="js-zeroclipboard btn btn-sm zeroclipboard-button tooltipped tooltipped-s" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+
+
+  <div class="clone-options">You can clone with
+    <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/users/set_protocol?protocol_selector=http&amp;protocol_type=clone" class="inline-form js-clone-selector-form " data-form-nonce="338e0e8c2ab8876375a314cce09fc0f9b4f0da12" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="rdwnALGE5uaLQ7igqb1uL9q+OH6iGx6/hBr6RnARbsEGzhVX9bDuGJu9LNLIl/L/p2SzxMH9C7RTdCpndtwV8w==" /></div><button class="btn-link js-clone-selector" data-protocol="http" type="submit">HTTPS</button></form> or <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="https://github.com/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone" class="inline-form js-clone-selector-form " data-form-nonce="338e0e8c2ab8876375a314cce09fc0f9b4f0da12" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="d1gOzU1MTik2MYA9NJ4HZDQVcWNJhNueifGKBeF8gPA+HVAugzZoBF4cOWtAViv2be2Csk0j2YRyR/sI0O3HqQ==" /></div><button class="btn-link js-clone-selector" data-protocol="subversion" type="submit">Subversion</button></form>.
+    <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+      <span class="octicon octicon-question"></span>
+    </a>
+  </div>
+
+              <a href="https://codeload.github.com/hibernate/hibernate-orm/zip/master"
+                 class="btn btn-sm sidebar-button"
+                 aria-label="Download the contents of hibernate/hibernate-orm as a zip file"
+                 title="Download the contents of hibernate/hibernate-orm as a zip file"
+                 rel="nofollow">
+                <span class="octicon octicon-cloud-download"></span>
+                Download ZIP
+              </a>
+            </div>
+        </div>
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
+
+          
+<span id="js-show-full-navigation"></span>
+
+  <div class="repository-meta js-details-container ">
+    <div class="repository-description">
+      Hibernate's core Object/Relational Mapping functionality
+    </div>
+
+    <div class="repository-website">
+      <a href="http://hibernate.org/" rel="nofollow">http://hibernate.org</a>
+    </div>
+
+</div>
+
+
+<div class="overall-summary overall-summary-bottomless">
+
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax href="hibernate-orm/commits/master.html">
+            <span class="octicon octicon-history"></span>
+            <span class="num text-emphasized">
+              6,243
+            </span>
+            commits
+        </a>
+      </li>
+      <li>
+        <a data-pjax href="hibernate-orm/branches.html">
+          <span class="octicon octicon-git-branch"></span>
+          <span class="num text-emphasized">
+            15
+          </span>
+          branches
+        </a>
+      </li>
+
+      <li>
+        <a data-pjax href="hibernate-orm/releases.html">
+          <span class="octicon octicon-tag"></span>
+          <span class="num text-emphasized">
+            101
+          </span>
+          releases
+        </a>
+      </li>
+
+      <li>
+        
+  <a href="hibernate-orm/graphs/contributors.html">
+    <span class="octicon octicon-organization"></span>
+    <span class="num text-emphasized">
+      159
+    </span>
+    contributors
+  </a>
+      </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="hibernate-orm/searche530.html?l=java">
+                <span class="color-block language-color" style="background-color:#b07219;"></span>
+                <span class="lang">Java</span>
+                <span class="percent">99.5%</span>
+              </a>
+          </li>
+          <li>
+              <span class="other">
+                <span class="color-block language-color" style="background-color:#ededed;"></span>
+                <span class="lang">Other</span>
+                <span class="percent">0.5%</span>
+              </span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="repository-lang-stats-graph js-toggle-lang-stats" title="Click for language details">
+    <span class="language-color" aria-label="Java 99.5%" style="width:99.5%; background-color:#b07219;" itemprop="keywords">Java</span>
+    <span class="language-color" aria-label="Other 0.5%" style="width:0.5%; background-color:#ededed;" itemprop="keywords">Other</span>
+  </div>
+
+<include-fragment src="hibernate-orm/show_partialf7a2.html?partial=tree%2Frecently_touched_branches_list"></include-fragment>
+
+  <div class="file-navigation in-mid-page">
+  <a href="hibernate-orm/find/master.html"
+        class="js-show-file-finder btn btn-sm empty-icon tooltipped tooltipped-s right"
+        data-pjax
+        data-hotkey="t"
+        aria-label="Quickly jump between files"
+        data-ga-click="Repository, find file, location:repo overview">
+    <span class="octicon octicon-list-unordered"></span>
+  </a>
+    <a href="hibernate-orm/compare.html" aria-label="Compare, review, create a pull request" class="btn btn-sm btn-primary tooltipped tooltipped-se left compare-button" aria-label="Compare &amp; review" data-pjax data-ga-click="Repository, go to compare view, location:repo overview; icon:git-compare">
+      <span class="octicon octicon-git-compare"></span>
+    </a>
+
+  
+<div class="select-menu js-menu-container js-select-menu left">
+  <span class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
+    data-ref="master"
+    title="master"
+    role="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <i>Branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </span>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="select-menu-title">Switch branches/tags</span>
+        <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/3.html"
+               data-name="3.2"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="3.2">
+                3.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/3-2.html"
+               data-name="3.3"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="3.3">
+                3.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/3-3.html"
+               data-name="3.5"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="3.5">
+                3.5
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/3-4.html"
+               data-name="3.6"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="3.6">
+                3.6
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/4.html"
+               data-name="4.0"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="4.0">
+                4.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/4-2.html"
+               data-name="4.1"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="4.1">
+                4.1
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/4-3.html"
+               data-name="4.2"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="4.2">
+                4.2
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/4-4.html"
+               data-name="4.3"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="4.3">
+                4.3
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/5.html"
+               data-name="5.0"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="5.0">
+                5.0
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open selected"
+               href="hibernate-orm/tree/master.html"
+               data-name="master"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="master">
+                master
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/metamodel.html"
+               data-name="metamodel"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="metamodel">
+                metamodel
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/metamodel-old.html"
+               data-name="metamodel-old"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="metamodel-old">
+                metamodel-old
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/revert-791-HHH-9300.html"
+               data-name="revert-791-HHH-9300"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="revert-791-HHH-9300">
+                revert-791-HHH-9300
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/revert-862-HHH-9556.html"
+               data-name="revert-862-HHH-9556"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="revert-862-HHH-9556">
+                revert-862-HHH-9556
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open "
+               href="hibernate-orm/tree/stable.html"
+               data-name="stable"
+               data-skip-pjax="true"
+               rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="stable">
+                stable
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.1.html"
+                 data-name="5.0.1.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.1.Final">5.0.1.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.0.html"
+                 data-name="5.0.0.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.0.Final">5.0.0.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.0-2.html"
+                 data-name="5.0.0.CR4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.0.CR4">5.0.0.CR4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.0-3.html"
+                 data-name="5.0.0.CR3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.0.CR3">5.0.0.CR3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.0-4.html"
+                 data-name="5.0.0.CR2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.0.CR2">5.0.0.CR2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.0-5.html"
+                 data-name="5.0.0.CR1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.0.CR1">5.0.0.CR1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.0-6.html"
+                 data-name="5.0.0.Beta2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.0.Beta2">5.0.0.Beta2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/5.0.0-7.html"
+                 data-name="5.0.0.Beta1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="5.0.0.Beta1">5.0.0.Beta1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.11.html"
+                 data-name="4.3.11.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.11.Final">4.3.11.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.10.html"
+                 data-name="4.3.10.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.10.Final">4.3.10.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.9.html"
+                 data-name="4.3.9.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.9.Final">4.3.9.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.8.html"
+                 data-name="4.3.8.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.8.Final">4.3.8.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.7.html"
+                 data-name="4.3.7.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.7.Final">4.3.7.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.6.html"
+                 data-name="4.3.6.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.6.Final">4.3.6.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.5.html"
+                 data-name="4.3.5.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.5.Final">4.3.5.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.4.html"
+                 data-name="4.3.4.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.4.Final">4.3.4.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.3.html"
+                 data-name="4.3.3.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.3.Final">4.3.3.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.2.html"
+                 data-name="4.3.2.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.2.Final">4.3.2.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.1.html"
+                 data-name="4.3.1.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.1.Final">4.3.1.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0.html"
+                 data-name="4.3.0.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.Final">4.3.0.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0-2.html"
+                 data-name="4.3.0.CR2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.CR2">4.3.0.CR2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0-3.html"
+                 data-name="4.3.0.CR1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.CR1">4.3.0.CR1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0-4.html"
+                 data-name="4.3.0.Beta5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.Beta5">4.3.0.Beta5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0-5.html"
+                 data-name="4.3.0.Beta4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.Beta4">4.3.0.Beta4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0-6.html"
+                 data-name="4.3.0.Beta3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.Beta3">4.3.0.Beta3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0-7.html"
+                 data-name="4.3.0.Beta2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.Beta2">4.3.0.Beta2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.3.0-8.html"
+                 data-name="4.3.0.Beta1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.3.0.Beta1">4.3.0.Beta1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.20.html"
+                 data-name="4.2.20.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.20.Final">4.2.20.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.19.html"
+                 data-name="4.2.19.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.19.Final">4.2.19.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.18.html"
+                 data-name="4.2.18.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.18.Final">4.2.18.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.17.html"
+                 data-name="4.2.17.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.17.Final">4.2.17.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.16.html"
+                 data-name="4.2.16.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.16.Final">4.2.16.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.15.html"
+                 data-name="4.2.15.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.15.Final">4.2.15.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.14.html"
+                 data-name="4.2.14.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.14.Final">4.2.14.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.13.html"
+                 data-name="4.2.13.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.13.Final">4.2.13.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.12.html"
+                 data-name="4.2.12.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.12.Final">4.2.12.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.11.html"
+                 data-name="4.2.11.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.11.Final">4.2.11.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.10.html"
+                 data-name="4.2.10.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.10.Final">4.2.10.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.9.html"
+                 data-name="4.2.9.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.9.Final">4.2.9.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.8.html"
+                 data-name="4.2.8.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.8.Final">4.2.8.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.7.html"
+                 data-name="4.2.7.SP1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.7.SP1">4.2.7.SP1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.7-2.html"
+                 data-name="4.2.7.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.7.Final">4.2.7.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.6.html"
+                 data-name="4.2.6.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.6.Final">4.2.6.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.5.html"
+                 data-name="4.2.5.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.5.Final">4.2.5.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.4.html"
+                 data-name="4.2.4.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.4.Final">4.2.4.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.3.html"
+                 data-name="4.2.3.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.3.Final">4.2.3.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.2.html"
+                 data-name="4.2.2.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.2.Final">4.2.2.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.1.html"
+                 data-name="4.2.1.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.1.Final">4.2.1.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.0.html"
+                 data-name="4.2.0.SP1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.0.SP1">4.2.0.SP1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.0-2.html"
+                 data-name="4.2.0.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.0.Final">4.2.0.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.0-3.html"
+                 data-name="4.2.0.CR2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.0.CR2">4.2.0.CR2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.2.0-4.html"
+                 data-name="4.2.0.CR1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.2.0.CR1">4.2.0.CR1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.12.html"
+                 data-name="4.1.12.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.12.Final">4.1.12.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.11.html"
+                 data-name="4.1.11.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.11.Final">4.1.11.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.10.html"
+                 data-name="4.1.10.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.10.Final">4.1.10.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.9.html"
+                 data-name="4.1.9.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.9.Final">4.1.9.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.8.html"
+                 data-name="4.1.8.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.8.Final">4.1.8.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.7.html"
+                 data-name="4.1.7.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.7.Final">4.1.7.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.6.html"
+                 data-name="4.1.6.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.6.Final">4.1.6.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.5.html"
+                 data-name="4.1.5.SP1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.5.SP1">4.1.5.SP1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.5-2.html"
+                 data-name="4.1.5.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.5.Final">4.1.5.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.4.html"
+                 data-name="4.1.4.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.4.Final">4.1.4.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.3.html"
+                 data-name="4.1.3.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.3.Final">4.1.3.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.2.html"
+                 data-name="4.1.2.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.2.Final">4.1.2.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.html"
+                 data-name="4.1.2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.2">4.1.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1-2.html"
+                 data-name="4.1.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.1">4.1.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.1.0.html"
+                 data-name="4.1.0.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.1.0.Final">4.1.0.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.html"
+                 data-name="4.0.1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.1">4.0.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0.html"
+                 data-name="4.0.0.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Final">4.0.0.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-2.html"
+                 data-name="4.0.0.CR7"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.CR7">4.0.0.CR7</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-3.html"
+                 data-name="4.0.0.CR6"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.CR6">4.0.0.CR6</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-4.html"
+                 data-name="4.0.0.CR5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.CR5">4.0.0.CR5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-5.html"
+                 data-name="4.0.0.CR4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.CR4">4.0.0.CR4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-6.html"
+                 data-name="4.0.0.CR3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.CR3">4.0.0.CR3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-7.html"
+                 data-name="4.0.0.CR2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.CR2">4.0.0.CR2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-8.html"
+                 data-name="4.0.0.CR1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.CR1">4.0.0.CR1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-9.html"
+                 data-name="4.0.0.Beta5"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Beta5">4.0.0.Beta5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-10.html"
+                 data-name="4.0.0.Beta4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Beta4">4.0.0.Beta4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-11.html"
+                 data-name="4.0.0.Beta3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Beta3">4.0.0.Beta3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-12.html"
+                 data-name="4.0.0.Beta2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Beta2">4.0.0.Beta2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-13.html"
+                 data-name="4.0.0.Beta1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Beta1">4.0.0.Beta1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-14.html"
+                 data-name="4.0.0.Alpha3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Alpha3">4.0.0.Alpha3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-15.html"
+                 data-name="4.0.0.Alpha2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Alpha2">4.0.0.Alpha2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/4.0.0-16.html"
+                 data-name="4.0.0.Alpha1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="4.0.0.Alpha1">4.0.0.Alpha1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.10.html"
+                 data-name="3.6.10.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.10.Final">3.6.10.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.9.html"
+                 data-name="3.6.9.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.9.Final">3.6.9.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.8.html"
+                 data-name="3.6.8.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.8.Final">3.6.8.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.7.html"
+                 data-name="3.6.7.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.7.Final">3.6.7.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.6.html"
+                 data-name="3.6.6.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.6.Final">3.6.6.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.5.html"
+                 data-name="3.6.5.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.5.Final">3.6.5.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.4.html"
+                 data-name="3.6.4.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.4.Final">3.6.4.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.3.html"
+                 data-name="3.6.3.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.3.Final">3.6.3.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.2.html"
+                 data-name="3.6.2.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.2.Final">3.6.2.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.1.html"
+                 data-name="3.6.1.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.1.Final">3.6.1.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.0.html"
+                 data-name="3.6.0.Final"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.0.Final">3.6.0.Final</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.0-2.html"
+                 data-name="3.6.0.CR2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.0.CR2">3.6.0.CR2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.0-3.html"
+                 data-name="3.6.0.CR1"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.0.CR1">3.6.0.CR1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.0-4.html"
+                 data-name="3.6.0.Beta4"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.0.Beta4">3.6.0.Beta4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.0-5.html"
+                 data-name="3.6.0.Beta3"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.0.Beta3">3.6.0.Beta3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="hibernate-orm/tree/3.6.0-6.html"
+                 data-name="3.6.0.Beta2"
+                 data-skip-pjax="true"
+                 rel="nofollow"
+                 class="js-navigation-open select-menu-item-text css-truncate-target"
+                 title="3.6.0.Beta2">3.6.0.Beta2</a>
+            </div>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <div class="breadcrumb"><span class="repo-root js-repo-root"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="hibernate-orm.html" class="" data-branch="master" data-pjax="true" itemscope="url"><span itemprop="title">hibernate-orm</span></a></span></span><span class="separator">/</span>
+    <a class="btn-link disabled tooltipped tooltipped-e" href="#" aria-label="You must be signed in to make or propose changes">
+      <span class="octicon octicon-plus"></span>
+    </a>
+</div>
+</div>
+
+
+
+
+
+  <div class="commit commit-tease js-details-container" >
+    <p class="commit-title ">
+        <a href="hibernate-orm/commit/2731fe541a4b297e399d46357ad9eb5bbe2d2239.html" class="message" data-pjax="true" title="HHH-100084 - Refactor Identity Column support methods into IdentityColumnSupport interface">HHH-100084 - Refactor Identity Column support methods into IdentityCo…</a>
+        <span class="hidden-text-expander inline"><a href="#" class="js-details-target">…</a></span>
+    </p>
+      <div class="commit-desc"><pre>…lumnSupport interface</pre></div>
+    <div class="commit-meta">
+      <button aria-label="Copy SHA" class="js-zeroclipboard zeroclipboard-link tooltipped tooltipped-s" data-clipboard-text="2731fe541a4b297e399d46357ad9eb5bbe2d2239" data-copied-hint="Copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+      <a href="hibernate-orm/commit/2731fe541a4b297e399d46357ad9eb5bbe2d2239.html" class="sha-block" data-pjax>latest commit <span class="sha">2731fe541a</span></a>
+
+      <div class="authorship">
+        <img alt="@dreab8" class="avatar" height="20" src="https://avatars3.githubusercontent.com/u/432649?v=3&amp;s=40" width="20" />
+        <span class="author-name"><a href="https://github.com/dreab8" rel="contributor">dreab8</a></span>
+        authored <time class="updated" datetime="2015-09-03T17:54:45Z" is="relative-time">Sep 3, 2015</time>
+
+      </div>
+    </div>
+  </div>
+
+
+<div class="file-wrap">
+  <a href="hibernate-orm/tree/2731fe541a4b297e399d46357ad9eb5bbe2d2239.html" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
+
+  <table class="files js-navigation-container js-active-navigation-container" data-pjax>
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><span class="octicon octicon-alert"></span></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/buildSrc.html" class="js-directory-link js-navigation-open" id="28b6c204bdf7b6645eb72c9fc798f981-a1e740965d3fcaa37677b29978fe80ddc1d0e05f" title="buildSrc">buildSrc</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/5bf9bb2a1d200d7eb63936d2525f9098c58bea10.html" class="message" data-pjax="true" title="HHH-9782 Build plugins pick up JAVA6_HOME as environment variable">HHH-9782 Build plugins pick up JAVA6_HOME as environment variable</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-25T19:05:43Z" is="time-ago">May 25, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/databases.html" class="js-directory-link js-navigation-open" id="e61ce3062cb76770658896b778ad06cd-ffdca5845b346fb9c850417f0b3ed9a7c847b5dd" title="databases">databases</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/4da260b3be6f0ae1c319051513763cf9c5ccf1d1.html" class="message" data-pjax="true" title="HHH-9990 - Enabled batched updates for versioned data by default">HHH-9990 - Enabled batched updates for versioned data by default</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-05T10:27:18Z" is="time-ago">Aug 5, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/documentation.html" class="js-directory-link js-navigation-open" id="55876228853abf632dec9346a4f372ec-5a171e71840e1be4f78662c365de1773a57eed76" title="documentation">documentation</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/77bb57e8ab5126482d83c88d2adb01c647649ad0.html" class="message" data-pjax="true" title="HHH-10064 - Fix Broken documentation page link in User guide">HHH-10064 - Fix Broken documentation page link in User guide</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-28T15:38:06Z" is="time-ago">Aug 28, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/etc.html" class="js-directory-link js-navigation-open" id="e80f17310109447772dca82b45ef35a5-cfb7a1fd2b1023e66e5500ac81a97dd670de60fe" title="etc">etc</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/bd256e4783219f4a765219cf625bb658fcb5fde1.html" class="message" data-pjax="true" title="HHH-9803 - Checkstyle fix ups - headers">HHH-9803 - Checkstyle fix ups - headers</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-19T04:25:14Z" is="time-ago">May 18, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/gradle/wrapper.html" class="js-directory-link js-navigation-open" id="04f339d50ad8be9d7500be3f70cd5d57-17616a0c63fb4e68a9a1c787e8526adff341d0f5" title="This path skips through empty directories"><span class="simplified-path">gradle/</span>wrapper</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/ee971487439fcf2d5fd63cf1a043206f98b9ebc0.html" class="message" data-pjax="true" title="HHH-9738 - Upgrade master (5.0) to Gradle 2.4">HHH-9738 - Upgrade master (5.0) to Gradle 2.4</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-29T21:03:31Z" is="time-ago">May 29, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-c3p0.html" class="js-directory-link js-navigation-open" id="78d820f938c177b685ccc31dd6603029-fc80094a44eafda5e22f4c1910b425d95984d785" title="hibernate-c3p0">hibernate-c3p0</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/4da260b3be6f0ae1c319051513763cf9c5ccf1d1.html" class="message" data-pjax="true" title="HHH-9990 - Enabled batched updates for versioned data by default">HHH-9990 - Enabled batched updates for versioned data by default</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-05T10:27:18Z" is="time-ago">Aug 5, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-core.html" class="js-directory-link js-navigation-open" id="8194ca85bad2130972f982de12237982-08e2f6b81a5739e1bea049b34b7a2162a4f636e7" title="hibernate-core">hibernate-core</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/2731fe541a4b297e399d46357ad9eb5bbe2d2239.html" class="message" data-pjax="true" title="HHH-100084 - Refactor Identity Column support methods into IdentityColumnSupport interface">HHH-100084 - Refactor Identity Column support methods into IdentityCo…</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-08T18:03:03Z" is="time-ago">Sep 8, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-ehcache.html" class="js-directory-link js-navigation-open" id="a051eb72e1eb81e125312940096a00ed-2237fcb1001a7990a573fa43b0b629eeea89b154" title="hibernate-ehcache">hibernate-ehcache</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/4da260b3be6f0ae1c319051513763cf9c5ccf1d1.html" class="message" data-pjax="true" title="HHH-9990 - Enabled batched updates for versioned data by default">HHH-9990 - Enabled batched updates for versioned data by default</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-05T10:27:18Z" is="time-ago">Aug 5, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-entitymanager.html" class="js-directory-link js-navigation-open" id="56bf8501abc484ccef6aa7d99349b9d3-93da44b0375c46a5220e29ea68a6512ef8e77927" title="hibernate-entitymanager">hibernate-entitymanager</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/0aca04ff7a16fce61b573b32d4bec7244add77c6.html" class="message" data-pjax="true" title="HHH-9731 : Wrap Criteria CaseStatement params in string casts">HHH-9731 : Wrap Criteria CaseStatement params in string casts</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-04T11:00:38Z" is="time-ago">Sep 4, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-envers.html" class="js-directory-link js-navigation-open" id="1a8b66926c7d41258c2185df693d7176-a2ffdd718db258703f7c127a09c84460810b40d5" title="hibernate-envers">hibernate-envers</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/73c46e298c24098b89ae8c67712034e95b8095c0.html" class="message" data-pjax="true" title="HHH-10056 - Separate settings for notions of (1) disabling EnversService and (2) auto-registering Envers listeners">HHH-10056 - Separate settings for notions of (1) disabling EnversServ…</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-02T14:05:34Z" is="time-ago">Sep 2, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-hikaricp.html" class="js-directory-link js-navigation-open" id="a11b8eee1a6ef502de302f604be3cc35-06195144c7d5ade2030c79073716e4c2608e4afc" title="hibernate-hikaricp">hibernate-hikaricp</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/3192e1db92a3d68d6397d8d1c50992f7af610b74.html" class="message" data-pjax="true" title="HHH-9503 - Consistently accept numeric value or Connection constant field name for configuring transaction isolation">HHH-9503 - Consistently accept numeric value or Connection constant f…</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-05T02:11:18Z" is="time-ago">Aug 4, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-infinispan.html" class="js-directory-link js-navigation-open" id="f209dbfae9b9e8d570cda5b096f88063-0081343accc76cf2d8f32e82e5608a58b941d545" title="hibernate-infinispan">hibernate-infinispan</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/3689924d74a000cc2319a434bf380862692c9b28.html" class="message" data-pjax="true" title="HHH-10030 Add read-write cache concurrency strategy to Infinispan 2LC
+
+* AccessType.READ_WRITE is now supported cache concurrency strategy
+* Added checks that we&#39;re caching in local or invalidation cache (distributed and replicated cache does not work ATM)
+* Refactored test-suite: Running on both transactional and read-write caches (these should yield the same results)
+** CustomParemeterized runner is used for that
+** Moved all entities used in functional tests to one package
+** Removed already disabled tests related to class loaders (not needed since Infinispan 5.1)">HHH-10030 Add read-write cache concurrency strategy to Infinispan 2LC</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-03T09:35:05Z" is="time-ago">Sep 3, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-java8.html" class="js-directory-link js-navigation-open" id="d866c4527d7cfc18d75caaf918b4ad87-f5411ede0a5fba60881d3b079b6925c791d70d52" title="hibernate-java8">hibernate-java8</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/080014558dff3ec174a14f35ef9ce10506783f86.html" class="message" data-pjax="true" title="HHH-10026 - Consider hibernate-java8 types for use with @Version">HHH-10026 - Consider hibernate-java8 types for use with</a> <a href="https://github.com/Version" class="user-mention">@Version</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-31T18:07:18Z" is="time-ago">Aug 31, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-osgi.html" class="js-directory-link js-navigation-open" id="ed43426322a5966dbdc209243d493d67-d3f8a41f2fea49f8989e7919951aa020d6c139ea" title="hibernate-osgi">hibernate-osgi</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/78b6d318485e5f5788fb6ce30a12566639ca22fa.html" class="message" data-pjax="true" title="HHH-10044 automatically add hibernate-core and hibernate-entitymanager Bundles to OsgiClassLoader">HHH-10044 automatically add hibernate-core and hibernate-entitymanage…</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-26T19:10:33Z" is="time-ago">Aug 26, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-proxool.html" class="js-directory-link js-navigation-open" id="efc051882471d08c1c7ea4acdb0cb024-5dc4df133647509fe64754a2aacf4cd128356606" title="hibernate-proxool">hibernate-proxool</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/4da260b3be6f0ae1c319051513763cf9c5ccf1d1.html" class="message" data-pjax="true" title="HHH-9990 - Enabled batched updates for versioned data by default">HHH-9990 - Enabled batched updates for versioned data by default</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-05T10:27:18Z" is="time-ago">Aug 5, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-spatial.html" class="js-directory-link js-navigation-open" id="4f25351c54d0ac4565bbd336fae59e32-110bf00a15e3e655b3b8f8830db8c0de932651f2" title="hibernate-spatial">hibernate-spatial</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/96d6365a64e8bde274f0d8ba5ad3f5841cfe58e8.html" class="message" data-pjax="true" title="HHH-9860 - upgrade geolatte version">HHH-9860 - upgrade geolatte version</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-07-01T10:11:13Z" is="time-ago">Jul 1, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/hibernate-testing.html" class="js-directory-link js-navigation-open" id="01f9e0f2e14f4d5f2899a0d6e03d6b35-17d2487f4f312fdd06b4b9d53bdbed3164bfe8b6" title="hibernate-testing">hibernate-testing</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/2731fe541a4b297e399d46357ad9eb5bbe2d2239.html" class="message" data-pjax="true" title="HHH-100084 - Refactor Identity Column support methods into IdentityColumnSupport interface">HHH-100084 - Refactor Identity Column support methods into IdentityCo…</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-08T18:03:03Z" is="time-ago">Sep 8, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/release.html" class="js-directory-link js-navigation-open" id="123fead50246387983ee340507115ef4-212f34996bc600a6fb85e3ec98db04704cf6c8e3" title="release">release</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/5ce69c18392b3c8c39929bea515daa20db46acef.html" class="message" data-pjax="true" title="HHH-10042 - Add task to upload dist bundles to BinTray">HHH-10042 - Add task to upload dist bundles to BinTray</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-20T18:14:02Z" is="time-ago">Aug 20, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/shared.html" class="js-directory-link js-navigation-open" id="9e81e7b963c71363e2fb3eefcfecfc0e-a47e41a85f7fbcce5a8cc4190d4e68776aa7774a" title="shared">shared</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/bd256e4783219f4a765219cf625bb658fcb5fde1.html" class="message" data-pjax="true" title="HHH-9803 - Checkstyle fix ups - headers">HHH-9803 - Checkstyle fix ups - headers</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-19T04:25:14Z" is="time-ago">May 19, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/tree/master/tooling.html" class="js-directory-link js-navigation-open" id="f7c5c7e78ad9561766ea94ad776e234f-b579cdd9f70922588b0a40f8c98def0747ec3b32" title="tooling">tooling</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/c2c69ca62c0e4144e7fd7b823ea601910704abf3.html" class="message" data-pjax="true" title="HHH-10077 - Fix SourceSet generation on gradle plugin">HHH-10077 - Fix SourceSet generation on gradle plugin</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-03T13:50:04Z" is="time-ago">Sep 3, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/.html" class="js-directory-link js-navigation-open" id="a084b794bc0759e7a6b77810e01874f2-dbcf237d4cd95dd0076ce914a46a36a55fe624f1" title=".gitignore">.gitignore</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/d6d199741c928e32d99300fcf534661b3475f364.html" class="message" data-pjax="true" title="Add NetBeans files to .gitignore">Add NetBeans files to .gitignore</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-07-17T12:46:31Z" is="time-ago">Jul 17, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/CONTRIBUTING.html" class="js-directory-link js-navigation-open" id="6a3371457528722a734f3c51d9238c13-6e2228880b2f2ab50a49338f65802df39802ce4b" title="CONTRIBUTING.md">CONTRIBUTING.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/67235a06f1319b998c63d533146aa730916c0ddf.html" class="message" data-pjax="true" title="CONTRIBUTING.md cleanup">CONTRIBUTING.md cleanup</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-06-26T21:38:35Z" is="time-ago">Jun 26, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/README.html" class="js-directory-link js-navigation-open" id="04c6e90faac2675aa89e2176d2eec7d8-a53f074450124abe4a1f810d5bcc6e9b4b1f4e5c" title="README.md">README.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/7c17a0f4441fab67e92b5a05adb5a662084dd2c2.html" class="message" data-pjax="true" title="HHH-10088 Add link to setting up guide for Eclipse IDE">HHH-10088 Add link to setting up guide for Eclipse IDE</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-07T07:05:12Z" is="time-ago">Sep 7, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/build.html" class="js-directory-link js-navigation-open" id="c197962302397baf3a4cc36463dce5ea-0604452e20dd9579044a359e2f2928313dc060e1" title="build.gradle">build.gradle</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/9694753daa72f4538b0b2f741bcb018ecbbbf443.html" class="message" data-pjax="true" title="Changed version in main build.gradle for master branch to 5.1.0-SNAPSHOT">Changed version in main build.gradle for master branch to 5.1.0-SNAPSHOT</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-09-03T14:20:30Z" is="time-ago">Sep 3, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/changelog.html" class="js-directory-link js-navigation-open" id="e8800259c4985f4a73b0936128034c53-b55a56f8d700b5e53225091c25bd8f7af24fdbec" title="changelog.txt">changelog.txt</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/87a62262ba9e7d1c2d8a7b1707021e479ceec3ab.html" class="message" data-pjax="true" title="5.0.0 Final release">5.0.0 Final release</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-20T20:36:18Z" is="time-ago">Aug 20, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/gradlew.html" class="js-directory-link js-navigation-open" id="36ffbd2ea7085cf19547193a7faf30c8-91a7e269e19dfc62e27137a0b57ef3e430cee4fd" title="gradlew">gradlew</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/26868ad3144c9883a481bc65f769675d8d5064c4.html" class="message" data-pjax="true" title="HHH-8141 - Upgrade to Gradle 1.5">HHH-8141 - Upgrade to Gradle 1.5</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-04-04T18:01:39Z" is="time-ago">Apr 4, 2013</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/gradlew-2.html" class="js-directory-link js-navigation-open" id="c9b677a57d25a366595a35b2230d0502-aec99730b4e8fcd90b57a0e8e01544fea7c31a89" title="gradlew.bat">gradlew.bat</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/26868ad3144c9883a481bc65f769675d8d5064c4.html" class="message" data-pjax="true" title="HHH-8141 - Upgrade to Gradle 1.5">HHH-8141 - Upgrade to Gradle 1.5</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2013-04-04T18:01:39Z" is="time-ago">Apr 4, 2013</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/hibernate_logo.html" class="js-directory-link js-navigation-open" id="b0609ccf8e33f2a0bf689c4ce23720b7-db2bf66e215cef447cd5b6e3b9255a2fc8012007" title="hibernate_logo.gif">hibernate_logo.gif</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/83baf51c37679f9e1ef59a2ee1633458983537ac.html" class="message" data-pjax="true" title="SVN layout migration for core/trunk
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/core/trunk@11726 1b8cb986-b30d-0410-93ca-fae66ebed9b2">SVN layout migration for core/trunk</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2007-06-29T19:24:12Z" is="time-ago">Jun 29, 2007</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/lgpl.html" class="js-directory-link js-navigation-open" id="e85d4aa2e200d6c813f3ccddd5372b20-1c03f74b99009a408313d614d47e4074ac7ce4be" title="lgpl.txt">lgpl.txt</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/0d67fddb5b8bdb9014b4de42c663c4b6c4ebce6f.html" class="message" data-pjax="true" title="SVN layout migration for core/trunk
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/core/trunk@11727 1b8cb986-b30d-0410-93ca-fae66ebed9b2">SVN layout migration for core/trunk</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2007-06-29T19:24:18Z" is="time-ago">Jun 29, 2007</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/libraries.html" class="js-directory-link js-navigation-open" id="4f8b8ad77fe50db1316ad57275fd0612-38d42557bf426bc752b27a9f76658aa719b4e43a" title="libraries.gradle">libraries.gradle</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/463decd245ab6b0c684382b554b5633a7dad5409.html" class="message" data-pjax="true" title="HHH-9959 - Upgrade Hibernate Validator to 5.2.0.Final">HHH-9959 - Upgrade Hibernate Validator to 5.2.0.Final</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-07-29T13:56:59Z" is="time-ago">Jul 29, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/migration-guide.html" class="js-directory-link js-navigation-open" id="51e5dd9632688759cffee7e634516a74-e6b93d99f2410e61aba87b43d411aa88f263bf7b" title="migration-guide.adoc">migration-guide.adoc</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/c2ad82ef2b1d799ea746bbcd90df342a45a3742a.html" class="message" data-pjax="true" title="HHH-10043 - Migration Guide">HHH-10043 - Migration Guide</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-08-20T19:29:48Z" is="time-ago">Aug 20, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/settings.html" class="js-directory-link js-navigation-open" id="88b7c47e47b8ee65263b6784b86fa0a7-cab60c3cd278b162f88df074abe640597e0ac12a" title="settings.gradle">settings.gradle</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/bd256e4783219f4a765219cf625bb658fcb5fde1.html" class="message" data-pjax="true" title="HHH-9803 - Checkstyle fix ups - headers">HHH-9803 - Checkstyle fix ups - headers</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-19T04:25:14Z" is="time-ago">May 19, 2015</time></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="../../assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" />
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="hibernate-orm/blob/master/utilities.html" class="js-directory-link js-navigation-open" id="935c25bfe336a18f1137f2817ed0547f-32de0c340a61e77494c62dd1402d2131295261b8" title="utilities.gradle">utilities.gradle</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="hibernate-orm/commit/bd256e4783219f4a765219cf625bb658fcb5fde1.html" class="message" data-pjax="true" title="HHH-9803 - Checkstyle fix ups - headers">HHH-9803 - Checkstyle fix ups - headers</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-05-19T04:25:14Z" is="time-ago">May 19, 2015</time></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+  <div id="readme" class="boxed-group flush clearfix announce instapaper_body md">
+    <h3>
+      <span class="octicon octicon-book"></span>
+      README.md
+    </h3>
+
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage"><p><a href="https://camo.githubusercontent.com/74d9eb8a0b1aacf85908bdfe799cfe3982006672/687474703a2f2f7374617469632e6a626f73732e6f72672f68696265726e6174652f696d616765732f68696265726e6174655f6c6f676f5f7768697465626b675f32303070782e706e67" target="_blank"><img src="https://camo.githubusercontent.com/74d9eb8a0b1aacf85908bdfe799cfe3982006672/687474703a2f2f7374617469632e6a626f73732e6f72672f68696265726e6174652f696d616765732f68696265726e6174655f6c6f676f5f7768697465626b675f32303070782e706e67" data-canonical-src="http://static.jboss.org/hibernate/images/hibernate_logo_whitebkg_200px.png" style="max-width:100%;"></a></p>
+
+<p>Hibernate ORM is a component/library providing Object/Relational Mapping (ORM) support
+to applications and other components/libraries.  It is also provides an implementation of the
+JPA specification, which is the standardized Java specification for ORM.  See 
+<a href="../../hibernate.org/orm/index.html">Hibernate.org</a> for additional information. </p>
+
+<p><a href="http://ci.hibernate.org/job/hibernate-orm-master-h2/"><img src="https://camo.githubusercontent.com/81559223deab4b3333fec1b1a4f30a27f5c66cb7/687474703a2f2f63692e68696265726e6174652e6f72672f6a6f622f68696265726e6174652d6f726d2d6d61737465722d68322f62616467652f69636f6e" alt="Build Status" data-canonical-src="http://ci.hibernate.org/job/hibernate-orm-master-h2/badge/icon" style="max-width:100%;"></a></p>
+
+<h1><a id="user-content-quickstart" class="anchor" href="#quickstart" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quickstart</h1>
+
+<pre><code> git clone git://github.com/hibernate/hibernate-orm.git
+ cd hibernate-orm
+ ./gradlew clean build
+</code></pre>
+
+<p>The build requires a Java 8 JDK as JAVA_HOME, but will ensure Java 6 compatibility.</p>
+
+<h1><a id="user-content-resources" class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h1>
+
+<p>Hibernate uses <a href="http://gradle.org/">Gradle</a> as its build tool.  See the <em>Gradle Primer</em> section below if you are new to
+Gradle.</p>
+
+<p>Contributors should read the <a href="hibernate-orm/blob/master/CONTRIBUTING.html">Contributing Guide</a></p>
+
+<p>See the guides for setting up <a href="https://developer.jboss.org/wiki/ContributingToHibernateUsingIntelliJ">IntelliJ</a> or
+<a href="https://developer.jboss.org/wiki/ContributingToHibernateUsingEclipse">Eclipse</a> as your development environment.  <a href="https://community.jboss.org/wiki/BuildingHibernateORM4x">Building Hibernate ORM</a> 
+is somewhat outdated, but still has</p>
+
+<h1><a id="user-content-ci-builds" class="anchor" href="#ci-builds" aria-hidden="true"><span class="octicon octicon-link"></span></a>CI Builds</h1>
+
+<p>Hibernate makes use of <a href="http://jenkins-ci.org/">Jenkins</a> for its CI needs.  The project is built continuous on each 
+push to the upstream repository.   Overall there are a few different jobs, all of which can be seen at 
+<a href="http://ci.hibernate.org/view/ORM/">http://ci.hibernate.org/view/ORM/</a></p>
+
+<h1><a id="user-content-gradle-primer" class="anchor" href="#gradle-primer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradle primer</h1>
+
+<p>This section describes some of the basics developers and contributors new to Gradle might 
+need to know to get productive quickly.  The Gradle documentation is very well done; 2 in 
+particular that are indispensable:</p>
+
+<ul>
+<li><a href="http://gradle.org/docs/current/userguide/userguide_single.html">Gradle User Guide</a> is a typical user guide in that
+it follows a topical approach to describing all of the capabilities of Gradle.</li>
+<li><a href="http://gradle.org/docs/current/dsl/index.html">Gradle DSL Guide</a> is quite unique and excellent in quickyl
+getting up to speed on certain aspects of Gradle.</li>
+</ul>
+
+<h2><a id="user-content-using-the-gradle-wrapper" class="anchor" href="#using-the-gradle-wrapper" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using the Gradle Wrapper</h2>
+
+<p>For contributors who do not otherwise use Gradle and do not want to install it, Gradle offers a very cool
+features called the wrapper.  It lets you run Gradle builds without a previously installed Gradle distro in 
+a zero-conf manner.  Hibernate configures the Gradle wrapper for you.  If you would rather use the wrapper and 
+not install Gradle (or to make sure you use the version of Gradle intended for older builds) you would just use
+the command <code>gradlew</code> (or <code>gradlew.bat</code>) rather than <code>gradle</code> (or <code>gradle.bat</code>) in the following discussions.<br>
+Note that <code>gradlew</code> is only available in the project's root dir, so depending on your <code>pwd</code> you may need to adjust 
+the path to <code>gradlew</code> as well.</p>
+
+<h2><a id="user-content-executing-tasks" class="anchor" href="#executing-tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing Tasks</h2>
+
+<p>Gradle uses the concept of build tasks (equivalent to Ant targets or Maven phases/goals). You can get a list of
+available tasks via </p>
+
+<pre><code>gradle tasks
+</code></pre>
+
+<p>To execute a task across all modules, simply perform that task from the root directory.  Gradle will visit each
+sub-project and execute that task if the sub-project defines it.  To execute a task in a specific module you can 
+either:</p>
+
+<ol>
+<li><code>cd</code> into that module directory and execute the task</li>
+<li>name the "task path".  For example, in order to run the tests for the <em>hibernate-core</em> module from the root directory you could say <code>gradle hibernate-core:test</code></li>
+</ol>
+
+<h2><a id="user-content-common-java-related-tasks" class="anchor" href="#common-java-related-tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common Java related tasks</h2>
+
+<ul>
+<li><em>build</em> - Assembles (jars) and tests this project</li>
+<li><em>buildDependents</em> - Assembles and tests this project and all projects that depend on it.  So think of running this in hibernate-entitymanager, Gradle would assemble and test hibernate-entitymanager as well as hibernate-envers (because envers depends on entitymanager)</li>
+<li><em>classes</em> - Compiles the main classes</li>
+<li><em>testClasses</em> - Compiles the test classes</li>
+<li><em>compile</em> (Hibernate addition) - Performs all compilation tasks including staging resources from both main and test</li>
+<li><em>jar</em> - Generates a jar archive with all the compiled classes</li>
+<li><em>test</em> - Runs the tests</li>
+<li><em>publish</em> - Think Maven deploy</li>
+<li><em>publishToMavenLocal</em> - Installs the project jar to your local maven cache (aka ~/.m2/repository).  Note that Gradle 
+never uses this, but it can be useful for testing your build with other local Maven-based builds.</li>
+<li><em>eclipse</em> - Generates an Eclipse project</li>
+<li><em>idea</em> - Generates an IntelliJ/IDEA project (although the preferred approach is to use IntelliJ's Gradle import).</li>
+<li><em>clean</em> - Cleans the build directory</li>
+</ul>
+</article>
+  </div>
+
+
+        </div>
+      </div>
+      <div class="modal-backdrop"></div>
+    </div>
+  </div>
+
+
+
+      <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+        <li><a href="https://github.com/pricing" data-ga-click="Footer, go to pricing, text:pricing">Pricing</a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+</a>
+    <ul class="site-footer-links">
+      <li>&copy; 2015 <span title="0.06031s from github-fe132-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+        <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help">Help</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+    
+    
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <button type="button" class="flash-close js-flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+        <span class="octicon octicon-x"></span>
+      </button>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="../../assets-cdn.github.com/assets/frameworks-06e65f5639cc52d1aaada53115a54614b60fa90ab446a673e3e1818df167663b.js"></script>
+      <script async="async" crossorigin="anonymous" src="../../assets-cdn.github.com/assets/github-6486b386f2ea8e61e35e6f68b6e5506fa17aed1c385b528ece57088cf14a1459.js"></script>
+      
+      
+    <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
+      <span class="octicon octicon-alert"></span>
+      <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+      <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="#">Reload</a> to refresh your session.</span>
+    </div>
+  </body>
+
+<!-- Mirrored from github.com/hibernate/hibernate-orm by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:28:21 GMT -->
+</html>
+

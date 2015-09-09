@@ -162,7 +162,7 @@ One benefit of this approach is that by using polling from the tables and the fa
 
 Triggers are generally created on tables. Since we want to use them for event-listening, we have to cover every table of the domain model that contains data indexed/stored in the index. This also includes all of the mapping tables between entities and all other secondary tables.
 \\\\
-The following figure \ref{triggers_schema} shows the trigger architecture needed for our Author and Book example. Also note that we are using triggers that execute before changes are persisted.
+The following figure \ref{triggers_schema} shows the trigger architecture needed for our Author and Book example. Note that we are using triggers that execute before changes are persisted.
 \\
 \begin{figure}[ht]
 	\centering
@@ -262,7 +262,7 @@ public class Author {
 }
 \end{lstlisting}
 \noindent
-\textit{Note: The update tables are NOT JPA entities, so we have to work with native SQL in the backend}
+\textit{Note: The update tables are NOT JPA entities, so we have to work with native SQL in the backend}.
 \\\\
 \noindent
 If the developer needs different names for the update tables and their columns (e.g. if there already exists a table with the same name), it is possible to manually set these. They can be found on the same level in the annotations as the corresponding info for the original table is set.

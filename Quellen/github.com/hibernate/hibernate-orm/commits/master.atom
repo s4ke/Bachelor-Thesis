@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-orm/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-orm/commits/master.atom"/>
+  <title>Recent Commits to hibernate-orm:master</title>
+  <updated>2015-09-08T19:03:03+01:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2731fe541a4b297e399d46357ad9eb5bbe2d2239</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/2731fe541a4b297e399d46357ad9eb5bbe2d2239"/>
+    <title>
+        HHH-100084 - Refactor Identity Column support methods into IdentityColumnSupport interface
+    </title>
+    <updated>2015-09-08T19:03:03+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/432649?v=3&amp;s=30"/>
+    <author>
+      <name>dreab8</name>
+      <uri>https://github.com/dreab8</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-100084 - Refactor Identity Column support methods into IdentityColumnSupport interface&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7c17a0f4441fab67e92b5a05adb5a662084dd2c2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/7c17a0f4441fab67e92b5a05adb5a662084dd2c2"/>
+    <title>
+        HHH-10088 Add link to setting up guide for Eclipse IDE
+    </title>
+    <updated>2015-09-07T09:05:12+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/881222?v=3&amp;s=30"/>
+    <author>
+      <name>mustafau</name>
+      <uri>https://github.com/mustafau</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10088 Add link to setting up guide for Eclipse IDE&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75a0991ae96a71372f449932168651a3089e7baa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/75a0991ae96a71372f449932168651a3089e7baa"/>
+    <title>
+        HHH-10086 - Deprecate Dialect#getIdentityColumnString() and Dialect#getIdentitySelectString()
+    </title>
+    <updated>2015-09-04T18:10:26+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/432649?v=3&amp;s=30"/>
+    <author>
+      <name>dreab8</name>
+      <uri>https://github.com/dreab8</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10086 - Deprecate Dialect#getIdentityColumnString() and Dialect#getIdentitySelectString()&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0aca04ff7a16fce61b573b32d4bec7244add77c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/0aca04ff7a16fce61b573b32d4bec7244add77c6"/>
+    <title>
+        HHH-9731 : Wrap Criteria CaseStatement params in string casts
+    </title>
+    <updated>2015-09-04T12:00:38+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/432649?v=3&amp;s=30"/>
+    <author>
+      <name>dreab8</name>
+      <uri>https://github.com/dreab8</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-9731 : Wrap Criteria CaseStatement params in string casts&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9a6ecb914ee48f45e28a798c46ef92426dee382c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/9a6ecb914ee48f45e28a798c46ef92426dee382c"/>
+    <title>
+        HHH-9731 - Add test for issue
+    </title>
+    <updated>2015-09-03T16:03:18+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/432649?v=3&amp;s=30"/>
+    <author>
+      <name>dreab8</name>
+      <uri>https://github.com/dreab8</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-9731 - Add test for issue&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9694753daa72f4538b0b2f741bcb018ecbbbf443</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/9694753daa72f4538b0b2f741bcb018ecbbbf443"/>
+    <title>
+        Changed version in main build.gradle for master branch to 5.1.0-SNAPSHOT
+    </title>
+    <updated>2015-09-03T09:20:30-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/234515?v=3&amp;s=30"/>
+    <author>
+      <name>sebersole</name>
+      <uri>https://github.com/sebersole</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Changed version in main build.gradle for master branch to 5.1.0-SNAPSHOT&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/643c0b532d0dedfe91dd9eb0f01ac667262b082e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/643c0b532d0dedfe91dd9eb0f01ac667262b082e"/>
+    <title>
+        HHH-10079 - Use enhanced property access for field/property attributes only
+    </title>
+    <updated>2015-09-03T15:06:59+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/856614?v=3&amp;s=30"/>
+    <author>
+      <name>barreiro</name>
+      <uri>https://github.com/barreiro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10079 - Use enhanced property access for field/property attributes only&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/03801b62ec2aa7cc9707e1014da0967101ef85ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/03801b62ec2aa7cc9707e1014da0967101ef85ea"/>
+    <title>
+        HHH-10078 - Enforce sychronization of non thread-safe method Enhancer.enhance()
+    </title>
+    <updated>2015-09-03T08:57:30-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/856614?v=3&amp;s=30"/>
+    <author>
+      <name>barreiro</name>
+      <uri>https://github.com/barreiro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10078 - Enforce sychronization of non thread-safe method Enhancer.enhance()&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4d6eca5ff8596121e443136e2b0ef4d5abc455b2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/4d6eca5ff8596121e443136e2b0ef4d5abc455b2"/>
+    <title>
+        HHH-10076 - bytecode enhancer - CompositeEnhancer does not add ManagedComposite marker interface
+    </title>
+    <updated>2015-09-03T08:53:02-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/856614?v=3&amp;s=30"/>
+    <author>
+      <name>barreiro</name>
+      <uri>https://github.com/barreiro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10076 - bytecode enhancer - CompositeEnhancer does not add ManagedComposite marker interface&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2c69ca62c0e4144e7fd7b823ea601910704abf3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/c2c69ca62c0e4144e7fd7b823ea601910704abf3"/>
+    <title>
+        HHH-10077 - Fix SourceSet generation on gradle plugin
+    </title>
+    <updated>2015-09-03T08:50:04-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/856614?v=3&amp;s=30"/>
+    <author>
+      <name>barreiro</name>
+      <uri>https://github.com/barreiro</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10077 - Fix SourceSet generation on gradle plugin&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3689924d74a000cc2319a434bf380862692c9b28</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/3689924d74a000cc2319a434bf380862692c9b28"/>
+    <title>
+        HHH-10030 Add read-write cache concurrency strategy to Infinispan 2LC
+    </title>
+    <updated>2015-09-03T11:35:05+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/2167869?v=3&amp;s=30"/>
+    <author>
+      <name>rvansa</name>
+      <uri>https://github.com/rvansa</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10030 Add read-write cache concurrency strategy to Infinispan 2LC
+
+* AccessType.READ_WRITE is now supported cache concurrency strategy
+* Added checks that we&#39;re caching in local or invalidation cache (distributed and replicated cache does not work ATM)
+* Refactored test-suite: Running on both transactional and read-write caches (these should yield the same results)
+** CustomParemeterized runner is used for that
+** Moved all entities used in functional tests to one package
+** Removed already disabled tests related to class loaders (not needed since Infinispan 5.1)&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2dc0adb893ebebd8fcf14a15ef0690c1d26291cf</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/2dc0adb893ebebd8fcf14a15ef0690c1d26291cf"/>
+    <title>
+        HHH-10053 : Revert HHH-9736; BigIntegerType really should use NumericTypeDescriptor
+    </title>
+    <updated>2015-09-02T13:04:56-07:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/431309?v=3&amp;s=30"/>
+    <author>
+      <name>gbadner</name>
+      <uri>https://github.com/gbadner</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10053 : Revert HHH-9736; BigIntegerType really should use NumericTypeDescriptor&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/73c46e298c24098b89ae8c67712034e95b8095c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/73c46e298c24098b89ae8c67712034e95b8095c0"/>
+    <title>
+        HHH-10056 - Separate settings for notions of (1) disabling EnversService and (2) auto-registering Envers listeners
+    </title>
+    <updated>2015-09-02T09:05:34-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/234515?v=3&amp;s=30"/>
+    <author>
+      <name>sebersole</name>
+      <uri>https://github.com/sebersole</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10056 - Separate settings for notions of (1) disabling EnversService and (2) auto-registering Envers listeners&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/29de3c87ab7a95b130106abc17c5c540c3c5f436</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/29de3c87ab7a95b130106abc17c5c540c3c5f436"/>
+    <title>
+        HHH-10056 - Separate settings for notions of (1) disabling EnversService and (2) auto-registering Envers listeners
+    </title>
+    <updated>2015-09-02T08:51:26-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/234515?v=3&amp;s=30"/>
+    <author>
+      <name>sebersole</name>
+      <uri>https://github.com/sebersole</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10056 - Separate settings for notions of (1) disabling EnversService and (2) auto-registering Envers listeners&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/518033eabe8ff8e064185aa745c5aa2e4ed95c09</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/518033eabe8ff8e064185aa745c5aa2e4ed95c09"/>
+    <title>
+        HHH-10068 - Missing generated JPA static metamodel class for envers revision entity
+    </title>
+    <updated>2015-09-02T08:23:20-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/234515?v=3&amp;s=30"/>
+    <author>
+      <name>sebersole</name>
+      <uri>https://github.com/sebersole</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10068 - Missing generated JPA static metamodel class for envers revision entity&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1c70e0df0cbf671bc885d0c3ca369fbc2e5a004c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/1c70e0df0cbf671bc885d0c3ca369fbc2e5a004c"/>
+    <title>
+        HHH-10020 - Improvements to org.hibernate.bytecode.enhance.internal.AttributeTypeDescriptor#buildInLineDirtyCheckingBodyFragment
+    </title>
+    <updated>2015-09-01T21:52:28-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/234515?v=3&amp;s=30"/>
+    <author>
+      <name>sebersole</name>
+      <uri>https://github.com/sebersole</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10020 - Improvements to org.hibernate.bytecode.enhance.internal.AttributeTypeDescriptor#buildInLineDirtyCheckingBodyFragment&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/961b5e897752e32d085663d72349f4c11ed7e632</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/961b5e897752e32d085663d72349f4c11ed7e632"/>
+    <title>
+        HHH-10069 - ClassCastException between CompositeCustomType and ComponentType part 2
+    </title>
+    <updated>2015-09-01T21:31:27-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/234515?v=3&amp;s=30"/>
+    <author>
+      <name>sebersole</name>
+      <uri>https://github.com/sebersole</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10069 - ClassCastException between CompositeCustomType and ComponentType part 2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8916346b4a5c697a3925f7eadaa861823789b14b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/8916346b4a5c697a3925f7eadaa861823789b14b"/>
+    <title>
+        HHH-9864 - foreign key violation with order_inserts=true
+    </title>
+    <updated>2015-09-01T20:23:51-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/234515?v=3&amp;s=30"/>
+    <author>
+      <name>sebersole</name>
+      <uri>https://github.com/sebersole</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-9864 - foreign key violation with order_inserts=true&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/216848b50028fad690faa03246e7b8318af64018</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/216848b50028fad690faa03246e7b8318af64018"/>
+    <title>
+        HHH-10054 Modify Create Index SQL to support the Teradata database
+    </title>
+    <updated>2015-09-01T12:41:32-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/871558?v=3&amp;s=30"/>
+    <author>
+      <name>drepshas</name>
+      <uri>https://github.com/drepshas</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10054 Modify Create Index SQL to support the Teradata database&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d9b456b03afc971c63ee154e0ae0ba80c5f30d5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-orm/commit/d9b456b03afc971c63ee154e0ae0ba80c5f30d5f"/>
+    <title>
+        HHH-10058 Parameterized test runner compatible with CustomRunner
+    </title>
+    <updated>2015-09-01T12:04:42-05:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/2167869?v=3&amp;s=30"/>
+    <author>
+      <name>rvansa</name>
+      <uri>https://github.com/rvansa</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HHH-10058 Parameterized test runner compatible with CustomRunner&lt;/pre>
+    </content>
+  </entry>
+</feed>

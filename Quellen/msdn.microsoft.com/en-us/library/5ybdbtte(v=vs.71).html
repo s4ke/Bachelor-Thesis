@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    
+<!-- Mirrored from msdn.microsoft.com/en-us/library/5ybdbtte(v=vs.71).aspx by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><link rel="canonical" href="https://msdn.microsoft.com/en-us/library/5ybdbtte(v=vs.90).aspx" />
+        <title>Creating Connections to Access Databases</title>
+
+
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/5ybdbtte(d=default,l=en-us,v=vs.71).aspx" />
+
+<meta name="NormalizedUrl" content="https://msdn.microsoft.com/en-us/library/5ybdbtte(d=default,l=en-us,v=vs.71).aspx" />
+
+<meta name="ms.normalizedurl" content="https://msdn.microsoft.com/en-us/library/5ybdbtte(d=default,l=en-us,v=vs.71).aspx" />
+
+<meta name="VotingContextUrl" content="https://msdn.microsoft.com/en-us/library/5ybdbtte(d=default,l=en-us,v=vs.71).aspx" />
+
+<meta name="MN" content="FB361397-1:37:34 AM" />
+
+<meta name="Search.ShortId" content="5ybdbtte" />
+
+<meta name="ms.shortidmsdn" content="5ybdbtte" />
+
+<meta name="Ms.Locale" content="en-us" />
+
+<meta name="ms.prodver" content="VS.71" />
+
+<meta name="ms.contentlang" content="EN" />
+
+<meta name="ms.lang" content="EN" />
+
+<meta name="ms.loc" content="US" />
+
+<meta name="ms.sitever" content="2015.08.20.4" />
+
+<meta name="ms.assetid" content="9677c982-abb0-428e-9a7b-d248f0af8cee" />
+
+<meta name="ms.auth" content="0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    
+    
+
+
+
+
+
+
+
+
+        
+    <link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Combined.css?resources=0:ImageSprite,0:TopicResponsive,0:TopicResponsive.MediaQueries,1:CodeSnippet,1:ProgrammingSelector,1:ExpandableCollapsibleArea,0:CommunityContent,1:TopicNotInScope,1:FeedViewerBasic,1:ImageSprite,2:Header,2:HeaderFooterSprite,2:Header.MediaQueries,3:Banner.MediaQueries,4:LinkList,5:SkinnyRating,0:Breadcrumbs,0:Breadcrumbs.MediaQueries,0:ResponsiveToc,0:ResponsiveToc.MediaQueries,1:VersionSelector,0:LibraryMemberFilter,2:Footer,2:Footer.MediaQueries,4:FooterSock,4:FooterSock.MediaQueries,0:BaseResponsive,5:MsdnResponsive;/Areas/Library/Content:0,/Areas/Epx/Content/Css:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Epx/Shared/Content:3,/Areas/Epx/Themes/Base/Content:4,/Areas/Library/Themes/Msdn/Content:5&amp;amp;v=A839060B4E9C1BADE35FE20ACFFF3015" /></head>
+<body class="library ">
+    <div id="page">
+        
+
+        
+
+        
+
+        
+    
+
+    
+    <link type="text/css" rel="stylesheet" />
+    
+        
+        
+    <input type="hidden" id="isHeaderBleeding" value="true" />
+    <div id="ux-header" dir="ltr" class="ltr msdn">
+        
+
+      <header>
+        <span id="singleCol"></span>
+        <span id="doubleCol"></span>
+        <span id="isMobile"></span>
+        <div>
+          <div class="row topRow">
+            <div class="top">
+              <div class="left">
+                <a class="msdnLogoImg" href="https://msdn.microsoft.com/en-us">
+                  <div id="msft-logo" class="msft-logo"></div>
+                </a>
+                <div class="GrayPipe"></div>
+                  <a class="DevCenterFullNameNonMegaBlade" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterFullName" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterShortName" href="https://msdn.microsoft.com/en-us">Developer</a>
+              </div>
+              <div class="right">
+                <div id="signIn">
+
+  <img class="profileImage" src="https://i-msdn.sec.s-msft.com/Areas/Centers/Themes/StandardDevCenter/Content/Images/profile.jpg?v=635757106908430861" />
+
+
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1441787854&amp;rver=6.0.5276.0&amp;wp=MCMBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2f5ybdbtte%2528v%3dvs.71%2529.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-US" title="Sign in">Sign in</a></div>
+
+
+
+
+                <div class="auxNav">
+                  <div>
+                    <div data-fragmentName="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://msdn.microsoft.com/subscriptions/manage/hh442900" id="Subscriptions_2153_1" xmlns="http://www.w3.org/1999/xhtml">MSDN subscriptions</a>
+</div>
+                    <div data-fragmentName="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="http://go.microsoft.com/fwlink/?LinkId=309297&amp;clcid=0x409&amp;slcid=0x409&amp;campaign=o~msft~msdn~gettools-header~dn308572" id="GetTools_2153_3" xmlns="http://www.w3.org/1999/xhtml">Get tools</a>
+</div>
+                  </div>
+                  <div>
+                    <div data-fragmentName="SocialLinks" id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="http://www.facebook.com/microsoftdeveloper" target="_blank" id="SocialLinks_2152_4" class="facebook" xmlns="http://www.w3.org/1999/xhtml">http://www.facebook.com/microsoftdeveloper</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/msdev" target="_blank" id="SocialLinks_2152_5" class="twitter" xmlns="http://www.w3.org/1999/xhtml">https://twitter.com/msdev</a>
+      </li>
+      <li>
+        <a href="http://plus.google.com/111221966647232053570/" target="_blank" id="SocialLinks_2152_6" class="googlePlus" xmlns="http://www.w3.org/1999/xhtml">http://plus.google.com/111221966647232053570/</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row middleRow">
+            <div class="expandTop">
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+          </div>
+        </div>
+        <div id="buttomRowWrapper" class="bg_default">
+          <div class="row buttomRow bg_default">
+            <div class="bottom">
+              <div class="left">
+                <a id="grip" class="menu-icon" href="javascript:void(0)"></a>
+                
+                <div id="drawer">
+                  <div class="toc">
+                    
+        <nav>
+            <ul class="navL1">
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)" title="Technologies">Technologies</a>
+                                <ul class="navL2">
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/cloud-app-development-msdn" title="Cloud">Cloud</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/app-development-msdn" title="App Development">App Development</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/web-app-development-msdn" title="Web">Web</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/big-data-development-msdn" title="Data">Data</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/games-development-msdn" title="Gaming">Gaming</a>
+
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)" title="Downloads">Downloads</a>
+                                <ul class="navL2">
+                                        <li class="inactive">
+                                            <a href="https://www.visualstudio.com/downloads/download-visual-studio-vs" title="Visual Studio">Visual Studio</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/subscriptions" title="MSDN subscription access">MSDN subscription access</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/microsoft-sdks-msdn" title="SDKs">SDKs</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="Trial software">Trial software</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/evalcenter" title="Free downloads">Free downloads</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/officeevaluationresources" title="Office resources">Office resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sharepoint2013resources" title="SharePoint Server 2013 resources">SharePoint Server 2013 resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sqlserver2014expressresources" title="SQL Server 2014 Express resources">SQL Server 2014 Express resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/windowsserver2012r2resources" title="Windows Server 2012 resources">Windows Server 2012 resources</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)" title="Programs">Programs</a>
+                                <ul class="navL2">
+                                        <li class="inactive">
+                                            <a href="https://rewards.msdn.microsoft.com/" title="Rewards">Rewards</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://www.microsoft.com/bizspark" title="Startups">Startups</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="Students">Students</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/imagine/imagine-home" title="Microsoft Imagine">Microsoft Imagine</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/microsoftstudentpartners" title="Microsoft Student Partners">Microsoft Student Partners</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="Architects">Architects</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/architects-overview-msdn" title="Overview">Overview</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/architects-case-studies-msdn" title="Case studies">Case studies</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/architects-blueprints-msdn" title="Blueprints">Blueprints</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="http://blogs.msdn.com/b/msarchitecture/" title="Blog">Blog</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="http://social.msdn.microsoft.com/forums/en-us/home?brandignore=true&amp;sort=relevancedesc&amp;searchterm=architecture+or+architect" title="Forums">Forums</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="http://events.msdn.microsoft.com/" title="Events">Events</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive toggle">
+                                            <a href="javascript:void(0)" title="MSDN Subscriptions">MSDN Subscriptions</a>
+
+                                                <ul class="navL3">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-overview" title="Overview">Overview</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/benefits-overview" title="Benefits">Benefits</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-administration" title="Administrators">Administrators</a>
+                                                        </li>
+                                                </ul>
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                            <a href="javascript:void(0)" title="Community">Community</a>
+                                <ul class="navL2">
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/magazine/dd767791" title="Magazine">Magazine</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://social.msdn.microsoft.com/forums/" title="Forums">Forums</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="http://blogs.msdn.com/b/developer-tools/" title="Blogs">Blogs</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="http://tech-advisors.msdn.microsoft.com/en-us" title="Tech Advisors">Tech Advisors</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="http://channel9.msdn.com/" title="Channel 9">Channel 9</a>
+
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive current toggle">
+                            <a href="javascript:void(0)" title="Documentation">Documentation</a>
+                                <ul class="navL2">
+                                        <li class="inactive current">
+                                            <a href="https://msdn.microsoft.com/library" title="APIs and reference">APIs and reference</a>
+
+                                                   
+                                        </li>
+                                        <li class="inactive">
+                                            <a href="https://msdn.microsoft.com/developer-centers-msdn" title="Dev centers">Dev centers</a>
+
+                                                   
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive">
+                            <a href="https://code.msdn.microsoft.com/" title="Samples">Samples</a>
+                        </li>
+            </ul>
+        </nav>
+
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <div data-fragmentName="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get">
+      <button id="FakeHeaderSearchButton" value="Search" type="submit" class="header-search-button">
+        <div id="search-finder" class="search-finder"></div>
+      </button>
+      <button id="HeaderSearchButton" style="display:none"></button>
+      <div id="searchSplitter"></div>
+      <div id="searchCloseIcon" class="search-clear-x"></div>
+      <div id="searchTextContainer" style="width: 0;">
+        <input id="HeaderSearchTextBox" name="query" type="text" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" />
+      </div>
+    </form>
+    
+    
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </header>
+
+    </div>
+
+    
+    
+
+
+            <div id="responsiveRating" ms.pgarea="rating">
+                
+
+<div id="skinnyRating">
+    <div class="closeSmallWhite"></div>
+    <div class="rating">
+        <div id="s_ratingSection1">
+            <div class="title">
+                Was this page helpful?
+            </div>
+            <div class="description">
+                Your feedback about this content is important. Let us know what you think.
+            </div>
+            <div class="buttons">
+                <button class="button" id="s_ratingYes" aria-label="Yes, this page was helpful">Yes</button>
+                <button class="button" id="s_ratingNo" aria-label="No, this page was not helpful">No</button>
+            </div>
+            <input id="s_ratingValue" type="hidden" value="" />
+        </div>
+        <div id="s_ratingSection2">
+            <div id="s_skinnyRatingForm">
+                <div class="title">
+                    Additional feedback?
+                </div>
+                <textarea id="s_ratingText" rows="6" cols="" maxlength="1500"></textarea>
+                <div class="counter right">
+                    <span id="feedbackTextCounter">1500</span> characters remaining
+                </div>
+            </div>
+            <div class="buttons left">
+                <button class="button" id="s_ratingSubmit" aria-label="Submit my additional feedback">Submit</button>
+                <button class="button" id="s_ratingSkipThis" aria-label="Skip additional feedback">Skip this</button>
+            </div>
+        </div>
+        <div id="s_ratingSection3" style="display: none">
+            <div class="title">
+                Thank you!
+            </div>
+            <div class="description">
+                We appreciate your feedback.
+            </div>
+        </div>
+
+        
+        <div id="contentFeedbackQAContainer" style="display: none;"></div>
+    </div>
+</div>
+
+
+            </div>
+
+
+
+<link type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" />
+
+
+    <div id="breadcrumbs">
+        <div id="breadcrumbDesktop" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/aa973739(v=vs.71).aspx" title="Visual Studio .NET"></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/k1s94fta(v=vs.71).aspx" title="Visual Basic and Visual C#"><span>Visual Basic and Visual C#</span></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/wzabh8c4(v=vs.71).aspx" title="Accessing Data"><span>Accessing Data</span></a></span>
+                        <span class="breadcrumbDropSmall">
+                            <a id="breadcrumbDropDownButton" href="#" targethref="https://msdn.microsoft.com/en-us/library/wzabh8c4(v=vs.71).aspx" title="Connecting to Data Sources with ADO.NET"><span>Connecting to Data Sources with ADO.NET</span></a>
+                        </span>
+        </div>
+        <div id="breadcrumbDropDownMenu"></div>
+        <div id="tocDropDownMenu"></div>
+
+        <div id="breadcrumbTablet" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/wzabh8c4(v=vs.71).aspx" title="Accessing Data"></a></span>
+                    <span><a href="https://msdn.microsoft.com/en-us/library/aa984058(v=vs.71).aspx" title="Connecting to Data Sources with ADO.NET"><span>Connecting to Data Sources with ADO.NET</span></a></span>
+                <span class="breadcrumbDropSmall"><a id="tocDropDownButton" href="#" title="Creating Connections to Access Databases"><span>Creating Connections to Access Databases</span></a></span>
+        </div>
+        <div id="breadcrumbMobile" class="breadCrumb">
+                <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/aa984058(v=vs.71).aspx" title="Connecting to Data Sources with ADO.NET"></a></span>
+            <span class="breadcrumbDropSmall"><a id="tocPopupButton" href="#" title="Creating Connections to Access Databases"><span>Creating Connections to Access Databases</span></a></span>
+        </div>
+    </div>
+    <div id="tocPopupMenu">
+        <div id="tocPopMenuClose" class="tocCloseLarge"></div>
+        <div id="tocTitle">Creating Connections to Access Databases</div>        
+    </div>
+
+    
+
+
+        <div id="body">
+            <span id="tabletView_large"></span>
+            <span id="tabletView_small"></span>
+            <span id="mobileView"></span>
+            
+
+
+
+
+
+
+
+
+
+    <div id="leftNav">
+
+
+
+
+
+<div id="tocnav" class="hide-archive" ms.pgarea="left toc">
+
+
+    <div class="tocunselected">
+        <div id="tocExpandArea">
+            <span class="toc_empty"></span>
+            <span id="tocExpandButton"><a href="#"></a></span>
+        </div>
+        <div id="tocExpand"></div>
+    </div>
+    <div class="tocselected"></div>
+    <div class="tocunselected">
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/wxt2cwcc(v=vs.71).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Introduction to ADO.NET Connection Design Tools">Introduction to ADO.NET Connection Design Tools</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/aa984327(v=vs.71).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creating ADO.NET Connection Objects">Creating ADO.NET Connection Objects</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/s4yys16a(v=vs.71).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creating Connections to SQL Server">Creating Connections to SQL Server</a>                </div>
+                <div class="toclevel current" data-toclevel="1">
+<a href="5ybdbtte(v%3dvs.71).html" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creating Connections to Access Databases">Creating Connections to Access Databases</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/aa984313(v=vs.71).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creating Connections to ODBC Data Sources">Creating Connections to ODBC Data Sources</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<a href="https://msdn.microsoft.com/en-us/library/xexk8kx3(v=vs.71).aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="Creating Connections to Oracle Databases">Creating Connections to Oracle Databases</a>                </div>
+    </div>
+</div>            <div style="display:none">
+                <div id="CollapseLocalizeString">Collapse the table of content</div>
+                <div id="ExpandLocalizeString">Expand the table of content</div>
+            </div>
+        <div>
+            <a id="isd_archiveControlResponsive" style="display:none;" data-include-archive="Include Previous Version" data-exclude-archive="Exclude Previous Version">
+            </a>
+        </div>
+    </div>
+    <div id="content" class="content">
+
+
+
+
+
+
+
+
+<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+  <h1 class="title">Creating Connections to Access Databases</h1>
+  
+  <div class="lw_vs">
+    <div id="curversion">
+      <strong>
+            Visual Studio .NET 2003
+        </strong>
+    </div>
+    <div id="versionclick">
+      <div id="vsseperator" class="cl_lw_vs_seperator"></div>
+      <div>
+        <div>
+          <a id="vsLink" href="javascript:;">
+                        Other Versions
+                    </a>
+        </div>
+        <div class="cl_vs_arrow clip10x10">
+          <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="https://i-msdn.sec.s-msft.com/Areas/Epx/Content/Images/ImageSprite.png?v=635757106971399902" />
+        </div>
+      </div>
+      <ul id="vsPanel">
+        <li>
+          <a href="https://msdn.microsoft.com/en-us/library/5ybdbtte(v=vs.90).aspx">.NET Framework 3.5</a>
+        </li>
+        <li>
+          <a href="https://msdn.microsoft.com/en-us/library/5ybdbtte(v=vs.80).aspx">.NET Framework 2.0</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div style="clear:both;"></div>
+  
+  <a id="vbtskcreatingconnectiontoaccessdatabase">
+    
+  </a>
+
+
+<div id="nstext">
+
+<p>When connecting to an Access database, use the <strong>Microsoft Jet 4.0 OLE DB Provider</strong>.</p>
+
+<blockquote class="dtBlock"><div>
+<strong><strong>Security Note</strong>   </strong>Storing connection-string details (such as the server name, user name, and password) can have implications for the security of your application. Using Windows Integrated Security is a more secure way to control access to a database. For more information, see <a href="https://msdn.microsoft.com/en-us/library/aa291801(v=vs.71).aspx">Database Security</a>.</div></blockquote>
+
+<p>There are two ways to connect to an Access database:
+
+</p><ul>
+	<li>Visually, with design-time tools.</li>
+
+	<li>Programmatically.</li>
+</ul>
+
+<h2 class="dtH2">Connecting to an Access Database in Server Explorer</h2>
+
+<p>Establishing a connection to an Access database in Server Explorer allows you to easily create <a href="https://msdn.microsoft.com/en-us/library/system.data.oledb.oledbconnection(v=vs.71).aspx">OleDbConnection</a>, <a href="https://msdn.microsoft.com/en-us/library/system.data.oledb.oledbdataadapter(v=vs.71).aspx">OleDbDataAdapter</a>, and <a href="https://msdn.microsoft.com/en-us/library/system.data.oledb.oledbcommand(v=vs.71).aspx">OleDbCommand</a> objects by dragging data objects from Server Explorer onto forms or designers.</p>
+
+<p class="labelproc"><strong>To create a connection in Server Explorer</strong>
+
+</p><ol>
+	<li>In Server Explorer, right-click <strong>Data Connections</strong> and click <strong>Add Connection</strong>.</li>
+
+	<li>In the <strong>Data Link Properties</strong> dialog box, click the <strong>Provider</strong> tab.</li>
+
+	<li>Click the <strong>Microsoft Jet 4.0 OLE DB Provider</strong>, then click <strong>Next</strong>.</li>
+
+	<li>Click the ellipsis (...) button to browse to the Microsoft Access (.mdb) file you want to access.</li>
+
+	<li>Type the <strong>User ID</strong> to use for authentication when you log on to the data source.</li>
+
+	<li>Type the <strong>Password</strong> to use for authentication when you log on to the data source.</li>
+
+	<li>Click <strong>OK</strong>.</li>
+</ol>
+
+<h2 class="dtH2">Connecting to an Access Database from Within Your Application</h2>
+
+<p>Creating connections to data sources from within your application can be accomplished visually using Visual Studio .NET design-time tools (including Server Explorer and the Toolbox), or programmatically by creating data connection objects in code.</p>
+
+<h3 class="dtH3">Connecting to an Access Database Visually</h3>
+
+<p>Visual Studio supports creating data objects by dragging items from Server Explorer or the Data tab of the Toolbox onto your form or designer.</p>
+
+<p class="labelproc"><strong>To create a connection from Server Explorer</strong>
+
+</p><ol>
+	<li>Create a <strong>Data Connection</strong> in Server Explorer to your Access database. For more information, see the above section titled "Connecting to an Access database in Server Explorer."</li>
+
+	<li>Drag the connection from Server Explorer onto your form or designer.
+<p>An <strong>OleDbConnection </strong>object appears in the component tray.
+</p></li>
+
+	<li>Advance to the section "Next Steps" later in this topic.</li>
+</ol>
+
+<p class="labelproc"><strong>To create a connection from the Data tab of the Toolbox</strong>
+
+</p><ol>
+	<li>Drag an <strong>OleDbConnection</strong> object onto your form or designer.
+<p>An unconfigured <strong>OleDbConnection</strong> object appears in the component tray.
+</p></li>
+
+	<li>In the Properties window, click the <strong>ConnectionString</strong> property.</li>
+
+	<li>Do one of the following:
+<ul>
+	<li>Click an existing connection in the drop-down list. 
+<p>- or -
+</p></li>
+
+	<li>Click <strong>New Connection</strong> to open the <a href="https://msdn.microsoft.com/en-us/library/79t8s5dk(v=vs.71).aspx">Data Link Properties Dialog Box</a> and configure a new connection.</li>
+</ul>
+</li>
+
+	<li>Advance to the section "Next Steps" later in this topic.</li>
+</ol>
+
+<h3 class="dtH3">Connecting to an Access Database Programmatically</h3>
+
+<p>You can create a <strong>OleDbConnection</strong> object directly in code.</p>
+
+<p class="labelproc"><strong>To programmatically create a connection between your application and an Access database</strong>
+
+</p><ul>
+	<li>The following code creates an <a href="https://msdn.microsoft.com/en-us/library/system.data.oledb.oledbconnection(v=vs.71).aspx">OleDbConnection</a> object, sets the <a href="https://msdn.microsoft.com/en-us/library/system.data.oledb.oledbconnection.connectionstring(v=vs.71).aspx">OleDbConnection.ConnectionString</a> property, and opens the connection.
+
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_5fb10ccd-8aa6-4136-9913-4453ff7f0469');">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_5fb10ccd-8aa6-4136-9913-4453ff7f0469" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>
+' Visual Basic
+Public Sub ConnectToAccess()
+    Dim conn As New System.Data.OleDb.OleDbConnection()
+    ' TODO: Modify the connection string and include any
+    ' additional required properties for your database.
+    conn.ConnectionString = &amp; _
+    "Provider=Microsoft.Jet.OLEDB.4.0;Data source=" &amp; _
+    "C:\Documents and Settings\username\My Documents\dbFile.mdb"
+    Try
+       conn.Open()
+       ' Insert code to process data.
+    Catch ex As Exception
+       MessageBox.Show("Failed to connect to data source")
+    Finally
+       conn.Close()
+    End Try
+End Sub
+
+// C#
+public void ConnectToAccess()
+{
+    System.Data.OleDb.OleDbConnection conn = new 
+        System.Data.OleDb.OleDbConnection();
+    // TODO: Modify the connection string and include any
+    // additional required properties for your database.
+    conn.ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;" +
+        @"Data source= C:\Documents and Settings\username\" +
+        @"My Documents\AccessFile.mdb";
+    try
+    {
+        conn.Open();
+        // Insert code to process data.
+    }
+        catch (Exception ex)
+    {
+        MessageBox.Show("Failed to connect to data source");
+    }
+    finally
+    {
+        conn.Close();
+    }
+}
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+
+</li>
+</ul>
+
+<h2 class="dtH2">Next Steps</h2>
+
+<p>Now that you have established a connection between your application and the Access database, you can create objects to fetch and update data. The following table provides links to some relevant topics.</p>
+<div class="tablediv"><table class="dtTABLE">
+
+<tr><th>To</th><th>See</th></tr>
+
+<tr><td>Fetch read-only data</td><td><a href="https://msdn.microsoft.com/en-us/library/aa720705(v=vs.71).aspx">Retrieving Data Using the DataReader</a></td></tr>
+
+<tr><td>Fill a dataset with data</td><td><a href="https://msdn.microsoft.com/en-us/library/8s3saad7(v=vs.71).aspx">ADO.NET Datasets</a></td></tr>
+
+<tr><td>Execute SQL statements directly</td><td><a href="https://msdn.microsoft.com/en-us/library/swf006xc(v=vs.71).aspx">Performing Database Operations Directly</a></td></tr>
+</table></div>
+
+<h4 class="dtH4">See Also</h4>
+
+<p><a href="https://msdn.microsoft.com/en-us/library/aa984058(v=vs.71).aspx">Connecting to Data Sources with ADO.NET</a> | <a href="https://msdn.microsoft.com/en-us/library/aa291430(v=vs.71).aspx">Adding New Data Connections in Server Explorer</a> | <a href="https://msdn.microsoft.com/en-us/library/aa301869(v=vs.71).aspx">Databases in Server Explorer</a> | <a href="https://msdn.microsoft.com/en-us/library/aa292872(v=vs.71).aspx">Visual Database Tools</a> | <a href="https://msdn.microsoft.com/en-us/library/79t8s5dk(v=vs.71).aspx">Data Link Properties Dialog Box</a> | <a href="https://msdn.microsoft.com/en-us/library/system.data.oledb.oledbconnection(v=vs.71).aspx">OleDbConnection Class</a></p>
+
+ 
+</div> 
+
+</div>
+
+
+    
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit" />Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected" />Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings." />
+
+
+
+    </div>
+
+<div id="rightNavigationMenu" ms.pgarea="right nav">
+    <div id="mobileButtons">
+        <div id="navigationButtons">
+            <a id="provideFeedback1" href="javascript:void(0)"><ins class="suggestion"></ins>Any Suggestions?</a>
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/5ybdbtte(d=printer,v=vs.71).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook" href="https://msdn.microsoft.com/en-us/library/export/help/?returnUrl=%2fen-us%2flibrary%2f5ybdbtte(v%3dvs.71).aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div>
+    </div>
+    <div id="navMain">
+        <div id="closeNavigation">
+            <a class="tocCloseSmall" id="closeButton"></a>
+        </div>
+        <div id="navigationButtons">
+            <a id="provideFeedback2" href="javascript:void(0)"><ins class="suggestion"></ins>Any Suggestions?</a>
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/5ybdbtte(d=printer,v=vs.71).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook2" href="https://msdn.microsoft.com/en-us/library/export/help/?returnUrl=%2fen-us%2flibrary%2f5ybdbtte(v%3dvs.71).aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div>
+        <div id="indoc_toc" style="display: none" ms.cmpgrp="indoc toc">
+            <div id="indoc_title">IN THIS ARTICLE</div>
+            <ul id="indoc_toclist"></ul>
+        </div>
+    </div>
+</div>
+<div id="rightNavigationMenuThumbnail" class="rightNavigationMenuThumbnail">
+</div>
+
+
+
+        </div>
+        <div class="clear"></div>
+
+        
+
+<input name="__RequestVerificationToken" type="hidden" value="Vyj9YV96CvC1TbOyLZzbc-hx7pZSzs4xmky7VTs1ADRtelUBn7c7IFGj7pr2WZgLeXeF_BX4zCts7Rt6iuyNRq1g8ek1" />
+<input id="ratingSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/add/5ybdbtte(v=vs.71).aspx" />
+<input id="isTopicRated" type="hidden" value="false" />
+
+    
+
+    
+    <link type="text/css" rel="stylesheet" />
+    
+        
+    <div id="ux-footer" class="" style="" dir="ltr">
+            
+                
+            <div id="footerSock" class="both">
+                <div id="footerSockInner">
+                        <a name="feedback"></a>
+
+<div class="rating">
+    <div id="ratingSection1">
+        <div class="title">
+            Was this page helpful?
+        </div>
+        <div class="description">
+            Your feedback about this content is important.<br />Let us know what you think.
+        </div>
+        <div class="buttons">
+            <button class="button" id="ratingYes" aria-label="Yes, this page was helpful">Yes</button>
+            <button class="button" id="ratingNo" aria-label="No, this page was not helpful">No</button>
+        </div>
+        <input id="ratingValue" type="hidden" value="" />
+    </div>
+    <div id="ratingSection2">
+        <div class="title">
+            Additional feedback?
+        </div>
+        <textarea id="ratingText" rows="6" cols="" maxlength="1500"></textarea>
+        <div class="counter right">
+            <span id="feedbackTextCounter">1500</span> characters remaining
+        </div>
+        <div class="buttons left">
+            <button class="button" id="ratingSubmit" aria-label="Submit my additional feedback">Submit</button>
+            <button class="button" id="ratingSkipThis" aria-label="Skip additional feedback">Skip this</button>
+        </div>
+    </div>
+    <div id="ratingSection3">
+        <div class="title">
+            Thank you!
+        </div>
+        <div class="description">
+            We appreciate your feedback.
+        </div>
+    </div>
+    
+    
+    <div id="contentFeedbackQAContainer" style="display: none;"></div>
+</div>
+    
+                    <div class="userVoice">
+    <div class="title">
+        Have a suggestion to improve MSDN Library?
+    </div>
+        <div class="description">
+            Visit our UserVoice Page to submit and vote on ideas!
+        </div>
+    <div class="buttons">
+        <a class="button" id="userVoiceButton" href="http://feedback.msdn.com/forums/257782-msdn-feature-suggestions/category/83975" target="_blank">Make a suggestion</a>
+    </div>
+</div>  
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        <footer class="top">
+            <div data-fragmentName="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Dev centers</div>
+    <ul class="links">
+      <li>
+        <a href="https://dev.windows.com/" id="LeftLinks_2148_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+      </li>
+      <li>
+        <a href="http://dev.office.com/" id="LeftLinks_2148_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/vstudio" id="LeftLinks_2148_4" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+      </li>
+      <li>
+        <a href="http://azure.microsoft.com/en-us/documentation/" target="_blank" id="LeftLinks_2148_12" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/aa937802" id="LeftLinks_2148_5" xmlns="http://www.w3.org/1999/xhtml">More...</a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <div id="rightLinks">
+                <div data-fragmentName="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Learning resources</div>
+    <ul class="links">
+      <li>
+        <a href="http://www.microsoftvirtualacademy.com/" id="CenterLinks1_2151_4" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="http://channel9.msdn.com/" id="CenterLinks1_2151_5" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+      </li>
+      <li>
+        <a href="http://www.interoperabilitybridges.com/" id="CenterLinks1_2151_6" xmlns="http://www.w3.org/1999/xhtml">Interoperability Bridges</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/magazine/" id="CenterLinks1_2151_7" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentName="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Community</div>
+    <ul class="links">
+      <li>
+        <a href="https://social.msdn.microsoft.com/forums/en-us/home" id="CenterLinks2_2151_8" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+      </li>
+      <li>
+        <a href="http://blogs.msdn.com/b/developer-tools/" id="CenterLinks2_2151_9" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+      </li>
+      <li>
+        <a href="http://www.codeplex.com/" id="CenterLinks2_2151_10" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentName="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Support</div>
+    <ul class="links">
+      <li>
+        <a href="https://msdn.microsoft.com/hh361695" id="CenterLinks3_2151_11" xmlns="http://www.w3.org/1999/xhtml">Self support</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentName="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <div class="linkListTitle">Programs</div>
+    <ul class="links">
+      <li>
+        <a href="https://www.microsoft.com/bizspark/" id="CenterLinks4_2151_13" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+      </li>
+      <li>
+        <a href="https://www.dreamspark.com/" id="CenterLinks4_2151_14" xmlns="http://www.w3.org/1999/xhtml">DreamSpark</a>
+      </li>
+      <li>
+        <a href="http://www.imaginecup.com/" id="CenterLinks4_2151_17" xmlns="http://www.w3.org/1999/xhtml">Imagine Cup</a>
+      </li>
+    </ul>
+  </div>
+</div>                
+            </div>
+        </footer>
+    
+        <footer class="bottom">
+            <span class="localeContainer">
+                
+    <form class="selectLocale" id="selectLocaleForm" action="https://msdn.microsoft.com/en-us/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2f5ybdbtte(v%3dvs.71).aspx" />
+        <a href="#" onclick="$('#selectLocaleForm').submit();return false;" title="Change your language">United States (English)</a>
+    </form>
+
+
+            </span>
+        
+            <div data-fragmentName="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="https://msdn.microsoft.com/newsletter.aspx" id="BottomLinks_2148_7" xmlns="http://www.w3.org/1999/xhtml">Newsletter</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/dn529288" id="BottomLinks_2148_8" xmlns="http://www.w3.org/1999/xhtml">Privacy &amp; cookies</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/cc300389" id="BottomLinks_2148_9" xmlns="http://www.w3.org/1999/xhtml">Terms of use</a>
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" id="BottomLinks_2148_10" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+      </li>
+    </ul>
+  </div>
+</div>    
+            <span class="logoLegal">
+                <span class="logo"></span>
+                <span class="copyright">© 2015 Microsoft</span>
+            </span>
+        </footer>
+    </div>
+    
+
+
+        <div class="footerPrintView">
+            <div class="footerCopyrightPrintView">© 2015 Microsoft</div>
+        </div>
+
+        
+        
+
+        
+        
+
+    <input id="tocPaddingPerLevel" type="hidden" value="17" />
+
+
+
+        <input id="MtpsDevice" type="hidden" value="Default" />
+
+
+<![CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]>
+
+        
+        
+        
+            
+        
+
+
+
+
+
+
+<noscript><div><img alt="DCSIMG" id="Img1" width="1" height="1" src="https://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" /></div></noscript>
+
+
+
+
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="ZZF8KOF24Vlcu6wUcFpE8h5Z8SBQevUUtfspcuyi1Qkpd7JgSaTBRbxrq4VJYB_V8bPkqYKLpOMk4LMlWVoPfU1HlSo1" />
+</div>
+
+
+    </div>
+
+    
+    
+
+    
+<script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"js\": \"https://i2-msdn.sec.s-msft.com\", \r\n\t\"css\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"xap\": \"https://msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/en-us/library/5ybdbtte(l=en-us,v=vs.71).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027en-us\u0027;\n  var wtsp = \u0027msdnlib_devtools_lang\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "//\n\n        window.appInsightsId = \u002760854590-027a-4ae4-98be-2741a40f355f\u0027;\n        //" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,3:SkinnyRating,4:Breadcrumbs,5:LibraryRightNavigationMenu,5:PrintExportButton,1:Rating,2:Footer,0:Topic,6:webtrendsscript,5:WEDCS,0:ScrollTracking,4:CmpgrpForHeader,0:AppInsightsPerf,4:ResponsiveToc,1:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Library/Themes/Msdn/Content:3,/Areas/Library/Content:4,/Areas/Library/Themes/Base/Content:5,/Areas/Global/Content/Webtrends/resources:6\u0026amp;hashKey=0C8DA0E279406FA512385C5E51DA7DC6\u0026amp;v=621FE98337703458857FC72EF5FAD34C" },
+	{ url: "https://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=Msdn\u0026loc=en-us\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=Search MSDN" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:LibraryMemberFilter,1:Toc_Fixed,1:CodeSnippet,1:TopicNotInScope,0:ResponsiveSupport,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1\u0026amp;hashKey=A112435C25BE91F638668458B8DF3701\u0026amp;v=621FE98337703458857FC72EF5FAD34C" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script></body>
+
+
+
+
+
+
+
+
+<!-- Mirrored from msdn.microsoft.com/en-us/library/5ybdbtte(v=vs.71).aspx by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:48 GMT -->
+</html>

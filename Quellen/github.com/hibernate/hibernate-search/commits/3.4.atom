@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/3.4</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/3.4"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/3.4.atom"/>
+  <title>Recent Commits to hibernate-search:3.4</title>
+  <updated>2012-03-02T13:05:56+01:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ae9aa326423e732474114905ab8bdcdf1d5d739b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/ae9aa326423e732474114905ab8bdcdf1d5d739b"/>
+    <title>
+        Applied patch for https://hibernate.onjira.com/browse/HSEARCH-741
+    </title>
+    <updated>2012-03-02T13:05:56+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/465195?v=3&amp;s=30"/>
+    <author>
+      <name>damienhollis</name>
+      <uri>https://github.com/damienhollis</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Applied patch for https://hibernate.onjira.com/browse/HSEARCH-741&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bbcedbc8bd8df8edbe80cacc434d567f7c40e2de</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/bbcedbc8bd8df8edbe80cacc434d567f7c40e2de"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2012-02-29T11:15:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/11ccf03cc60b2f7e91f54715b9e8a83d24708b15</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/11ccf03cc60b2f7e91f54715b9e8a83d24708b15"/>
+    <title>
+        [maven-release-plugin] prepare release 3.4.2.Final
+    </title>
+    <updated>2012-02-29T11:15:13Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 3.4.2.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/60d37d41a539aafdd07e7a4a7e0226d2340120ed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/60d37d41a539aafdd07e7a4a7e0226d2340120ed"/>
+    <title>
+        Preparing for release 3.4.2
+    </title>
+    <updated>2012-02-29T10:08:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Preparing for release 3.4.2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/53d57df24e5c9090929900b8b487876f354125f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/53d57df24e5c9090929900b8b487876f354125f9"/>
+    <title>
+        Make sure all platforms run tests in the same order
+    </title>
+    <updated>2012-02-27T12:32:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Make sure all platforms run tests in the same order&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/25ecb04bf0fb1e9a23df5b55d15f6ee5fc35c43b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/25ecb04bf0fb1e9a23df5b55d15f6ee5fc35c43b"/>
+    <title>
+        Upgrade to Hibernate Core 3.6.10
+    </title>
+    <updated>2012-02-27T12:32:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Upgrade to Hibernate Core 3.6.10&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2ac4b11282e4ea7f5cbce64ddb6beedc822d6b70</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/2ac4b11282e4ea7f5cbce64ddb6beedc822d6b70"/>
+    <title>
+        HSEARCH-1023 fixed typo in ConnectedMultiFieldsRangeQueryBuilder and added test
+    </title>
+    <updated>2011-12-31T13:20:56+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1023 fixed typo in ConnectedMultiFieldsRangeQueryBuilder and added test&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3d129074daaa6facaf9883dc8934ac81c6fb4a2d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/3d129074daaa6facaf9883dc8934ac81c6fb4a2d"/>
+    <title>
+        HSEARCH-1020 and HSEARCH-1004 fixes backported from 4.x master
+    </title>
+    <updated>2011-12-30T03:10:40+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/1279749?v=3&amp;s=30"/>
+    <author>
+      <name>gsmet</name>
+      <uri>https://github.com/gsmet</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1020 and HSEARCH-1004 fixes backported from 4.x master&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/015df591c8008b4dd6f808dc9f086f2c604ce88b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/015df591c8008b4dd6f808dc9f086f2c604ce88b"/>
+    <title>
+        HSEARCH-977 Adding a testcase covering HSEARCH-977
+    </title>
+    <updated>2011-11-16T22:14:39+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-977 Adding a testcase covering HSEARCH-977&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d87c22a11ad6805c2f4d84df4004ee3d6962e45</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/7d87c22a11ad6805c2f4d84df4004ee3d6962e45"/>
+    <title>
+        HSEARCH-961 Avoid initialization of proxies during PersistenceContext state check
+    </title>
+    <updated>2011-11-11T00:56:02Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-961 Avoid initialization of proxies during PersistenceContext state check&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/43df11da9c4fe2d94c297a9c90712eb592c30622</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/43df11da9c4fe2d94c297a9c90712eb592c30622"/>
+    <title>
+        HSEARCH-961 prevent exceptions for out of sync 2nd level caches and indexes
+    </title>
+    <updated>2011-11-10T18:14:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-961 prevent exceptions for out of sync 2nd level caches and indexes&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e359d5a07df6d56cbf006688dfca8781a94ec331</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/e359d5a07df6d56cbf006688dfca8781a94ec331"/>
+    <title>
+        HSEARCH-961 Adding a testcase using READ_WRITE
+    </title>
+    <updated>2011-11-10T18:14:35Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-961 Adding a testcase using READ_WRITE&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/55434621cbca093ad7110c3954d24e6001958e98</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/55434621cbca093ad7110c3954d24e6001958e98"/>
+    <title>
+        HSEARCH-961 Adding a testcase using NONSTRICT_READ_WRITE
+    </title>
+    <updated>2011-11-10T18:13:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-961 Adding a testcase using NONSTRICT_READ_WRITE&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/70ba861465e4398daa588476acf69e421e6e1de9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/70ba861465e4398daa588476acf69e421e6e1de9"/>
+    <title>
+        HSEARCH-926 Fix and a test that verifies multiple types sharing the same index still
+    </title>
+    <updated>2011-09-28T10:42:42+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/1062956?v=3&amp;s=30"/>
+    <author>
+      <name>zackurey</name>
+      <uri>https://github.com/zackurey</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-926 Fix and a test that verifies multiple types sharing the same index still
+only result in one InfinispanDirectoryProvider getting created for the index.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/88b2757990f165f211da940770956f85939d42fa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/88b2757990f165f211da940770956f85939d42fa"/>
+    <title>
+        HSEARCH-906 Revise warning about Java7 as the bugs where fixed in b2
+    </title>
+    <updated>2011-09-11T20:35:49+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-906 Revise warning about Java7 as the bugs where fixed in b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5f9e8f03505d468da8c986c03e1a83b4b3d991ad</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5f9e8f03505d468da8c986c03e1a83b4b3d991ad"/>
+    <title>
+        HSEARCH-906 Revise warning about Java7 as the bugs where fixed in b2
+    </title>
+    <updated>2011-09-11T20:35:37+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-906 Revise warning about Java7 as the bugs where fixed in b2
+
+Conflicts:
+
+	hibernate-search/src/main/docbook/en-US/modules/getting-started.xml&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7618a15e8d7aeaccc486b5944e040b546e71c21f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/7618a15e8d7aeaccc486b5944e040b546e71c21f"/>
+    <title>
+        HSEARCH-901 re-adding EntityConsumerLuceneWorkProducer with proper camel casing
+    </title>
+    <updated>2011-09-08T16:18:41+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-901 re-adding EntityConsumerLuceneWorkProducer with proper camel casing&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a871c7c0634975101996654275838f8e07d68ce2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/a871c7c0634975101996654275838f8e07d68ce2"/>
+    <title>
+        HSEARCH-901 deleting file temporarily to fix camel casing
+    </title>
+    <updated>2011-09-08T16:10:03+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-901 deleting file temporarily to fix camel casing&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/80dc0962b48f6cf92d06c96ac4cc780fd1910051</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/80dc0962b48f6cf92d06c96ac4cc780fd1910051"/>
+    <title>
+        HSEARCH-901 ClassCastException during creation of index
+    </title>
+    <updated>2011-09-08T15:55:23+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-901 ClassCastException during creation of index&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c3ac25b70b5afd5c689f32217c6b4dc294c23ab5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/c3ac25b70b5afd5c689f32217c6b4dc294c23ab5"/>
+    <title>
+        HSEARCH-883 Fixed by not taking the maxCount from the faceting request, but the min(maxCount, #facets).
+    </title>
+    <updated>2011-08-30T13:44:47+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/995983?v=3&amp;s=30"/>
+    <author>
+      <name>Elmervc</name>
+      <uri>https://github.com/Elmervc</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-883 Fixed by not taking the maxCount from the faceting request, but the min(maxCount, #facets).
+Added test where maxCount is set higher than actual facets&lt;/pre>
+    </content>
+  </entry>
+</feed>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/Hotware/Hibernate-Search-GenericJPA/commits/master</id>
+  <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commits/master"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commits/master.atom"/>
+  <title>Recent Commits to Hibernate-Search-GenericJPA:master</title>
+  <updated>2015-09-05T10:30:38+02:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/38272d0cfff8dd6ab2005269a53803770bc26239</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/38272d0cfff8dd6ab2005269a53803770bc26239"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2015-09-05T10:30:38+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a82c0b1b00f6b644601fe73431cc789c914b6574</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/a82c0b1b00f6b644601fe73431cc789c914b6574"/>
+    <title>
+        minor.
+    </title>
+    <updated>2015-09-02T13:22:49+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>minor.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e98d21ef6db0cdee12fc9e5cecffe1abc29d7557</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/e98d21ef6db0cdee12fc9e5cecffe1abc29d7557"/>
+    <title>
+        minor.
+    </title>
+    <updated>2015-08-27T17:41:25+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>minor.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a829300537cea8c5bead231a22bd48ce61d317a5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/a829300537cea8c5bead231a22bd48ce61d317a5"/>
+    <title>
+        minor fix
+    </title>
+    <updated>2015-08-27T08:27:22+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>minor fix&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e54af19e7d0e7421736a6a36d85b50db959c8c7e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/e54af19e7d0e7421736a6a36d85b50db959c8c7e"/>
+    <title>
+        minor.
+    </title>
+    <updated>2015-08-14T16:10:11+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>minor.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/18c418168b1823134b65fe667e61ce74dfc89455</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/18c418168b1823134b65fe667e61ce74dfc89455"/>
+    <title>
+        documentation.
+    </title>
+    <updated>2015-08-12T16:32:35+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>documentation.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3853cefa1f93e828e496966c9f0bfbdabded65c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/f3853cefa1f93e828e496966c9f0bfbdabded65c"/>
+    <title>
+        bumped infinispan directory version
+    </title>
+    <updated>2015-08-12T12:28:45+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>bumped infinispan directory version&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4eaa009fad1d7973633ccc25d4b83640ed2fb8ca</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/4eaa009fad1d7973633ccc25d4b83640ed2fb8ca"/>
+    <title>
+        bump Hibernate Search version to 5.5.0.Alpha1
+    </title>
+    <updated>2015-08-12T12:13:22+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>bump Hibernate Search version to 5.5.0.Alpha1&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b033dce20691c5e51c52e4910a69573a71c1ccde</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/b033dce20691c5e51c52e4910a69573a71c1ccde"/>
+    <title>
+        d
+    </title>
+    <updated>2015-08-11T22:28:53+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>d&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e611df08ea9818bfabdf7dc1a0fbd64af0a8bc90</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/e611df08ea9818bfabdf7dc1a0fbd64af0a8bc90"/>
+    <title>
+        ..
+    </title>
+    <updated>2015-08-11T22:28:19+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>..&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d01b23fe2dcd2ab766c8dbfae4a5a81657220ef6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/d01b23fe2dcd2ab766c8dbfae4a5a81657220ef6"/>
+    <title>
+        #93 reduced the amount of queries used for updating by a big bunch
+    </title>
+    <updated>2015-08-11T22:17:37+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>#93 reduced the amount of queries used for updating by a big bunch&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2def6d92c6e6d115f031c265aa8fa13b9bd7887b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/2def6d92c6e6d115f031c265aa8fa13b9bd7887b"/>
+    <title>
+        Merge branch &#39;master&#39; of https://github.com/Hotware/Hibernate-Search-JPA
+    </title>
+    <updated>2015-08-11T20:32:16+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Merge branch &#39;master&#39; of https://github.com/Hotware/Hibernate-Search-JPA&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e9058568de05a7356fe91819f83c40bfbb739bb4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/e9058568de05a7356fe91819f83c40bfbb739bb4"/>
+    <title>
+        #85 fixed multiqueryaccess batching, #93 working on performance improvements for JPAUpdateSource started
+    </title>
+    <updated>2015-08-11T20:32:12+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>#85 fixed multiqueryaccess batching, #93 working on performance improvements for JPAUpdateSource started&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/41f6e85b74354cc850a7d57a5795b5ba6221c387</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/41f6e85b74354cc850a7d57a5795b5ba6221c387"/>
+    <title>
+        .
+    </title>
+    <updated>2015-08-04T17:10:07+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/afed5c5d19374b3c584d7b06f5d8fd92b479c7d7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/afed5c5d19374b3c584d7b06f5d8fd92b479c7d7"/>
+    <title>
+        .
+    </title>
+    <updated>2015-07-29T20:22:13+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fd7bc1047eee1ac8acad604fac65c7c685bb4272</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/fd7bc1047eee1ac8acad604fac65c7c685bb4272"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2015-07-29T10:53:05+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0bba19e35a243e9d7b62a20faf4ef9228af17cc2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/0bba19e35a243e9d7b62a20faf4ef9228af17cc2"/>
+    <title>
+        Merge branch &#39;master&#39; of https://github.com/Hotware/Hibernate-Search-JPA
+    </title>
+    <updated>2015-07-28T21:36:20+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Merge branch &#39;master&#39; of https://github.com/Hotware/Hibernate-Search-JPA&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5fc21c09877cc7ebdd7ac9b656de182c0cf35a8c</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/5fc21c09877cc7ebdd7ac9b656de182c0cf35a8c"/>
+    <title>
+        #91 wip on making native update system for EclipseLink compatible with JTA
+    </title>
+    <updated>2015-07-28T20:54:15+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>#91 wip on making native update system for EclipseLink compatible with JTA&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b6351a46b89d84ccf89f0cfa1b708bcd3f1ba8a4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/b6351a46b89d84ccf89f0cfa1b708bcd3f1ba8a4"/>
+    <title>
+        Update README.md
+    </title>
+    <updated>2015-07-28T19:25:10+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Update README.md&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/018f09f33f5152151bfd32537fbc9b6fb2ef4759</id>
+    <link type="text/html" rel="alternate" href="https://github.com/Hotware/Hibernate-Search-GenericJPA/commit/018f09f33f5152151bfd32537fbc9b6fb2ef4759"/>
+    <title>
+        #91 wip
+    </title>
+    <updated>2015-07-28T15:55:32+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/719760?v=3&amp;s=30"/>
+    <author>
+      <name>s4ke</name>
+      <uri>https://github.com/s4ke</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>#91 wip&lt;/pre>
+    </content>
+  </entry>
+</feed>

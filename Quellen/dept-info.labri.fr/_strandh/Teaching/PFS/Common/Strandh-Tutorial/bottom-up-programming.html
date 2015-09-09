@@ -1,0 +1,69 @@
+<HTML>
+
+<!-- Mirrored from dept-info.labri.fr/~strandh/Teaching/PFS/Common/Strandh-Tutorial/bottom-up-programming.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:48 GMT -->
+<HEAD><TITLE>Bottom-up programming</TITLE></HEAD>
+<BODY>
+<H1>Bottom-up programming</H1>
+
+<H2>What is bottom-up programming</H2>
+
+Bottom-up programming is the opposite of <A
+HREF="top-down-programming.html">top-down programming</A>.  It refers
+to a style of programming where an application is constructed starting
+with existing primitives of the programming language, and constructing
+gradually more and more complicated features, until the all of the
+application has been written.<P>
+
+<H2>Advantages of bottom-up programming</H2>
+
+Bottom-up programming has several advantages over <A
+HREF="top-down-programming.html"> top-down programming </A>.<P>
+
+Testing is simplified since no <A HREF="http://dept-info.labri.fr/~strandh/Teaching/PFS/Common/Strandh-Tutorial/glossary.html"> stubs </A> are
+needed.  While it might be necessary to write <A
+HREF="http://dept-info.labri.fr/~strandh/Teaching/PFS/Common/Strandh-Tutorial/glossary.html">test functions</A>, these are simpler to write
+than stubs, and sometimes not necessary at all, in particular if one
+uses an interactive programming environment such as Common Lisp or
+GDB.<P>
+
+Pieces of programs written bottom-up tend to be more general, and thus
+more reusable, than pieces of programs written top-down.  In fact, one
+can argue that the purpose bottom-up programming is to create an <A
+HREF="http://dept-info.labri.fr/~strandh/Teaching/PFS/Common/Strandh-Tutorial/building-specialized-languages.html"> application-specific
+language </A>.  Such a language is suitable for implementing an entire
+class of applications, not only the one that is to be written.  This
+fact greatly simplifies maintenance, in particular adding new features
+to the application.  It also makes it possible to delay the final
+decision concerning the exact functionality of the application.  Being
+able to delay this decision makes it less likely that the client has
+changed his or her mind between the establishment of the
+specifications of the application and its implementation.<P>
+
+<H2>How does bottom-up programming work?</H2>
+
+In a language such as C or Java, bottom-up programming takes the form
+of constructing <A HREF="http://dept-info.labri.fr/~strandh/Teaching/PFS/Common/Strandh-Tutorial/abstract-data-types.html">abstract data
+types</A> from primitives of the language or from existing abstract
+data types.<P>
+
+In Common Lisp, in addition to constructing abstract data types, it is
+common to build <EM>functions</EM> bottom-up from simpler functions,
+and to use macros to construct new <EM>special forms</EM> from simpler
+ones.<P>
+
+One may ask why it is not possible to construct functions and special
+forms bottom-up in other languages than Common Lisp.  Constructing
+functions bottom-up requires a way of passing complicated arguments
+between functions.  Common Lisp uses <EM>lists</EM> for such argument
+passing.  Lists are flexible standardized data structures in the
+language.  In other languages, data structures would have to be
+defined for such parameter passing only, making it more like an
+abstract data type than just a function.  With respect to special
+forms, only the <A HREF="http://dept-info.labri.fr/~strandh/Teaching/PFS/Common/Strandh-Tutorial/syntax.html"> two-level syntax </A> of Common
+Lisp allows a flexible enough macro facility for bottom-up programming
+of special forms.<P>
+
+</BODY>
+
+<!-- Mirrored from dept-info.labri.fr/~strandh/Teaching/PFS/Common/Strandh-Tutorial/bottom-up-programming.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:48 GMT -->
+</HTML>

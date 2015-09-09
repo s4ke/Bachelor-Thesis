@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/4.1</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/4.1"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/4.1.atom"/>
+  <title>Recent Commits to hibernate-search:4.1</title>
+  <updated>2012-12-06T22:10:40Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0486a69e5cdc67333bb707c3e5ccf4790c969ea5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/0486a69e5cdc67333bb707c3e5ccf4790c969ea5"/>
+    <title>
+        HSEARCH-1241 Fix @ContainedIn behavior with polymorphism and lazy proxies
+    </title>
+    <updated>2012-12-06T22:10:40Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/412878?v=3&amp;s=30"/>
+    <author>
+      <name>fenrhil</name>
+      <uri>https://github.com/fenrhil</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1241 Fix @ContainedIn behavior with polymorphism and lazy proxies&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fc7a0523a37000f9887c8823afc47f549c70f926</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/fc7a0523a37000f9887c8823afc47f549c70f926"/>
+    <title>
+        HSEARCH-1240 Fix a regression in the mass indexer introduced by fixing HSEARCH-1201: we still need to return the initialized object if the proxy was created in the current session
+    </title>
+    <updated>2012-12-04T00:34:08Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/1279749?v=3&amp;s=30"/>
+    <author>
+      <name>gsmet</name>
+      <uri>https://github.com/gsmet</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1240 Fix a regression in the mass indexer introduced by fixing HSEARCH-1201: we still need to return the initialized object if the proxy was created in the current session&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/850ab990c1abaa54c01676293e45dfcfe0fd84c0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/850ab990c1abaa54c01676293e45dfcfe0fd84c0"/>
+    <title>
+        HSEARCH-1201 Make sure the LoadingInitializer can deal with proxies created by a different Session
+    </title>
+    <updated>2012-10-08T11:11:40+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1201 Make sure the LoadingInitializer can deal with proxies created by a different Session&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3f4d061ea61091e6d25a3dd44f0df604aa70e0b8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/3f4d061ea61091e6d25a3dd44f0df604aa70e0b8"/>
+    <title>
+        HSEARCH-1201 - Initialize proxy before sending it in the fieldbridge machinery
+    </title>
+    <updated>2012-10-08T11:11:32+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/db5b4c78f1e981f4c6eb848077fe2cd3?d=https%3A%2F%2Fassets-cdn.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=x&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>stephane.gleizes@openwide.fr</email>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1201 - Initialize proxy before sending it in the fieldbridge machinery&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3e97f17366adfcd954ab6e856ad66bc23a4baa58</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/3e97f17366adfcd954ab6e856ad66bc23a4baa58"/>
+    <title>
+        HSEARCH-1201 - Initialize proxy before sending it in the fieldbridge machinery
+    </title>
+    <updated>2012-10-08T11:11:25+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://0.gravatar.com/avatar/db5b4c78f1e981f4c6eb848077fe2cd3?d=https%3A%2F%2Fassets-cdn.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&amp;r=x&amp;s=30"/>
+    <author>
+      <name></name>
+      <email>stephane.gleizes@openwide.fr</email>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1201 - Initialize proxy before sending it in the fieldbridge machinery&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/493532cdd9f51243e28c341048b44c18a31c16d2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/493532cdd9f51243e28c341048b44c18a31c16d2"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2012-05-09T11:26:32+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e40f21da541b4cb907272d23f372bc3ec8fdaf7a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/e40f21da541b4cb907272d23f372bc3ec8fdaf7a"/>
+    <title>
+        [maven-release-plugin] prepare release 4.1.1.Final
+    </title>
+    <updated>2012-05-09T11:26:25+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.1.1.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/0f9e832e59b7549ed1ef9ed21deec8e883a525b8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/0f9e832e59b7549ed1ef9ed21deec8e883a525b8"/>
+    <title>
+        updating changelog and readme for 4.1.1.Final release
+    </title>
+    <updated>2012-05-09T11:15:12+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>updating changelog and readme for 4.1.1.Final release&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5f234b04248e3d69b770dc0fbed70df64c4d8bd1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5f234b04248e3d69b770dc0fbed70df64c4d8bd1"/>
+    <title>
+        HSEARCH-1115 Avoid holding on foreign classloader from LoaderHelper
+    </title>
+    <updated>2012-05-09T10:51:15+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1115 Avoid holding on foreign classloader from LoaderHelper&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/83e3869a5cb47052aba830a8a2ff45f8eaf7a63d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/83e3869a5cb47052aba830a8a2ff45f8eaf7a63d"/>
+    <title>
+        HSEARCH-1115 ClassLoaderHelper#classForName takes now the classloader as second parameter instead of the caller class
+    </title>
+    <updated>2012-05-09T10:51:15+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1115 ClassLoaderHelper#classForName takes now the classloader as second parameter instead of the caller class
+
+Re-added the explicit passing of the caller&#39;s classloader to ConfigContext and DocumentBuilderHelper&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/da5dd62c3d479bf05b302eeda8f603773be6db57</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/da5dd62c3d479bf05b302eeda8f603773be6db57"/>
+    <title>
+        HSEARCH-1115 Fixing some typos in log method names
+    </title>
+    <updated>2012-05-09T10:51:15+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1115 Fixing some typos in log method names&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5e038733846c3376d662c805cd112b0e4df885a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5e038733846c3376d662c805cd112b0e4df885a7"/>
+    <title>
+        HSEARCH-1115 Doing all class loading via ClassLoaderHelper. Also doing moving the classForName methods from commons annotations into ClassLoaderHelper.
+    </title>
+    <updated>2012-05-09T10:51:15+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1115 Doing all class loading via ClassLoaderHelper. Also doing moving the classForName methods from commons annotations into ClassLoaderHelper.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e02143a8b87098647d0e3ff2a4586ea82d2d8f41</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/e02143a8b87098647d0e3ff2a4586ea82d2d8f41"/>
+    <title>
+        HSEARCH-1115 Make sure to load Hibernate / JPA exceptions with the &quot;best&quot; classloader
+    </title>
+    <updated>2012-05-09T10:51:15+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1115 Make sure to load Hibernate / JPA exceptions with the &quot;best&quot; classloader
+
+commons-annotations is not the correct classloader in a modular environment&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/39811fabf75f4017c61584f48a74d104d3ad9d7e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/39811fabf75f4017c61584f48a74d104d3ad9d7e"/>
+    <title>
+        HSEARCH-1115 Avoid reflection when we have the data and pass the right caller for modular environments
+    </title>
+    <updated>2012-05-09T10:51:14+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1115 Avoid reflection when we have the data and pass the right caller for modular environments
+
+Since ReflectHelper is in Commons Annotations which depends on nothing, it&#39;s critical
+to provider the right caller&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8732e33394da8e69aa1a38a13c8464a6645094b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/8732e33394da8e69aa1a38a13c8464a6645094b4"/>
+    <title>
+        HSEARCH-1115 Changed use of ReflectHelper to specify classloader
+    </title>
+    <updated>2012-05-09T10:51:14+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/84732?v=3&amp;s=30"/>
+    <author>
+      <name>rhauch</name>
+      <uri>https://github.com/rhauch</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1115 Changed use of ReflectHelper to specify classloader
+
+Two uses of ReflectHelper.classForName(String) were changed to use the
+classForName(String,Class) form instead. In the latter method, if
+the class cannot be found on the thread&#39;s context class loader then the
+class will be loaded using the classloader of the class specified in
+the second parameter.
+
+In one of the cases (DocumentBuilderHelper), the DocumentBuilderHelper class
+was passed, meaning that the same classloader used to load the Hibernate Search
+classes will be used.
+
+In the second case (ConfigContext), the second parameter is the class of
+the SearchConfiguration implementation that was supplied to the ConfigContext.
+This is better than the ConfigContext class, since the SearchConfiguration
+implementation will be provided by the components using the SearchFactoryBuilder
+to build a SearchFactory. This means that the components&#39; classloader
+will be used to load the Analyzer implementation class.
+
+There are a few other uses of ReflectionHelper.classForName(String) in the Hibernate
+Search codebase, but I don&#39;t think they require the same classloading logic.
+
+When used in a Java SE environment, there is no net difference in classloading
+behavior. However, in JBoss AS7 (or even OSGi) the different classloaders have
+a significant effect. Specifically, when used in JBoss AS7, the modules might look
+like this (where &quot;--&gt;&quot; signifies &#39;depends on&#39;):
+
+  org.foo (uses Hibernate Search, implements SearchConfiguration)
+   --&gt; org.hibernate.search.engine
+       --&gt; org.hibernate (specifically the hibernate-commons-annotations JAR)
+       --&gt; org.apache.lucene
+       --&gt; others
+
+In this case, the result of the code before this change is that ConfigContext
+would expect to find the Analyzer implementation using the &#39;org.hibernate&#39;
+module (where the ReflectHelper class exists), which does cannot see any of
+the &#39;org.apache.lucene&#39; Analyzer implementations nor any implementations
+provided by &#39;org.foo&#39;. After this change, ConfigContext uses &#39;org.foo&#39; classloader
+(since that&#39;s where the SearchConfiguration class exists), and thus can see
+any Analyzer implementation provide in &#39;org.foo&#39;, &#39;org.hibernate.search.engine&#39;,
+&#39;org.apache.lucene&#39;, &#39;org.hibernate&#39; (if there were any), or any of the other
+modules.
+
+All unit tests run by the build pass successfully with these changes.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1acafa1bdf059466026c321b4dfcf137d6fd45a8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/1acafa1bdf059466026c321b4dfcf137d6fd45a8"/>
+    <title>
+        HSEARCH-1118 Removing non existing reference (referred table got deleted)
+    </title>
+    <updated>2012-05-07T17:56:51+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1118 Removing non existing reference (referred table got deleted)&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1804b875d10658879165f5c67c3fa6b60e2fb32a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/1804b875d10658879165f5c67c3fa6b60e2fb32a"/>
+    <title>
+        HSEARCH-1118 Removing mention of obsolete property &#39;hibernate.search.worker.batch_size&#39;
+    </title>
+    <updated>2012-05-07T17:56:51+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1118 Removing mention of obsolete property &#39;hibernate.search.worker.batch_size&#39;&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d53d248f78238f504fa295adb32a3c901b2c0ad4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/d53d248f78238f504fa295adb32a3c901b2c0ad4"/>
+    <title>
+        HSEARCH-1118 Formatting and removing unused getWorkerBatchSize
+    </title>
+    <updated>2012-05-07T17:56:51+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1118 Formatting and removing unused getWorkerBatchSize&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/342da4d0ba30e03f3957e7b3026cdaee36a6762b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/342da4d0ba30e03f3957e7b3026cdaee36a6762b"/>
+    <title>
+        HSEARCH-1118 Making sure that hibernate.search.worker.scope is used instead of just worker.scope
+    </title>
+    <updated>2012-05-07T17:56:51+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1118 Making sure that hibernate.search.worker.scope is used instead of just worker.scope&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b5ac540c5d3d98d876593bb3fd6901031bf7268d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/b5ac540c5d3d98d876593bb3fd6901031bf7268d"/>
+    <title>
+        HSEARCH-1118 Making sure the async settings are getting used using Byteman
+    </title>
+    <updated>2012-05-07T17:56:51+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1118 Making sure the async settings are getting used using Byteman&lt;/pre>
+    </content>
+  </entry>
+</feed>

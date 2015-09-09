@@ -1,0 +1,1188 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ** BEGIN: header.jsp ** //-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3c.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<!-- Mirrored from jcp.org/en/jsr/detail?id=338 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" /><!-- /Added by HTTrack -->
+<head>
+    
+
+   
+    <link href="https://jcp.org/includes/css/menu.css" rel="stylesheet" type="text/css"></link>
+    <link href="https://jcp.org/includes/css/style.css" rel="stylesheet" type="text/css"></link>
+    <!--[if lt IE 6]><link href="/includes/css/style5.css" rel="stylesheet" type="text/css" ></link><![endif]-->
+    <!--[if gte IE 5]><link href="/includes/css/style6.css" rel="stylesheet" type="text/css" ></link><![endif]-->
+    <link href="https://jcp.org/includes/css/tabs.css"  rel="stylesheet" type="text/css"></link>
+
+    <script type="text/javascript" src="https://jcp.org/includes/scripts/tabs.js"></script>
+    <script type="text/javascript" src="https://jcp.org/includes/scripts/menu.js"></script>
+   
+
+    
+
+    
+        <title>The Java Community Process(SM) Program - JSRs: Java Specification Requests - detail JSR# 338</title>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+
+
+<body onload="P7_initPM(0,1,0,0,-1)">
+
+    <a name="top"></a>
+
+    <div id="header">
+	<div id="logo">
+		<a href="https://jcp.org/en/home/index"><img src="https://jcp.org/images/spacer.gif" alt="Java Community Process" height="81" width="151"></a>
+	</div>
+	<div id="tools">
+		<div class="search">
+			<form name="search" action="https://jcp.org/en/jsr/summary" method="get" onsubmit="return validate_search()">
+				<input name="id" value="Search JSRs" size="16" class="form" onfocus="nullify_if_equal(this, 'Search JSRs')" type="text">
+				<a href="javascript:document.search.submit()" onclick="return validate_search()"><img src="https://jcp.org/images/button_go.gif" width="21" height="16" border="0" alt="Submit this Search" name="sub_search"></a>
+			</form>
+		</div>
+		<div class="tools">
+			<a href="https://jcp.org/en/press/pressroom">Press Room</a> &nbsp;|&nbsp;
+			<a href="http://java.com/java/download/index.jsp?cid=jdp78399">Get Java Here</a> &nbsp;|&nbsp;
+			<!-- <a href="javascript:void(0)">Print Format</a> &nbsp;|&nbsp;&nbsp; -->
+		</div>
+
+	</div>
+	<div style="clear: right;"></div>
+
+        
+
+	<div class="topbar"><img src="https://jcp.org/images/spacer.gif" alt="" height="3" width="154"></div>
+	<div id="update"> </div>
+    </div>
+
+
+    
+
+        <!-- ** BEGIN: Content Table ** //-->
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+
+            <tr>
+
+                <!-- ** BEGIN: Navigation Column ** //-->
+                <td width="150" id="leftcontent" valign="top">
+                    <!-- Navigation Placeholder //-->
+
+                    
+
+                    <div class="bar"><img src="https://jcp.org/images/hr_dots1.gif" alt="" height="3" width="150"></div>
+
+        <!-- begin find JSRs form -->
+        <!-- IMPORTANT! do not convert this form to Struts < html : form > tag.  javascript change of form.action property fails. -->
+        <img src="https://jcp.org/images/hd_find-jsrs.gif" alt="Find JSRs" height="18" width="150">
+        <form name="findjsr" action="https://jcp.org/en/jsr/summary" method="get" class="pt5" onsubmit="return validate_findjsr()">
+            <input name="id" size="18" class="form" value="Search JSRs" onfocus="nullify_if_equal(this, 'Search JSRs')" type="text">
+	    <a href="javascript:document.findjsr.submit()" onclick="return validate_findjsr()"><img src="https://jcp.org/images/button_go.gif" width="21" height="16" border="0" alt="Submit this Search" name="sub_search"></a>
+        </form><br><br>
+
+        <!-- ** Menu Start ** //-->
+
+        <ul id="p7PMnav">
+            <li><a href="https://jcp.org/en/jsr/platform">JSRs by Platform</a></li>
+            <li><a href="https://jcp.org/en/jsr/tech">JSRs by Technology</a></li>
+            <li><a href="https://jcp.org/en/jsr/stage">JSRs by Stage</a></li>
+            <li><a href="https://jcp.org/en/jsr/ec">JSRs by Committee</a></li>
+            <li><a href="https://jcp.org/en/jsr/all">List of All JSRs</a></li>
+
+            <!--end find JSRs form -->
+            <div style="clear: both;"><img src="https://jcp.org/images/spacer.gif" alt="" height="25" width="1"></div>
+
+            <!--begin my JCP -->
+            <img src="https://jcp.org/images/hd_my-jcp.gif" alt="My JCP" height="18" width="150">
+            
+
+          <form name="login" method="get" action="https://jcp.org/en/user/login" >
+	    <!--input name="uri" value="/en/jsr/detail?id=338" type="hidden"-->
+	    <!--input name="url" value="http://jcp.org:80/en/jsr/detail" type="hidden"-->
+            <input name="Sign-in" type="submit" title="Sign-in" value="Sign-in" />
+            
+                <!--table>
+                    <tr>
+                        <td>User ID:</td>
+                        <td><input type="text" name="username" style="width:52px" class="form" value="username" onfocus="nullify_if_equal(this, 'username')" onkeypress="return handle_keypress(this, event)"></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="password" style="width:52px" class="form" value="" onkeypress="return handle_keypress(this, event)"></td>
+			<td><a href="javascript:document.login.submit()" class="noNav" onclick="return validate_login(1)"><img src="/images/button_go.gif" width="21" height="16" border="0" alt="Attempt to Login" name="sub_login"></a></td>
+                    </tr>
+
+                </table-->
+            </form>
+
+            <div style="clear:both"><img src="https://jcp.org/images/global/spacer.gif" width="1" height="3" alt=""></div>
+            <div class="noNav">
+                <a href="https://jcp.org/en/user/register">Register for Site</a>                
+            </div>
+            
+             <div class="bar"><img src="https://jcp.org/images/hr_dots1.gif" alt="" height="3" width="150"></div>
+           <div class="noNav" style="color: #666666; padding: 0;">
+              Use of JCP site is subject to the
+              <a href="https://jcp.org/en/home/terms" style="display:inline;padding: 0">JCP Terms of Use</a> and the
+              <a href="http://www.oracle.com/us/legal/privacy/index.html" style="display:inline;padding: 0" href="#">Oracle Privacy Policy</a>
+          </div>
+            </form>
+
+
+
+            
+
+            <div style="clear:both"><img src="https://jcp.org/images/global/spacer.gif" width="1" height="25" alt=""></div>
+
+            <!--begin JCP info -->
+            <img src="https://jcp.org/images/hd_jcp-info.gif" alt="JCP Info" height="18" width="150">
+
+            <li><a href="https://jcp.org/en/procedures/overview" class="p7PMtrg">About JCP</a>
+                <ul>
+                    <li><a href="https://jcp.org/en/procedures/overview">Program Overview</a></li>
+                    <li><a href="https://jcp.org/en/procedures/jcp2">JCP Process Document</a></li>
+                    <li><a href="https://jcp.org/en/whatsnew/calendar">Calendar</a></li>
+                    <li><a href="https://jcp.org/en/participation/members">JCP Members</a></li>
+                    <li><a href="https://jcp.org/en/participation/committee">Executive Committee</a></li>
+                    <li><a href="https://jcp.org/en/whatsnew/elections">Elections</a></li>
+                </ul>
+            </li>
+
+            <li><a href="https://jcp.org/en/participation/overview" class="p7PMtrg">Get Involved</a>
+		<ul>
+                    <li><a href="https://jcp.org/en/participation/overview">Overview</a></li>
+                    <li><a href="https://jcp.org/en/participation/membership">Becoming a JCP Member</a></li>
+		</ul>
+            </li>
+
+            <li><a href="https://jcp.org/en/resources/contents" class="p7PMtrg">Community Resources</a>
+                <ul>
+                    <li><a href="https://jcp.org/en/resources/contents">Overview</a></li>
+                    <li><a href="https://jcp.org/en/resources/tutorials">Tutorials</a></li>
+                    <li><a href="https://jcp.org/en/resources/multimedia">JCP Podcasts</a></li>
+                    <li><a href="https://jcp.org/en/resources/guide">Spec Lead Guide</a></li>
+                    <li><a href="https://jcp.org/en/resources/tdk">TCK Tool & Info</a></li>
+                    <li><a href="https://jcp.org/en/resources/license_reference">License Reference</a></li>
+                </ul>
+            </li>
+
+            <li><a href="https://jcp.org/en/press/pmo" class="p7PMtrg">Community News</a>
+                <ul>
+                    <li><a href="https://jcp.org/en/press/pmo">News</a></li>
+                    <li><a href="https://jcp.org/en/press/news/awards/awards_main">Programs &amp; Awards</a></li>
+                    <li><a href="https://jcp.org/en/press/releases">Press Releases</a></li>
+                    <li><a href="https://jcp.org/en/press/success">Success Stories</a></li>
+                </ul>
+            </li>
+
+            <li><a href="https://jcp.org/en/introduction/faq">FAQ</a></li>
+
+            <li><a href="https://jcp.org/en/resources/contacts">Contact Us</a></li>
+
+            <div style="clear: both;"><img src="https://jcp.org/images/spacer.gif" alt="" height="25" width="1"></div>
+
+            <!--[if lte IE 6]><style>#p7PMnav a{height:1em;}#p7PMnav li{height:1em;float:left;clear:both;width:100%}</style><![endif]-->
+            <!--[if IE 6]><style>#p7PMnav li{clear:none;}</style><![endif]-->
+            <!--[if IE 7]><style>#p7PMnav a{zoom:100%;}#p7PMnav li{float:left;clear:both;width:100%;}</style><![endif]-->
+        </ul>
+
+      
+
+        
+
+        <!--begin ad space -->
+        <div class="ads">
+            <a href="http://java.com/java/download/index.jsp?cid=jdp78399" target="_blank"><img style="display: ;" src="https://jcp.org/images/ad_banner2.gif" alt="Ad Banner" border="1" height="70" width="150"></a>
+        </div>
+        <!--end ad space -->
+
+<!-- ** Menu End ** //-->
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+
+    
+
+                    &nbsp;<br>
+                    <img src="https://jcp.org/images/common/trans.gif" alt="" width="1" height="150"><br>
+
+              
+
+
+
+                </td>
+                <!-- ** END: Navigation Column ** //-->
+
+                <!-- ** BEGIN: Gutter Column ** //-->
+		<td width="10" nowrap><img src="https://jcp.org/images/common/trans.gif" alt="" width="10" height="1"></td>
+                <!-- ** END: Gutter Column ** //-->
+
+                <!-- ** BEGIN: Content Column ** //-->
+                <td width="100%" valign="top">
+
+    
+<script type="text/javascript">
+
+String.prototype.trim = function() {
+        return this.replace(/^\s+|\s+$/g,"");
+}
+String.prototype.ltrim = function() {
+        return this.replace(/^\s+/,"");
+}
+String.prototype.rtrim = function() {
+        return this.replace(/\s+$/,"");
+}
+
+function validate_search() {
+	if (document.search.id.value == "Search JSRs" || document.search.id.value.trim().length == 0) {
+		alert("Search terms must be entered first");
+		return false;
+	}
+	return true;
+}
+
+function validate_findjsr() {
+	if (document.findjsr.id.value == "Search JSRs" || document.findjsr.id.value.trim().length == 0) {
+		alert("Search terms must be entered first");
+		return false;
+	}
+	return true;
+}
+
+function validate_login(type) {
+	// alert("validate_login:type=" + type);
+	if (document.login.username.value == "username"
+			|| document.login.username.value.trim().length == 0
+			|| document.login.password.value.trim().length == 0) {
+		// alert("User ID and Password must be entered first: debug(" + type + ")");
+		alert("User ID and Password must be entered first");
+		return false;
+	}
+	return true;
+}
+
+// onkeypress="return handle_keypress(this,event)"
+function handle_keypress(myfield, e) {
+	var keycode;
+	if (window.event) keycode = window.event.keyCode;
+	else if (e) keycode = e.which;
+	else return true;
+
+
+	// if (window.event) keycode = e.keyCode;
+	// else if (e) keycode = e.which;
+	// else return true;
+
+	// alert("keycode=" + keycode);
+
+	// if (keycode == 13 && validate_login(3) ) {
+	if (keycode == 13) {
+		if (validate_login(3)) {
+			myfield.form.submit();	// submit() function not same as User Submit
+		}
+		return false;
+	}
+	return true;
+}
+
+function nullify_if_equal(field, str) {
+	// alert("val=" + field.value);
+	if (field.value == str) {
+		field.value = "";
+	}
+}
+
+</script>
+<!-- ** END: header.jsp ** //-->
+
+
+
+
+
+
+
+        <!--  BEGIN NAVIGATION TABS -->
+        <div id="p7TP1">
+                <div class="p7TP_tabs">
+                        <div id="p7tpb1_1" class="down"><a class="down">JSR</a></div>
+                        <div><a href="https://jcp.org/en/egc/view?id=338">Community</a></div>
+                        <div><a href="https://jcp.org/en/eg/eghome?id=338">Expert Group</a></div>
+			
+
+                <br class="p7TPclear" />
+                </div>
+
+                <div class="p7TPcontent">
+                        <div id="p7tpc1_1">
+
+			
+                                <a href="https://jcp.org/en/jsr/summary?id=338">Summary</a>
+                                &nbsp;|&nbsp;
+			
+			
+                                <a href="https://jcp.org/en/jsr/proposalDetails?id=338">Proposal</a>
+                                &nbsp;|&nbsp;
+			
+			
+                                <span>Detail (Summary &amp; Proposal)</span>
+			
+                        </div>
+
+                </div>
+                <!--[if lte IE 6]><style type="text/css">.p7TPpanel div,.p7TPpanel a{height:1%;}.p7TP_tabs a{white-space:nowrap;}</style><![endif]-->
+        </div>
+        <script type="text/javascript">
+                P7_initTP(1,0);
+        </script>
+        <!--  END NAVIGATION TABS -->
+
+
+<div class="anybar"><img src="https://jcp.org/images/global/bar_green.gif" alt="" width="12" height="4"></div>
+
+<div class="header2">JSRs: Java Specification Requests</div>
+<div class="header1">JSR 338: Java<font size="-2"><sup>TM</sup></font> Persistence 2.1</div>
+<div class="anybar"><img src="https://jcp.org/images/global/bar_green.gif" alt="" width="12" height="4"></div>
+<br>
+
+
+
+
+<!-- ********************************************** -->
+<!--  JSR Status information                        -->
+<!-- ********************************************** -->
+
+
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td id="centercontent" valign="top">
+			<tr>
+			<td>
+                            <table class="tbl" cellpadding="4" cellspacing="1" width="100%">
+                                <tr valign="top">
+                                    <td class="bdtl">Stage</td>
+                                    <td class="bdtl">Access</td>
+                                    <td class="bdtl">Start</td>
+                                    <td class="bdtl">Finish</td>
+                                </tr>
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Final Release </td>
+                                        
+                                            <td><a href="http://jcp.org/aboutJava/communityprocess/final/jsr338/index.html">Download page</a></td>
+                                        
+                                        <td>22 May, 2013</td>
+                                        <td>&nbsp;</td>
+				</tr>
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Final Approval Ballot </td>
+                                        
+                                            <td><a href="https://jcp.org/en/jsr/results?id=5496">View results</a></td>
+                                        
+                                        <td>09 Apr, 2013</td>
+                                        <td>22 Apr, 2013</td>
+				</tr>
+	
+
+
+
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Proposed Final Draft </td>
+                                        
+                                            <td><a href="http://jcp.org/aboutJava/communityprocess/pfd/jsr338/index.html">Download page</a></td>
+                                        
+                                        <td>01 Mar, 2013</td>
+                                        <td>&nbsp;</td>
+				</tr>
+	
+
+
+
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Public Review Ballot </td>
+                                        
+                                            <td><a href="https://jcp.org/en/jsr/results?id=5404">View results</a></td>
+                                        
+                                        <td>22 Jan, 2013</td>
+                                        <td>04 Feb, 2013</td>
+				</tr>
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Public Review </td>
+                                        
+                                            <td><a href="http://jcp.org/aboutJava/communityprocess/pr/jsr338/index.html">Download page</a></td>
+                                        
+                                        <td>21 Dec, 2012</td>
+                                        <td>21 Jan, 2013</td>
+				</tr>
+	
+
+
+
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Early Draft Review  2</td>
+                                        
+                                            <td><a href="http://jcp.org/aboutJava/communityprocess/edr/jsr338/index2.html">Download page</a></td>
+                                        
+                                        <td>31 Oct, 2012</td>
+                                        <td>30 Nov, 2012</td>
+				</tr>
+	
+
+
+
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Early Draft Review </td>
+                                        
+                                            <td><a href="http://jcp.org/aboutJava/communityprocess/edr/jsr338/index2.html">Download page</a></td>
+                                        
+                                        <td>23 Dec, 2011</td>
+                                        <td>22 Jan, 2012</td>
+				</tr>
+	
+
+
+
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>Expert Group Formation </td>
+                                        
+                                            <td>&nbsp;</td>
+                                        
+                                        <td>25 Jan, 2011</td>
+                                        <td>27 May, 2011</td>
+				</tr>
+	
+
+
+
+	
+				<tr class="bgw" valign="top">
+                                        <td>JSR Review Ballot </td>
+                                        
+                                            <td><a href="https://jcp.org/en/jsr/results?id=5139">View results</a></td>
+                                        
+                                        <td>11 Jan, 2011</td>
+                                        <td>24 Jan, 2011</td>
+				</tr>
+	
+
+
+
+	
+
+
+			</table>
+			</td>
+			</tr>
+                        </td>
+</tr>
+</table>
+
+<!-- ********************************************** -->
+<!--  JCP Version                                   -->
+<!-- ********************************************** -->
+
+<span style="padding: 10px; display: block;">
+
+    <b> Status: </b><a href="https://jcp.org/en/introduction/glossary#status"><font color=black><span title="A JSR that has produced a Final Release milestone more than a year ago.">Final</span></font></a><br>
+
+
+
+     <b>JCP version in use: </b><a href="https://jcp.org/procedures/jcp2_8"> 2.8</a><br>
+    
+
+
+
+    
+			<b>Java Specification Participation Agreement version in use:</b> 2.0<br>
+    
+
+    <br><br>
+        <b>Description</b>:<br>
+        The Java Persistence API is the Java API for the management of persistence and object/relational mapping in Java EE and Java SE environments.
+    <br><br>
+
+    <!-- ********************************************** -->
+    <!--  JSR Comments Email excluding JSR 900 and up   -->
+    <!-- ********************************************** -->
+
+	    
+		    <b>Expert Group Transparency:</b><br>
+				&nbsp;&nbsp;<a href="http://java.net/projects/jpa-spec/lists/users/archive">Public Communications</a><br>
+			
+				&nbsp;&nbsp;<a href="http://java.net/jira/browse/JPA_SPEC">Issue Tracking</a><br>
+			
+			<br>
+	    
+
+            </span>
+
+
+   <!-- ****************************************** -->
+
+                <div id="p7TP52">
+                        <div class="p7TP_tabs2">
+                            <div><span>Team</span></div>
+                            <br class="p7TPclear" />
+                        </div>
+                </div>
+
+                <table bgcolor="#f2f2f2" border="0" cellpadding="5" cellspacing="1" width="100%">
+	
+                    <tr valign="top">
+                            <td colspan="3"><span class="header4">Specification Leads</span></td>
+                    </tr>
+
+
+		
+        
+			<tr valign="top">
+                            
+                            <td width="20"><a href="https://jcp.org/en/press/news/star"><img src="https://jcp.org/images/jsr/stars-final-sml-anim-ir.gif" alt="Star Spec Lead" border="0" width="18" height="18" hspace="3" vspace="2"></a></td>
+                            
+                            <td>Linda&nbsp;Demichiel</td>
+                            <td>Oracle</td>
+			</tr>
+        
+
+                <tr valign="top">
+                        <td colspan="4" class="spacerw"><img src="https://jcp.org/images/global/spacer.gif" alt="" height="1" width="1"></td>
+                </tr>
+                <tr valign="top">
+                        <td colspan="3"><span class="header4">Expert Group</span></td>
+                </tr>
+
+
+			<tr valign="top">
+                            <td width="20" nowrap>&nbsp;</td> <!-- Gutter //-->
+                            <td>Adams, Matthew T.</td>
+     
+
+                            <td>akquinet tech@spree<br>: Michael Bouschen</td>
+    
+
+                            <td>Adam Bien</td>
+			</tr>
+
+
+			<tr valign="top">
+                            <td width="20" nowrap>&nbsp;</td> <!-- Gutter //-->
+                            <td>Ericsson AB<br>: Nicolas Seyvet</td>
+     
+
+                            <td>IBM<br>: Kevin Sutter</td>
+    
+
+                            <td>Werner Keil</td>
+			</tr>
+
+
+			<tr valign="top">
+                            <td width="20" nowrap>&nbsp;</td> <!-- Gutter //-->
+                            <td>Bernd Mueller</td>
+     
+
+                            <td>Oracle<br>: Linda Demichiel</td>
+    
+
+                            <td>Oracle<br>: Mike Keith</td>
+			</tr>
+
+
+			<tr valign="top">
+                            <td width="20" nowrap>&nbsp;</td> <!-- Gutter //-->
+                            <td>Oracle<br>: Gordon Yorke</td>
+     
+
+                            <td>OW2<br>: Florent Benoit</td>
+    
+
+                            <td>Pramati Technologies<br>: Deepak Anupalli</td>
+			</tr>
+
+
+			<tr valign="top">
+                            <td width="20" nowrap>&nbsp;</td> <!-- Gutter //-->
+                            <td>RedHat<br>: Emmanuel Bernard</td>
+     
+
+                            <td>RedHat<br>: Steve Ebersole</td>
+    
+
+                            <td>RedHat<br>: Scott Marlow</td>
+			</tr>
+
+
+			<tr valign="top">
+                            <td width="20" nowrap>&nbsp;</td> <!-- Gutter //-->
+                            <td>SAP AG<br>: Rainer Schweigkoffer</td>
+     
+
+                            <td>Sybase<br>: Evan Ireland</td>
+    
+
+                            <td>TmaxSoft, Inc.<br>: Miju Byon</td>
+			</tr>
+
+
+			<tr valign="top">
+                            <td width="20" nowrap>&nbsp;</td> <!-- Gutter //-->
+                            <td>Versant Corporation<br>: Christian Romberg</td>
+     
+
+                            <td>VMware<br>: Oliver Gierke</td>
+    
+
+
+
+
+
+
+
+
+
+			</tr>
+
+		</table>
+
+
+
+
+
+                    <!-- ********************************************** -->
+                    <!--  Expert Group Status                           -->
+                    <!-- ********************************************** -->
+
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        
+                    </table>
+
+
+
+
+
+   <!-- ****************************************** -->
+
+
+
+
+<!-- ********************************************** -->
+<!--  JSRProposal Info                              -->
+<!-- ********************************************** -->
+<p>
+
+
+<a name="updates"><font size="+2">Updates to the Original JSR Proposal</font></a><P>
+
+The following information has been updated from <a href="#orig">the original proposal</a>.
+
+<P>
+<B><U>2013.03.05</u></b>:<BR>
+
+
+<H4>2.18 Please provide a description of the business terms for the Specification, RI and TCK that will apply when this JSR is final.</H4>
+
+<ul>
+<li><a href="https://jcp.org/aboutJava/communityprocess/licenses/SpecificationJPA-2.1-12-23-10.doc">Specification license</a><BR>
+<li>RI license
+<ul type=o>
+<li>Commercial use<P>
+The RI will be available for commercial use under the <a href="http://glassfish.java.net/public/CDDL+GPL_1_1.html">CDDL 1.1</a> open source license, the <a href="http://glassfish.java.net/public/CDDL+GPL_1_1.html">GPLv2 with Classpath Exception</a> open source license, or <a href="https://jcp.org/aboutJava/communityprocess/licenses/SCSL-JSR_JPA-2.1-AttachD-12-22-10.doc">this RI license</a>.
+<li> Non-Commercial use
+<P>
+The RI will be available for non-Commercial use under the <a href="http://glassfish.java.net/public/CDDL+GPL_1_1.html">CDDL 1.1</a> open source license or the <a href="http://glassfish.java.net/public/CDDL+GPL_1_1.html">GPLv2 with Classpath Exception</a> open source license.
+</ul>
+<li> TCK license
+<ul type=o>
+<li> Commercial use<P>
+The TCK will be available for commercial use under <a href="https://jcp.org/aboutJava/communityprocess/licenses/SATCK-JSR_JPA-2.1-12-23-10.doc">this TCK license</a>.
+</li>
+<li> Non-Commercial use<P>
+As required by the Java Specification Participation Agreement (JSPA), the TCK will be licensed at no charge without support to qualified not-for-profit.  The Compatibility Testing Scholarship Program will verify such qualification. Support may also be provided at no charge with approval of the scholarship board. For more information, please refer to:<BR>
+<a href="http://www.oracle.com/technetwork/java/index-137188.html">http://www.oracle.com/technetwork/java/index-137188.html</a>
+</li>
+</ul>
+</ul>
+
+<B><U>2012.04.06</U></b>:<BR>
+<H4>2.13 Please describe the anticipated schedule for the development of this
+specification.</H4>
+
+<P>January 2011 Expert Group formed<BR>
+Q3 2011 Early Draft<BR>
+Q3 2012 Public Review<BR>
+Q4 2012 Proposed Final Draft<BR>
+Q1 2013 Final Release<P>
+
+<B><u>2011.12.23</u></b>:<BR>
+The Spec Lead and Expert Group moved JSR 338 to <a href="https://jcp.org/en/procedures/jcp2_8">JCP 2.8</a>.
+<P>
+
+<H4>2.19 Please describe the communications channel you have established for the public to 
+
+observe Expert Group deliberations, provide feedback, and view archives of all Expert Group 
+
+communications.</H4>
+
+<P>
+The Expert Group will conduct business on jsr338-experts mailing list which is archived here: <a href="http://java.net/projects/jpa-spec/lists/jsr338-experts/archive">http://java.net/projects/jpa-spec/lists/jsr338-experts/archive</a>
+
+</P>
+
+<H4>2.20 What is the URL of the Issue Tracker that the public can read, and how does the public 
+
+log issues in the Issue Tracker?</H4>
+
+<P>
+<a href="http://java.net/jira/browse/JPA_SPEC">http://java.net/jira/browse/JPA_SPEC</a><BR>
+Registered java.net users can post directly to the Issue Tracker.
+</P>
+
+<H4>2.21 Please provide the location of the publicly accessible document archive you have 
+
+created for the Expert Group.</H4>
+
+<P><a href="http://java.net/projects/jpa-spec/downloads">http://java.net/projects/jpa-spec/downloads</a>
+
+</P>
+
+
+<P><HR><P>
+
+<a name="orig"><font size="+2">Original Java Specification Request (JSR)</font></a><p>
+<FONT SIZE="-1">
+
+<!-- BEGIN-SUB TOPICS -->
+
+          <A HREF="#1"> Identification</A>  |
+          <A HREF="#2"> Request</A>  |
+          <A HREF="#3"> Contributions</A> 
+<BR>
+
+<!-- END-SUB TOPICS -->
+
+</FONT>
+<P>
+
+<!-- BEGIN TEMPLATE -->
+
+<!-- SECTION 1 -->
+
+<A NAME="1"></A>
+
+<P><FONT size=+2>Section 1. Identification</FONT>
+
+<P><b>Submitting Member:</b> Oracle </P>
+
+<P><b>Name of Contact Person:</b> Linda DeMichiel </P>
+
+<P><b>E-Mail Address:</b> linda.demichiel<faketag>&#64;</faketag>oracle.com</P>
+
+<P><b>Telephone Number:</b> +1 408 276 7057
+</P>
+
+<P><b>Fax Number:</b> +1 408 276 4185
+</P>
+
+<BR>
+<P><b>Specification Lead:</b> Linda DeMichiel </P>
+
+<P><b>E-Mail Address:</b> linda.demichiel<faketag>&#64;</faketag>oracle.com</P>
+
+<P><b>Telephone Number:</b> +1 408 276 7057
+</P>
+
+<P><b>Fax Number:</b> +1 408 276 4185
+</P>
+
+<BR>
+
+<P><B>Initial Expert Group Membership:</B>
+</P>
+
+<P>-
+</P>
+
+<P><B>Supporting this JSR:</B>
+
+</P>
+
+<P>akquinet tech&#64;spree<BR>
+Ericsson<BR>
+OW2<BR>
+Pramati<BR>
+RedHat<BR>
+SAP<BR>
+Jeff Genender<BR>
+Reza Rahman<BR>
+Werner Keil</p>
+
+<BR><BR>
+
+<!-- SECTION 2 -->
+
+<A NAME="2"></A>
+
+<P>
+<FONT SIZE="+2">Section 2: Request</FONT><P>
+</P>
+
+<H4>2.1 Please describe the proposed Specification:</H4>
+
+<P>The Java Persistence API is the Java API for the management of persistence and object/relational mapping in Java EE and Java SE environments.  It provides an object/relational mapping facility for the Java application developer using a Java domain model to manage a relational database.
+<P>
+The purpose of the Java Persistence 2.1 specification is to extend the Java Persistence API to include additional features requested by the community.
+<P>
+Aspects that should be considered by the Expert Group for inclusion in this work include, but are not limited to, the following:
+<P>
+ * Support for the use of custom types and transformation methods in object/relational mapping. 
+<P>
+ * Support for the use of "fetch groups" and/or "fetch plans" to provide further control over data that is fetched, detached, copied, and/or used in merging.
+<P>
+ * Support for the specification of immutable attributes and readonly entities.
+<P>
+ * Support for user-configurable naming strategies for use in O/R mapping and metamodel generation.
+<P>
+ * More flexibility in the use of generated values; support for UUID generator type.
+<P>
+ * Additional mapping metadata to provide better standardization for schema generation.
+<P>
+ * Support for multitenancy.
+<P>
+ * Additional event listeners and callback methods; availability of entity manager to callbacks.
+<P>
+ * Methods for dirty detection.
+<P>
+ * Improved ability to control persistence context synchronization.
+<P>
+ * Additional unwrap methods to support use of vendor extensions.
+<P>
+ * Support for dynamic definition of persistence unit, including object/relational mapping information.
+<P>
+ * Extension of metamodel API to object/relational mapping information.
+<P>
+ * Improvements to the Java Persistence query language and criteria APIs, including: 
+<P>
+   -- support for stored procedures; 
+  <P>
+   -- support for additional built-in functions, and for the invocation of other database and vendor functions; 
+<P>
+   -- support for downcasting; 
+<P>
+   -- support for outer joins with ON conditions; 
+<P>
+   -- update and delete criteria queries; 
+<P>
+   -- support for mapping between JPQL queries and criteria queries.
+<P>
+ * Improved support for the result type mapping of native queries.
+ <P>
+ * More flexible XML descriptors.
+
+<P>
+The goal of the Expert Group will be to assess these issues and identify and pursue directions for enhancement of the overall programming model and facilities of the Java Persistence API.
+
+
+
+
+ </P>
+
+<H4>2.2 What is the target Java platform? (i.e., desktop, server, personal, embedded, card, etc.)</H4>
+
+<P>The target platforms are Java EE and Java SE.
+</P>
+
+<H4>2.3 The Executive Committees would like to ensure JSR submitters think about how their proposed technology relates to all of the Java platform editions. Please provide details here for which platform editions are being targeted by this JSR, and how this JSR has considered the relationship with the other platform editions.</H4>
+
+<P>The Java Persistence API is designed for both Java EE and Java SE platform environments.  It is expected that Java Persistence 2.1 will be included as a required part of the Java Platform, Enterprise Edition version 7.  Aligning the timeline of this JSR with that of Java EE 7 may therefore impact the scope of the Java Persistence 2.1 release.  Features that may not be able to be addressed in Java Persistence 2.1 due to time constraints may become candidates for a future release.
+
+</P>
+
+<H4>2.4 Should this JSR be voted on by both Executive Committees?</H4>
+
+<P>No.  It should be voted on by the Java SE / EE Executive Committee only.
+</P>
+
+
+<H4>2.5 What need of the Java community will be addressed by the proposed specification?</H4>
+
+<P>The goal of the proposed specification is to address the needs of the Java community by adding functionality to the Java Persistence API to address requests received from the members of the community.
+</P>
+
+<H4>2.6 Why isn't this need met by existing specifications?</H4>
+
+<P>See 2.5 above.  The Java Persistence 2.1 release will augment the Java Persistence API with features that have been requested by the community and that are not present in the current release.
+</P>
+
+<H4>2.7 Please give a short description of the underlying technology or technologies:</H4>
+
+<P>See above.
+
+</P>
+
+<H4>2.8 Is there a proposed package name for the API Specification? (i.e., <TT>javapi.something</TT>, <TT>org.something</TT>, etc.)</H4>
+
+<P>The API Specification will continue to use the javax.persistence, javax.persistence.criteria, javax.persistence.metamodel, and javax.persistence.spi packages.
+</P>
+
+<H4>2.9 Does the proposed specification have any dependencies on specific operating systems, CPUs, or I/O devices that you know of?</H4>
+
+<P>No.</P>
+
+<H4>2.10 Are there any security issues that cannot be addressed by the current security model?</H4>
+
+<P>No.</P>
+
+<H4>2.11 Are there any internationalization or localization issues?</H4>
+
+<P>No.</P>
+
+<H4>2.12 Are there any existing specifications that might be rendered obsolete, deprecated, or in need of revision as a result of this work?</H4>
+
+<P>No.</P>
+
+<H4>2.13 Please describe the anticipated schedule for the development of this
+specification.</H4>
+
+<P><strike>Jan 2011    Expert Group formed<BR>
+Q3  2011    Early Draft<BR>
+Q1  2012    Public Review<BR>
+Q3  2012    Final Release</strike>
+
+<P>
+<font color="red">Note</font> that this information <a href="#updates">has been updated</a> since this original proposal.
+
+</P>
+
+<H4>2.14 Please describe the anticipated working model for the Expert Group working on developing this
+specification.</H4>
+
+<P>The primary means of communication will be email and conference calls.  Face-to-face meetings will be scheduled if needed.
+</P>
+
+<H4>2.15 Provide detailed answers to the transparency checklist, making sure to
+include URLs as appropriate:</H4>
+
+<P>* The public can read the names of the people on the Expert Group.
+<P>
+  Yes.  This information will be available in all spec drafts and on the Update page of the JSR.
+<P>
+* The Expert Group business is regularly reported on a publicly readable alias.
+<P>
+  We intend this to be the case.   In addition, blogs will be used to keep the community updated on the progress of the JSR.
+<P>
+* The schedule for the JSR is publicly available, it's current, and I update it regularly.
+<P>
+  This will be available on the JSR Update page.
+<P>
+* The public can read/write to a wiki for my JSR.
+<P>
+  See the answers to other questions.  It is likely that other means will be used to achieve similar functionality in addition to the JCP public forum for the JSR.
+<P>
+* I read and respond to posts on the discussion board for my JSR on jcp.org.         
+<P>
+  The discussion board will be used by the expert group.  In the predecessor to this JSR (JSR-317), members of the community could engage in discussions with the expert group by means of posting to feedback aliases that channeled directly into the expert group.  We intend to investigate means by which this functionality might be made available.
+<P>
+* There is an issue-tracker for my JSR that the public can read.
+<P>
+  The issue-tracker for the JPA 2.1 reference implementation will be available to the public.  Open issues in the specification drafts will be flagged there.
+<P>
+* I have spoken at conferences and events about my JSR recently.
+<P>
+  Yes.  It is expected that expert group members will participate in conferences and events and present updates on Java Persistence 2.1.
+<P>
+* I am using open-source processes for the development of the RI and/or TCK.   
+   <P>
+  The Java Persistence RI is being developed under the open source EclipseLink project and is being made available through GlassFish.
+<P>
+* The Update tab for my JSR has links to and information about all public communication  mechanisms and sites for the development of my JSR. 
+<P>
+  This will be the case.
+</P>
+
+<H4>2.16 Please describe how the RI and TCK will de delivered, i.e. as part of a profile or platform edition, or stand-alone, or both. Include version information for the profile or platform in your answer.
+</H4>
+
+<P>Oracle Corporation will deliver a Reference Implementation (RI) and Technology Compatibility Kit (TCK) available both stand-alone and as part of Java EE 7.
+</P>
+
+<H4>2.17 Please state the rationale if previous versions are available stand-alone and you are now proposing in 2.13 to only deliver RI and TCK as part of a profile or platform edition (See sections 1.1.5 and 1.1.6 of the JCP 2 document).
+</H4>
+
+<P>N/A</P>
+
+<H4>2.18 Please provide a description of the business terms for the Specification, RI and TCK that will apply when this JSR is final.</H4>
+<BR>
+<font color="red">Note</font> that this information <a href="#updates">has been updated</a> from this original proposal.
+
+<P><a href="https://jcp.org/aboutJava/communityprocess/licenses/SpecificationJPA-2.1-12-23-10.doc">Specification license</a><BR>
+<a href="https://jcp.org/aboutJava/communityprocess/licenses/SCSL-JSR_JPA-2.1-AttachD-12-22-10.doc">RI license</a><BR>
+<a href="https://jcp.org/aboutJava/communityprocess/licenses/SATCK-JSR_JPA-2.1-12-23-10.doc">TCK license</a>
+</P>
+
+<BR><BR>
+<BR><BR>
+<font color="red">NOTE</font> that more information was added to the JSR when it moved to JCP 2.8. Find that additional information in the <a href="#updates">updates section of this page</a>.<P>
+&nbsp;
+<BR>
+
+<!-- SECTION 3 -->
+
+<A NAME="3"></A>
+
+<P>
+<FONT SIZE="+2">Section 3: Contributions</FONT><P>
+</P>
+
+<H4>3.1 Please list any existing documents, specifications, or implementations that describe the technology. Please include links to the documents if they are publicly available.</H4>
+
+<P>Java Persistence API specification, http://jcp.org/en/jsr/detail?id=317
+
+
+</P>
+
+<H4>3.2 Explanation of how these items might be used as a starting point for the work.</H4>
+
+<P>The Java Persistence API as defined by JSR-317 will be the starting point for this work.  
+<P>
+Experience with existing object/relational mapping implementations and vendor extensions to the Java Persistence API as defined by JSR-317 will be considered when evaluating new functionality.
+</P>
+
+<BR><BR>
+</p>
+
+
+
+
+
+
+<!-- ** BEGIN: footer.jsp ** //-->
+
+
+
+
+
+
+
+
+</td>
+</tr>
+</table>
+
+<!-- ** END: Content Table ** //-->
+
+<!-- ** BEGIN: Footer Table ** //-->
+
+<div id="footer" style="clear: both;">
+    <div class="footleft">
+        <a href="https://jcp.org/en/resources/contacts">Contact Us</a>
+    </div>
+	
+    <div class="botbar"><img src="https://jcp.org/images/spacer.gif" alt="" height="23" width="1"></div>
+
+    <div class="footleft2">
+         &copy; 2014, Oracle Corporation and/or its affiliates. 
+        <a href="https://jcp.org/en/home/terms">Terms of Use</a>. <a href="http://www.oracle.com/us/legal/privacy/index.html">Privacy Policy</a>. <a href="http://www.oracle.com/us/legal/third-party-trademarks/third-party-trademarks-078568.html">Trademarks</a>
+    </div>
+
+    <div class="footright">
+        <img src="https://jcp.org/images/common/logo_oracle_footer.gif" alt="Oracle Corporation" height="22" width="91">
+    </div>
+
+    <div style="clear: both;"><img src="https://jcp.org/images/spacer.gif" alt="" height="30" width="1"></div>
+</div>
+
+<!-- ** END: Footer Table ** //-->
+
+
+
+<!-- ** Menu Start ** //-->
+
+
+
+</body>
+
+<!-- Mirrored from jcp.org/en/jsr/detail?id=338 by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:48 GMT -->
+</html>
+<!-- ** END: footer.jsp ** //-->
+

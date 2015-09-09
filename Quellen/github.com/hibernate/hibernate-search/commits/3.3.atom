@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/3.3</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/3.3"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/3.3.atom"/>
+  <title>Recent Commits to hibernate-search:3.3</title>
+  <updated>2011-03-17T10:45:14+01:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7958aeca2819fab93561b621bbf14077611bb498</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/7958aeca2819fab93561b621bbf14077611bb498"/>
+    <title>
+        HSEARCH-709 fixing typo in online docs code example
+    </title>
+    <updated>2011-03-17T10:45:14+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-709 fixing typo in online docs code example&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f0187492036dd6dfb6bbe453e0a7022eaf7df395</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f0187492036dd6dfb6bbe453e0a7022eaf7df395"/>
+    <title>
+        HSEARCH-696 use Byteman to make sure the test takes long enough to trigger the expected failure
+    </title>
+    <updated>2011-02-23T13:22:49+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-696 use Byteman to make sure the test takes long enough to trigger the expected failure&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ead79b5340d69ecdc740a6494fac65b15282e029</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/ead79b5340d69ecdc740a6494fac65b15282e029"/>
+    <title>
+        typo
+    </title>
+    <updated>2011-02-23T13:22:40+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>typo&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5504dd7005d60addfda1e15defec367f02d5fd84</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5504dd7005d60addfda1e15defec367f02d5fd84"/>
+    <title>
+        HSEARCH-696 QueryTimeoutException thrown even if there&#39;s plenty of time left
+    </title>
+    <updated>2011-02-23T13:22:21+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-696 QueryTimeoutException thrown even if there&#39;s plenty of time left&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/904598ec2b4721dfde960d8ffb624fd3cfdf2765</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/904598ec2b4721dfde960d8ffb624fd3cfdf2765"/>
+    <title>
+        HSEARCH-685 Deletion of Document having a NumericField ID might fail when the identifier field name is overriden
+    </title>
+    <updated>2011-02-14T12:02:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-685 Deletion of Document having a NumericField ID might fail when the identifier field name is overriden&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b70b5a191c8478e7381574d0e6707bf24ccf3abb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/b70b5a191c8478e7381574d0e6707bf24ccf3abb"/>
+    <title>
+        HSEARCH-683 NullPointerException while using DocumentExtract on entities using @ProvidedId
+    </title>
+    <updated>2011-02-10T16:10:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-683 NullPointerException while using DocumentExtract on entities using @ProvidedId&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/26855766244111591c4ef593839d295472c1df02</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/26855766244111591c4ef593839d295472c1df02"/>
+    <title>
+        HSEARCH-684 Make IndexSearcherWithPayload public
+    </title>
+    <updated>2011-02-10T13:51:22Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-684 Make IndexSearcherWithPayload public
+
+Conflicts (resolved:)
+
+	pom.xml&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f9ba95f599c5104f71ee1ebfc92cc34cdd63abd7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f9ba95f599c5104f71ee1ebfc92cc34cdd63abd7"/>
+    <title>
+        HSEARCH-669 - DSL parameter injection fails on one way StringBridge
+    </title>
+    <updated>2011-01-20T10:38:45+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-669 - DSL parameter injection fails on one way StringBridge
+
+String2FieldBridgeAdaptor does not implement StringBridge causing DocumentBuilderIndexedEntity to not recognize it as a StringBridge&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/aaee08a026fce45a5b1b3f90a60c8eb7baccb75b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/aaee08a026fce45a5b1b3f90a60c8eb7baccb75b"/>
+    <title>
+        HSEARCH-657 Update dependencies for Infinispan module to Infinispan 4.2.0.FINAL and JGroups 2.11.0.GA
+    </title>
+    <updated>2011-01-01T20:33:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-657 Update dependencies for Infinispan module to Infinispan 4.2.0.FINAL and JGroups 2.11.0.GA&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1ba21f48c759fdf7187b53c61f63498f79c00dd9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/1ba21f48c759fdf7187b53c61f63498f79c00dd9"/>
+    <title>
+        HSEARCH-651 Improve error reporting on null values in querybuilder DSL
+    </title>
+    <updated>2010-12-24T11:04:40+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-651 Improve error reporting on null values in querybuilder DSL&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/effe2725f5e925c3e8f593e32a6bb9a6f59d913f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/effe2725f5e925c3e8f593e32a6bb9a6f59d913f"/>
+    <title>
+        HSEARCH-650 add more comments about what should be cleaned up
+    </title>
+    <updated>2010-12-21T17:35:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-650 add more comments about what should be cleaned up&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5e8e82cffc0b8f4f79f42e16088c98f0d86249a7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5e8e82cffc0b8f4f79f42e16088c98f0d86249a7"/>
+    <title>
+        HSEARCH-650 Regression in 3.3.0: Using hibernate.use_identifier_rollback property causes exceptions on deletes
+    </title>
+    <updated>2010-12-21T15:53:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-650 Regression in 3.3.0: Using hibernate.use_identifier_rollback property causes exceptions on deletes&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6a28362d6fefaaec39fe74a2432e5f50bf26f253</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/6a28362d6fefaaec39fe74a2432e5f50bf26f253"/>
+    <title>
+        preparing versions for 3.3.1-SNAPSHOT from 3.3.0.Final tag
+    </title>
+    <updated>2010-12-21T10:59:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>preparing versions for 3.3.1-SNAPSHOT from 3.3.0.Final tag&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8b59491febfa91e15dc406d206eb1220e0dc887d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/8b59491febfa91e15dc406d206eb1220e0dc887d"/>
+    <title>
+        [maven-release-plugin] prepare release 3.3.0.Final
+    </title>
+    <updated>2010-12-14T21:29:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 3.3.0.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bda661b2dd77f057656c31dea8eb2af0d90bc6f6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/bda661b2dd77f057656c31dea8eb2af0d90bc6f6"/>
+    <title>
+        Prepare release 3.3.0.Final
+    </title>
+    <updated>2010-12-14T21:02:30Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Prepare release 3.3.0.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b84d5ddc275642088c44c7d515e14b201dabb645</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/b84d5ddc275642088c44c7d515e14b201dabb645"/>
+    <title>
+        HSEARCH-649 add Infinispan dependencies avoiding duplicates, except JGroups
+    </title>
+    <updated>2010-12-14T20:08:10Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-649 add Infinispan dependencies avoiding duplicates, except JGroups&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f7cb989f05c13c827bb8977cec00d60fe06666c1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f7cb989f05c13c827bb8977cec00d60fe06666c1"/>
+    <title>
+        HSEARCH-649 enable modules Infinispan and Testing in the distribution assembly
+    </title>
+    <updated>2010-12-14T19:20:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-649 enable modules Infinispan and Testing in the distribution assembly&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8630e1fc6bf73834d0892cd9457ee4c14cdc3cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f8630e1fc6bf73834d0892cd9457ee4c14cdc3cd"/>
+    <title>
+        HSEARCH-648 we really need fetchInMemoryState to be true
+    </title>
+    <updated>2010-12-14T16:15:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-648 we really need fetchInMemoryState to be true&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fcd8170b0b50129f86fa9acd1a65882431669817</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/fcd8170b0b50129f86fa9acd1a65882431669817"/>
+    <title>
+        HSEARCH-648 Apply suggestions from Infinispan team to Infinispan default configuration
+    </title>
+    <updated>2010-12-14T16:12:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-648 Apply suggestions from Infinispan team to Infinispan default configuration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/089ca4b4156e5efcc90c78c6fd62d178c2ea5385</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/089ca4b4156e5efcc90c78c6fd62d178c2ea5385"/>
+    <title>
+        HSEARCH-647 WorkPlan causes ConcurrentModificationException on finding new entity types during processContainedInAndPrepareExecution
+    </title>
+    <updated>2010-12-14T13:53:06Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-647 WorkPlan causes ConcurrentModificationException on finding new entity types during processContainedInAndPrepareExecution&lt;/pre>
+    </content>
+  </entry>
+</feed>

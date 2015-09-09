@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/4.0</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/4.0"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/4.0.atom"/>
+  <title>Recent Commits to hibernate-search:4.0</title>
+  <updated>2011-12-16T18:23:47Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f3e47729d81f0c057e3edda86ba9c46c54bf6644</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f3e47729d81f0c057e3edda86ba9c46c54bf6644"/>
+    <title>
+        Prepare for development of version 4.0.1-SNAPSHOT
+    </title>
+    <updated>2011-12-16T18:23:47Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Prepare for development of version 4.0.1-SNAPSHOT&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8d11c5b9693a3bf4146325d281a2dfed7f551c13</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/8d11c5b9693a3bf4146325d281a2dfed7f551c13"/>
+    <title>
+        [maven-release-plugin] prepare release 4.0.0.Final
+    </title>
+    <updated>2011-12-15T12:24:00+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.0.0.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/deb46de055f649104c962fd22ffb49916542fe5f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/deb46de055f649104c962fd22ffb49916542fe5f"/>
+    <title>
+        HSEARCH-1005 Generating a aggregated javadocs for the modules engine, orm and infinispan. Adding the generation to the documentation module. This way the javadocs generation can be skipped via &#39;disableDocumentationBuild&#39;. In the long run we might want to think about a separate dist module (see HV).
+    </title>
+    <updated>2011-12-15T12:11:41+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1005 Generating a aggregated javadocs for the modules engine, orm and infinispan. Adding the generation to the documentation module. This way the javadocs generation can be skipped via &#39;disableDocumentationBuild&#39;. In the long run we might want to think about a separate dist module (see HV).&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dbc24b335d154bea8c7835bf9ed5b4a1f444c746</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/dbc24b335d154bea8c7835bf9ed5b4a1f444c746"/>
+    <title>
+        Updating changelog and readme in preparation of Hibernate Search 4.0.0.Final
+    </title>
+    <updated>2011-12-15T10:04:00+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Updating changelog and readme in preparation of Hibernate Search 4.0.0.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f71890f5b1d298d75e908e63b6196e16fa816104</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f71890f5b1d298d75e908e63b6196e16fa816104"/>
+    <title>
+        HSEARCH-947 Upgrading to Hibernate Core 4.0.0.Final
+    </title>
+    <updated>2011-12-15T09:20:50+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-947 Upgrading to Hibernate Core 4.0.0.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f3a480ca36c89473b865d7be49cde4bd569b7e6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/6f3a480ca36c89473b865d7be49cde4bd569b7e6"/>
+    <title>
+        HSEARCH-947 Switching to a Core SNAPSHOT until the final release of Core
+    </title>
+    <updated>2011-12-14T12:09:38+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-947 Switching to a Core SNAPSHOT until the final release of Core&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3bd0ebab0b7623a2c086d06e772585a8de619f89</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/3bd0ebab0b7623a2c086d06e772585a8de619f89"/>
+    <title>
+        HSEARCH-749 Move assertion related code back into the test sources
+    </title>
+    <updated>2011-12-05T18:33:02+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-749 Move assertion related code back into the test sources&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2c3535d619b36c70d51b6828d72214e1827e96c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/2c3535d619b36c70d51b6828d72214e1827e96c6"/>
+    <title>
+        HSEARCH-749 Distribute helpers to understand Analyzers output
+    </title>
+    <updated>2011-12-05T18:33:02+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-749 Distribute helpers to understand Analyzers output&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f37812b637ded11d7ffbf9d0ce69662e09322348</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f37812b637ded11d7ffbf9d0ce69662e09322348"/>
+    <title>
+        HSEARCH-987 Expose option to set JDBC FetchSize in MassIndexer
+    </title>
+    <updated>2011-12-05T18:33:02+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-987 Expose option to set JDBC FetchSize in MassIndexer&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/99d30475c3bd37b2445d8e3625a7bab0ffe6e025</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/99d30475c3bd37b2445d8e3625a7bab0ffe6e025"/>
+    <title>
+        HSEARCH-955 Property name for index manager selection should be defined in Environment
+    </title>
+    <updated>2011-12-05T18:33:02+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-955 Property name for index manager selection should be defined in Environment&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4e9be1ffc1a388853d0af11dbb434e69e410c41a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/4e9be1ffc1a388853d0af11dbb434e69e410c41a"/>
+    <title>
+        HSEARCH-678 Document type limitations of @NumericField
+    </title>
+    <updated>2011-12-05T18:33:02+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-678 Document type limitations of @NumericField&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e0042820192eae62586dea67bff16ba6b064c8b9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/e0042820192eae62586dea67bff16ba6b064c8b9"/>
+    <title>
+        HSEARCH-984 Hibernate Search 4 violates javax.jms.Message contract, incompatible with HornetQ
+    </title>
+    <updated>2011-12-05T18:33:01+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-984 Hibernate Search 4 violates javax.jms.Message contract, incompatible with HornetQ&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bd836a4f7ca46e30ea62025700115c374b2e4bc3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/bd836a4f7ca46e30ea62025700115c374b2e4bc3"/>
+    <title>
+        HSEARCH-999 Splitting into two sybase profiles. Once for jdts one for the offical sybase driver
+    </title>
+    <updated>2011-12-05T14:18:04+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-999 Splitting into two sybase profiles. Once for jdts one for the offical sybase driver&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f945a02a2615fc9e0705f50c8cb78bae26a61381</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f945a02a2615fc9e0705f50c8cb78bae26a61381"/>
+    <title>
+        HSEARCH-999 Switching to jtds driver
+    </title>
+    <updated>2011-12-03T11:52:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-999 Switching to jtds driver&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6f3a2b7a9f63f1f645e7ec78040abc16938f982f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/6f3a2b7a9f63f1f645e7ec78040abc16938f982f"/>
+    <title>
+        HSEARCH-999 Removing auto generated id and switching to assigned id. Also enabling batch inserting. These changes will make debugging against a remote db faster.
+    </title>
+    <updated>2011-12-03T11:52:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-999 Removing auto generated id and switching to assigned id. Also enabling batch inserting. These changes will make debugging against a remote db faster.
+
+Also refactoring the tests.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9efbb47e023fb044638fee2ef7b5a41cae6b3052</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/9efbb47e023fb044638fee2ef7b5a41cae6b3052"/>
+    <title>
+        HSEARCH-996 Fixing some typos and adding javadocs
+    </title>
+    <updated>2011-12-01T17:12:09+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-996 Fixing some typos and adding javadocs&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d03f9288e022050f7303d8a7faae5c5ed471f39d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/d03f9288e022050f7303d8a7faae5c5ed471f39d"/>
+    <title>
+        HSEARCH-996 Update Hibernate Core to 4.0.0.CR7
+    </title>
+    <updated>2011-12-01T17:12:09+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-996 Update Hibernate Core to 4.0.0.CR7&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/160c016462d1099cb6eb9ebea8a8ad8e822a5c06</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/160c016462d1099cb6eb9ebea8a8ad8e822a5c06"/>
+    <title>
+        HSEARCH-996 improve information from fallback OptimisticLockException
+    </title>
+    <updated>2011-12-01T17:12:09+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-996 improve information from fallback OptimisticLockException&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/811a8833bc2aa0625cbba9ca358869f7c41d2160</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/811a8833bc2aa0625cbba9ca358869f7c41d2160"/>
+    <title>
+        HSEARCH-995 Eclipse import fails as maven-dependency-plugin needs m2 exclusion
+    </title>
+    <updated>2011-12-01T17:12:09+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-995 Eclipse import fails as maven-dependency-plugin needs m2 exclusion&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a7d24f5694d3a25ee030a4556713a73178317e9f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/a7d24f5694d3a25ee030a4556713a73178317e9f"/>
+    <title>
+        HSEARCH-993 Removing @FailureExpected and @SkipForDialect. These classes are provided via hibernate-testing
+    </title>
+    <updated>2011-12-01T16:09:43+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-993 Removing @FailureExpected and @SkipForDialect. These classes are provided via hibernate-testing&lt;/pre>
+    </content>
+  </entry>
+</feed>

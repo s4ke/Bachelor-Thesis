@@ -1,0 +1,654 @@
+<html>
+   
+<!-- Mirrored from www.firebirdsql.org/refdocs/langrefupd21-ddl-trigger.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:45:02 GMT -->
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   
+      <title>TRIGGER</title>
+      <link rel="stylesheet" href="http://www.firebirdsql.org/refdocs/firebirddocs.css" type="text/css">
+      <meta name="generator" content="DocBook XSL Stylesheets V1.72.0">
+      <link rel="start" href="http://www.firebirdsql.org/refdocs/index.html" title="Firebird Reference Documentation">
+      <link rel="up" href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl.html" title="Chapter 5: DDL statements">
+      <link rel="prev" href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl-table.html" title="TABLE">
+      <link rel="next" href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl-view.html" title="VIEW">
+   </head>
+   <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+      <table xmlns:exsl="http://exslt.org/common" width="100%" border="0" cellpadding="4" cellspacing="0">
+         <tr>
+            <td bgcolor="#F0F0F0"><a href="http://www.firebirdsql.org/?op=doc">Firebird Documentation Index</a> &rarr; <a href="http://www.firebirdsql.org/refdocs/langrefupd21.html">Firebird 2.1 Language Ref. Update</a> &rarr; <a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl.html">DDL statements</a> &rarr; TRIGGER
+            </td>
+         </tr>
+         <tr height="8">
+            <td></td>
+         </tr>
+      </table>
+      <table xmlns:exsl="http://exslt.org/common" width="100%" border="0" cellpadding="0" cellspacing="0">
+         <tr>
+            <td><a href="http://www.firebirdsql.org/"><img src="http://www.firebirdsql.org/refdocs/images/firebirdlogo.png" alt="Firebird Home" title="Firebird Home" border="0" width="85" height="84"></a></td>
+            <td width="100%"><a href="http://www.firebirdsql.org/"><img src="http://www.firebirdsql.org/refdocs/images/titleblackgill.gif" alt="Firebird Home" title="Firebird Home" border="0" width="215" height="40"></a></td>
+            <td align="right" height="64" valign="top"><a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl-table.html"><img src="http://www.firebirdsql.org/refdocs/images/prev-or18.png" width="30" height="30" border="0" title="Prev: TABLE" alt="Prev: TABLE"></a><a href="http://www.firebirdsql.org/?op=doc"><img src="http://www.firebirdsql.org/refdocs/images/toc-or18.png" width="30" height="30" border="0" title="Firebird Documentation Index" alt="Firebird Documentation Index"></a><a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl.html"><img src="http://www.firebirdsql.org/refdocs/images/top-or18.png" width="30" height="30" border="0" title="Up: DDL statements" alt="Up: DDL statements"></a><a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl-view.html"><img src="http://www.firebirdsql.org/refdocs/images/next-or18.png" width="30" height="30" border="0" title="Next: VIEW" alt="Next: VIEW"></a></td>
+         </tr>
+      </table>
+      <div class="section" lang="en">
+         <div class="titlepage">
+            <div>
+               <div>
+                  <h2 class="title" style="clear: both"><a name="langrefupd21-ddl-trigger"></a><span class="database">TRIGGER</span></h2>
+               </div>
+            </div>
+         </div>
+         <div class="toc">
+            <dl>
+               <dt><span class="section"><a href="langrefupd21-ddl-trigger.html#langrefupd21-create-trigger"><span class="database">CREATE TRIGGER</span></a></span></dt>
+               <dt><span class="section"><a href="langrefupd21-ddl-trigger.html#langrefupd21-alter-trigger"><span class="database">ALTER TRIGGER</span></a></span></dt>
+               <dt><span class="section"><a href="langrefupd21-ddl-trigger.html#langrefupd21-create-or-alter-trigger"><span class="database">CREATE OR ALTER TRIGGER</span></a></span></dt>
+               <dt><span class="section"><a href="langrefupd21-ddl-trigger.html#langrefupd21-drop-trigger"><span class="database">DROP TRIGGER</span></a></span></dt>
+               <dt><span class="section"><a href="langrefupd21-ddl-trigger.html#langrefupd21-recreate-trigger"><span class="database">RECREATE TRIGGER</span></a></span></dt>
+            </dl>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="langrefupd21-create-trigger"></a><span class="database">CREATE TRIGGER</span></h3>
+                  </div>
+               </div>
+            </div>
+            <p><span class="formalpara-title italic">Available in:&nbsp;</span>DSQL, ESQL
+            </p>
+            <p><span class="formalpara-title italic">Description:&nbsp;</span>Creates a trigger, a block of PSQL code that is executed automatically upon certain database events or mutations to a table
+               or view.
+            </p>
+            <p><span class="formalpara-title italic">Syntax:&nbsp;</span></p>
+            <div class="blockquote">
+               <blockquote class="blockquote"><pre class="programlisting">CREATE TRIGGER <em class="replaceable"><code>name</code></em>
+   {<em class="replaceable"><code>&lt;relation_trigger_legacy&gt;</code></em>
+      | <em class="replaceable"><code>&lt;relation_trigger_sql2003&gt;</code></em>
+      | <em class="replaceable"><code>&lt;database_trigger&gt;</code></em>        }
+   AS
+      [<em class="replaceable"><code>&lt;declarations&gt;</code></em>]
+   BEGIN
+      [<em class="replaceable"><code>&lt;statements&gt;</code></em>]
+   END
+
+<em class="replaceable"><code>&lt;relation_trigger_legacy&gt;</code></em>   ::=  FOR {<em class="replaceable"><code>tablename</code></em> | <em class="replaceable"><code>viewname</code></em>}
+                                 [ACTIVE | INACTIVE]
+                                 {BEFORE | AFTER} <em class="replaceable"><code>&lt;mutation_list&gt;</code></em>
+                                 [POSITION <em class="replaceable"><code>number</code></em>]
+
+<em class="replaceable"><code>&lt;relation_trigger_sql2003&gt;</code></em>  ::=  [ACTIVE | INACTIVE]
+                                 {BEFORE | AFTER} <em class="replaceable"><code>&lt;mutation_list&gt;</code></em>
+                                 [POSITION <em class="replaceable"><code>number</code></em>]
+                                 ON {<em class="replaceable"><code>tablename</code></em> | <em class="replaceable"><code>viewname</code></em>}
+
+<em class="replaceable"><code>&lt;database_trigger&gt;</code></em>          ::=  [ACTIVE | INACTIVE]
+                                 ON <em class="replaceable"><code>db_event</code></em>
+                                 [POSITION <em class="replaceable"><code>number</code></em>]
+
+<em class="replaceable"><code>&lt;mutation_list&gt;</code></em>             ::=  <em class="replaceable"><code>mutation</code></em> [OR <em class="replaceable"><code>mutation</code></em> [OR <em class="replaceable"><code>mutation</code></em>]]
+<em class="replaceable"><code>mutation</code></em>                    ::=  INSERT | UPDATE | DELETE
+
+<em class="replaceable"><code>db_event</code></em>                    ::=  CONNECT | DISCONNECT | TRANSACTION START
+                                   | TRANSACTION COMMIT | TRANSACTION ROLLBACK
+
+<em class="replaceable"><code>number</code></em>                      ::=  0..32767 (default is 0)
+
+<em class="replaceable"><code>&lt;declarations&gt;</code></em>              ::=  See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for the exact syntax</pre><div class="itemizedlist">
+                     <ul type="disc">
+                        <li>
+                           <p>&#8220;<span class="quote">Legacy</span>&#8221; and &#8220;<span class="quote">sql2003</span>&#8221; relation triggers are exactly the same. The only thing that differs is the creation syntax.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Triggers with lower position numbers fire first. Position numbers need not be unique, but if two or more triggers have the
+                              same position, the firing order between them is undefined.
+                           </p>
+                        </li>
+                        <li>
+                           <p>When defining relation triggers, each mutation type (<span class="database">INSERT</span>, <span class="database">UPDATE</span> or <span class="database">DELETE</span>) may occur at most once in the mutation list.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </blockquote>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-on-syntax"></a>SQL-2003-compliant syntax for relation triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Added in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Since Firebird 2.1, an alternative, SQL-2003-compliant syntax can be used for triggers on tables and views. Instead of specifying
+                  &#8220;<span class="quote"><span class="database">FOR</span> <em class="replaceable"><code>relationname</code></em></span>&#8221; before the event type and the optional directives surrounding it, you can now put &#8220;<span class="quote"><span class="database">ON</span> <em class="replaceable"><code>relationname</code></em></span>&#8221; after it, as shown in the syntax earlier in this chapter.
+               </p>
+               <p><span class="formalpara-title italic">Example:&nbsp;</span></p>
+               <div class="blockquote">
+                  <blockquote class="blockquote"><pre class="programlisting">create trigger biu_books
+  active before insert or update position 3
+  on books
+as
+begin
+  if (new.id is null)
+    then new.id = next value for gen_bookids;
+end</pre></blockquote>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-dbtriggers"></a>Database triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Added in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Since Firebird 2.1, triggers can be defined to fire upon the database events <span class="database">CONNECT</span>, <span class="database">DISCONNECT</span>, <span class="database">TRANSACTION START</span>, <span class="database">TRANSACTION COMMIT</span> and <span class="database">TRANSACTION ROLLBACK</span>. Only the database owner and <span class="database">SYSDBA</span> can create, alter and drop these triggers.
+               </p>
+               <p><span class="formalpara-title italic">Syntax:&nbsp;</span></p>
+               <div class="blockquote">
+                  <blockquote class="blockquote"><pre class="programlisting">CREATE TRIGGER <em class="replaceable"><code>name</code></em>
+   [ACTIVE | INACTIVE]
+   ON <em class="replaceable"><code>db_event</code></em>
+   [POSITION <em class="replaceable"><code>number</code></em>]
+   AS
+      [<em class="replaceable"><code>&lt;declarations&gt;</code></em>]
+   BEGIN
+      [<em class="replaceable"><code>&lt;statements&gt;</code></em>]
+   END
+
+<em class="replaceable"><code>db_event</code></em>                    ::=  CONNECT | DISCONNECT | TRANSACTION START
+                                   | TRANSACTION COMMIT | TRANSACTION ROLLBACK
+
+<em class="replaceable"><code>number</code></em>                      ::=  0..32767 (default is 0)
+
+<em class="replaceable"><code>&lt;declarations&gt;</code></em>              ::=  See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for the exact syntax</pre></blockquote>
+               </div>
+               <p><span class="formalpara-title italic">Example:&nbsp;</span></p>
+               <div class="blockquote">
+                  <blockquote class="blockquote"><pre class="programlisting">create trigger tr_connect
+  on connect
+as
+begin
+  insert into dblog (wie, wanneer, wat)
+    values (current_user, current_timestamp, 'verbind');
+end</pre></blockquote>
+               </div>
+               <p><span class="formalpara-title italic">Execution of database triggers and handling of exceptions:&nbsp;</span></p>
+               <div class="itemizedlist">
+                  <ul type="disc">
+                     <li>
+                        <p><span class="database">CONNECT</span> and <span class="database">DISCONNECT</span> triggers are executed in a transaction created specifically for this purpose. If all goes well, the transaction is committed.
+                           Uncaught exceptions roll back the transaction, and:
+                        </p>
+                        <div class="itemizedlist">
+                           <ul type="circle" compact>
+                              <li>
+                                 <p>In the case of a <span class="database">CONNECT</span> trigger, the connection is then broken and the exception returned to the client.
+                                 </p>
+                              </li>
+                              <li>
+                                 <p>With a <span class="database">DISCONNECT</span> trigger, exceptions are not reported and the connection is broken as foreseen.
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li>
+                        <p><span class="database">TRANSACTION</span> triggers are executed within the transaction whose opening, committing or rolling-back evokes them. The actions taken after
+                           an uncaught exception depend on the type:
+                        </p>
+                        <div class="itemizedlist">
+                           <ul type="circle" compact>
+                              <li>
+                                 <p>In a <span class="database">START</span> trigger, the exception is reported to the client and the transaction is rolled back.
+                                 </p>
+                              </li>
+                              <li>
+                                 <p>In a <span class="database">COMMIT</span> trigger, the exception is reported, the trigger's actions so far are undone and the commit is canceled.
+                                 </p>
+                              </li>
+                              <li>
+                                 <p>In a <span class="database">ROLLBACK</span> trigger, the exception is not reported and the transaction is rolled back as foreseen.
+                                 </p>
+                              </li>
+                           </ul>
+                        </div>
+                     </li>
+                     <li>
+                        <p>It follows from the above that there is no direct way of knowing if a <span class="database">DISCONNECT</span> or <span class="database">TRANSACTION ROLLBACK</span> trigger caused an exception.
+                        </p>
+                     </li>
+                     <li>
+                        <p>It also follows that you can't connect to a database if a <span class="database">CONNECT</span> trigger causes an exception, and that you can't start a transaction if a <span class="database">TRANSACTION START</span> trigger does so. Both phenomena effectively lock you out of your database while you need to get in there to fix the problem.
+                           See the note below for a way around this Catch-22 situation.
+                        </p>
+                     </li>
+                     <li>
+                        <p>In the case of a two-phase commit, <span class="database">TRANSACTION COMMIT</span> triggers fire in the prepare, not the commit phase.
+                        </p>
+                     </li>
+                  </ul>
+               </div>
+               <div class="note">
+                  <h3 class="title">Note</h3>
+                  <p>Some Firebird command-line tools have been supplied with new switches to suppress the automatic firing of database triggers:</p>
+                  <div class="blockquote">
+                     <blockquote class="blockquote"><pre class="programlisting">gbak -nodbtriggers
+isql -nodbtriggers
+nbackup -T</pre></blockquote>
+                  </div>
+                  <p>These switches can only be used by the database owner and <span class="database">SYSDBA</span>.
+                  </p>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-domains"></a>Domains instead of datatypes
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Firebird 2.1 and up allow the use of domains instead of SQL datatypes when declaring local trigger variables. See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for the exact syntax and details.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-collate"></a><span class="database">COLLATE</span> in variable declarations
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Firebird 2.1 and up allow <span class="database">COLLATE</span> clauses in local variable declarations. See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for syntax and details.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-notnull"></a><span class="database">NOT NULL</span> in variable declarations
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Firebird 2.1 and up allow <span class="database">NOT NULL</span> constraints in local variable declarations. See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for syntax and details.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-multiaction"></a>Multi-action triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Added in:&nbsp;</span>1.5
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Relation triggers can be defined to fire upon multiple operations (<span class="database">INSERT</span> and/or <span class="database">UPDATE</span> and/or <span class="database">DELETE</span>). Three new boolean context variables (<code class="varname">INSERTING</code>, <code class="varname">UPDATING</code> and <code class="varname">DELETING</code>) have been added so you can execute code conditionally within the trigger body depending on the type of operation.
+               </p>
+               <p><span class="formalpara-title italic">Example:&nbsp;</span></p>
+               <div class="blockquote">
+                  <blockquote class="blockquote"><pre class="programlisting">create trigger biu_parts for parts
+  before insert or update
+as
+begin
+  /* conditional code when inserting: */
+  if (inserting and new.id is null)
+    then new.id = gen_id(gen_partrec_id, 1);
+  
+  /* common code: */
+  new.partname_upper = upper(new.partname);
+end</pre></blockquote>
+               </div>
+               <div class="note">
+                  <h3 class="title">Note</h3>
+                  <p>In multi-action triggers, both context variables <span class="database">OLD</span> and <span class="database">NEW</span> are always available. If you use them in the wrong situation (i.e. <span class="database">OLD</span> while inserting or <span class="database">NEW</span> while deleting), the following happens:
+                  </p>
+                  <div class="itemizedlist">
+                     <ul type="disc" compact>
+                        <li>
+                           <p>If you try to read their field values, <code class="constant">NULL</code> is returned.
+                           </p>
+                        </li>
+                        <li>
+                           <p>If you try to assign values to them, a runtime exception is thrown.</p>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-empty"></a><span class="database">BEGIN ... END</span> blocks may be empty
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>1.5
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span><span class="database">BEGIN ... END</span> blocks may be empty in Firebird 1.5 and up, allowing you to write stub code without having to resort to dummy statements.
+               </p>
+               <p><span class="formalpara-title italic">Example:&nbsp;</span></p>
+               <div class="blockquote">
+                  <blockquote class="blockquote"><pre class="programlisting">create trigger bi_atable for atable
+active before insert position 0
+as
+begin
+end</pre></blockquote>
+               </div>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-changecount"></a><span class="database">CREATE TRIGGER</span> no longer increments table change count
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>1.0
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>In contrast to InterBase, Firebird does not increment the metadata change counter of the associated table when <span class="database">CREATE</span>, <span class="database">ALTER</span> or <span class="database">DROP TRIGGER</span> is used. For a full discussion, see <a href="langrefupd21-ddl-trigger.html#langrefupd21-alter-trigger-changecount" title="ALTER TRIGGER no longer increments table change count"><em class="citetitle"><span class="database">ALTER TRIGGER</span> no longer increments table change count</em></a>.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-create-trigger-plan"></a><span class="database">PLAN</span> allowed in trigger code
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>1.5
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Before Firebird 1.5, a trigger containing a <span class="database">PLAN</span> statement would be rejected by the compiler. Now a valid plan can be included and will be used.
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="langrefupd21-alter-trigger"></a><span class="database">ALTER TRIGGER</span></h3>
+                  </div>
+               </div>
+            </div>
+            <p><span class="formalpara-title italic">Available in:&nbsp;</span>DSQL, ESQL
+            </p>
+            <p><span class="formalpara-title italic">Description:&nbsp;</span>Alters an existing trigger. Relation triggers cannot be changed into database triggers or vice versa. The associated table
+               or view of a relation trigger cannot be changed.
+            </p>
+            <p><span class="formalpara-title italic">Syntax:&nbsp;</span></p>
+            <div class="blockquote">
+               <blockquote class="blockquote"><pre class="programlisting">ALTER TRIGGER <em class="replaceable"><code>name</code></em>
+   [ACTIVE | INACTIVE]
+   [{BEFORE | AFTER} <em class="replaceable"><code>&lt;mutation_list&gt;</code></em> | ON <em class="replaceable"><code>db_event</code></em>]
+   [POSITION <em class="replaceable"><code>number</code></em>]
+   [AS
+       [<em class="replaceable"><code>&lt;declarations&gt;</code></em>]
+    BEGIN
+       [<em class="replaceable"><code>&lt;statements&gt;</code></em>]
+    END                ]</pre><div class="itemizedlist">
+                     <ul type="disc">
+                        <li>
+                           <p>See <a href="langrefupd21-ddl-trigger.html#langrefupd21-create-trigger" title="CREATE TRIGGER"><em class="citetitle"><span class="database">CREATE TRIGGER</span></em></a> for the meaning of <em class="replaceable"><code>&lt;mutation_list&gt;</code></em> etc.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </blockquote>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-dbtriggers"></a>Database triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Added in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>The <span class="database">ALTER TRIGGER</span> syntax (see above) has been extended to support database triggers. For a full discussion of this feature, see <a href="langrefupd21-ddl-trigger.html#langrefupd21-create-trigger-dbtriggers" title="Database triggers"><em class="citetitle"><span class="database">CREATE TRIGGER</span> :: Database triggers</em></a>.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-domains"></a>Domains instead of datatypes
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Firebird 2.1 and up allow the use of domains instead of SQL datatypes when declaring local trigger variables. See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for the exact syntax and details.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-collate"></a><span class="database">COLLATE</span> in variable declarations
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Firebird 2.1 and up allow <span class="database">COLLATE</span> clauses in local variable declarations. See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for syntax and details.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-notnull"></a><span class="database">NOT NULL</span> in variable declarations
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Firebird 2.1 and up allow <span class="database">NOT NULL</span> constraints in local variable declarations. See <a href="http://www.firebirdsql.org/refdocs/langrefupd21-psql-declare.html" title="DECLARE"><em class="citetitle">PSQL::<span class="database">DECLARE</span></em></a> for syntax and details.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-multiaction"></a>Multi-action triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Added in:&nbsp;</span>1.5
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>The <span class="database">ALTER TRIGGER</span> syntax (see above) has been extended to support multi-action triggers. For a full discussion of this feature, see <a href="langrefupd21-ddl-trigger.html#langrefupd21-create-trigger-multiaction" title="Multi-action triggers"><em class="citetitle"><span class="database">CREATE TRIGGER</span> :: Multi-action triggers</em></a>.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-restr"></a>Restriction on altering used triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.0, 2.0.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>In Firebird 2.0 only, a restriction is in place which prevents anyone from dropping, altering or recreating a trigger or stored
+                  procedure if it has been used since the database was opened. This restriction has been removed again in version 2.0.1. Still,
+                  performing these operations on a live database is potentially risky and should only be done with the utmost care.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-plan"></a><span class="database">PLAN</span> allowed in trigger code
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>1.5
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Before Firebird 1.5, a trigger containing a <span class="database">PLAN</span> statement would be rejected by the compiler. Now a valid plan can be included and will be used.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-alter-trigger-changecount"></a><span class="database">ALTER TRIGGER</span> no longer increments table change count
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>1.0
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>Each time you use <span class="database">CREATE</span>, <span class="database">ALTER</span> or <span class="database">DROP TRIGGER</span>, InterBase increments the metadata change counter of the associated table. Once that counter reaches 255, no more metadata
+                  changes are possible on the table (you can still work with the data though). A backup-restore cycle is needed to reset the
+                  counter and perform metadata operations again.
+               </p>
+               <p>While this obligatory cleanup after many metadata changes is in itself a useful feature, it also means that users who regularly
+                  use <span class="database">ALTER TRIGGER</span> to deactivate triggers during e.g. bulk import operations are forced to backup and restore much more often then needed.
+               </p>
+               <p>Since changes to triggers don't imply structural changes to the table itself, Firebird no longer increments the table change
+                  counter when <span class="database">CREATE</span>, <span class="database">ALTER</span> or <span class="database">DROP TRIGGER</span> is used. One thing has remained though: once the counter is at 255, you can no longer create, alter or drop triggers for
+                  that table.
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="langrefupd21-create-or-alter-trigger"></a><span class="database">CREATE OR ALTER TRIGGER</span></h3>
+                  </div>
+               </div>
+            </div>
+            <p><span class="formalpara-title italic">Available in:&nbsp;</span>DSQL
+            </p>
+            <p><span class="formalpara-title italic">Added in:&nbsp;</span>1.5
+            </p>
+            <p><span class="formalpara-title italic">Description:&nbsp;</span>If the trigger does not yet exist, it is created just as if <span class="database">CREATE TRIGGER</span> were used. If it already exists, it is altered and recompiled. Existing permissions and dependencies are preserved.
+            </p>
+            <p><span class="formalpara-title italic">Syntax:&nbsp;</span>Exactly the same as for <span class="database">CREATE TRIGGER</span>.
+            </p>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="langrefupd21-drop-trigger"></a><span class="database">DROP TRIGGER</span></h3>
+                  </div>
+               </div>
+            </div>
+            <p><span class="formalpara-title italic">Available in:&nbsp;</span>DSQL, ESQL
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-drop-trigger-restr"></a>Restriction on dropping used triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.0, 2.0.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>In Firebird 2.0 only, a restriction is in place which prevents anyone from dropping, altering or recreating a trigger or stored
+                  procedure if it has been used since the database was opened. This restriction has been removed again in version 2.0.1. Still,
+                  performing these operations on a live database is potentially risky and should only be done with the utmost care.
+               </p>
+            </div>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-drop-trigger-changecount"></a><span class="database">DROP TRIGGER</span> no longer increments table change count
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>1.0
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>In contrast to InterBase, Firebird does not increment the metadata change counter of the associated table when <span class="database">CREATE</span>, <span class="database">ALTER</span> or <span class="database">DROP TRIGGER</span> is used. For a full discussion, see <a href="langrefupd21-ddl-trigger.html#langrefupd21-alter-trigger-changecount" title="ALTER TRIGGER no longer increments table change count"><em class="citetitle"><span class="database">ALTER TRIGGER</span> no longer increments table change count</em></a>.
+               </p>
+            </div>
+         </div>
+         <div class="section" lang="en">
+            <div class="titlepage">
+               <div>
+                  <div>
+                     <h3 class="title"><a name="langrefupd21-recreate-trigger"></a><span class="database">RECREATE TRIGGER</span></h3>
+                  </div>
+               </div>
+            </div>
+            <p><span class="formalpara-title italic">Available in:&nbsp;</span>DSQL
+            </p>
+            <p><span class="formalpara-title italic">Added in:&nbsp;</span>2.0
+            </p>
+            <p><span class="formalpara-title italic">Description:&nbsp;</span>Creates or recreates a trigger. If a trigger with the same name already exists, <span class="database">RECREATE TRIGGER</span> will try to drop it and create a new trigger. <span class="database">RECREATE TRIGGER</span> will fail if the existing trigger is in use.
+            </p>
+            <p><span class="formalpara-title italic">Syntax:&nbsp;</span>Exactly the same as <a href="langrefupd21-ddl-trigger.html#langrefupd21-create-trigger" title="CREATE TRIGGER"><span class="database">CREATE TRIGGER</span></a>.
+            </p>
+            <div class="section" lang="en">
+               <div class="titlepage">
+                  <div>
+                     <div>
+                        <h4 class="title"><a name="langrefupd21-recreate-trigger-restr"></a>Restriction on recreating used triggers
+                        </h4>
+                     </div>
+                  </div>
+               </div>
+               <p><span class="formalpara-title italic">Changed in:&nbsp;</span>2.0, 2.0.1
+               </p>
+               <p><span class="formalpara-title italic">Description:&nbsp;</span>In Firebird 2.0 only, a restriction is in place which prevents anyone from dropping, altering or recreating a trigger or stored
+                  procedure if it has been used since the database was opened. This restriction has been removed again in version 2.0.1. Still,
+                  performing these operations on a live database is potentially risky and should only be done with the utmost care.
+               </p>
+            </div>
+         </div>
+      </div>
+      <table xmlns:exsl="http://exslt.org/common" width="100%" border="0" cellpadding="0" cellspacing="0">
+         <tr>
+            <td align="right" height="64" valign="bottom"><a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl-table.html"><img src="http://www.firebirdsql.org/refdocs/images/prev-or18.png" width="30" height="30" border="0" title="Prev: TABLE" alt="Prev: TABLE"></a><a href="http://www.firebirdsql.org/?op=doc"><img src="http://www.firebirdsql.org/refdocs/images/toc-or18.png" width="30" height="30" border="0" title="Firebird Documentation Index" alt="Firebird Documentation Index"></a><a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl.html"><img src="http://www.firebirdsql.org/refdocs/images/top-or18.png" width="30" height="30" border="0" title="Up: DDL statements" alt="Up: DDL statements"></a><a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl-view.html"><img src="http://www.firebirdsql.org/refdocs/images/next-or18.png" width="30" height="30" border="0" title="Next: VIEW" alt="Next: VIEW"></a></td>
+         </tr>
+      </table>
+      <table xmlns:exsl="http://exslt.org/common" width="100%" border="0" cellpadding="4" cellspacing="0">
+         <tr height="8">
+            <td></td>
+         </tr>
+         <tr>
+            <td bgcolor="#F0F0F0"><a href="http://www.firebirdsql.org/?op=doc">Firebird Documentation Index</a> &rarr; <a href="http://www.firebirdsql.org/refdocs/langrefupd21.html">Firebird 2.1 Language Ref. Update</a> &rarr; <a href="http://www.firebirdsql.org/refdocs/langrefupd21-ddl.html">DDL statements</a> &rarr; TRIGGER
+            </td>
+         </tr>
+      </table>
+   </body>
+
+<!-- Mirrored from www.firebirdsql.org/refdocs/langrefupd21-ddl-trigger.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:45:02 GMT -->
+</html>

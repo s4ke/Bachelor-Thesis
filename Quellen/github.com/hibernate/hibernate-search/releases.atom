@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:https://github.com/hibernate/hibernate-search/releases</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/releases"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/releases.atom"/>
+  <title>Release notes from hibernate-search</title>
+  <updated>2015-09-08T15:50:57Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.5.0.CR1</id>
+    <updated>2015-09-08T15:50:57Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.5.0.CR1"/>
+    <title>5.5.0.CR1</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.5.0.CR1&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.4.0.Final</id>
+    <updated>2015-09-03T12:56:58Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.4.0.Final"/>
+    <title>5.4.0.Final</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.4.0.Final&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.5.0.Alpha1</id>
+    <updated>2015-08-07T12:21:37Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.5.0.Alpha1"/>
+    <title>5.5.0.Alpha1</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.5.0.Alpha1&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.4.0.CR2</id>
+    <updated>2015-08-04T12:39:25Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.4.0.CR2"/>
+    <title>5.4.0.CR2</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.4.0.CR2&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.4.0.CR1</id>
+    <updated>2015-07-13T11:40:38Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.4.0.CR1"/>
+    <title>5.4.0.CR1</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.4.0.CR1&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.3.0.Final</id>
+    <updated>2015-06-10T12:11:09Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.3.0.Final"/>
+    <title>5.3.0.Final</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.3.0.Final&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.4.0.Alpha1</id>
+    <updated>2015-06-04T22:31:11Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.4.0.Alpha1"/>
+    <title>5.4.0.Alpha1</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.4.0.Alpha1&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.3.0.CR1</id>
+    <updated>2015-06-01T18:31:02Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.3.0.CR1"/>
+    <title>5.3.0.CR1</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.3.0.CR1&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.3.0.Beta2</id>
+    <updated>2015-05-18T17:05:01Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.3.0.Beta2"/>
+    <title>5.3.0.Beta2</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.3.0.Beta2&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Repository/990281/5.3.0.Beta1</id>
+    <updated>2015-05-05T22:32:51Z</updated>
+    <link rel="alternate" type="text/html" href="/hibernate/hibernate-search/releases/tag/5.3.0.Beta1"/>
+    <title>5.3.0.Beta1</title>
+    <content type="html">&lt;p&gt;[maven-release-plugin]  copy for tag 5.3.0.Beta1&lt;/p&gt;</content>
+    <author>
+      <name>Sanne</name>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/42573?v=3&amp;s=60"/>
+  </entry>
+</feed>

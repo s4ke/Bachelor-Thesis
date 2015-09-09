@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<!-- Mirrored from wiki.apache.org/solr/SolrSecurity by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="robots" content="index,nofollow">
+
+<title>SolrSecurity - Solr Wiki</title>
+<script type="text/javascript" src="https://wiki.apache.org/wiki/common/js/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="https://wiki.apache.org/wiki/modernized/css/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="https://wiki.apache.org/wiki/modernized/css/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="https://wiki.apache.org/wiki/modernized/css/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="https://wiki.apache.org/wiki/modernized/css/projection.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/wiki/modernized/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Solr Wiki: SolrSecurity" href="https://wiki.apache.org/solr/SolrSecurity?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=SolrSecurity&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="https://wiki.apache.org/solr/FrontPage">
+<link rel="Alternate" title="Wiki Markup" href="https://wiki.apache.org/solr/SolrSecurity?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://wiki.apache.org/solr/SolrSecurity?action=print">
+<link rel="Search" href="https://wiki.apache.org/solr/FindPage">
+<link rel="Index" href="https://wiki.apache.org/solr/TitleIndex">
+<link rel="Glossary" href="https://wiki.apache.org/solr/WordIndex">
+<link rel="Help" href="https://wiki.apache.org/solr/HelpOnFormatting">
+</head>
+
+<body  lang="en" dir="ltr">
+
+<div id="header">
+
+<form id="searchform" method="get" action="https://wiki.apache.org/solr/SolrSecurity">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput">Search:</label>
+<input id="searchinput" type="text" name="value" value="" size="20"
+    onfocus="searchFocus(this)" onblur="searchBlur(this)"
+    onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search">
+<input id="titlesearch" name="titlesearch" type="submit"
+    value="Titles" alt="Search Titles">
+<input id="fullsearch" name="fullsearch" type="submit"
+    value="Text" alt="Search Full Text">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<div id="logo"><a href="https://wiki.apache.org/solr/FrontPage">Solr Wiki</a></div>
+<div id="username"><a href="https://wiki.apache.org/solr/SolrSecurity?action=login" id="login" rel="nofollow">Login</a></div>
+<h1 id="locationline">
+
+<span id="pagelocation"><a class="backlink" href="https://wiki.apache.org/solr/SolrSecurity?action=fullsearch&amp;value=linkto%3A%22SolrSecurity%22&amp;context=180" rel="nofollow" title="Click to do a full-text search for this title">SolrSecurity</a></span>
+</h1>
+
+
+<ul id="navibar">
+<li class="wikilink"><a href="https://wiki.apache.org/solr/FrontPage">FrontPage</a></li><li class="wikilink"><a href="https://wiki.apache.org/solr/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="https://wiki.apache.org/solr/FindPage">FindPage</a></li><li class="wikilink"><a href="https://wiki.apache.org/solr/HelpContents">HelpContents</a></li><li class="current"><a href="https://wiki.apache.org/solr/SolrSecurity">SolrSecurity</a></li>
+</ul>
+
+<div id="pageline"><hr style="display:none;"></div>
+
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="https://wiki.apache.org/solr/SolrSecurity?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://wiki.apache.org/solr/SolrSecurity?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://wiki.apache.org/solr/SolrSecurity">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="CopyPage">Copy Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="MyPages">My Pages</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h1 id="Solr_Security">Solr Security</h1>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line862">The authoritative guide on security is in the <a class="https" href="https://cwiki.apache.org/confluence/display/solr/Securing+Solr">Reference Guide</a>. The rest of this page is tips and tricks beyond what is mentioned in the Refguide. <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line867"><div class="table-of-contents"><p class="table-of-contents-heading">Contents<ol><li>
+<a href="#Solr_Security">Solr Security</a><ol><li>
+<a href="#Current_state_of_affairs">Current state of affairs</a></li><li>
+<a href="#Need_for_firewall">Need for firewall</a></li><li>
+<a href="#Cross-Site_Scripting_.28XSS.29">Cross-Site Scripting (XSS)</a></li><li>
+<a href="#Cross-Site_Request_Forgery_.28CSRF.29">Cross-Site Request Forgery (CSRF)</a></li><li>
+<a href="#Document_Level_Security">Document Level Security</a><ol><li>
+<a href="#Manifold_CF_.28Connector_Framework.29">Manifold CF (Connector Framework)</a></li><li>
+<a href="#Write_Your_Own_RequestHandler_or_SearchComponent">Write Your Own RequestHandler or SearchComponent</a></li></ol></li><li>
+<a href="#Streaming_Consideration">Streaming Consideration</a></li></ol></li></ol></div> <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><p class="line867">
+<h2 id="Current_state_of_affairs">Current state of affairs</h2>
+<span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><ul><li><p class="line862">SSL support was added in version 4.2 (<a href="https://wiki.apache.org/solr/SolrCloud">SolrCloud</a> v4.7). <span class="anchor" id="line-10"></span></li><li>Protection of Zookeeper content through ACLs was added in version 5.0 <span class="anchor" id="line-11"></span></li><li><p class="line862">Authentication and Authorization plugin support was added in 5.2 (<a href="https://wiki.apache.org/solr/SolrCloud">SolrCloud</a> only) <span class="anchor" id="line-12"></span></li><li><p class="line862">Basic Auth &amp; Kerberos plugins and Rule-based Authorization plugin was added in 5.3  <span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span></li></ul><p class="line862">There is (as of 5.3) no role-based restrictions on the Admin UI, so be aware that anyone with access to Admin UI will be able to do <strong>anything</strong> with your system. <span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><p class="line867">
+<h2 id="Need_for_firewall">Need for firewall</h2>
+<span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><p class="line874">Even though you add SSL or Authentication plugins, it is still strongly recommended that the application server containing Solr be firewalled such the only clients with access to Solr are your own. A default/example installation of Solr allows any client with access to it to add, update, and delete documents (and of course search/read too), including access to the Solr configuration and schema files and the administrative user interface. <span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><p class="line862">If there is a need to provide query access to a Solr server from the open internet, it is highly recommended to use a proxy, such as <a class="https" href="https://github.com/evolvingweb/ajax-solr/wiki/Solr-proxies">one of these</a>. <span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span><p class="line867">
+<h2 id="Cross-Site_Scripting_.28XSS.29">Cross-Site Scripting (XSS)</h2>
+<span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><p class="line862">Solr has no known <a class="http" href="http://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting vulnerabilities</a>. <span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><p class="line874">Quick XSS tip: <span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span><p class="line874">Problem: What if you want the browser to highlight text, but you also want to protect yourself from XSS and escape the HTML output? <span class="anchor" id="line-30"></span>Solution: One solution is to escape the HTML output and then reapply the em tags.  Now the rest of the snippet is safe and the browser will recognize the highlighted text. <span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><p class="line874">For example, with groovy/grails you could have the following in your controller: <span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><pre><span class="anchor" id="line-1"></span>snippet = snippet.encodeAsHTML()
+<span class="anchor" id="line-2"></span>snippet = snippet.replaceAll('&amp;lt;em&amp;gt;', '&lt;em&gt;')
+<span class="anchor" id="line-3"></span>snippet = snippet.replaceAll('&amp;lt;/em&amp;gt;', &lt;/em&gt;)</pre><span class="anchor" id="line-38"></span><p class="line867">
+<h2 id="Cross-Site_Request_Forgery_.28CSRF.29">Cross-Site Request Forgery (CSRF)</h2>
+<span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><p class="line862">Even if a Solr instance is protected by good firewalls so that "bad guys" have no direct access, that instance may be at risk to potential "<a class="http" href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross-Site Request Forgery</a>" based attacks if the following are all true: <span class="anchor" id="line-41"></span><ol type="1"><li>Some number of "good guys" have direct access to that Solr instance from their web browsers. <span class="anchor" id="line-42"></span></li><li>A "bad guy" knows/guesses the host:port/path of the Solr instance (even though they can not access it directly) <span class="anchor" id="line-43"></span></li><li>The bad guy can trick one of the good guy into clicking a maliciously crafted URL, or loading a webpage that contains malicious javascript. <span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span></li></ol><p class="line862">This is because Solr's most basic behavior is to receive updates and deletes via HTTP.  If you have a firewall or other security measure restricting Solr's /update handler so it only accepts connections from approved hosts/clients, but <em>you</em> are approved then you could inadvertently be tricked into loading a web page that initiates an HTTP Connection to Solr on your behalf. <span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><p class="line874">It's important to keep this in mind when thinking about what it means to "secure" an instance of Solr (if you have not already). <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><p class="line874">A basic technique that can be used to mitigate the risk of a possible CSRF attack like this is to configure your Servlet Container so that access to paths which can modify the index (ie: /update, /update/csv, etc...) are restricted either to specific client IPs, or using HTTP Authentication. <span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><p class="line867">
+<h2 id="Document_Level_Security">Document Level Security</h2>
+<span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><p class="line867">
+<h3 id="Manifold_CF_.28Connector_Framework.29">Manifold CF (Connector Framework)</h3>
+<span class="anchor" id="line-55"></span><p class="line862">One way to add document level security to your search is through Apache <a class="http" href="http://incubator.apache.org/connectors/">ManifoldCF</a>. ManifoldCF "defines a security model for target repositories that permits them to enforce source-repository security policies". <span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><p class="line874">It works by adding security tokens from the source repositories as metadata on the indexed documents. Then, at query time, a Search Component adds a filter to all queries, matching only documents the logged-in user is allowed to see. ManifoldCF supports AD security out of the box. <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><p class="line867">
+<h3 id="Write_Your_Own_RequestHandler_or_SearchComponent">Write Your Own RequestHandler or SearchComponent</h3>
+<span class="anchor" id="line-60"></span><p class="line874">*Stub - this is incomplete* <span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><p class="line874">If ManifoldCF does not solve your need, first consider writing a ManifoldCF plugin. Or roll your own. <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><p class="line862">If you need permission based authentication -- where user A can update document 1 and 2, but not 3 -- you will need to augment the request with user information.  Either you can add parameters to the query string (?u=XXX&amp;p=YYY) or use a custom dispatcher filter that augments the context: <span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span><span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span><span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><pre><span class="anchor" id="line-1-1"></span>public class CustomDispatchFilter extends SolrDispatchFilter
+<span class="anchor" id="line-2-1"></span>{
+<span class="anchor" id="line-3-1"></span>  @Override
+<span class="anchor" id="line-4"></span>  protected void execute( HttpServletRequest req, SolrRequestHandler handler, SolrQueryRequest sreq, SolrQueryResponse rsp)
+<span class="anchor" id="line-5"></span>  {
+<span class="anchor" id="line-6"></span>    // perhaps the whole request
+<span class="anchor" id="line-7"></span>    sreq.getContext().put( "HttpServletRequest", req );
+<span class="anchor" id="line-8"></span>
+<span class="anchor" id="line-9"></span>    // or maybe just the user
+<span class="anchor" id="line-10"></span>    sreq.getContext().put( "user", req.getRemoteUser());
+<span class="anchor" id="line-11"></span>
+<span class="anchor" id="line-12"></span>    core.execute( handler, sreq, rsp );
+<span class="anchor" id="line-13"></span>  }
+<span class="anchor" id="line-14"></span>}
+<span class="anchor" id="line-15"></span>
+<span class="anchor" id="line-16"></span>
+<span class="anchor" id="line-17"></span>public class AuthenticatingHandler extends RequestHandlerBase
+<span class="anchor" id="line-18"></span>{
+<span class="anchor" id="line-19"></span>  @Override
+<span class="anchor" id="line-20"></span>  public void handleRequestBody(SolrQueryRequest req, SolrQueryResponse rsp) throws Exception {
+<span class="anchor" id="line-21"></span>
+<span class="anchor" id="line-22"></span>    HttpServletRequest httpreq = (HttpServletRequest)
+<span class="anchor" id="line-23"></span>      req.getContext().get( "HttpServletRequest" );
+<span class="anchor" id="line-24"></span>
+<span class="anchor" id="line-25"></span>    if( httpreq.isUserInRole( "editor" ) ) {
+<span class="anchor" id="line-26"></span>      ...
+<span class="anchor" id="line-27"></span>    }
+<span class="anchor" id="line-28"></span>
+<span class="anchor" id="line-29"></span>    String user = (String)req.getContext().get( "user" );
+<span class="anchor" id="line-30"></span>    ...
+<span class="anchor" id="line-31"></span>  }
+<span class="anchor" id="line-32"></span>  ...
+<span class="anchor" id="line-33"></span>}</pre><span class="anchor" id="line-101"></span><span class="anchor" id="line-102"></span><p class="line867">
+<h2 id="Streaming_Consideration">Streaming Consideration</h2>
+<span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span><p class="line874">If streaming is enabled, you need to make sure Solr is as secure as it needs to be.  When streaming is enabled, the parameters "stream.url" will go to a remote site and download the content.  Likewise, "stream.file" will read a file on disk. <span class="anchor" id="line-105"></span><span class="anchor" id="line-106"></span><p class="line874">Streaming is disabled by default and is configured from solrconfig.xml <span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><pre><span class="anchor" id="line-1-2"></span>  &lt;requestParsers enableRemoteStreaming="false" ... /&gt;</pre><span class="anchor" id="line-110"></span><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" lang="en" dir="ltr">SolrSecurity  (last edited 2015-08-28 09:22:48 by <span title="JanHoy @ 195.159.250.196[195.159.250.196]"><a class="nonexistent" href="https://wiki.apache.org/solr/JanHoydahl" title="JanHoy @ 195.159.250.196[195.159.250.196]">JanHoydahl</a></span>)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<ul class="editbar"><li><span class="disabled">Immutable Page</span></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onClick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="https://wiki.apache.org/solr/SolrSecurity?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://wiki.apache.org/solr/SolrSecurity?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="https://wiki.apache.org/solr/SolrSecurity">
+<div>
+    <label>More Actions:</label>
+    <select name="action"
+        onchange="if ((this.selectedIndex != 0) &&
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="RenamePage" disabled class="disabled">Rename Page</option>
+<option value="CopyPage">Copy Page</option>
+<option value="DeletePage" disabled class="disabled">Delete Page</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="MyPages">My Pages</option>
+<option value="show" disabled class="disabled">Subscribe User</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="show" disabled class="disabled">Remove Spam</option>
+<option value="show" disabled class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="SyncPages">Sync Pages</option>
+<option value="show" disabled class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    <input type="submit" value="Do">
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+</body>
+
+<!-- Mirrored from wiki.apache.org/solr/SolrSecurity by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:52 GMT -->
+</html>
+

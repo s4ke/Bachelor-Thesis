@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/4.2</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/4.2"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/4.2.atom"/>
+  <title>Recent Commits to hibernate-search:4.2</title>
+  <updated>2013-01-18T17:40:10+05:30</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f55837b617b398ed8622c5b442a397550d19a912</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f55837b617b398ed8622c5b442a397550d19a912"/>
+    <title>
+        Branching from master for maintenance of 4.2.x
+    </title>
+    <updated>2013-01-18T17:40:10+05:30</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Branching from master for maintenance of 4.2.x&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c1925b48c2341c7ca1f9ce474d501c10323809e2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/c1925b48c2341c7ca1f9ce474d501c10323809e2"/>
+    <title>
+        [maven-release-plugin] prepare release 4.2.0.Final
+    </title>
+    <updated>2013-01-15T14:19:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.2.0.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/317059496b8f4a389141f9ee334885154615d229</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/317059496b8f4a389141f9ee334885154615d229"/>
+    <title>
+        Preparing release of 4.2.0.Final: changelog and readme updates
+    </title>
+    <updated>2013-01-15T14:14:01Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Preparing release of 4.2.0.Final: changelog and readme updates&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/2bf24b5f8651b27d1a6f1d8125ce6201f2bea762</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/2bf24b5f8651b27d1a6f1d8125ce6201f2bea762"/>
+    <title>
+        HSEARCH-1168 Improve documentation on Spatial integrations
+    </title>
+    <updated>2013-01-15T13:58:42Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1168 Improve documentation on Spatial integrations&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c2b0722863baa795fdd115ee6c719a6972da58f2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/c2b0722863baa795fdd115ee6c719a6972da58f2"/>
+    <title>
+        HSEARCH-1255 Warn about skipping field bridges when querying a Tika field
+    </title>
+    <updated>2013-01-14T01:24:01+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1255 Warn about skipping field bridges when querying a Tika field&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4490defc6758350a4ecc4c8507feb1a4b6152fea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/4490defc6758350a4ecc4c8507feb1a4b6152fea"/>
+    <title>
+        HSEARCH-1256 Improve error handling and error message in ConnectedMultiFieldsTermQueryBuilder#buildSearchTerm
+    </title>
+    <updated>2013-01-14T01:24:00+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1256 Improve error handling and error message in ConnectedMultiFieldsTermQueryBuilder#buildSearchTerm&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/093ea34188f06b342afd32a929cd783d9ac565f7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/093ea34188f06b342afd32a929cd783d9ac565f7"/>
+    <title>
+        Typo in variable name
+    </title>
+    <updated>2013-01-11T17:52:48+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Typo in variable name&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/99640ed2f765b142113b3bd5b25531387d45e7eb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/99640ed2f765b142113b3bd5b25531387d45e7eb"/>
+    <title>
+        HSEARCH-1242 Spatial examples on SimpleHotel should mention Hotel
+    </title>
+    <updated>2013-01-11T17:52:48+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1242 Spatial examples on SimpleHotel should mention Hotel&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ebbb3f32ec484e1ef56f2fd86404e699b9bb8758</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/ebbb3f32ec484e1ef56f2fd86404e699b9bb8758"/>
+    <title>
+        HSEARCH-1242 Improve details on the spatial feature: default field name
+    </title>
+    <updated>2013-01-11T17:52:48+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1242 Improve details on the spatial feature: default field name&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/e60d3dc4ea0b167d71b6d96585ed1ef9b5fe72fa</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/e60d3dc4ea0b167d71b6d96585ed1ef9b5fe72fa"/>
+    <title>
+        HSEARCH-1242 Code style and formatting
+    </title>
+    <updated>2013-01-11T16:53:28+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1242 Code style and formatting&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7f41a8a577735607f80896a97b62fa3c8f1b4c97</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/7f41a8a577735607f80896a97b62fa3c8f1b4c97"/>
+    <title>
+        HSEARCH-1258 Clarifying the documentation around the use of @NumericField and discrete faceting and some minor other improvements
+    </title>
+    <updated>2013-01-11T15:40:18+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1258 Clarifying the documentation around the use of @NumericField and discrete faceting and some minor other improvements&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/52c650a8a02589784eb0c6f8ec30d32b41c6df5a</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/52c650a8a02589784eb0c6f8ec30d32b41c6df5a"/>
+    <title>
+        Whitespace formatting fixes and style
+    </title>
+    <updated>2013-01-10T12:59:00+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Whitespace formatting fixes and style&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/282d9d767661bb21c6cafe43bd0e9fd47d1509d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/282d9d767661bb21c6cafe43bd0e9fd47d1509d8"/>
+    <title>
+        Whitespace formatting fixes
+    </title>
+    <updated>2013-01-10T12:08:49+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Whitespace formatting fixes&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/77c0ceac6252980d4c5a49b9d5837f9c922f0137</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/77c0ceac6252980d4c5a49b9d5837f9c922f0137"/>
+    <title>
+        HSEARCH-1225 Clarify effect of conditional indexing interceptor on index() method: docbook
+    </title>
+    <updated>2013-01-09T14:19:08+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1225 Clarify effect of conditional indexing interceptor on index() method: docbook&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c915961c68a4c1df9a77f8f1b1dabf2324a52774</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/c915961c68a4c1df9a77f8f1b1dabf2324a52774"/>
+    <title>
+        HSEARCH-1225 Clarify effect of conditional indexing interceptor on index() method: javadocs
+    </title>
+    <updated>2013-01-09T13:43:03+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1225 Clarify effect of conditional indexing interceptor on index() method: javadocs&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d0df3c96413b81a00bf0465f3f8570d20d8a0f4e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/d0df3c96413b81a00bf0465f3f8570d20d8a0f4e"/>
+    <title>
+        HSEARCH-1224 Modernize recommendations about optimizing in the documentation
+    </title>
+    <updated>2013-01-09T12:09:34+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1224 Modernize recommendations about optimizing in the documentation&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7a5bb551b6d8caebe411f646e3438e4f6fcfa607</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/7a5bb551b6d8caebe411f646e3438e4f6fcfa607"/>
+    <title>
+        HSEARCH-1249 Serialization protocol version being logged without enough context
+    </title>
+    <updated>2013-01-09T10:44:38+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1249 Serialization protocol version being logged without enough context&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a0ea5eb20f65984abb7e2c5e6b554df2622c4f39</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/a0ea5eb20f65984abb7e2c5e6b554df2622c4f39"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2013-01-02T18:52:39+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8a2d91be5eac979602c803ed2027549e1e325267</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/8a2d91be5eac979602c803ed2027549e1e325267"/>
+    <title>
+        [maven-release-plugin] prepare release 4.2.0.CR1
+    </title>
+    <updated>2013-01-02T18:52:24+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.2.0.CR1&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f8a11fe65903f1a3557204c4178d6a006e6946cb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f8a11fe65903f1a3557204c4178d6a006e6946cb"/>
+    <title>
+        Preparing for release of Hibernate Search 4.2.0.CR1: readme and changelog updates
+    </title>
+    <updated>2013-01-02T18:44:37+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Preparing for release of Hibernate Search 4.2.0.CR1: readme and changelog updates&lt;/pre>
+    </content>
+  </entry>
+</feed>

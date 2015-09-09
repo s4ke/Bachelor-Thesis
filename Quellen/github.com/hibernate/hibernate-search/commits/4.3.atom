@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/4.3</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/4.3"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/4.3.atom"/>
+  <title>Recent Commits to hibernate-search:4.3</title>
+  <updated>2013-06-07T23:56:55+01:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5486215696b5c231c967cc63b93730d8aeb28318</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5486215696b5c231c967cc63b93730d8aeb28318"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2013-06-07T23:56:55+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/74a12d52dde1048ca64db2a67f60e87a0d8d9f4e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/74a12d52dde1048ca64db2a67f60e87a0d8d9f4e"/>
+    <title>
+        [maven-release-plugin] prepare release 4.3.0.Final
+    </title>
+    <updated>2013-06-07T23:56:46+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.3.0.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f69d36bf18b1f1b944398c9ee30a66835361a2ef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f69d36bf18b1f1b944398c9ee30a66835361a2ef"/>
+    <title>
+        Preparing Readme and Changelog for 4.3.0.Final release
+    </title>
+    <updated>2013-06-07T23:49:14+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Preparing Readme and Changelog for 4.3.0.Final release&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b3a66854bc11c4862eacc4d4ef0050cd6dbac085</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/b3a66854bc11c4862eacc4d4ef0050cd6dbac085"/>
+    <title>
+        HSEARCH-1346 Make Facet.count not part of Facet equality
+    </title>
+    <updated>2013-06-07T15:59:23+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1346 Make Facet.count not part of Facet equality
+
+Faciliates FacetManager.getSelectedFacets() / .getFacets() mixed usage&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f2ab8e02af50e24928153c819fbc460f42150044</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f2ab8e02af50e24928153c819fbc460f42150044"/>
+    <title>
+        HSEARCH-1345 Adding JavaDoc for QueryBuilder and QueryContextBuilder#forEntity()
+    </title>
+    <updated>2013-06-07T15:59:23+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/28612?v=3&amp;s=30"/>
+    <author>
+      <name>gunnarmorling</name>
+      <uri>https://github.com/gunnarmorling</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1345 Adding JavaDoc for QueryBuilder and QueryContextBuilder#forEntity()&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4156aa121f1d766f1e32361d14965ce55328724e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/4156aa121f1d766f1e32361d14965ce55328724e"/>
+    <title>
+        Fixing typo in reference guide
+    </title>
+    <updated>2013-06-07T15:59:23+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/28612?v=3&amp;s=30"/>
+    <author>
+      <name>gunnarmorling</name>
+      <uri>https://github.com/gunnarmorling</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Fixing typo in reference guide&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d1320eba092cc51b5af868ec879c251c8296c1ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/d1320eba092cc51b5af868ec879c251c8296c1ba"/>
+    <title>
+        HSEARCH-1338 Fix exception when building facets with excludeLimit() in some situations
+    </title>
+    <updated>2013-06-07T15:38:59+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1338 Fix exception when building facets with excludeLimit() in some situations&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/160fb466802d4ed1929a452f8fdd24475d9b50f1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/160fb466802d4ed1929a452f8fdd24475d9b50f1"/>
+    <title>
+        HSEARCH-1339 Fix typo in FacetSortOrder
+    </title>
+    <updated>2013-06-07T15:38:59+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1339 Fix typo in FacetSortOrder&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/92ae2887c411699dc3af5322f8db379def8259ab</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/92ae2887c411699dc3af5322f8db379def8259ab"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2013-05-28T18:05:09+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/51574e5434cc1891a176a439894340b6d4676335</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/51574e5434cc1891a176a439894340b6d4676335"/>
+    <title>
+        [maven-release-plugin] prepare release 4.3.0.CR1
+    </title>
+    <updated>2013-05-28T18:05:02+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.3.0.CR1&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/fe9bb9d06dbe90365073e31fbf31f89223a532c7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/fe9bb9d06dbe90365073e31fbf31f89223a532c7"/>
+    <title>
+        Updating README and Changelog for 4.3.0.CR1 release
+    </title>
+    <updated>2013-05-28T17:59:30+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Updating README and Changelog for 4.3.0.CR1 release&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3ab72f5a8720fb671e375ab2f933f30348d7c8e3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/3ab72f5a8720fb671e375ab2f933f30348d7c8e3"/>
+    <title>
+        HSEARCH-1278 Disable the test until we can fix it
+    </title>
+    <updated>2013-05-28T16:33:41+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1278 Disable the test until we can fix it&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/15f9366b1cb9e88d67109cf448168f30802fe84d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/15f9366b1cb9e88d67109cf448168f30802fe84d"/>
+    <title>
+        HSEARCH-1278 Spodaric test failure: org.hibernate.search.test.batchindexing.MassIndexerErrorReportingTest
+    </title>
+    <updated>2013-05-28T13:02:18+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1278 Spodaric test failure: org.hibernate.search.test.batchindexing.MassIndexerErrorReportingTest&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/892060dc0b53c569bd3c6528939d616b2e93a3d3</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/892060dc0b53c569bd3c6528939d616b2e93a3d3"/>
+    <title>
+        HSEARCH-1337 Make error message clearer when no @Latitude/@Longitude is found
+    </title>
+    <updated>2013-05-28T13:16:13+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1337 Make error message clearer when no @Latitude/@Longitude is found&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/ca3bc612086ed984b9aee0fc5c0df55a93a578f9</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/ca3bc612086ed984b9aee0fc5c0df55a93a578f9"/>
+    <title>
+        Fixing typo in exception message
+    </title>
+    <updated>2013-05-27T11:31:16+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars0.githubusercontent.com/u/28612?v=3&amp;s=30"/>
+    <author>
+      <name>gunnarmorling</name>
+      <uri>https://github.com/gunnarmorling</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Fixing typo in exception message&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4ef0014a35c7aa70145a7e4b15df126bf8b93b69</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/4ef0014a35c7aa70145a7e4b15df126bf8b93b69"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2013-05-24T15:57:29+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/94f3aadfeed83b91ae81e2cf4a9cdf4e410391b6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/94f3aadfeed83b91ae81e2cf4a9cdf4e410391b6"/>
+    <title>
+        [maven-release-plugin] prepare release 4.3.0.Beta1
+    </title>
+    <updated>2013-05-24T15:57:18+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.3.0.Beta1&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/273b13fcab5e488503c32b39c91638b93b288f3e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/273b13fcab5e488503c32b39c91638b93b288f3e"/>
+    <title>
+        Updating readme and changelog in preperation of 4.3.0.Beta1 release
+    </title>
+    <updated>2013-05-24T15:47:07+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Updating readme and changelog in preperation of 4.3.0.Beta1 release&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/eaac818518f04f754cd884b584a5e9981c24d2d8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/eaac818518f04f754cd884b584a5e9981c24d2d8"/>
+    <title>
+        HSEARCH-1335 Enforcing the build order in &lt;modules&gt; instead of a artificial dependency
+    </title>
+    <updated>2013-05-24T15:27:51+02:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1335 Enforcing the build order in &lt;modules&gt; instead of a artificial dependency&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/11b4dea13cbb33153a9c7116b46bc5c225b9a198</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/11b4dea13cbb33153a9c7116b46bc5c225b9a198"/>
+    <title>
+        HSEARCH-1336 Upgrade to Hibernate ORM 4.2.2.Final
+    </title>
+    <updated>2013-05-24T13:54:27+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1336 Upgrade to Hibernate ORM 4.2.2.Final&lt;/pre>
+    </content>
+  </entry>
+</feed>

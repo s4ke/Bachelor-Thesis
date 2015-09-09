@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from cwiki.apache.org/confluence/display/solr/Core-Specific+Tools by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Core-Specific Tools - Apache Solr Reference Guide - Apache Software Foundation</title>
+
+        
+
+                        
+    
+                        
+    
+                        
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=IE7">
+<meta charset="UTF-8">
+<meta id="confluence-context-path" name="confluence-context-path" content="/confluence">
+<meta id="confluence-base-url" name="confluence-base-url" content="https://cwiki.apache.org/confluence">
+
+<meta id="atlassian-token" name="atlassian-token" content="cfd93fd45465bc66cd8273733c85396b3d769445">
+
+
+<meta id="confluence-space-key" name="confluence-space-key" content="solr">
+<script type="text/javascript">
+        var contextPath = '/confluence';
+</script>
+
+    
+
+    <meta name="confluence-request-time" content="1441787858179">
+        
+    
+        
+            <meta name="ajs-is-space-admin" content=""> <meta name="ajs-has-space-config" content="">
+            <meta name="ajs-use-keyboard-shortcuts" content="true">
+            <meta name="ajs-discovered-plugin-features" content="$discoveredList">
+            <meta name="ajs-keyboardshortcut-hash" content="38450baaed51271899c8e867d2a48ca9">
+            <meta name="ajs-is-confluence-admin" content="false">
+            <meta name="ajs-connection-timeout" content="10000">
+            <meta name="gliffy-license-type" content="LicenseType&lt;COMMUNITY&gt;">
+<meta name="gliffy-license-quantity" content="${pluginLicenseManager.userCount}">
+
+            <script type="text/x-template" title="gliffy-webpanel-footer">
+        <div class="gliffy-webpanel-footer"><span>This Confluence installation runs a Free Gliffy License - Evaluate the <a href="http://www.gliffy.com/products/confluence-plugin/">Gliffy Confluence Plugin</a> for your Wiki!</span></div>
+</script>
+
+
+            
+    
+    
+            <meta name="ajs-page-id" content="32604187">
+            <meta name="ajs-latest-page-id" content="32604187">
+            <meta name="ajs-content-type" content="page">
+            <meta name="ajs-page-title" content="Core-Specific Tools">
+            <meta name="ajs-parent-page-title" content="Using the Solr Administration User Interface">
+            <meta name="ajs-parent-page-id" content="32604163">
+            <meta name="ajs-space-key" content="solr">
+            <meta name="ajs-space-name" content="Apache Solr Reference Guide">
+            <meta name="ajs-from-page-title" content="">
+            <meta name="ajs-can-remove-page" content="false">
+            <meta name="ajs-context-path" content="/confluence">
+            <meta name="ajs-base-url" content="https://cwiki.apache.org/confluence">
+            <meta name="ajs-version-number" content="5.8.4">
+            <meta name="ajs-build-number" content="5982">
+            <meta name="ajs-remote-user" content="">
+            <meta name="ajs-remote-user-key" content="">
+            <meta name="ajs-current-user-fullname" content="">
+            <meta name="ajs-current-user-avatar-url" content="">
+            <meta name="ajs-static-resource-url-prefix" content="/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_">
+            <meta name="ajs-global-settings-attachment-max-size" content="20971520">
+            <meta name="ajs-user-locale" content="en_GB">
+            <meta name="ajs-enabled-dark-features" content="confluence-inline-comments-resolved,notification.plugin.api.enabled.com.atlassian.confluence.plugins.sharepage.api.ShareContentEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.mentions.api.ConfluenceMentionEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.security.ForgotPasswordEvent,pdf-preview,notification.plugin.api.enabled.com.atlassian.confluence.plugins.tasklist.event.SendTaskEmailEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.async.PageMovedEvent,previews.sharing,previews.versions,notification.plugin.api.enabled.com.atlassian.confluence.plugins.files.notifications.event.FileContentUpdateEvent,file-annotations,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.attachment.AttachmentBatchUploadCompletedEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.comment.CommentCreateEvent,notification.plugin.api.enabled.com.atlassian.confluence.efi.emails.events.OnboardingLessUsersEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.files.notifications.event.FileContentRemoveEvent,atlassian.aui.raphael.disabled,previews.conversion-service,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.comment.CommentUpdateEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.follow.FollowEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.async.PageEditedEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.blogpost.BlogPostCreateEvent,previews.trigger-all-file-types,notification.plugin.api.enabled.com.atlassian.confluence.plugins.inlinecomments.events.InlineCommentResolveEvent,notification.plugin.api.enabled.com.atlassian.confluence.event.events.like.LikeCreatedEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.inlinecomments.events.InlineCommentCreateEvent,previews.sharing.pushstate,confluence-inline-comments-rich-editor,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.blogpost.BlogPostUpdateEvent,file-annotations.likes,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.page.async.PageCreatedEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.files.notifications.event.FileContentMentionUpdateEvent,notification.plugin.api.enabled.com.atlassian.confluence.efi.emails.events.OnboardingNoSpaceCreatedEvent,notification.plugin.api.enabled.com.atlassian.confluence.plugins.hipchat.api.events.HipChatUserMapped,notification.plugin.api.enabled.com.atlassian.confluence.plugins.sharepage.api.ShareAttachmentEvent,confluence-inline-comments,confluence-inline-comments-dangling-comment,notification.plugin.api.enabled.com.atlassian.confluence.event.events.content.blogpost.BlogPostMovedEvent">
+            <meta name="ajs-atl-token" content="cfd93fd45465bc66cd8273733c85396b3d769445">
+            <meta name="ajs-confluence-flavour" content="VANILLA">
+            <meta name="ajs-user-date-pattern" content="dd MMM yyyy">
+            <meta name="ajs-date.format" content="MMM dd, yyyy">
+    
+    <link rel="shortcut icon" href="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/favicon.ico">
+
+<link rel="search" type="application/opensearchdescription+xml" href="https://cwiki.apache.org/confluence/opensearch/osd.action" title="Apache Software Foundation"/>
+
+<script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\"/confluence\"";
+WRM._unparsedData["com.atlassian.plugins.atlassian-nps-plugin:atlassian-nps-plugin-resources.is-server-instance-data-provider"]="true";
+WRM._unparsedData["com.atlassian.plugins.browser.metrics.browser-metrics-plugin:browser-metrics.feature-data-provider-legacy"]="true";
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-rest:web-resource-manager.resource-base-url-pattern"]="\"(?:/confluence(?:/s/.*?/_)?/download)\"";
+WRM._unparsedData["com.atlassian.confluence.plugins.confluence-license-banner:confluence-license-banner-resources.license-details"]="{\"daysBeforeLicenseExpiry\":0,\"daysBeforeMaintenanceExpiry\":0,\"showLicenseExpiryBanner\":false,\"showMaintenanceExpiryBanner\":false,\"renewUrl\":null,\"salesEmail\":null}";
+WRM._unparsedData["com.atlassian.confluence.plugins.confluence-hipchat-integration-plugin:discovery-javascript-data.link-active"]="{\"linkActive\":true,\"conditionsMet\":true,\"admin\":false}";
+WRM._unparsedData["com.atlassian.plugins.atlassian-nps-plugin:nps-acknowledgement-resources.analytics-enabled-data-provider"]="\"true\"";
+WRM._unparsedData["com.atlassian.plugins.atlassian-nps-plugin:nps-acknowledgement-resources.sen-data-provider"]="\"SEN-2015076\"";
+WRM._unparsedData["com.atlassian.confluence.plugins.confluence-feature-discovery-plugin:confluence-feature-discovery-plugin-resources.test-mode"]="false";
+WRM._unparsedData["com.atlassian.plugins.browser.metrics.browser-metrics-plugin:api.feature-data-provider"]="true";
+</script>
+<link type="text/css" rel="stylesheet" href="https://cwiki.apache.org/confluence/s/2e51e60e83eadbb79c5004bd9c4ac765-CDN/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/68/_/download/superbatch/css/batch.css?build-number=5982" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/confluence/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/68/_/download/superbatch/css/batch.css?conditionalComment=lt+IE+9" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/confluence/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/68/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="https://cwiki.apache.org/confluence/s/80f9c7ef49e61491b371a0f24397b072-T/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/f02e1ef740d629b0e145fb88a83dc9fe/_/download/contextbatch/css/atl.confluence.plugins.pagetree-desktop,main,page,viewcontent,atl.general,atl.comments/batch.css?highlightactions=true&amp;flavour=VANILLA&amp;locale=en-GB" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/confluence/s/6c0981174e94142364564819dc0d1413-CDN/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/f02e1ef740d629b0e145fb88a83dc9fe/_/download/contextbatch/css/atl.confluence.plugins.pagetree-desktop,main,page,viewcontent,atl.general,atl.comments/batch.css?conditionalComment=lt+IE+9&amp;locale=en-GB" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="https://cwiki.apache.org/confluence/s/d41d8cd98f00b204e9800998ecf8427e-CDN/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/aa0fc0bf2d8f6e9feff4e0a53dd0bfcb/_/download/contextbatch/css/theme.doc/batch.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/16/_/styles/colors.css?spaceKey=solr" media="all">
+<link type="text/css" rel="stylesheet" href="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/16/_/styles/custom.css?spaceKey=solr" media="all">
+<script type="text/javascript" src="https://cwiki.apache.org/confluence/s/b5b7f3c4a47ebde54b884c3070e3bb8c-CDN/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/68/_/download/superbatch/js/batch.js?atlassian.aui.raphael.disabled=true&amp;locale=en-GB&amp;build-number=5982" ></script>
+<script type="text/javascript" src="https://cwiki.apache.org/confluence/s/36e45a124c9ef089f8611e402d9ed5db-T/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/f02e1ef740d629b0e145fb88a83dc9fe/_/download/contextbatch/js/atl.confluence.plugins.pagetree-desktop,main,page,viewcontent,atl.general,atl.comments/batch.js?analytics-uploadable=true&amp;highlightactions=true&amp;flavour=VANILLA&amp;nps-acknowledged=true&amp;analytics-enabled=true&amp;locale=en-GB&amp;anonymous-access-enabled=true&amp;is-server-instance=true&amp;hostenabled=true" ></script>
+
+
+        
+    
+
+        
+        <meta name="ajs-site-title" content="Apache Software Foundation" />
+
+    
+    
+
+    
+                <link rel="canonical" href="Core-Specific%2bTools.html">
+        <link rel="shortlink" href="https://cwiki.apache.org/confluence/x/G4DxAQ">
+    <meta name="wikilink" content="[solr:Core-Specific Tools]">
+    <meta name="page-version" content="20">
+
+</head>
+
+<body             onload="placeFocus()"
+     id="com-atlassian-confluence" class="theme-documentation  aui-theme-default aui-layout">
+
+        
+            <div id='stp-licenseStatus-banner'></div>
+    <div id="full-height-container">
+    <div id="header-precursor">
+        <style type="text/css">
+#preview #previewArea iframe {
+
+   overflow: visible;
+}
+</style>
+
+                    </div>
+
+
+
+
+
+
+<header id="header" role="banner">
+    <nav class="aui-header aui-dropdown2-trigger-group" role="navigation"><div class="aui-header-inner"><div class="aui-header-before"><a class=" aui-dropdown2-trigger app-switcher-trigger" aria-owns="app-switcher" aria-controls="app-switcher" aria-haspopup="true" data-aui-trigger href="#app-switcher"><span class="aui-icon aui-icon-small aui-iconfont-appswitcher">Linked Applications</span></a><div id="app-switcher" class="aui-dropdown2 aui-style-default"><div class="app-switcher-loading">Loading&hellip;</div></div><script>
+            (function (NL) {
+                var initialise = function () {
+                    // For some milestones of AUI, the atlassian soy namespace was renamed to aui. Handle that here by ensuring that window.atlassian is defined.
+                    window.atlassian = window.atlassian || window.aui;
+                    new NL.AppSwitcher({
+                        dropdownContents: '#app-switcher'
+                    });
+                };
+                if (NL.AppSwitcher) {
+                    initialise();
+                } else {
+                    NL.onInit = initialise;
+                }
+            }(window.NL = (window.NL || {})));
+            window.NL.isUserAdmin = false</script></div><div class="aui-header-primary"><h1 id="logo" class="aui-header-logo aui-header-logo-custom"><a href="https://cwiki.apache.org/confluence/"><img src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/logo/confluence-logo.png" alt="Apache Software Foundation" /></a></h1><ul class="aui-nav">
+                            <li>
+            
+        
+        
+<a  id="space-directory-link" href="https://cwiki.apache.org/confluence/spacedirectory/view.action"  class=" aui-nav-imagelink"   title="Spaces">
+            <span>Spaces</span>
+    </a>
+        </li>
+                            <li id="browseMenu" role="menu">
+            
+    
+        <a id="browse-menu-link" class="aui-nav-link aui-dropdown2-trigger" href="#" aria-haspopup="true" aria-owns="browse-menu-link-content" title="Browse">
+        <span class="browse">Browse</span>
+    </a>
+    <nav id="browse-menu-link-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+                    <div class="aui-dropdown2-section">
+                                <ul  id="browse-menu-link-leading" class="aui-list-truncate section-leading first">
+                                            <li>
+    
+            
+<a  id="space-pages-link" href="https://cwiki.apache.org/confluence/pages/listpages.action?key=solr" class="    "      title="Browse pages in the Apache Solr Reference Guide space" >
+        Pages
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="space-blogposts-link" href="https://cwiki.apache.org/confluence/pages/viewrecentblogposts.action?key=solr" class="    "      title="Browse blogs in the Apache Solr Reference Guide space" >
+        Blog
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="space-labels-link" href="https://cwiki.apache.org/confluence/labels/listlabels-heatmap.action?key=solr" class="    "      title="Browse labels in the Apache Solr Reference Guide space" >
+        Labels
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="space-mail-link" href="https://cwiki.apache.org/confluence/mail/archive/viewmailarchive.action?key=solr" class="    "      title="Browse mail in the Apache Solr Reference Guide space" >
+        Mail
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="space-advanced-link" href="https://cwiki.apache.org/confluence/spaces/viewspacesummary.action?key=solr" class="    "      title="Browse additional space functions in the Apache Solr Reference Guide space" >
+        Space Operations
+</a>
+</li>
+                                    </ul>
+            </div>
+            </nav>
+    
+        </li>
+        </ul>
+</div><div class="aui-header-secondary"><ul class="aui-nav">
+            <li>
+        
+    
+        
+<a  id="doctheme-anchor" href="https://cwiki.apache.org/confluence"  class=" aui-nav-imagelink"   title="">
+            <span></span>
+    </a>
+    </li>
+                    <li>
+        <form id="quick-search" class="aui-quicksearch dont-default-focus header-quicksearch" action="https://cwiki.apache.org/confluence/dosearchsite.action" method="get"><fieldset><input type="hidden" name="where" value="solr"/><input type="hidden" name="spaceSearch" value="true"/><label for="quick-search-query" class="assistive">Quick Search</label><input id="quick-search-query" class="text app-search search quick-search-query" type="text" accessKey="q" autocomplete="off" name="queryString" title="Quick Search" placeholder="Search space" /><input id="quick-search-submit" class="quick-search-submit" type="submit" value="Search"/><div class="aui-dd-parent quick-nav-drop-down"></div></fieldset></form>
+    </li>
+        <li>
+            
+        <a id="help-menu-link" class="aui-nav-link aui-dropdown2-trigger" href="#" aria-haspopup="true" aria-owns="help-menu-link-content" title="Help">
+        <span class="aui-icon aui-icon-small aui-iconfont-help">Help</span>
+    </a>
+    <nav id="help-menu-link-content" class="aui-dropdown2 aui-style-default" aria-hidden="true">
+                    <div class="aui-dropdown2-section">
+                                <ul  id="help-menu-link-leading" class="aui-list-truncate section-leading first">
+                                            <li>
+        
+            
+<a  id="confluence-help-link" href="https://docs.atlassian.com/confluence/docs-58/Getting+Help+And+Support" class="    "      title="Visit the Confluence documentation home"  target="_blank"
+>
+        Online Help
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="keyboard-shortcuts-link" href="https://cwiki.apache.org/confluence" class="    "      title="View available keyboard shortcuts" >
+        Keyboard Shortcuts
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="feed-builder-link" href="https://cwiki.apache.org/confluence/dashboard/configurerssfeed.action" class="    "      title="Create your custom RSS feed." >
+        Feed Builder
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="whats-new-menu-link" href="https://docs.atlassian.com/confluence/docs-58/whatsnew/iframe" class="    "      title="" >
+        What’s new
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="whats-new-menu-link" href="https://docs.atlassian.com/confluence/docs-58/whatsnew/iframe" class="    "      title="" >
+        What’s new
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="gadget-directory-link" href="https://cwiki.apache.org/confluence" class="   user-item administration-link "      title="Browse gadgets provided by Confluence" >
+        Available Gadgets
+</a>
+</li>
+                                            <li>
+    
+            
+<a  id="confluence-about-link" href="https://cwiki.apache.org/confluence/aboutconfluencepage.action" class="    "      title="Get more information about Confluence" >
+        About Confluence
+</a>
+</li>
+                                    </ul>
+            </div>
+            </nav>
+    
+    </li>
+        <li>
+                
+    
+    </li>
+        <li>
+            
+    </li>
+        <li>
+                                            <li>
+        
+            
+<a  id="login-link" href="https://cwiki.apache.org/confluence/login.action?os_destination=%2Fdisplay%2Fsolr%2FCore-Specific%2BTools" class="   user-item login-link "      title="" >
+        Log in
+</a>
+</li>
+                        <li>
+    
+            
+<a  id="signup-link" href="https://cwiki.apache.org/confluence/signup.action" class="   user-item signup-link "      title="" >
+        Sign up
+</a>
+</li>
+                        
+    </li>
+    </ul>
+</div></div><!-- .aui-header-inner--></nav><!-- .aui-header -->
+    <br class="clear">
+</header>
+
+    <div id="splitter">
+    <div id="splitter-sidebar"  class="padding-div" >
+        
+        <h3><a name="Core-SpecificTools-ApacheSolrDocumentation"></a>Apache Solr Documentation</h3>
+
+<p><a href="https://www.apache.org/dyn/closer.cgi/lucene/solr/ref-guide/apache-solr-ref-guide-5.3.pdf" class="external-link" rel="nofollow">5.3 Ref Guide (PDF Download)</a><br/>
+<a href="https://lucene.apache.org/solr/tutorial.html" class="external-link" rel="nofollow">Solr Tutorial</a><br/>
+<a href="http://wiki.apache.org/solr" class="external-link" rel="nofollow">Solr Community Wiki</a></p>
+
+<p><a href="http://archive.apache.org/dist/lucene/solr/ref-guide/" class="external-link" rel="nofollow">Older Versions of this Guide (PDF)</a></p>
+
+<h3><a name="Core-SpecificTools-5.4DraftRefGuideTopics"></a>5.4 Draft Ref Guide Topics</h3>
+
+
+
+<div class="plugin_pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div class="plugin_pagetree_children">
+        </div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input type="hidden" name="treeId" value="">
+        <input type="hidden" name="treeRequestId" value="/confluence/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false&amp;expandCurrent=false">
+        <input type="hidden" name="treePageId" value="32604187">
+
+        <input type="hidden" name="noRoot" value="false">
+        <input type="hidden" name="rootPageId" value="32604226">
+
+        <input type="hidden" name="rootPage" value="">
+        <input type="hidden" name="startDepth" value="0">
+        <input type="hidden" name="spaceKey" value="solr" >
+
+        <input type="hidden" name="i18n-pagetree.loading" value="Loading...">
+        <input type="hidden" name="i18n-pagetree.error.permission" value="Unable to load page tree. It seems that you do not have permission to view the root page.">
+        <input type="hidden" name="i18n-pagetree.eeror.general" value="There was a problem retrieving the page tree. Please check the server log file for more information.">
+        <input type="hidden" name="loginUrl" value="/confluence/login.action?os_destination=%2Fpages%2Fviewpage.action%3FspaceKey%3Dsolr%26title%3DCore-Specific%2BTools">
+        <input type="hidden" name="mobile" value="false">
+
+                <fieldset class="hidden">
+                                                <input type="hidden" name="ancestorId" value="32604163">
+                                    <input type="hidden" name="ancestorId" value="32604226">
+                                    </fieldset>
+    </fieldset>
+</div>
+
+
+
+<h3><a name="Core-SpecificTools-Meta-Documentation"></a>Meta-Documentation</h3>
+
+
+
+<div class="plugin_pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div class="plugin_pagetree_children">
+        </div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input type="hidden" name="treeId" value="">
+        <input type="hidden" name="treeRequestId" value="/confluence/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false&amp;expandCurrent=false">
+        <input type="hidden" name="treePageId" value="32604187">
+
+        <input type="hidden" name="noRoot" value="false">
+        <input type="hidden" name="rootPageId" value="33293904">
+
+        <input type="hidden" name="rootPage" value="">
+        <input type="hidden" name="startDepth" value="0">
+        <input type="hidden" name="spaceKey" value="solr" >
+
+        <input type="hidden" name="i18n-pagetree.loading" value="Loading...">
+        <input type="hidden" name="i18n-pagetree.error.permission" value="Unable to load page tree. It seems that you do not have permission to view the root page.">
+        <input type="hidden" name="i18n-pagetree.eeror.general" value="There was a problem retrieving the page tree. Please check the server log file for more information.">
+        <input type="hidden" name="loginUrl" value="/confluence/login.action?os_destination=%2Fpages%2Fviewpage.action%3FspaceKey%3Dsolr%26title%3DCore-Specific%2BTools">
+        <input type="hidden" name="mobile" value="false">
+
+                <fieldset class="hidden">
+                                                <input type="hidden" name="ancestorId" value="32604163">
+                                    <input type="hidden" name="ancestorId" value="32604226">
+                                    </fieldset>
+    </fieldset>
+</div>
+
+
+    
+
+            </div>
+    <div id="splitter-content">
+
+                    <script type="text/javascript" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/5.8.4/_/download/resources/com.atlassian.confluence.plugins.doctheme:resources/doc-theme.js"></script>
+    
+                        
+        <div id="theme-header">
+            <p><strong>This Unreleased Guide Will Cover Apache Solr 5.4</strong><br/>
+
+<style>
+div#children-section
+{
+display: none;
+}
+</style>
+</p>
+        </div>
+    
+            
+<div id="main"  class="aui-page-panel" >
+    <div id="main-header">
+        
+        
+    <div id="navigation" class="content-navigation view">
+                    <ul class="ajs-menu-bar">
+                                                        
+                    
+        <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action aui-dropdown2-trigger-arrowless aui-button aui-button-subtle ajs-menu-title aui-dropdown2-trigger" href="#" aria-haspopup="true" aria-owns="action-menu" data-container="#navigation">
+            <span>
+                                    <span class="aui-icon aui-icon-small aui-iconfont-more"></span>
+                                
+            </span>
+        </a>         <div id="action-menu" class="aui-dropdown2 aui-style-default">
+                            <ul  id="action-menu-primary"                     class="section-primary first aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="view-attachments-link" href="https://cwiki.apache.org/confluence/pages/viewpageattachments.action?pageId=32604187" rel="nofollow" class="action-view-attachments"  accessKey="t"  title="View Attachments">
+                <span>
+                        A<u>t</u>tachments (1)
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="action-view-history-link" href="https://cwiki.apache.org/confluence/pages/viewpreviousversions.action?pageId=32604187" rel="nofollow" class="action-view-history"   title="">
+                <span>
+                        Page History
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="action-page-permissions-link" href="https://cwiki.apache.org/confluence/pages/viewinfo.action?pageId=32604187" rel="nofollow" class="action-page-permissions"   title="Edit restrictions">
+                <span>
+                        Restrictions
+        </span>    </a>
+</li>
+                                </ul>
+                            <ul  id="action-menu-secondary"                     class="section-secondary aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="view-page-info-link" href="https://cwiki.apache.org/confluence/pages/viewinfo.action?pageId=32604187" rel="nofollow" class="action-view-info"   title="">
+                <span>
+                        Page Information
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="view-resolved-comments" href="https://cwiki.apache.org/confluence" rel="nofollow" class=""   title="">
+                <span>
+                        Resolved comments
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="link-to-page-link" href="https://cwiki.apache.org/confluence/pages/viewinfo.action?pageId=32604187" rel="nofollow" class=""   title="Link to this Page">
+                <span>
+                        Link to this Page…
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="view-in-hierarchy-link" href="https://cwiki.apache.org/confluence/pages/listpages-dirview.action?key=solr&amp;openId=32604187#selectedPageInHierarchy" rel="nofollow" class=""   title="">
+                <span>
+                        View in Hierarchy
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="action-view-source-link" href="https://cwiki.apache.org/confluence/plugins/viewsource/viewpagesrc.action?pageId=32604187" rel="nofollow" class="action-view-source popup-link"   title="">
+                <span>
+                        View Source
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="delete-all-comments-link-link" href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187" rel="nofollow" class=""   title="">
+                <span>
+                        Delete comments
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="action-export-pdf-link" href="https://cwiki.apache.org/confluence/spaces/flyingpdf/pdfpageexport.action?pageId=32604187" rel="nofollow" class=""   title="">
+                <span>
+                        Export to PDF
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="com-k15t-confluence-scroll-epub-launcher" href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=32604187" rel="nofollow" class=""   title="">
+                <span>
+                        Export to EPUB
+        </span>    </a>
+</li>
+                                        <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="action-export-word-link" href="https://cwiki.apache.org/confluence/exportword?pageId=32604187" rel="nofollow" class="action-export-word"   title="">
+                <span>
+                        Export to Word
+        </span>    </a>
+</li>
+                                </ul>
+                            <ul  id="action-menu-modify"                     class="section-modify aui-dropdown2-section">
+                                            <li>
+
+    
+        
+                                            
+    
+    
+    <a  id="treecopy-action" href="https://cwiki.apache.org/confluence/plugins/treecopy/setnames.action?pageId=32604187" rel="nofollow" class=""   title="">
+                <span>
+                        Copy Page Tree
+        </span>    </a>
+</li>
+                                </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+        
+                <div id="title-heading" class="pagetitle with-breadcrumbs">
+        
+                            <div class="space-logo " data-key="solr" data-name="Apache Solr Reference Guide" data-entity-type="confluence.space">
+            <a><img class="logo space custom" src="https://cwiki.apache.org/confluence/download/attachments/32604305/solr?version=7&amp;modificationDate=1418845652000&amp;api=v2" alt=""></a>
+        </div>            
+                            <div id="breadcrumb-section">
+                    
+    
+    
+    <ol id="breadcrumbs">
+                                        
+                        
+        <li class="first" >
+                        
+                            <span class=""><a href="https://cwiki.apache.org/confluence/display/solr">Apache Solr Reference Guide</a></span>
+                                                                    
+                        
+        <li>
+                        
+                            <span class=""><a href="https://cwiki.apache.org/confluence/display/solr/Apache+Solr+Reference+Guide">Apache Solr Reference Guide</a></span>
+                                                                    
+                        
+        <li>
+                        
+                            <span class=""><a href="https://cwiki.apache.org/confluence/display/solr/Using+the+Solr+Administration+User+Interface">Using the Solr Administration User Interface</a></span>
+                                                    </ol>
+
+
+                </div>
+            
+            <h1 id="title-text" class="with-breadcrumbs">
+                                        <a href="Core-Specific%2bTools.html">Core-Specific Tools</a>
+                            </h1>
+        </div>
+    </div>
+
+    
+
+    
+    
+    
+    
+    
+
+        
+
+
+
+
+        
+
+
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+    
+    
+        
+    
+    
+                    
+    
+
+    
+
+
+<div id="content" class="page view">
+    
+
+
+<div id="action-messages">
+                        </div>
+
+
+
+        <script type="text/x-template" title="searchResultsGrid">
+    <table class="aui">
+        <thead>
+            <tr class="header">
+                <th class="search-result-title">Page Title</th>
+                <th class="search-result-space">Space</th>
+                <th class="search-result-date">Updated</th>
+            </tr>
+        </thead>
+    </table>
+</script>
+<script type="text/x-template" title="searchResultsGridCount">
+    <p class="search-result-count">{0}</p>
+</script>
+<script type="text/x-template" title="searchResultsGridRow">
+    <tr class="search-result">
+        <td class="search-result-title"><a href="{1}" class="content-type-{2}"><span>{0}</span></a></td>
+        <td class="search-result-space"><a class="space" href="/confluence/display/{4}/" title="{3}">{3}</a></td>
+        <td class="search-result-date"><span class="date" title="{6}">{5}</span></td>
+    </tr>
+</script>
+        
+    
+    
+        <fieldset class="hidden parameters">
+            <input type="hidden" title="parentPageId" value="32604163">
+        </fieldset>
+
+                            
+    
+
+                    
+
+        
+        <a href="#page-metadata-end" class="assistive">Skip to end of metadata</a>
+<div id="page-metadata-start" class="assistive"></div>
+
+    <div class="page-metadata">
+        <ul>
+                            <li class="page-metadata-item noprint">
+
+    
+            
+                                            
+    
+    
+    <a  id="content-metadata-page-restrictions" href="#" rel="nofollow" class="hidden"   title="Restrictions apply">
+                    <img alt="" src="https://cwiki.apache.org/confluence/download/resources/com.atlassian.confluence.plugins.confluence-page-banner:page-banner-resources/images/red_padlock.png" height="16" width="16" title="">
+                <span>
+                        
+        </span>    </a>
+</li>
+                            <li class="page-metadata-item noprint">
+
+    
+        
+                                            
+    
+    
+    <a  id="content-metadata-attachments" href="https://cwiki.apache.org/confluence/pages/viewpageattachments.action?pageId=32604187&amp;metadataLink=true" rel="nofollow" class=""  accessKey="t"  title="1 attachment">
+                    <img alt="" src="https://cwiki.apache.org/confluence/download/resources/com.atlassian.confluence.plugins.confluence-page-banner:page-banner-resources/images/grey_attach.png" height="16" width="16" title="">
+                <span>
+                        
+        </span>    </a>
+</li>
+                        <li class="page-metadata-modification-info">
+                
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'>     <a href="https://cwiki.apache.org/confluence/display/~cassandra.targett"
+                       class="url fn"
+                            >Cassandra Targett</a></span>, last modified by <span class='editor'>     <a href="https://cwiki.apache.org/confluence/display/~hossman"
+                       class="url fn"
+                            >Hoss Man</a></span> on <a class='last-modified' title='Apr 14, 2015 18:17' href='https://cwiki.apache.org/confluence/pages/diffpagesbyversion.action?pageId=32604187&amp;selectedPageVersions=19&amp;selectedPageVersions=20'>Apr 14, 2015</a>
+                </li>
+        </ul>
+    </div>
+
+
+<a href="#page-metadata-start" class="assistive">Go to start of metadata</a>
+<div id="page-metadata-end" class="assistive"></div>
+
+        
+        <fieldset class="hidden parameters">
+                        <input type="hidden" title="browsePageTreeMode" value="view">
+        </fieldset>
+
+        <div id="main-content" class="wiki-content">
+                           
+        <p>In the left-hand navigation bar, you will see a pull-down menu titled &quot;Core Selector&quot;. Clicking on the menu will show a list of Solr cores, with a search box that can be used to find a specific core (handy if you have a lot of cores). When you select a core, a secondary menu opens under the core name with the administration options available for that particular core.</p><p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image confluence-content-image-border image-center" src="https://cwiki.apache.org/confluence/download/attachments/32604187/collection_dashboard.png?version=3&amp;modificationDate=1420841896000&amp;api=v2" data-image-src="/confluence/download/attachments/32604187/collection_dashboard.png?version=3&amp;modificationDate=1420841896000&amp;api=v2" data-unresolved-comment-count="0" data-linked-resource-id="32702509" data-linked-resource-version="3" data-linked-resource-type="attachment" data-linked-resource-default-alias="collection_dashboard.png" data-base-url="https://cwiki.apache.org/confluence" data-linked-resource-content-type="image/png" data-linked-resource-container-id="32604187" data-linked-resource-container-version="20"></span></p><p>After selecting the core, the central part of the screen shows Statistics and other information about the core you chose. You can define a file called <code>admin-extra.html</code> that includes links or other information you would like to display in the &quot;Admin Extra&quot; part of this main screen.</p><p>On the left side, under the core name, are links to other screens that display information or provide options for the specific core chosen. The core-specific options are listed below, with a link to the section of this Guide to find out more:</p><ul><li><a href="https://cwiki.apache.org/confluence/display/solr/Analysis+Screen">Analysis</a> - lets you analyze the data found in specific fields.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Dataimport+Screen">Dataimport</a> - shows you information about the current status of the Data Import Handler.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Documents+Screen">Documents</a> - provides a simple form allowing you to execute various Solr indexing commands directly from the browser.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Files+Screen">Files</a> - shows the current core configuration files such as <code>solrconfig.xml</code> and <code>schema.xml</code>.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Ping">Ping</a> - lets you ping a named core and determine whether the core is active.</li><li><a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=32604180">Plugins/Stats</a> - shows statistics for plugins and other installed components.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Query+Screen">Query</a> - lets you submit a structured query about various elements of a core.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Replication+Screen">Replication</a> - shows you the current replication status for the core, and lets you enable/disable replication.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Schema+Browser+Screen">Schema Browser</a> - displays schema data in a browser window.</li><li><a href="https://cwiki.apache.org/confluence/display/solr/Segments+Info">Segments Info</a> - Provides a visualization of the underlying Lucene index segments.</li></ul><style type='text/css'>/*<![CDATA[*/
+table.ScrollbarTable  {border: none;padding: 3px;width: 100%;padding: 3px;margin: 0px;background-color: #f0f0f0}
+table.ScrollbarTable td.ScrollbarPrevIcon {text-align: center;width: 16px;border: none;}
+table.ScrollbarTable td.ScrollbarPrevName {text-align: left;border: none;}
+table.ScrollbarTable td.ScrollbarParent {text-align: center;border: none;}
+table.ScrollbarTable td.ScrollbarNextName {text-align: right;border: none;}
+table.ScrollbarTable td.ScrollbarNextIcon {text-align: center;width: 16px;border: none;}
+
+/*]]>*/</style><div class="Scrollbar"><table class='ScrollbarTable'><tr><td class='ScrollbarPrevIcon'><a href="https://cwiki.apache.org/confluence/display/solr/Thread+Dump"><img border='0' align='middle' src='https://cwiki.apache.org/confluence/images/icons/back_16.gif' width='16' height='16'></a></td><td width='33%' class='ScrollbarPrevName'><a href="https://cwiki.apache.org/confluence/display/solr/Thread+Dump">Thread Dump</a>&nbsp;</td><td width='33%' class='ScrollbarParent'><sup><a href="https://cwiki.apache.org/confluence/display/solr/Using+the+Solr+Administration+User+Interface"><img border='0' align='middle' src='https://cwiki.apache.org/confluence/images/icons/up_16.gif' width='8' height='8'></a></sup><a href="https://cwiki.apache.org/confluence/display/solr/Using+the+Solr+Administration+User+Interface">Using the Solr Administration User Interface</a></td><td width='33%' class='ScrollbarNextName'>&nbsp;</td></tr></table></div>
+
+                
+        
+    
+        </div>
+
+        <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/32604187"/>
+</rdf:RDF>
+-->
+
+            
+    
+
+
+
+<div id="labels-section" class="pageSection group">
+    <div class="labels-section-content content-column" entityid="32604187" entitytype="page">
+	<div class="labels-content">
+		
+    <ul class="label-list label-list-right ">
+            <li class="no-labels-message">
+            No labels
+        </li>
+            </ul>
+
+    </div>
+</div>
+</div>
+
+                    <div id="children-section" class="pageSection children-hidden group">
+                
+        <div class="section-header summary">
+            <h2 id="children-section-title" class="section-title">
+                <a href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?showChildren=true#children" class="children-show-hide">
+                                            10 Child Pages
+                                    </a>
+            </h2>
+
+            <a href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?showChildren=true#children" class="children-show-hide icon"></a>
+            <!--
+            <span class="noprint grey">
+                <a class="children-subtitle" href="/confluence/pages/listpages-dirview.action?key=solr&amp;openId=32604187#selectedPageInHierarchy">Reorder Pages</a>
+                            </span>
+            -->
+        </div>
+        <div id="page-children" class="pageSectionBody">
+                    </div>
+        </div>
+    
+            
+
+
+
+
+            
+    
+
+
+
+
+
+
+
+
+                        
+    
+<div id="comments-section" class="pageSection group">
+                <div class="section-header">
+            <h2 id="comments-section-title" class="section-title">
+                                    11 Comments
+                            </h2>
+        </div>
+    
+    
+
+            <ol class="comment-threads top-level" id="page-comments">
+                    <li id="comment-thread-47384110" class="comment-thread">
+        <div class="comment  " id="comment-47384110">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: drew.sonne" title="drew.sonne">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~drew.sonne"
+                       class="url fn"
+                            >Drew Sonne</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>Can we add a note about the &quot;Current&quot; label under &quot;Statistics&quot; in the screenshot? I found this very confusing as the only description I could find was telling me the index is not &quot;current&quot;.</p><p>I found this explanation which cleared things up for:</p><div class="table-wrap"><table class="confluenceTable"><tbody><tr><td class="confluenceTd"><div class="item-right"><div class="answer-body"><pre>This basically means that Lucene has detected an index state where 
+something has made changes to the index, but those changes are not yet 
+visible.  To make them visible and return this status to 'true', do a 
+commit or soft commit with openSearcher enabled.</pre></div></div></td></tr></tbody></table></div><p><a href="http://qnalist.com/questions/4816359/solr-admin-core-status-index-is-not-current" class="external-link" rel="nofollow">http://qnalist.com/questions/4816359/solr-admin-core-status-index-is-not-current</a></p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=47384110#comment-47384110"
+                 id="comment-permalink-47384110"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="Oct 21, 2014 14:17" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=47384110#comment-47384110"
+                                    ><span>Oct 21, 2014</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-47384110"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=47384110#comment-47384110"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=47384110#comment-47384110"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/47384110"/>
+</rdf:RDF>
+-->
+
+    
+    </li>
+                    <li id="comment-thread-48792242" class="comment-thread">
+        <div class="comment  " id="comment-48792242">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: exbuzz" title="exbuzz">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~exbuzz"
+                       class="url fn"
+                            >Brian Cola</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>I am interested as to the meaning of Version, Current and Optimized</p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=48792242#comment-48792242"
+                 id="comment-permalink-48792242"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="Nov 21, 2014 19:32" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=48792242#comment-48792242"
+                                    ><span>Nov 21, 2014</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-48792242"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=48792242#comment-48792242"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=48792242#comment-48792242"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/48792242"/>
+</rdf:RDF>
+-->
+
+    
+    </li>
+                    <li id="comment-thread-53741873" class="comment-thread">
+        <div class="comment  " id="comment-53741873">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: pdurusau" title="pdurusau">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~pdurusau"
+                       class="url fn"
+                            >Patrick Durusau</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>It is fair to say that the pull down menu &quot;Core Selector&quot; isn't visible in the screen shot because a core has been chosen, i.e., techproducts? Should there be two screen shots, one that matches the present text about &quot;Core Selector&quot; and one that matches future text saying select techproducts and the result of that selection?</p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=53741873#comment-53741873"
+                 id="comment-permalink-53741873"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="Mar 18, 2015 13:12" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=53741873#comment-53741873"
+                                    ><span>Mar 18, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-53741873"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=53741873#comment-53741873"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=53741873#comment-53741873"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/53741873"/>
+</rdf:RDF>
+-->
+
+    
+            <ol class="comment-threads">
+                                <li id="comment-thread-57904097" class="comment-thread">
+        <div class="comment  " id="comment-57904097">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: hossman" title="hossman">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~hossman"
+                       class="url fn"
+                            >Hoss Man</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>i'm not understanding your question – this page is an overview of hte core specific screens in the UI – the screen shot exists specifically to show you what happens <strong>after</strong> you pick a core.</p><p> </p><p>Information about what the UI looks like <strong>before</strong> a core is selected are available in the earlier pages of the guide (ie: <a href="https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI">Overview of the Solr Admin UI</a>)</p><p>(EDIT: trying to fix stupid bold that pollutes the rest of page)</p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904097#comment-57904097"
+                 id="comment-permalink-57904097"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="May 28, 2015 18:35" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904097#comment-57904097"
+                                    ><span>May 28, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904097"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904097#comment-57904097"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904097#comment-57904097"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904097"/>
+</rdf:RDF>
+-->
+
+    
+    </li>
+                        </ol>
+    </li>
+                    <li id="comment-thread-57904106" class="comment-thread">
+        <div class="comment  " id="comment-57904106">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: pdurusau" title="pdurusau">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~pdurusau"
+                       class="url fn"
+                            >Patrick Durusau</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>Hoss Man, yes, but only if you ignore the first line which reads:</p><p> &quot;In the left-hand navigation bar, you will see a pull-down menu titled &quot;Core Selector&quot;.&quot;</p><p>That is not what the screenshot demonstrates.</p><p>One fix would be to say: After selecting techproducts (using the coreselector (link to prior page))....(text here that is consistent with the screenshot)</p><p>Yes?</p><p> </p><p> </p><p> </p><p> </p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904106#comment-57904106"
+                 id="comment-permalink-57904106"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="May 28, 2015 18:32" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904106#comment-57904106"
+                                    ><span>May 28, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904106"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904106#comment-57904106"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904106#comment-57904106"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904106"/>
+</rdf:RDF>
+-->
+
+    
+            <ol class="comment-threads">
+                                <li id="comment-thread-57904109" class="comment-thread">
+        <div class="comment  " id="comment-57904109">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: hossman" title="hossman">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~hossman"
+                       class="url fn"
+                            >Hoss Man</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p><em>all</em> screenshots on <em>all</em> pages show you what you see <em>after</em> you follow the instructions that come before them.</p><p>these instructions say to pick techproducts from the core selector and then show you what you'll see – just like the <a href="https://cwiki.apache.org/confluence/display/solr/Logging">Logging</a> page says to click on Logging and then shows you what you'll see – this section (on the admin UI) would get really clutered and verbose if every sub-section showed a screenshot &quot;before&quot; and &quot;after&quot; clicking on each left nav option – especially since the &quot;before&quot; shot is what you just saw in the previous section.</p><p> </p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904109#comment-57904109"
+                 id="comment-permalink-57904109"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="May 28, 2015 18:39" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904109#comment-57904109"
+                                    ><span>May 28, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904109"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904109#comment-57904109"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904109#comment-57904109"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904109"/>
+</rdf:RDF>
+-->
+
+    
+            <ol class="comment-threads">
+                                <li id="comment-thread-57904119" class="comment-thread">
+        <div class="comment  " id="comment-57904119">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: pdurusau" title="pdurusau">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~pdurusau"
+                       class="url fn"
+                            >Patrick Durusau</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>That's a nuance that I haven't seen called out, that all screenshots show state after following directions. That makes sense.</p><p>But the instructions in this case don't say &quot;select techproducts.&quot; Yes? Or at least I don't read them as saying that.</p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904119#comment-57904119"
+                 id="comment-permalink-57904119"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="May 28, 2015 19:48" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904119#comment-57904119"
+                                    ><span>May 28, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904119"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904119#comment-57904119"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904119#comment-57904119"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904119"/>
+</rdf:RDF>
+-->
+
+    
+            <ol class="comment-threads">
+                                <li id="comment-thread-57904329" class="comment-thread">
+        <div class="comment  " id="comment-57904329">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: hossman" title="hossman">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~hossman"
+                       class="url fn"
+                            >Hoss Man</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>they say:</p><blockquote><p>you will see a pull-down menu titled &quot;Core Selector&quot; ...</p><p>... When you select a core, a secondary menu opens under the core name with the administration options available for that particular core</p></blockquote><p>the example shows exactly what is described .. the fact that &quot;techproducts&quot; was the core name selected just before this particular screenshot was taken isn't really material to the point of the page, or to the screen shot – it seems like it would be overkill to try and tell people they need to startup the techproducts example to follow along with these examples (some pages do say things like this, be it's because the example urls and example params only work with certain schema/data ... the relevent portions of these pages/screenshots are applicable regardless of what cores you have)</p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904329#comment-57904329"
+                 id="comment-permalink-57904329"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="May 30, 2015 02:10" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904329#comment-57904329"
+                                    ><span>May 30, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904329"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904329#comment-57904329"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904329#comment-57904329"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904329"/>
+</rdf:RDF>
+-->
+
+    
+            <ol class="comment-threads">
+                                <li id="comment-thread-57904360" class="comment-thread">
+        <div class="comment  " id="comment-57904360">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: pdurusau" title="pdurusau">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~pdurusau"
+                       class="url fn"
+                            >Patrick Durusau</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>It seems like the basis for your argument is shifting. At first you said:</p><p>&quot;these instructions say to pick techproducts from the core selector and then show you what you'll see – just like the Logging page says to click on Logging&quot;</p><p>When I point out the page says no such thing, then you appeal to an implied understanding of &quot;that's how all these pages work.&quot;</p><p>I can't argue with implied understandings but can point out that a non-author of these pages is unlikely to share those implied understandings.</p><p>Perhaps I have the wrong target audience in mind. I was thinking this documentation should be as accessible to new Solr users as well as expert Solr users.</p><p>Am I looking at these pages with the wrong target audience in mind?</p><p> </p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904360#comment-57904360"
+                 id="comment-permalink-57904360"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="May 30, 2015 12:41" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904360#comment-57904360"
+                                    ><span>May 30, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904360"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904360#comment-57904360"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904360#comment-57904360"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904360"/>
+</rdf:RDF>
+-->
+
+    
+            <ol class="comment-threads">
+                                <li id="comment-thread-57904945" class="comment-thread">
+        <div class="comment  " id="comment-57904945">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: cassandra.targett" title="cassandra.targett">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~cassandra.targett"
+                       class="url fn"
+                            >Cassandra Targett</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>I think there are several things at play here:</p><ul><li><span style="font-size: 11.0pt;line-height: 16.0pt;background-color: transparent;">because the text content is short, we've consciously decided to include only one screenshot on this page;</span></li><li><span style="font-size: 11.0pt;line-height: 16.0pt;background-color: transparent;">within that (self-imposed) limitation, we needed to decide on the one screenshot that best shows the content that is being described;</span></li><li><span style="font-size: 11.0pt;line-height: 16.0pt;background-color: transparent;">that one screenshot shows the core-specific screen, after the core has been chosen, which shows the statistics view and allows us to describe the other sections of the core overview screen. There would not have been anything to show before the core was chosen, besides perhaps the screenshot we've already included in <a href="https://cwiki.apache.org/confluence/display/solr/Overview+of+the+Solr+Admin+UI">Overview of the Solr Admin UI</a>.</span></li></ul><p><span style="font-size: 11.0pt;line-height: 16.0pt;background-color: transparent;">It seems that what you are finding problematic is that the sentence &quot;After selecting the core...&quot;, which appears after the screenshot, could be moved to before the screenshot. Does that resolve your concern? </span></p><p>In terms of audience, we do want the guide to be accessible to new users, as well as experienced users. However, serving both audiences will occasionally leave one or the other lacking. It's a constant balance, but please share any specific suggestions you have.</p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904945#comment-57904945"
+                 id="comment-permalink-57904945"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="Jun 02, 2015 17:47" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904945#comment-57904945"
+                                    ><span>Jun 02, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904945"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904945#comment-57904945"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904945#comment-57904945"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904945"/>
+</rdf:RDF>
+-->
+
+    
+    </li>
+                                    <li id="comment-thread-57904946" class="comment-thread">
+        <div class="comment  " id="comment-57904946">
+        <p class="comment-user-logo">
+            <img class="userLogo logo anonymous" src="https://cwiki.apache.org/confluence/s/en_GB/5982/f2b47fb3d636c8bc9fd0b11c0ec6d0ae18646be7.1/_/images/icons/profilepics/anonymous.png"
+           alt="User icon: hossman" title="hossman">        </p>
+        <div class="comment-header">
+            <h4 class="author">    <a href="https://cwiki.apache.org/confluence/display/~hossman"
+                       class="url fn"
+                            >Hoss Man</a></h4>
+        </div>
+        <div class="comment-body">
+            <div class="comment-content wiki-content">
+                <p>my argument is the same – my wording was imprecise.  the instructions say to pick a core name, the screen shot sows what happens when you pick a core name – in this example, the core name just happens to be techproducts.  we don't want the wording of the page to emphasis &quot;techprodocuts&quot; because we want people to be able to follow along with their own solr install and their own core names.</p><p>the crux of this discussion was whether there needed to be a &quot;before&quot; and &quot;after&quot; screenshots, and/or if the wording of the page accurately described the screenshots – my points are:</p><ul><li>we already have &quot;before&quot; screenshots in the context of the guide as a whole and how the pages flow together</li><li>the wording of text that comes <strong>before</strong> instructions to take some action should reflect the reality of what a user will see if they follow along <strong>before</strong> they in fact that the action described in the instruction.</li><li>the screenshots should reflect the view that is visible <strong>after</strong> an action is taken</li><li>the instructions should avoid depending on any specific assumptions about configuration as much as possible, even though the screenshots – by nature – must show a single &quot;real&quot; instance.</li></ul><p>my statement regarding other pages and how they work is not about implied knowwledge or hte asumption that the user should know anything about solr – it's a question of consistency and flow throughout the guide and the way the examples work – setting an expectation as people read the guide that things will flow in a certian order and they will be able to follow along without the conventions of the guide/instructions/screenshots changing on them.</p>
+            </div>
+            <div class="comment-actions">
+                                                <ul class="comment-actions-secondary">
+                                                              <li class="first comment-permalink"><a title="Permanent link to this comment" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904946#comment-57904946"
+                 id="comment-permalink-57904946"                     ><span>Permalink</span></a></li>
+            </ul>
+                                    <ul class="comment-actions-primary">
+                                                              <li class="first comment-date"><a title="Jun 02, 2015 17:55" href="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904946#comment-57904946"
+                                    ><span>Jun 02, 2015</span></a></li>
+                                                              <li class=" "><a  href="https://cwiki.apache.org/confluence/plugins/aptis/deleteAllComments/ask-user.action?pageId=32604187"
+                 id="delete-all-comments-link-comment-link-57904946"                     ><span>Delete comments</span></a></li>
+            </ul>
+                </div>
+        </div>
+    </div>
+
+    <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904946#comment-57904946"
+    dc:identifier="https://cwiki.apache.org/confluence/display/solr/Core-Specific+Tools?focusedCommentId=57904946#comment-57904946"
+    dc:title="Core-Specific Tools"
+    trackback:ping="https://cwiki.apache.org/confluence/rpc/trackback/57904946"/>
+</rdf:RDF>
+-->
+
+    
+    </li>
+                        </ol>
+    </li>
+                        </ol>
+    </li>
+                        </ol>
+    </li>
+                        </ol>
+    </li>
+                        </ol>
+    </li>
+            </ol>
+
+
+</div>
+
+
+            
+</div>
+
+
+    
+
+
+
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+
+
+
+</div>
+  
+    </div>
+</div>
+
+
+        
+            
+            
+
+<div id="footer" role="contentinfo">
+    <section class="footer-body">
+
+                                                            <p class="license license-opensource">
+                    Powered by a free <b>Atlassian Confluence Open Source Project License</b> granted to Apache Software Foundation. <a href="http://www.atlassian.com/c/conf/11461">Evaluate Confluence today</a>.<br>
+                </p>
+                    
+        
+
+        <ul id="poweredby">
+            <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="hover-footer-link">Atlassian Confluence</a> <span id='footer-build-information'>5.8.4</span>, <a href="http://www.atlassian.com/software/confluence/overview/team-collaboration-software?utm_source=confluence-footer" class="hover-footer-link">Team Collaboration Software</a></li>
+            <li class="print-only">Printed by Atlassian Confluence 5.8.4, Team Collaboration Software.</li>
+            <li class="noprint"><a href="https://jira.atlassian.com/browse/CONF" class="hover-footer-link">Report a bug</a></li>
+            <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="hover-footer-link">Atlassian News</a></li>
+        </ul>
+
+        
+
+        <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+
+                    
+        
+    </section>
+</div>
+
+    </div>
+</body>
+
+<!-- Mirrored from cwiki.apache.org/confluence/display/solr/Core-Specific+Tools by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:44:53 GMT -->
+</html>

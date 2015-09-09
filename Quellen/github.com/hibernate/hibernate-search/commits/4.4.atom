@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/4.4</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/4.4"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/4.4.atom"/>
+  <title>Recent Commits to hibernate-search:4.4</title>
+  <updated>2015-03-25T16:38:15Z</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/514378c0a661fc416411d175dccde10c85df75c6</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/514378c0a661fc416411d175dccde10c85df75c6"/>
+    <title>
+        HSEARCH-1846 Some more typos corrected in the Spatial related documentation
+    </title>
+    <updated>2015-03-25T16:38:15Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/438816?v=3&amp;s=30"/>
+    <author>
+      <name>phayz</name>
+      <uri>https://github.com/phayz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1846 Some more typos corrected in the Spatial related documentation&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b0d7b5730e897290844367c8b4e786826b037aff</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/b0d7b5730e897290844367c8b4e786826b037aff"/>
+    <title>
+        HSEARCH-1831 Correcting various typos in the documentation
+    </title>
+    <updated>2015-03-12T13:25:24Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/438816?v=3&amp;s=30"/>
+    <author>
+      <name>phayz</name>
+      <uri>https://github.com/phayz</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1831 Correcting various typos in the documentation&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a25874c3d2d743383d5835db33a8de437dc30fc4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/a25874c3d2d743383d5835db33a8de437dc30fc4"/>
+    <title>
+        HSEARCH-1769 Make the logger message id consistent with the number needed in branch &#39;master&#39;
+    </title>
+    <updated>2015-01-09T14:12:28Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1769 Make the logger message id consistent with the number needed in branch &#39;master&#39;&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5380f8ea6458af5838b336910000401aa9a4b16d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5380f8ea6458af5838b336910000401aa9a4b16d"/>
+    <title>
+        HSEARCH-1769 Log worklist on Async work as well
+    </title>
+    <updated>2015-01-09T13:51:26Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1769 Log worklist on Async work as well&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/387b44a19e5c5632e96dcc3ea14a8fec7048c7e7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/387b44a19e5c5632e96dcc3ea14a8fec7048c7e7"/>
+    <title>
+        HSEARCH-1769 Add a unit test to cover ChangeSetIterator
+    </title>
+    <updated>2015-01-09T13:47:54Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1769 Add a unit test to cover ChangeSetIterator&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/b3e162a172526281e4b0d38a75f537795de14159</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/b3e162a172526281e4b0d38a75f537795de14159"/>
+    <title>
+        HSEARCH-1769 Make ChangesetList resilient to empty List&lt;LuceneWork&gt;
+    </title>
+    <updated>2015-01-09T13:05:07+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1769 Make ChangesetList resilient to empty List&lt;LuceneWork&gt;&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/87b74a0d05de1492b1a5deb97d5d8dea41fce8ea</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/87b74a0d05de1492b1a5deb97d5d8dea41fce8ea"/>
+    <title>
+        HSEARCH-1769 Log empty work list to track the cause of HSEARCH-1769
+    </title>
+    <updated>2015-01-09T13:05:07+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1769 Log empty work list to track the cause of HSEARCH-1769
+
+TRACE will have to be enable in the environment reproducing the error.&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/75d2a0609e43b44d0425c83fd49099323d1f9846</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/75d2a0609e43b44d0425c83fd49099323d1f9846"/>
+    <title>
+        HSEARCH-1697 Enable async deleteFile operations on Infinispan Directory
+    </title>
+    <updated>2015-01-08T17:39:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/440989?v=3&amp;s=30"/>
+    <author>
+      <name>gustavonalle</name>
+      <uri>https://github.com/gustavonalle</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1697 Enable async deleteFile operations on Infinispan Directory&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f698657b1b586856f24e8413c1aace21ffa844eb</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f698657b1b586856f24e8413c1aace21ffa844eb"/>
+    <title>
+        HSEARCH-1737 Locking strategy &quot;native&quot; ignoring &quot;index base&quot; on Infinispan Directory
+    </title>
+    <updated>2014-12-05T13:06:27Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/440989?v=3&amp;s=30"/>
+    <author>
+      <name>gustavonalle</name>
+      <uri>https://github.com/gustavonalle</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1737 Locking strategy &quot;native&quot; ignoring &quot;index base&quot; on Infinispan Directory&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4a35daa987b9665b527651c7bda96bc34a9c3f82</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/4a35daa987b9665b527651c7bda96bc34a9c3f82"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2014-12-02T00:25:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/1db39aeef22543cc2b4f562ecc9f7492e19b1cc5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/1db39aeef22543cc2b4f562ecc9f7492e19b1cc5"/>
+    <title>
+        [maven-release-plugin] prepare release 4.4.6.Final
+    </title>
+    <updated>2014-12-02T00:25:34Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release 4.4.6.Final&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f0c3a6173cf7d2cf652f1d9546e1dffe04192fc5</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f0c3a6173cf7d2cf652f1d9546e1dffe04192fc5"/>
+    <title>
+        Preparing for release 4.4.6.Final: update Readme and changelog
+    </title>
+    <updated>2014-12-01T21:42:39Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Preparing for release 4.4.6.Final: update Readme and changelog&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/682180dc9b6b922d621153daa45f6838a037cf5d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/682180dc9b6b922d621153daa45f6838a037cf5d"/>
+    <title>
+        HSEARCH-1735 Clearly distinguish the Async from the BatchSync Processing strategies and make sure no unnecessary thread is started
+    </title>
+    <updated>2014-11-27T16:15:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1735 Clearly distinguish the Async from the BatchSync Processing strategies and make sure no unnecessary thread is started
+
+Conflicts:
+	engine/src/main/java/org/hibernate/search/backend/impl/lucene/LuceneBackendResources.java&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/c273f5e93a6ae663084614770ab8805a9b43210e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/c273f5e93a6ae663084614770ab8805a9b43210e"/>
+    <title>
+        HSEARCH-1725 Improve allocation rate of the new Lucene synchronous batching backend
+    </title>
+    <updated>2014-11-27T16:15:17Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1725 Improve allocation rate of the new Lucene synchronous batching backend
+
+Conflicts:
+	engine/src/main/java/org/hibernate/search/backend/impl/lucene/BatchSyncProcessor.java
+	engine/src/main/java/org/hibernate/search/backend/impl/lucene/ChangesetList.java&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/7d144095d9a48adb1549e423592521d8ba74caef</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/7d144095d9a48adb1549e423592521d8ba74caef"/>
+    <title>
+        HSEARCH-1734 The locking_strategy property is ignored when using the Infinispan Directory
+    </title>
+    <updated>2014-11-24T12:26:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1734 The locking_strategy property is ignored when using the Infinispan Directory&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5e9a4ec1e93d02a9619203dce946ea2827c890ee</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5e9a4ec1e93d02a9619203dce946ea2827c890ee"/>
+    <title>
+        HSEARCH-1722 Fix race condition in OptimizerPerformanceTest
+    </title>
+    <updated>2014-11-18T23:59:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/440989?v=3&amp;s=30"/>
+    <author>
+      <name>gustavonalle</name>
+      <uri>https://github.com/gustavonalle</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1722 Fix race condition in OptimizerPerformanceTest&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9ad4931df2a7295967f5510f09ef674bffef5662</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/9ad4931df2a7295967f5510f09ef674bffef5662"/>
+    <title>
+        HSEARCH-1699 Batching IndexWriter commits for multiple synchronous worksets
+    </title>
+    <updated>2014-11-18T13:10:25Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/440989?v=3&amp;s=30"/>
+    <author>
+      <name>gustavonalle</name>
+      <uri>https://github.com/gustavonalle</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1699 Batching IndexWriter commits for multiple synchronous worksets&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/cea1b57fb7914b622889dd54488a9f1e4bc44b00</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/cea1b57fb7914b622889dd54488a9f1e4bc44b00"/>
+    <title>
+        HSEARCH-1699 Introducing a performance tests focusing on the index writing backend
+    </title>
+    <updated>2014-11-18T12:41:18Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/440989?v=3&amp;s=30"/>
+    <author>
+      <name>gustavonalle</name>
+      <uri>https://github.com/gustavonalle</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1699 Introducing a performance tests focusing on the index writing backend&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/6603b9b4bf63ed0910c2042e0b1acb2bb93f59e8</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/6603b9b4bf63ed0910c2042e0b1acb2bb93f59e8"/>
+    <title>
+        HSEARCH-1693 Time based commit for async indexing
+    </title>
+    <updated>2014-11-10T22:30:50Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/440989?v=3&amp;s=30"/>
+    <author>
+      <name>gustavonalle</name>
+      <uri>https://github.com/gustavonalle</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1693 Time based commit for async indexing&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/185bd7457b52bb08f64959a13a33b1575024b7f0</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/185bd7457b52bb08f64959a13a33b1575024b7f0"/>
+    <title>
+        HSEARCH-1712 Remove dependency to ParaNamer
+    </title>
+    <updated>2014-11-04T18:27:38Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars1.githubusercontent.com/u/42573?v=3&amp;s=30"/>
+    <author>
+      <name>Sanne</name>
+      <uri>https://github.com/Sanne</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-1712 Remove dependency to ParaNamer&lt;/pre>
+    </content>
+  </entry>
+</feed>

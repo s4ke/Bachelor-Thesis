@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr">
+
+<!-- Mirrored from www.postgresql.org/docs/9.1/static/sql-truncate.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:45:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>PostgreSQL: Documentation: 9.1: TRUNCATE</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("http://www.postgresql.org/dyncss/docs.css?106df08c");</style>
+    <script type="text/javascript" src="http://www.postgresql.org/media/js/monospacefix.js?106df08c"></script>
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="http://www.postgresql.org/media/img/docs/hdr_logo.png" width="206" height="80" alt="PostgreSQL" /></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.1/" />
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value='';" value="Search" /><input id="submit" type="submit" value="Search" />
+	</div>
+	</form>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> &rarr; <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> &rarr; <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> &rarr; <a href="http://www.postgresql.org/docs/9.1/static/index.html">PostgreSQL 9.1</a>
+</div>
+<div id="docVersions">
+This page in other versions:
+
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/sql-truncate.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<b>9.1</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-truncate.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.3/static/sql-truncate.html" title="This page in version 9.3">9.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.4/static/sql-truncate.html" title="This page in version 9.4">9.4</a>
+	
+
+
+
+
+&nbsp;|&nbsp; Development versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-truncate.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.5/static/sql-truncate.html" title="This page in version 9.5" rel="nofollow">9.5</a>
+	
+
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/7.1/static/sql-truncate.html" title="This page in version 7.1" rel="nofollow">7.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.2/static/sql-truncate.html" title="This page in version 7.2" rel="nofollow">7.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.3/static/sql-truncate.html" title="This page in version 7.3" rel="nofollow">7.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.4/static/sql-truncate.html" title="This page in version 7.4" rel="nofollow">7.4</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.0/static/sql-truncate.html" title="This page in version 8.0" rel="nofollow">8.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.1/static/sql-truncate.html" title="This page in version 8.1" rel="nofollow">8.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.2/static/sql-truncate.html" title="This page in version 8.2" rel="nofollow">8.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/sql-truncate.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/sql-truncate.html" title="This page in version 8.4" rel="nofollow">8.4</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0"
+  cellpadding="0" cellspacing="0">
+    <tr>
+      <th colspan="5" align="center" valign="bottom"><a href=
+      "http://www.postgresql.org/docs/9.1/static/index.html">PostgreSQL 9.1.18 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title=
+      "START TRANSACTION" href="http://www.postgresql.org/docs/9.1/static/sql-start-transaction.html"
+      accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title=
+      "UNLISTEN" href="http://www.postgresql.org/docs/9.1/static/sql-unlisten.html" accesskey=
+      "N">Next</a></td>
+    </tr>
+  </table>
+  <hr class="c1" width="100%" />
+</div>
+
+<h1><a name="SQL-TRUNCATE" id="SQL-TRUNCATE"></a>TRUNCATE</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN76249" id="AEN76249"></a>
+
+  <h2>Name</h2>TRUNCATE&nbsp;--&nbsp;empty a table or set of tables
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN76254" id="AEN76254"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">
+TRUNCATE [ TABLE ] [ ONLY ] <tt class=
+"REPLACEABLE c2">name</tt> [ * ] [, ... ]
+    [ RESTART IDENTITY | CONTINUE IDENTITY ] [ CASCADE | RESTRICT ]
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN76257" id="AEN76257"></a>
+
+  <h2>Description</h2>
+
+  <p><tt class="COMMAND">TRUNCATE</tt> quickly removes all rows
+  from a set of tables. It has the same effect as an unqualified
+  <tt class="COMMAND">DELETE</tt> on each table, but since it does
+  not actually scan the tables it is faster. Furthermore, it
+  reclaims disk space immediately, rather than requiring a
+  subsequent <tt class="COMMAND">VACUUM</tt> operation. This is
+  most useful on large tables.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN76263" id="AEN76263"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="REPLACEABLE c2">name</tt></dt>
+
+      <dd>
+        <p>The name (optionally schema-qualified) of a table to
+        truncate. If <tt class="LITERAL">ONLY</tt> is specified
+        before the table name, only that table is truncated. If
+        <tt class="LITERAL">ONLY</tt> is not specified, the table
+        and all its descendant tables (if any) are truncated.
+        Optionally, <tt class="LITERAL">*</tt> can be specified
+        after the table name to explicitly indicate that descendant
+        tables are included.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">RESTART IDENTITY</tt></dt>
+
+      <dd>
+        <p>Automatically restart sequences owned by columns of the
+        truncated table(s).</p>
+      </dd>
+
+      <dt><tt class="LITERAL">CONTINUE IDENTITY</tt></dt>
+
+      <dd>
+        <p>Do not change the values of sequences. This is the
+        default.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">CASCADE</tt></dt>
+
+      <dd>
+        <p>Automatically truncate all tables that have foreign-key
+        references to any of the named tables, or to any tables
+        added to the group due to <tt class=
+        "LITERAL">CASCADE</tt>.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">RESTRICT</tt></dt>
+
+      <dd>
+        <p>Refuse to truncate if any of the tables have foreign-key
+        references from tables that are not listed in the command.
+        This is the default.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN76295" id="AEN76295"></a>
+
+  <h2>Notes</h2>
+
+  <p>You must have the <tt class="LITERAL">TRUNCATE</tt> privilege
+  on a table to truncate it.</p>
+
+  <p><tt class="COMMAND">TRUNCATE</tt> acquires an <tt class=
+  "LITERAL">ACCESS EXCLUSIVE</tt> lock on each table it operates
+  on, which blocks all other concurrent operations on the table.
+  When <tt class="LITERAL">RESTART IDENTITY</tt> is specified, any
+  sequences that are to be restarted are likewise locked
+  exclusively. If concurrent access to a table is required, then
+  the <tt class="COMMAND">DELETE</tt> command should be used
+  instead.</p>
+
+  <p><tt class="COMMAND">TRUNCATE</tt> cannot be used on a table
+  that has foreign-key references from other tables, unless all
+  such tables are also truncated in the same command. Checking
+  validity in such cases would require table scans, and the whole
+  point is not to do one. The <tt class="LITERAL">CASCADE</tt>
+  option can be used to automatically include all dependent tables
+  — but be very careful when using this option, or else you might
+  lose data you did not intend to!</p>
+
+  <p><tt class="COMMAND">TRUNCATE</tt> will not fire any <tt class=
+  "LITERAL">ON DELETE</tt> triggers that might exist for the
+  tables. But it will fire <tt class="LITERAL">ON TRUNCATE</tt>
+  triggers. If <tt class="LITERAL">ON TRUNCATE</tt> triggers are
+  defined for any of the tables, then all <tt class=
+  "LITERAL">BEFORE TRUNCATE</tt> triggers are fired before any
+  truncation happens, and all <tt class="LITERAL">AFTER
+  TRUNCATE</tt> triggers are fired after the last truncation is
+  performed and any sequences are reset. The triggers will fire in
+  the order that the tables are to be processed (first those listed
+  in the command, and then any that were added due to
+  cascading).</p>
+
+  <div class="WARNING">
+    <table class="WARNING" border="1" width="100%">
+      <tr>
+        <td class="c3" align="center">Warning</td>
+      </tr>
+
+      <tr>
+        <td align="left">
+          <p><tt class="COMMAND">TRUNCATE</tt> is not MVCC-safe
+          (see <a href="http://www.postgresql.org/docs/9.1/static/mvcc.html">Chapter 13</a> for general
+          information about MVCC). After truncation, the table will
+          appear empty to all concurrent transactions, even if they
+          are using a snapshot taken before the truncation
+          occurred. This will only be an issue for a transaction
+          that did not access the truncated table before the
+          truncation happened — any transaction that has done so
+          would hold at least an <tt class="LITERAL">ACCESS
+          SHARE</tt> lock, which would block <tt class=
+          "COMMAND">TRUNCATE</tt> until that transaction completes.
+          So truncation will not cause any apparent inconsistency
+          in the table contents for successive queries on the same
+          table, but it could cause visible inconsistency between
+          the contents of the truncated table and other tables in
+          the database.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <p><tt class="COMMAND">TRUNCATE</tt> is transaction-safe with
+  respect to the data in the tables: the truncation will be safely
+  rolled back if the surrounding transaction does not commit.</p>
+
+  <p>When <tt class="LITERAL">RESTART IDENTITY</tt> is specified,
+  the implied <tt class="COMMAND">ALTER SEQUENCE RESTART</tt>
+  operations are also done transactionally; that is, they will be
+  rolled back if the surrounding transaction does not commit. This
+  is unlike the normal behavior of <tt class="COMMAND">ALTER
+  SEQUENCE RESTART</tt>. Be aware that if any additional sequence
+  operations are done on the restarted sequences before the
+  transaction rolls back, the effects of these operations on the
+  sequences will be rolled back, but not their effects on
+  <code class="FUNCTION">currval()</code>; that is, after the
+  transaction <code class="FUNCTION">currval()</code> will continue
+  to reflect the last sequence value obtained inside the failed
+  transaction, even though the sequence itself may no longer be
+  consistent with that. This is similar to the usual behavior of
+  <code class="FUNCTION">currval()</code> after a failed
+  transaction.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN76329" id="AEN76329"></a>
+
+  <h2>Examples</h2>
+
+  <p>Truncate the tables <tt class="LITERAL">bigtable</tt> and
+  <tt class="LITERAL">fattable</tt>:</p>
+  <pre class="PROGRAMLISTING">
+TRUNCATE bigtable, fattable;
+</pre>
+
+  <p>The same, and also reset any associated sequence
+  generators:</p>
+  <pre class="PROGRAMLISTING">
+TRUNCATE bigtable, fattable RESTART IDENTITY;
+</pre>
+
+  <p>Truncate the table <tt class="LITERAL">othertable</tt>, and
+  cascade to any tables that reference <tt class=
+  "LITERAL">othertable</tt> via foreign-key constraints:</p>
+  <pre class="PROGRAMLISTING">
+TRUNCATE othertable CASCADE;
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN76341" id="AEN76341"></a>
+
+  <h2>Compatibility</h2>
+
+  <p>The SQL:2008 standard includes a <tt class=
+  "COMMAND">TRUNCATE</tt> command with the syntax <tt class=
+  "LITERAL">TRUNCATE TABLE <tt class=
+  "REPLACEABLE c2">tablename</tt></tt>. The clauses <tt class=
+  "LITERAL">CONTINUE IDENTITY</tt>/<tt class="LITERAL">RESTART
+  IDENTITY</tt> also appear in that standard, but have slightly
+  different though related meanings. Some of the concurrency
+  behavior of this command is left implementation-defined by the
+  standard, so the above notes should be considered and compared
+  with other implementations if necessary.</p>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%" />
+
+  <table summary="Footer navigation table" width="100%" border="0"
+  cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="33%" align="left" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-start-transaction.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-unlisten.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">START
+      TRANSACTION</td>
+
+      <td width="34%" align="center" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">UNLISTEN</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br/>
+Copyright &copy; 1996-2015 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+</body>
+
+<!-- Mirrored from www.postgresql.org/docs/9.1/static/sql-truncate.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:45:02 GMT -->
+</html>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/hibernate/hibernate-search/commits/3.2</id>
+  <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commits/3.2"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/hibernate/hibernate-search/commits/3.2.atom"/>
+  <title>Recent Commits to hibernate-search:3.2</title>
+  <updated>2010-11-06T12:11:58+01:00</updated>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/8c3f9b3607aac64c1179e97119c17ad1efff84af</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/8c3f9b3607aac64c1179e97119c17ad1efff84af"/>
+    <title>
+        HSEARCH-573 Add tests showing lock time out closes the index
+    </title>
+    <updated>2010-11-06T12:11:58+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-573 Add tests showing lock time out closes the index&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d365e44838503707ed0b4819884a90e957055bed</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/d365e44838503707ed0b4819884a90e957055bed"/>
+    <title>
+        HSEARCH-573 Do not close the index when a lock time out exception occurs
+    </title>
+    <updated>2010-11-06T12:06:06+01:00</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-573 Do not close the index when a lock time out exception occurs&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/4902de48525e5fec53125501520db02bfc317a27</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/4902de48525e5fec53125501520db02bfc317a27"/>
+    <title>
+        HSEARCH-591 fix issue when programmtic mapping was raising exception on non getter methods
+    </title>
+    <updated>2010-10-01T11:46:29Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-591 fix issue when programmtic mapping was raising exception on non getter methods
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20761 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a2a6d3ffb20037aad11de823ce6e5dd29d96002d</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/a2a6d3ffb20037aad11de823ce6e5dd29d96002d"/>
+    <title>
+        HSEARCH-567 Updated pom versions and scm details to properly reflect the branch
+    </title>
+    <updated>2010-08-19T14:46:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-567 Updated pom versions and scm details to properly reflect the branch
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20190 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/bc904d5776444e092774a7dedb1dfa54cefb348f</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/bc904d5776444e092774a7dedb1dfa54cefb348f"/>
+    <title>
+        [maven-release-plugin] prepare release foobar
+    </title>
+    <updated>2010-08-19T13:53:41Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release foobar
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20187 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/3469189268b525175df860c7f2a3f407a90e76b4</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/3469189268b525175df860c7f2a3f407a90e76b4"/>
+    <title>
+        [maven-release-plugin] prepare branch foobar
+    </title>
+    <updated>2010-08-19T13:52:56Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare branch foobar
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20185 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f2e5febcac1d82be76cc43f51ed99eebd9379982</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f2e5febcac1d82be76cc43f51ed99eebd9379982"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2010-08-19T13:42:49Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20184 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/de66e2e2d86f86dd01bfaaf2c521595a61289b83</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/de66e2e2d86f86dd01bfaaf2c521595a61289b83"/>
+    <title>
+        [maven-release-plugin] prepare release hibernate-search-parent-3.2.2
+    </title>
+    <updated>2010-08-19T13:41:51Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars3.githubusercontent.com/u/296354?v=3&amp;s=30"/>
+    <author>
+      <name>hferentschik</name>
+      <uri>https://github.com/hferentschik</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release hibernate-search-parent-3.2.2
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20182 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/5391ddc61066fcc9a85d9c843c0b36b30e5c28ba</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/5391ddc61066fcc9a85d9c843c0b36b30e5c28ba"/>
+    <title>
+        HSEARCH-568 Add source plugin to Hibernate Search Testing
+    </title>
+    <updated>2010-07-25T16:51:16Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>HSEARCH-568 Add source plugin to Hibernate Search Testing
+
+The new Nexus staging rules mandate it.
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20058 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a2989335efe0dbeea850ff5b3ed09e3fb44e173e</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/a2989335efe0dbeea850ff5b3ed09e3fb44e173e"/>
+    <title>
+        Push release number to next snapshot version
+    </title>
+    <updated>2010-07-25T16:50:55Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Push release number to next snapshot version
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20057 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/a50cae1291ef707ef2816448080d813eab50a716</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/a50cae1291ef707ef2816448080d813eab50a716"/>
+    <title>
+        Commit v3.2.1
+    </title>
+    <updated>2010-07-25T15:24:46Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Commit v3.2.1
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20055 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d0dbc76e9becbee3e411a01a8d134becd2f70f56</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/d0dbc76e9becbee3e411a01a8d134becd2f70f56"/>
+    <title>
+        Commit v3.2.1
+    </title>
+    <updated>2010-07-25T15:13:04Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Commit v3.2.1
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20054 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f0fa15d8de9df380825526bc26bf09c1afb7776b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f0fa15d8de9df380825526bc26bf09c1afb7776b"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2010-07-25T15:07:14Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20052 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/dedee8c211f75f2e1deae98ac08f30a6a6fa0ae7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/dedee8c211f75f2e1deae98ac08f30a6a6fa0ae7"/>
+    <title>
+        [maven-release-plugin] prepare release v3_2_1_Final
+    </title>
+    <updated>2010-07-25T15:06:37Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release v3_2_1_Final
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20050 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/62ae301d533b965b1ae267186a8a6f8b7518ed7b</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/62ae301d533b965b1ae267186a8a6f8b7518ed7b"/>
+    <title>
+        Fixing Maven&#39;s mess
+    </title>
+    <updated>2010-07-25T14:58:21Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Fixing Maven&#39;s mess
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20049 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/607770be66e4648a8dd6db83e5280f52b5924ee7</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/607770be66e4648a8dd6db83e5280f52b5924ee7"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2010-07-25T14:53:09Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20047 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/d1160cccacac34202ab97218f1dfa005894fe9cd</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/d1160cccacac34202ab97218f1dfa005894fe9cd"/>
+    <title>
+        [maven-release-plugin] prepare release v3_2_1_Final
+    </title>
+    <updated>2010-07-25T14:52:36Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release v3_2_1_Final
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20045 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/32a07e08fbb37d2d39572b572b7cc62be901ada2</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/32a07e08fbb37d2d39572b572b7cc62be901ada2"/>
+    <title>
+        Fixing Maven&#39;s mess
+    </title>
+    <updated>2010-07-25T14:47:58Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>Fixing Maven&#39;s mess
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20044 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/9b131fb937279512eb15283b55eae9dad12dbef1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/9b131fb937279512eb15283b55eae9dad12dbef1"/>
+    <title>
+        [maven-release-plugin] prepare for next development iteration
+    </title>
+    <updated>2010-07-25T14:40:19Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare for next development iteration
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20042 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:Grit::Commit/f2434e7b6453399afadf4db6b12bc6e6d55e8ea1</id>
+    <link type="text/html" rel="alternate" href="https://github.com/hibernate/hibernate-search/commit/f2434e7b6453399afadf4db6b12bc6e6d55e8ea1"/>
+    <title>
+        [maven-release-plugin] prepare release v3_2_1_Final
+    </title>
+    <updated>2010-07-25T14:39:43Z</updated>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/300760?v=3&amp;s=30"/>
+    <author>
+      <name>emmanuelbernard</name>
+      <uri>https://github.com/emmanuelbernard</uri>
+    </author>
+    <content type="html">
+      &lt;pre style='white-space:pre-wrap;width:81ex'>[maven-release-plugin] prepare release v3_2_1_Final
+
+git-svn-id: https://svn.jboss.org/repos/hibernate/search/branches/Branch_3_2@20040 1b8cb986-b30d-0410-93ca-fae66ebed9b2&lt;/pre>
+    </content>
+  </entry>
+</feed>

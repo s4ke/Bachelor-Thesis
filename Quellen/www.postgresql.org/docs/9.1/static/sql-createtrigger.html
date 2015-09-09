@@ -1,0 +1,782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr">
+
+<!-- Mirrored from www.postgresql.org/docs/9.1/static/sql-createtrigger.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:45:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>PostgreSQL: Documentation: 9.1: CREATE TRIGGER</title>
+    <style type="text/css" media="screen" title="Normal Text">@import url("http://www.postgresql.org/dyncss/docs.css?106df08c");</style>
+    <script type="text/javascript" src="http://www.postgresql.org/media/js/monospacefix.js?106df08c"></script>
+    <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1345454-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<div id="docHeader">
+	<div id="docHeaderLogo">
+		<a href="http://www.postgresql.org/" title="PostgreSQL"><img src="http://www.postgresql.org/media/img/docs/hdr_logo.png" width="206" height="80" alt="PostgreSQL" /></a>
+	</div>
+</div>
+
+<div id="docContainerWrap">
+<div id="docContainer">
+<div id="docNavSearchContainer">
+<div id="docSearch">
+	<form action="http://www.postgresql.org/search/" method="get">
+	<div>
+	<input type="hidden" name="u" value="/docs/9.1/" />
+	<label for="q">Search Documentation:&nbsp;</label><input type="text" id="q" name="q" size="20" onfocus="if( this.value==this.defaultValue ) this.value='';" value="Search" /><input id="submit" type="submit" value="Search" />
+	</div>
+	</form>
+</div>
+<div id="docNav">
+<a href="http://www.postgresql.org/" title="Home">Home</a> &rarr; <a href="http://www.postgresql.org/docs" title="Documentation">Documentation</a> &rarr; <a href="http://www.postgresql.org/docs/manuals" title="Manuals">Manuals</a> &rarr; <a href="http://www.postgresql.org/docs/9.1/static/index.html">PostgreSQL 9.1</a>
+</div>
+<div id="docVersions">
+This page in other versions:
+
+
+	
+	
+	<a href="http://www.postgresql.org/docs/9.0/static/sql-createtrigger.html" title="This page in version 9.0">9.0</a>
+	
+
+	/
+	
+	<b>9.1</b>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.2/static/sql-createtrigger.html" title="This page in version 9.2">9.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.3/static/sql-createtrigger.html" title="This page in version 9.3">9.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.4/static/sql-createtrigger.html" title="This page in version 9.4">9.4</a>
+	
+
+
+
+
+&nbsp;|&nbsp; Development versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/devel/static/sql-createtrigger.html" title="This page in version devel" rel="nofollow">devel</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/9.5/static/sql-createtrigger.html" title="This page in version 9.5" rel="nofollow">9.5</a>
+	
+
+
+
+
+&nbsp;|&nbsp; Unsupported versions:
+
+	
+	
+	<a href="http://www.postgresql.org/docs/7.1/static/sql-createtrigger.html" title="This page in version 7.1" rel="nofollow">7.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.2/static/sql-createtrigger.html" title="This page in version 7.2" rel="nofollow">7.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.3/static/sql-createtrigger.html" title="This page in version 7.3" rel="nofollow">7.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/7.4/static/sql-createtrigger.html" title="This page in version 7.4" rel="nofollow">7.4</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.0/static/sql-createtrigger.html" title="This page in version 8.0" rel="nofollow">8.0</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.1/static/sql-createtrigger.html" title="This page in version 8.1" rel="nofollow">8.1</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.2/static/sql-createtrigger.html" title="This page in version 8.2" rel="nofollow">8.2</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.3/static/sql-createtrigger.html" title="This page in version 8.3" rel="nofollow">8.3</a>
+	
+
+	/
+	
+	<a href="http://www.postgresql.org/docs/8.4/static/sql-createtrigger.html" title="This page in version 8.4" rel="nofollow">8.4</a>
+	
+
+
+</div>
+</div>
+
+<div id="docContent">
+<div class="NAVHEADER">
+  <table summary="Header navigation table" width="100%" border="0"
+  cellpadding="0" cellspacing="0">
+    <tr>
+      <th colspan="5" align="center" valign="bottom"><a href=
+      "http://www.postgresql.org/docs/9.1/static/index.html">PostgreSQL 9.1.18 Documentation</a></th>
+    </tr>
+
+    <tr>
+      <td width="10%" align="left" valign="top"><a title=
+      "CREATE TEXT SEARCH TEMPLATE" href=
+      "http://www.postgresql.org/docs/9.1/static/sql-createtstemplate.html" accesskey="P">Prev</a></td>
+
+      <td width="10%" align="left" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="60%" align="center" valign="bottom"></td>
+
+      <td width="20%" align="right" valign="top"><a title=
+      "CREATE TYPE" href="http://www.postgresql.org/docs/9.1/static/sql-createtype.html" accesskey=
+      "N">Next</a></td>
+    </tr>
+  </table>
+  <hr class="c1" width="100%" />
+</div>
+
+<h1><a name="SQL-CREATETRIGGER" id="SQL-CREATETRIGGER"></a>CREATE
+TRIGGER</h1>
+
+<div class="REFNAMEDIV">
+  <a name="AEN68865" id="AEN68865"></a>
+
+  <h2>Name</h2>CREATE TRIGGER&nbsp;--&nbsp;define a new trigger
+</div>
+
+<div class="REFSYNOPSISDIV">
+  <a name="AEN68870" id="AEN68870"></a>
+
+  <h2>Synopsis</h2>
+  <pre class="SYNOPSIS">
+CREATE [ CONSTRAINT ] TRIGGER <tt class=
+"REPLACEABLE c2">name</tt> { BEFORE | AFTER | INSTEAD OF } { <tt class="REPLACEABLE c2">event</tt> [ OR ... ] }
+    ON <tt class="REPLACEABLE c2">table</tt>
+    [ FROM <tt class="REPLACEABLE c2">referenced_table_name</tt> ]
+    [ NOT DEFERRABLE | [ DEFERRABLE ] { INITIALLY IMMEDIATE | INITIALLY DEFERRED } ]
+    [ FOR [ EACH ] { ROW | STATEMENT } ]
+    [ WHEN ( <tt class="REPLACEABLE c2">condition</tt> ) ]
+    EXECUTE PROCEDURE <tt class=
+"REPLACEABLE c2">function_name</tt> ( <tt class=
+"REPLACEABLE c2">arguments</tt> )
+
+<span class="phrase PHRASE">where <tt class=
+"REPLACEABLE c2">event</tt> can be one of:</span>
+
+    INSERT
+    UPDATE [ OF <tt class=
+"REPLACEABLE c2">column_name</tt> [, ... ] ]
+    DELETE
+    TRUNCATE
+</pre>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN68882" id="AEN68882"></a>
+
+  <h2>Description</h2>
+
+  <p><tt class="COMMAND">CREATE TRIGGER</tt> creates a new trigger.
+  The trigger will be associated with the specified table or view
+  and will execute the specified function <tt class=
+  "REPLACEABLE c2">function_name</tt> when certain events
+  occur.</p>
+
+  <p>The trigger can be specified to fire before the operation is
+  attempted on a row (before constraints are checked and the
+  <tt class="COMMAND">INSERT</tt>, <tt class="COMMAND">UPDATE</tt>,
+  or <tt class="COMMAND">DELETE</tt> is attempted); or after the
+  operation has completed (after constraints are checked and the
+  <tt class="COMMAND">INSERT</tt>, <tt class="COMMAND">UPDATE</tt>,
+  or <tt class="COMMAND">DELETE</tt> has completed); or instead of
+  the operation (in the case of inserts, updates or deletes on a
+  view). If the trigger fires before or instead of the event, the
+  trigger can skip the operation for the current row, or change the
+  row being inserted (for <tt class="COMMAND">INSERT</tt> and
+  <tt class="COMMAND">UPDATE</tt> operations only). If the trigger
+  fires after the event, all changes, including the effects of
+  other triggers, are <span class="QUOTE">"visible"</span> to the
+  trigger.</p>
+
+  <p>A trigger that is marked <tt class="LITERAL">FOR EACH ROW</tt>
+  is called once for every row that the operation modifies. For
+  example, a <tt class="COMMAND">DELETE</tt> that affects 10 rows
+  will cause any <tt class="LITERAL">ON DELETE</tt> triggers on the
+  target relation to be called 10 separate times, once for each
+  deleted row. In contrast, a trigger that is marked <tt class=
+  "LITERAL">FOR EACH STATEMENT</tt> only executes once for any
+  given operation, regardless of how many rows it modifies (in
+  particular, an operation that modifies zero rows will still
+  result in the execution of any applicable <tt class="LITERAL">FOR
+  EACH STATEMENT</tt> triggers).</p>
+
+  <p>Triggers that are specified to fire <tt class=
+  "LITERAL">INSTEAD OF</tt> the trigger event must be marked
+  <tt class="LITERAL">FOR EACH ROW</tt>, and can only be defined on
+  views. <tt class="LITERAL">BEFORE</tt> and <tt class=
+  "LITERAL">AFTER</tt> triggers on a view must be marked as
+  <tt class="LITERAL">FOR EACH STATEMENT</tt>.</p>
+
+  <p>In addition, triggers may be defined to fire for <tt class=
+  "COMMAND">TRUNCATE</tt>, though only <tt class="LITERAL">FOR EACH
+  STATEMENT</tt>.</p>
+
+  <p>The following table summarizes which types of triggers may be
+  used on tables and views:</p>
+
+  <div class="INFORMALTABLE">
+    <a name="SUPPORTED-TRIGGER-TYPES" id=
+    "SUPPORTED-TRIGGER-TYPES"></a>
+
+    <table border="1" class="CALSTABLE">
+      <col />
+      <col />
+      <col />
+      <col />
+
+      <thead>
+        <tr>
+          <th>When</th>
+
+          <th>Event</th>
+
+          <th>Row-level</th>
+
+          <th>Statement-level</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td rowspan="2" align="center"><tt class=
+          "LITERAL">BEFORE</tt></td>
+
+          <td align="center"><tt class=
+          "COMMAND">INSERT</tt>/<tt class=
+          "COMMAND">UPDATE</tt>/<tt class=
+          "COMMAND">DELETE</tt></td>
+
+          <td align="center">Tables</td>
+
+          <td align="center">Tables and views</td>
+        </tr>
+
+        <tr>
+          <td align="center"><tt class="COMMAND">TRUNCATE</tt></td>
+
+          <td align="center">—</td>
+
+          <td align="center">Tables</td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" align="center"><tt class=
+          "LITERAL">AFTER</tt></td>
+
+          <td align="center"><tt class=
+          "COMMAND">INSERT</tt>/<tt class=
+          "COMMAND">UPDATE</tt>/<tt class=
+          "COMMAND">DELETE</tt></td>
+
+          <td align="center">Tables</td>
+
+          <td align="center">Tables and views</td>
+        </tr>
+
+        <tr>
+          <td align="center"><tt class="COMMAND">TRUNCATE</tt></td>
+
+          <td align="center">—</td>
+
+          <td align="center">Tables</td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" align="center"><tt class=
+          "LITERAL">INSTEAD OF</tt></td>
+
+          <td align="center"><tt class=
+          "COMMAND">INSERT</tt>/<tt class=
+          "COMMAND">UPDATE</tt>/<tt class=
+          "COMMAND">DELETE</tt></td>
+
+          <td align="center">Views</td>
+
+          <td align="center">—</td>
+        </tr>
+
+        <tr>
+          <td align="center"><tt class="COMMAND">TRUNCATE</tt></td>
+
+          <td align="center">—</td>
+
+          <td align="center">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Also, a trigger definition can specify a Boolean <tt class=
+  "LITERAL">WHEN</tt> condition, which will be tested to see
+  whether the trigger should be fired. In row-level triggers the
+  <tt class="LITERAL">WHEN</tt> condition can examine the old
+  and/or new values of columns of the row. Statement-level triggers
+  can also have <tt class="LITERAL">WHEN</tt> conditions, although
+  the feature is not so useful for them since the condition cannot
+  refer to any values in the table.</p>
+
+  <p>If multiple triggers of the same kind are defined for the same
+  event, they will be fired in alphabetical order by name.</p>
+
+  <p>When the <tt class="LITERAL">CONSTRAINT</tt> option is
+  specified, this command creates a <i class="FIRSTTERM">constraint
+  trigger</i>. This is the same as a regular trigger except that
+  the timing of the trigger firing can be adjusted using <a href=
+  "http://www.postgresql.org/docs/9.1/static/sql-set-constraints.html">SET CONSTRAINTS</a>. Constraint
+  triggers must be <tt class="LITERAL">AFTER ROW</tt> triggers.
+  They can be fired either at the end of the statement causing the
+  triggering event, or at the end of the containing transaction; in
+  the latter case they are said to be <i class=
+  "FIRSTTERM">deferred</i>. A pending deferred-trigger firing can
+  also be forced to happen immediately by using <tt class=
+  "COMMAND">SET CONSTRAINTS</tt>. Constraint triggers are expected
+  to raise an exception when the constraints they implement are
+  violated.</p>
+
+  <p><tt class="COMMAND">SELECT</tt> does not modify any rows so
+  you cannot create <tt class="COMMAND">SELECT</tt> triggers. Rules
+  and views are more appropriate in such cases.</p>
+
+  <p>Refer to <a href="http://www.postgresql.org/docs/9.1/static/triggers.html">Chapter 36</a> for more
+  information about triggers.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN68981" id="AEN68981"></a>
+
+  <h2>Parameters</h2>
+
+  <div class="VARIABLELIST">
+    <dl>
+      <dt><tt class="REPLACEABLE c2">name</tt></dt>
+
+      <dd>
+        <p>The name to give the new trigger. This must be distinct
+        from the name of any other trigger for the same table. The
+        name cannot be schema-qualified — the trigger inherits the
+        schema of its table. For a constraint trigger, this is also
+        the name to use when modifying the trigger's behavior using
+        <tt class="COMMAND">SET CONSTRAINTS</tt>.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">BEFORE</tt><br />
+      <tt class="LITERAL">AFTER</tt><br />
+      <tt class="LITERAL">INSTEAD OF</tt></dt>
+
+      <dd>
+        <p>Determines whether the function is called before, after,
+        or instead of the event. A constraint trigger can only be
+        specified as <tt class="LITERAL">AFTER</tt>.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">event</tt></dt>
+
+      <dd>
+        <p>One of <tt class="LITERAL">INSERT</tt>, <tt class=
+        "LITERAL">UPDATE</tt>, <tt class="LITERAL">DELETE</tt>, or
+        <tt class="LITERAL">TRUNCATE</tt>; this specifies the event
+        that will fire the trigger. Multiple events can be
+        specified using <tt class="LITERAL">OR</tt>.</p>
+
+        <p>For <tt class="LITERAL">UPDATE</tt> events, it is
+        possible to specify a list of columns using this
+        syntax:</p>
+        <pre class="SYNOPSIS">
+UPDATE OF <tt class=
+"REPLACEABLE c2">column_name1</tt> [, <tt class="REPLACEABLE c2">column_name2</tt> ... ]
+</pre>
+
+        <p>The trigger will only fire if at least one of the listed
+        columns is mentioned as a target of the <tt class=
+        "COMMAND">UPDATE</tt> command.</p>
+
+        <p><tt class="LITERAL">INSTEAD OF UPDATE</tt> events do not
+        support lists of columns.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">table</tt></dt>
+
+      <dd>
+        <p>The name (optionally schema-qualified) of the table or
+        view the trigger is for.</p>
+      </dd>
+
+      <dt><tt class=
+      "REPLACEABLE c2">referenced_table_name</tt></dt>
+
+      <dd>
+        <p>The (possibly schema-qualified) name of another table
+        referenced by the constraint. This option is used for
+        foreign-key constraints and is not recommended for general
+        use. This can only be specified for constraint
+        triggers.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">DEFERRABLE</tt><br />
+      <tt class="LITERAL">NOT DEFERRABLE</tt><br />
+      <tt class="LITERAL">INITIALLY IMMEDIATE</tt><br />
+      <tt class="LITERAL">INITIALLY DEFERRED</tt></dt>
+
+      <dd>
+        <p>The default timing of the trigger. See the <a href=
+        "http://www.postgresql.org/docs/9.1/static/sql-createtable.html">CREATE TABLE</a> documentation for
+        details of these constraint options. This can only be
+        specified for constraint triggers.</p>
+      </dd>
+
+      <dt><tt class="LITERAL">FOR EACH ROW</tt><br />
+      <tt class="LITERAL">FOR EACH STATEMENT</tt></dt>
+
+      <dd>
+        <p>This specifies whether the trigger procedure should be
+        fired once for every row affected by the trigger event, or
+        just once per SQL statement. If neither is specified,
+        <tt class="LITERAL">FOR EACH STATEMENT</tt> is the default.
+        Constraint triggers can only be specified <tt class=
+        "LITERAL">FOR EACH ROW</tt>.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">condition</tt></dt>
+
+      <dd>
+        <p>A Boolean expression that determines whether the trigger
+        function will actually be executed. If <tt class=
+        "LITERAL">WHEN</tt> is specified, the function will only be
+        called if the <tt class="REPLACEABLE c2">condition</tt>
+        returns <tt class="LITERAL">true</tt>. In <tt class=
+        "LITERAL">FOR EACH ROW</tt> triggers, the <tt class=
+        "LITERAL">WHEN</tt> condition can refer to columns of the
+        old and/or new row values by writing <tt class=
+        "LITERAL">OLD.<tt class=
+        "REPLACEABLE c2">column_name</tt></tt> or <tt class=
+        "LITERAL">NEW.<tt class=
+        "REPLACEABLE c2">column_name</tt></tt> respectively. Of
+        course, <tt class="LITERAL">INSERT</tt> triggers cannot
+        refer to <tt class="LITERAL">OLD</tt> and <tt class=
+        "LITERAL">DELETE</tt> triggers cannot refer to <tt class=
+        "LITERAL">NEW</tt>.</p>
+
+        <p><tt class="LITERAL">INSTEAD OF</tt> triggers do not
+        support <tt class="LITERAL">WHEN</tt> conditions.</p>
+
+        <p>Currently, <tt class="LITERAL">WHEN</tt> expressions
+        cannot contain subqueries.</p>
+
+        <p>Note that for constraint triggers, evaluation of the
+        <tt class="LITERAL">WHEN</tt> condition is not deferred,
+        but occurs immediately after the row update operation is
+        performed. If the condition does not evaluate to true then
+        the trigger is not queued for deferred execution.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">function_name</tt></dt>
+
+      <dd>
+        <p>A user-supplied function that is declared as taking no
+        arguments and returning type <tt class=
+        "LITERAL">trigger</tt>, which is executed when the trigger
+        fires.</p>
+      </dd>
+
+      <dt><tt class="REPLACEABLE c2">arguments</tt></dt>
+
+      <dd>
+        <p>An optional comma-separated list of arguments to be
+        provided to the function when the trigger is executed. The
+        arguments are literal string constants. Simple names and
+        numeric constants can be written here, too, but they will
+        all be converted to strings. Please check the description
+        of the implementation language of the trigger function to
+        find out how these arguments can be accessed within the
+        function; it might be different from normal function
+        arguments.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="REFSECT1">
+  <a name="SQL-CREATETRIGGER-NOTES" id=
+  "SQL-CREATETRIGGER-NOTES"></a>
+
+  <h2>Notes</h2>
+
+  <p>To create a trigger on a table, the user must have the
+  <tt class="LITERAL">TRIGGER</tt> privilege on the table. The user
+  must also have <tt class="LITERAL">EXECUTE</tt> privilege on the
+  trigger function.</p>
+
+  <p>Use <a href="http://www.postgresql.org/docs/9.1/static/sql-droptrigger.html">DROP TRIGGER</a> to remove
+  a trigger.</p>
+
+  <p>A column-specific trigger (one defined using the <tt class=
+  "LITERAL">UPDATE OF <tt class=
+  "REPLACEABLE c2">column_name</tt></tt> syntax) will fire when any
+  of its columns are listed as targets in the <tt class=
+  "COMMAND">UPDATE</tt> command's <tt class="LITERAL">SET</tt>
+  list. It is possible for a column's value to change even when the
+  trigger is not fired, because changes made to the row's contents
+  by <tt class="LITERAL">BEFORE UPDATE</tt> triggers are not
+  considered. Conversely, a command such as <tt class=
+  "LITERAL">UPDATE ... SET x = x ...</tt> will fire a trigger on
+  column <tt class="LITERAL">x</tt>, even though the column's value
+  did not change.</p>
+
+  <p>In a <tt class="LITERAL">BEFORE</tt> trigger, the <tt class=
+  "LITERAL">WHEN</tt> condition is evaluated just before the
+  function is or would be executed, so using <tt class=
+  "LITERAL">WHEN</tt> is not materially different from testing the
+  same condition at the beginning of the trigger function. Note in
+  particular that the <tt class="LITERAL">NEW</tt> row seen by the
+  condition is the current value, as possibly modified by earlier
+  triggers. Also, a <tt class="LITERAL">BEFORE</tt> trigger's
+  <tt class="LITERAL">WHEN</tt> condition is not allowed to examine
+  the system columns of the <tt class="LITERAL">NEW</tt> row (such
+  as <tt class="LITERAL">oid</tt>), because those won't have been
+  set yet.</p>
+
+  <p>In an <tt class="LITERAL">AFTER</tt> trigger, the <tt class=
+  "LITERAL">WHEN</tt> condition is evaluated just after the row
+  update occurs, and it determines whether an event is queued to
+  fire the trigger at the end of statement. So when an <tt class=
+  "LITERAL">AFTER</tt> trigger's <tt class="LITERAL">WHEN</tt>
+  condition does not return true, it is not necessary to queue an
+  event nor to re-fetch the row at end of statement. This can
+  result in significant speedups in statements that modify many
+  rows, if the trigger only needs to be fired for a few of the
+  rows.</p>
+
+  <p>In <span class="PRODUCTNAME">PostgreSQL</span> versions before
+  7.3, it was necessary to declare trigger functions as returning
+  the placeholder type <tt class="TYPE">opaque</tt>, rather than
+  <tt class="TYPE">trigger</tt>. To support loading of old dump
+  files, <tt class="COMMAND">CREATE TRIGGER</tt> will accept a
+  function declared as returning <tt class="TYPE">opaque</tt>, but
+  it will issue a notice and change the function's declared return
+  type to <tt class="TYPE">trigger</tt>.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="SQL-CREATETRIGGER-EXAMPLES" id=
+  "SQL-CREATETRIGGER-EXAMPLES"></a>
+
+  <h2>Examples</h2>
+
+  <p>Execute the function <code class=
+  "FUNCTION">check_account_update</code> whenever a row of the
+  table <tt class="LITERAL">accounts</tt> is about to be
+  updated:</p>
+  <pre class="PROGRAMLISTING">
+CREATE TRIGGER check_update
+    BEFORE UPDATE ON accounts
+    FOR EACH ROW
+    EXECUTE PROCEDURE check_account_update();
+</pre>
+
+  <p>The same, but only execute the function if column <tt class=
+  "LITERAL">balance</tt> is specified as a target in the <tt class=
+  "COMMAND">UPDATE</tt> command:</p>
+  <pre class="PROGRAMLISTING">
+CREATE TRIGGER check_update
+    BEFORE UPDATE OF balance ON accounts
+    FOR EACH ROW
+    EXECUTE PROCEDURE check_account_update();
+</pre>
+
+  <p>This form only executes the function if column <tt class=
+  "LITERAL">balance</tt> has in fact changed value:</p>
+  <pre class="PROGRAMLISTING">
+CREATE TRIGGER check_update
+    BEFORE UPDATE ON accounts
+    FOR EACH ROW
+    WHEN (OLD.balance IS DISTINCT FROM NEW.balance)
+    EXECUTE PROCEDURE check_account_update();
+</pre>
+
+  <p>Call a function to log updates of <tt class=
+  "LITERAL">accounts</tt>, but only if something changed:</p>
+  <pre class="PROGRAMLISTING">
+CREATE TRIGGER log_update
+    AFTER UPDATE ON accounts
+    FOR EACH ROW
+    WHEN (OLD.* IS DISTINCT FROM NEW.*)
+    EXECUTE PROCEDURE log_account_update();
+</pre>
+
+  <p>Execute the function <code class=
+  "FUNCTION">view_insert_row</code> for each row to insert rows
+  into the tables underlying a view:</p>
+  <pre class="PROGRAMLISTING">
+CREATE TRIGGER view_insert
+    INSTEAD OF INSERT ON my_view
+    FOR EACH ROW
+    EXECUTE PROCEDURE view_insert_row();
+</pre>
+
+  <p><a href="http://www.postgresql.org/docs/9.1/static/trigger-example.html">Section 36.4</a> contains a
+  complete example of a trigger function written in C.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="SQL-CREATETRIGGER-COMPATIBILITY" id=
+  "SQL-CREATETRIGGER-COMPATIBILITY"></a>
+
+  <h2>Compatibility</h2>
+
+  <p>The <tt class="COMMAND">CREATE TRIGGER</tt> statement in
+  <span class="PRODUCTNAME">PostgreSQL</span> implements a subset
+  of the <acronym class="ACRONYM">SQL</acronym> standard. The
+  following functionality is currently missing:</p>
+
+  <ul>
+    <li>
+      <p>SQL allows you to define aliases for the <span class=
+      "QUOTE">"old"</span> and <span class="QUOTE">"new"</span>
+      rows or tables for use in the definition of the triggered
+      action (e.g., <tt class="LITERAL">CREATE TRIGGER ... ON
+      tablename REFERENCING OLD ROW AS somename NEW ROW AS
+      othername ...</tt>). Since <span class=
+      "PRODUCTNAME">PostgreSQL</span> allows trigger procedures to
+      be written in any number of user-defined languages, access to
+      the data is handled in a language-specific way.</p>
+    </li>
+
+    <li>
+      <p><span class="PRODUCTNAME">PostgreSQL</span> only allows
+      the execution of a user-defined function for the triggered
+      action. The standard allows the execution of a number of
+      other SQL commands, such as <tt class="COMMAND">CREATE
+      TABLE</tt>, as the triggered action. This limitation is not
+      hard to work around by creating a user-defined function that
+      executes the desired commands.</p>
+    </li>
+  </ul>
+
+  <p>SQL specifies that multiple triggers should be fired in
+  time-of-creation order. <span class=
+  "PRODUCTNAME">PostgreSQL</span> uses name order, which was judged
+  to be more convenient.</p>
+
+  <p>SQL specifies that <tt class="LITERAL">BEFORE DELETE</tt>
+  triggers on cascaded deletes fire <span class=
+  "emphasis EMPHASIS c3">after</span> the cascaded <tt class=
+  "LITERAL">DELETE</tt> completes. The <span class=
+  "PRODUCTNAME">PostgreSQL</span> behavior is for <tt class=
+  "LITERAL">BEFORE DELETE</tt> to always fire before the delete
+  action, even a cascading one. This is considered more consistent.
+  There is also nonstandard behavior if <tt class=
+  "LITERAL">BEFORE</tt> triggers modify rows or prevent updates
+  during an update that is caused by a referential action. This can
+  lead to constraint violations or stored data that does not honor
+  the referential constraint.</p>
+
+  <p>The ability to specify multiple actions for a single trigger
+  using <tt class="LITERAL">OR</tt> is a <span class=
+  "PRODUCTNAME">PostgreSQL</span> extension of the SQL
+  standard.</p>
+
+  <p>The ability to fire triggers for <tt class=
+  "COMMAND">TRUNCATE</tt> is a <span class=
+  "PRODUCTNAME">PostgreSQL</span> extension of the SQL standard, as
+  is the ability to define statement-level triggers on views.</p>
+
+  <p><tt class="COMMAND">CREATE CONSTRAINT TRIGGER</tt> is a
+  <span class="PRODUCTNAME">PostgreSQL</span> extension of the
+  <acronym class="ACRONYM">SQL</acronym> standard.</p>
+</div>
+
+<div class="REFSECT1">
+  <a name="AEN69174" id="AEN69174"></a>
+
+  <h2>See Also</h2><a href="http://www.postgresql.org/docs/9.1/static/sql-createfunction.html">CREATE
+  FUNCTION</a>, <a href="http://www.postgresql.org/docs/9.1/static/sql-altertrigger.html">ALTER TRIGGER</a>,
+  <a href="http://www.postgresql.org/docs/9.1/static/sql-droptrigger.html">DROP TRIGGER</a>, <a href=
+  "http://www.postgresql.org/docs/9.1/static/sql-set-constraints.html">SET CONSTRAINTS</a>
+</div>
+
+<div class="NAVFOOTER">
+  <hr class="c1" width="100%" />
+
+  <table summary="Footer navigation table" width="100%" border="0"
+  cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="33%" align="left" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-createtstemplate.html" accesskey="P">Prev</a></td>
+
+      <td width="34%" align="center" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/index.html" accesskey="H">Home</a></td>
+
+      <td width="33%" align="right" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-createtype.html" accesskey="N">Next</a></td>
+    </tr>
+
+    <tr>
+      <td width="33%" align="left" valign="top">CREATE TEXT SEARCH
+      TEMPLATE</td>
+
+      <td width="34%" align="center" valign="top"><a href=
+      "http://www.postgresql.org/docs/9.1/static/sql-commands.html" accesskey="U">Up</a></td>
+
+      <td width="33%" align="right" valign="top">CREATE TYPE</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+
+<div id="docComments">
+
+
+
+</div>
+
+<div id="docFooter">
+    <a href="http://www.postgresql.org/about/privacypolicy">Privacy Policy</a> |
+    <a href="http://www.postgresql.org/about/">About PostgreSQL</a><br/>
+Copyright &copy; 1996-2015 The PostgreSQL Global Development Group
+</div>
+</div>
+</div>
+</body>
+
+<!-- Mirrored from www.postgresql.org/docs/9.1/static/sql-createtrigger.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 09 Sep 2015 08:45:01 GMT -->
+</html>
