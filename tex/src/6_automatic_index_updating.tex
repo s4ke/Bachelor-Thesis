@@ -106,7 +106,7 @@ EntityManager em = ...;
 
 em.getTransaction().begin();
 
-Book book = em.find( Book.class "someIsbn" );
+Book book = em.find( Book.class, "someIsbn" );
 book.setTitle( "someNewTitle" );
 
 // flushes, so we retrieve the Book with the changes from above
